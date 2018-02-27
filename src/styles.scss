@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~primeng/resources/themes/omega/theme.css";
+@import "~primeng/resources/primeng.min.css";
+
+/**
+ * Couleurs SNCF
+ */
+ $couleurs: (
+    violet:           rgb(110, 30, 120),
+    jaune-safran:     rgb(255, 182, 18),
+    bleu-primaire:    rgb(0, 136, 206),
+    carbone:          rgb(60, 55, 50),
+    rouge-assistance: rgb(213, 43, 30),
+    prune:            rgb(161, 0, 107),
+    vert-anis:        rgb(210, 225, 0),
+    blanc:            rgb(255, 255, 255),
+    framboise:        rgb(205, 0, 55),
+    vert-pomme:       rgb(130, 190, 0),
+    orange:           rgb(224, 82, 6),
+    bleu-canard:      rgb(0, 154, 166),
+  );
+  
+  // génère une classe css pour chaque couleur
+  @each $name, $color in $couleurs {
+    .couleur-#{$name} {
+      color: $color;
+    }
+    .couleur-#{$name}-inverse {
+      background-color: $color;
+    }
+  }
+  
+  /**
+   * Polices
+   */
+  @font-face {
+    font-family: 'Avenir Light';
+    src: url('./assets/fonts/Avenir-Light-webfont.eot');
+    src: url('./assets/fonts/Avenir-Light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/Avenir-Light-webfont.svg') format('svg'),
+    url('./assets/fonts/Avenir-Light-webfont.woff');
+  }
+  
+  @font-face {
+    font-family: 'Avenir Heavy';
+    src: url('./assets/fonts/Avenir-Heavy-webfont.eot');
+    src: url('./assets/fonts/Avenir-Heavy-webfont.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/Avenir-Heavy-webfont.woff') format('woff'),
+    url('./assets/fonts/Avenir-Heavy-webfont.svg') format('svg');
+  }
+  
+  /**
+   * Styles de base
+   */
+  body, html {
+    font-family: 'Avenir Light', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    background: radial-gradient(circle at center, #ffffff 0%, rgb(225, 225, 225) 100%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  
+  .police-avenir-heavy {
+    font-family: 'Avenir Heavy', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+  
+  .police-avenir-light {
+    font-family: 'Avenir Light', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+  
+  .police-minuscule {
+    text-transform: lowercase;
+  }
+  
+  .police-majuscule {
+    text-transform: uppercase;
+  }
+  
+  .police-initiale {
+    text-transform: initial;
+  }
+  
+  .police-default{
+    text-transform: initial;
+  }
+  
+  /**
+   * Styles index.
+   */
+  .sncf-reseau-hero {
+    margin-left: 3em;
+    margin-top: 6em;
+  }
+  
+  .sncf-reseau-card {
+    margin: 3em 1em 1em 1em;
+    background-color: map-get($couleurs, blanc);
+    color: map-get($couleurs, carbone);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, .1);
+  
+    ul {
+      li {
+        a {
+          text-decoration: none;
+          &:hover, &:focus, &:visited {
+            color: map-get($couleurs, carbone);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
