@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Input, Inject} from '@angular/core';
+import {APP_CONFIG, AppConfig} from '../../../core/model/app.config';
 
 /**
  * Ce composant gère le contenu et le redimensionnement d'un wiget socle à travers :
@@ -25,7 +26,11 @@ export class WidgetPanelComponent implements OnInit {
 
   @Input() public onResizeEndt: EventEmitter<any>;
 
-  constructor() { }
+  public themeColor: string;
+
+  constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
+    this.themeColor = appConfig.themeColor;
+  }
 
   ngOnInit() {
   }

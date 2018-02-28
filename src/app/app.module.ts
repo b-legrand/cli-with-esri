@@ -7,7 +7,7 @@ import { MapModule } from './map/map.module';
 import { WidgetModule } from './widget/widget.module';
 import { LayoutModule } from './layout/layout.module';
 
-import { APP_CONFIG, appConfig } from './core/model/app.config';
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from './core/model/app.config';
 import { routes } from './routes';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { routes } from './routes';
     LayoutModule,
   ],
   providers: [
-    { provide: APP_CONFIG, useValue: appConfig }
+    { provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-<div class="widget-header">
+<div class="widget-header" [ngStyle]="{'background-color': themeColor}">
   <div class="widget-title"
        (dblclick)="handleFold($event)">
     <ng-content></ng-content>
