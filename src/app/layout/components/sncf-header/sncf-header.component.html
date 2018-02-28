@@ -1,0 +1,32 @@
+<nav class="sncf-header ui-g fluid">
+  <div class="header-logo ui-g-4">
+    <img src="assets/sncf.svg"
+          alt="SNCF Réseau - {{title}}">
+    <h1 class="header-logo">{{ title }}</h1>
+  </div>
+  <ul class="header-menu ui-g-8">
+    <li class="header-text">
+      <a routerLink="/">Carte</a>
+    </li>
+    <li class="header-text">
+      <a routerLink="/space/1">Espace #1</a>
+    </li>
+    <li class="header-text">
+      <a routerLink="/space/2">Espace #2</a>
+    </li>
+    <li class="header-form">
+      <form class="sncf-header__form">
+          <div class="ui-inputgroup">
+              <input type="text" pInputText placeholder="Keyword">      
+              <button pButton type="button" label="Search">Rechercher</button>   
+          </div>
+      </form>
+    </li>
+    <li class="header-text">
+      <a routerLink="/help">Aide</a>
+    </li>
+    <li class="header-text">
+      <a routerLink="/about">à propos</a>
+    </li>
+  </ul>
+</nav>
