@@ -1,0 +1,28 @@
+<div class="socle-widget"
+     ngDraggable
+     mwlResizable
+     [handle]="widgetHandle"
+     (started)="handleDragStart($event)"
+     (stopped)="handleDragEnd($event)"
+     [enableGhostResize]="true"
+     [preventDefaultEvent]="true"
+     (resizeEnd)="handleResizeEnd($event)"
+     [zIndexMoving]="999999"
+     [style.width.px]="state.size.width"
+     [style.height.px]="state.size.height"
+     *ngIf="!state.closed"
+     >
+  <!--<widget-button esriWidget activated="state.active" [icon]="icon"></widget-button>-->
+  <widget-header
+    [(state)]="state"
+    [foldable]="config.foldable"
+    [closable]="config.closable"
+    [anchorable]="config.anchorable"
+  >
+    <div class="widget-handle" #widgetHandle>{{ title }}</div>
+  </widget-header>
+  <widget-panel [resizable]="config.resizable">
+    <pre>{{ this.state | json }}</pre>
+    <ng-content></ng-content>
+  </widget-panel>
+</div>

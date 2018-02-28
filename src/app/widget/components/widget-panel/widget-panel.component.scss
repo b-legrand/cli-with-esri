@@ -1,0 +1,27 @@
+.widget-panel {
+  position: relative;
+  overflow: hidden;
+  height: calc(100% - 20px);// hauteur de l'entête
+}
+
+.widget-content {
+  user-select: none;
+  margin: 2px;
+}
+
+.widget-resize-button {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+
+.widget-resize-button {
+  display: none;
+}
+
+.widget-panel:hover .widget-resize-button {
+  display: block;
+}

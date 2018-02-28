@@ -1,0 +1,25 @@
+<div class="widget-panel">
+  <div class="widget-content">
+    <ng-content></ng-content>
+  </div>
+  <div class="widget-resize-button"
+       *ngIf="resizable"
+       #resizeHandle
+       mwlResizeHandle
+       [resizeEdges]="{bottom: true, right: true}"
+  >
+    <svg:svg width="16px" height="16px"
+             viewBox="0 0 6 6">
+      <svg:g *ngFor="let y of [0, 2, 4]">
+        <svg:rect *ngFor="let x of [0, 2, 4]"
+                  width="1"
+                  height="1"
+                  [attr.x]="x"
+                  [attr.y]="y"
+                  fill="rgb(0, 136, 206)"
+                  [attr.opacity]="(x+y)/8"
+        ></svg:rect>
+      </svg:g>
+    </svg:svg>
+  </div>
+</div>
