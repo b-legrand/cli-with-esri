@@ -9,7 +9,6 @@ import { EsriWidgetDirective } from './directives/esri-widget.directive';
 import { WidgetComponent } from './components/widget/widget.component';
 import { WidgetHeaderComponent } from './components/widget-header/widget-header.component';
 import { WidgetPanelComponent } from './components/widget-panel/widget-panel.component';
-import WidgetStateManager from './services/widget-state-manager.service';
 
 @NgModule({
   imports: [
@@ -28,8 +27,5 @@ import WidgetStateManager from './services/widget-state-manager.service';
     WidgetComponent,
     EsriWidgetDirective,
   ],
-  provides: [
-    WidgetStateManager,
-  ]
 })
 export class WidgetModule { }

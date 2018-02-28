@@ -10,8 +10,12 @@
       (click)="handleFold($event)"
       class="widget-button"
   >
-    <i *ngIf="state.folded" class="esri-icon-up-arrow"></i>
-    <i *ngIf="!state.folded" class="esri-icon-down-arrow"></i>
+    <i class="esri-icon-expand"
+       [ngClass]="{
+        'down-arrow': !state.folded,
+        'up-arrow': state.folded
+       }"
+    ></i>
   </a>
   <!--
     Bouton ancrer
@@ -20,9 +24,12 @@
       (click)="handleAnchor($event)"
       class="widget-button"
   >
-    <i *ngIf="state.anchored" class="esri-icon-minimize"></i>
-    <i *ngIf="!state.anchored" class="esri-icon-dock-right"></i>
-    <!-- todo possibilité de customiser l'icone si widget-container position left or right-->
+    <i
+       [ngClass]="{
+       'esri-icon-minimize': state.anchored,
+       'esri-icon-dock-right': !state.anchored
+      }"
+    ></i>
   </a>
   <!--
     Bouton fermer
