@@ -1,0 +1,5 @@
+.widget-container{
+    position: absolute;
+    /* important, permets aux évenement de transpercer et de tomber sur la map */
+    pointer-events: none;
+}
