@@ -1,0 +1,34 @@
+image: node:latest
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+install:
+  stage: build
+  script:
+    - npm install
+    - ./node_modules/@angular/cli/bin/ng build
+  artifacts:
+    paths:
+      - dist/
+
+
+deploy_master:
+  stage: deploy
+  script:
+    - echo "Deploy a review app"
+    - npm run build
+    - mkdir -p /deployed/$CI_PROJECT_NAME
+    - rm -rf /deployed/$CI_PROJECT_NAME/master
+    - cp -r bin-release/ /deployed/$CI_PROJECT_NAME/master
+  environment:
+    name: master
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master/index.html
+  only:
+    - master
+
