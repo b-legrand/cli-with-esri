@@ -4,9 +4,6 @@ stages:
   - build
   - deploy
 
-cache:
-  paths:
-    - node_modules/
 
 install:
   stage: build
@@ -16,7 +13,12 @@ install:
   artifacts:
     paths:
       - dist/
-
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: push
 
 deploy_master:
   stage: deploy
@@ -31,6 +33,14 @@ deploy_master:
     url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master/index.html
   only:
     - master
+  dependencies:
+    - install
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
 
 deploy_master_doc:
   stage: deploy
@@ -45,3 +55,12 @@ deploy_master_doc:
     url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master_doc/index.html
   only:
     - master
+  dependencies:
+    - install
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
+
