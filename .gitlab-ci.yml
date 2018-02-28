@@ -22,7 +22,7 @@ deploy_master:
   stage: deploy
   script:
     - echo "Deploy a review app"
-    - npm run build -- --base-href=/$CI_PROJECT_NAME/master
+    - npm run build -- --base-href=/$CI_PROJECT_NAME/master/
     - mkdir -p /deployed/$CI_PROJECT_NAME
     - rm -rf /deployed/$CI_PROJECT_NAME/master
     - cp -r dist/ /deployed/$CI_PROJECT_NAME/master
@@ -32,3 +32,16 @@ deploy_master:
   only:
     - master
 
+deploy_master_doc:
+  stage: deploy
+  script:
+    - echo "Deploy a review app doc"
+    - npm run doc
+    - mkdir -p /deployed/$CI_PROJECT_NAME
+    - rm -rf /deployed/$CI_PROJECT_NAME/master_doc
+    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/master_doc
+  environment:
+    name: master_doc
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master_doc/index.html
+  only:
+    - master
