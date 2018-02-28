@@ -27,3 +27,17 @@ $gutterSize: 2px;
 .widget-move-handle {
   cursor: move;
 }
+// y' apas d'icone double chevron vertical dans les icones esri
+// du coup on prend une horizontale et on la tourne.
+.esri-icon-expand{
+  &:before{
+    transform-origin: center center;
+    display: block;
+  }
+  &.up-arrow:before{
+    transform: rotate(90deg);
+  }
+  &.down-arrow:before{
+    transform: rotate(-90deg);
+  }
+}
