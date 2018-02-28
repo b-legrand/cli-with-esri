@@ -1,9 +1,8 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Input, Output, Inject} from '@angular/core';
 import { WidgetState } from '../../model/widget-state';
 
-export interface WidgetheaderParams {
+import { APP_CONFIG, AppConfig } from '../../../core/model/app.config';
 
-}
 /**
  * Ce composant représente la barre de titre d'un widget.
  */
@@ -37,21 +36,25 @@ export class WidgetHeaderComponent implements OnInit {
    */
   @Input() public movable: boolean;
 
-  constructor() { }
+  public themeColor: string;
+
+  constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
+    this.themeColor = appConfig.themeColor;
+  }
 
   ngOnInit() {
   }
 
-  handleAnchor(event){
+  handleAnchor(event) {
     this.state.anchored = !this.state.anchored;
     this.stateChange.emit(this.state);
   }
-  handleClose(event){
+  handleClose(event) {
     this.state.closed = !this.state.closed;
     this.stateChange.emit(this.state);
   }
 
-  handleFold(event){
+  handleFold(event) {
     this.state.folded = !this.state.folded;
     this.stateChange.emit(this.state);
   }
