@@ -1,0 +1,67 @@
+.sncf-header {
+  height: 2.5em;
+  width: 100%;
+  // position: fixed;
+  background-color: rgb(60, 55, 50); // sncf carbone
+  color: rgb(225, 225, 225); // sncf cool-gray
+  li {
+    list-style-type: none;
+  }
+  li.separator {
+    width: 1px;
+    background-color: grey;
+  }
+}
+.header-logo {
+  h1 {
+    margin: 0;
+  }
+  img {
+    height: 1.5em;
+    margin-right: 0.5em;
+    float: left;
+  }
+}
+.header-title {
+}
+.header-menu {
+  display: flex;
+  padding: 0;
+  margin: .5em 0;
+  li {
+    flex: 1;
+    a{
+        display: block;
+        text-align: center;
+        width: 100%;
+        text-transform: uppercase;
+    }
+  }
+  a:link,
+  a:visited {
+    color: rgb(224, 222, 216); // sncf warm-gray-1
+    text-decoration: none;
+  }
+  a:focus,
+  a:hover {
+    color: rgb(225, 225, 225); // sncf cool-gray-1
+    text-decoration: underline;
+  }
+  .header-form {
+    flex: 1;
+  }
+  li.header-text {
+    flex: 2;
+    color: rgb(224, 222, 216); // sncf warm-gray
+    padding: .25em 0;
+  }
+}
+
+.header-form{
+    input[type="text"]{
+
+    }
+    button{
+
+    }
+}
