@@ -1,18 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { MapModule } from './map/map.module';
+import { WidgetModule } from './widget/widget.module';
+import { LayoutModule } from './layout/layout.module';
 
+import { APP_CONFIG, appConfig } from './core/model/app.config';
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    MapModule,
+    WidgetModule,
+    LayoutModule,
   ],
-  providers: [],
+  providers: [
+    { provide: APP_CONFIG, useValue: appConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
