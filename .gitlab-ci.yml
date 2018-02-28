@@ -25,7 +25,7 @@ deploy_master:
     - npm run build
     - mkdir -p /deployed/$CI_PROJECT_NAME
     - rm -rf /deployed/$CI_PROJECT_NAME/master
-    - cp -r bin-release/ /deployed/$CI_PROJECT_NAME/master
+    - cp -r dist/ /deployed/$CI_PROJECT_NAME/master
   environment:
     name: master
     url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master/index.html
