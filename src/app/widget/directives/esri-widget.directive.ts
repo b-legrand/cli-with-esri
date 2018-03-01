@@ -1,11 +1,9 @@
 import { Directive, OnInit, ElementRef, Input } from '@angular/core';
 import { EsriMapService } from '../../map/services/esri-map.service';
 
-/** 
- * But de cette directive : 
+/**
+ * But de cette directive :
  * cacher les manipulations du dom faites par un composant qui veut s'inscrire en tant que widget esri.
- * 
- * 
  */
 @Directive({
   selector: '[esriWidget]'
@@ -13,6 +11,8 @@ import { EsriMapService } from '../../map/services/esri-map.service';
 export class EsriWidgetDirective  implements OnInit {
 
   @Input() position: string;
+
+  @Input() index: number;
 
   private el: HTMLElement;
 

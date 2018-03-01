@@ -2,6 +2,7 @@ import {Component, ElementRef, Input, OnInit, ViewChild, Host, OnChanges} from '
 import {initialWidgetState, WidgetState} from '../../model/widget-state';
 import {ResizeEvent} from 'angular-resizable-element';
 import {WidgetConfig} from '../../model/widget-config';
+import WidgetStateManager from '../../services/widget-state-manager.service';
 
 /**
  * Un composant socle widget est au minimum composé de :
@@ -51,7 +52,7 @@ export class WidgetComponent implements OnInit, OnChanges {
 
   @ViewChild('widgetHandle') widgetHandle: ElementRef;
 
-  constructor() {
+  constructor(private stateManager: WidgetStateManager) {
     this.state = initialWidgetState();
   }
 
@@ -89,7 +90,7 @@ export class WidgetComponent implements OnInit, OnChanges {
 
   /**
    * Gère la remontée du changement d'état depuis la barre de titre.
-   * @param event 
+   * @param event
    */
   handleStateChange(event: WidgetState) {
     this.state = event;
@@ -103,6 +104,7 @@ export class WidgetComponent implements OnInit, OnChanges {
   }
 
   incrementZIndex() {
-    this.zIndex++;
+    this.state.zIndex = this.stateManager.getMaxZIndex();
+    this.state.zIndex++;
   }
 }
