@@ -14,6 +14,7 @@ import { EsriMapComponent } from './components/esri-map/esri-map.component';
 import { WidgetContainerComponent } from './components/widget-container/widget-container.component';
 import { AnchorZoneComponent } from './components/anchor-zone/anchor-zone.component';
 import { EsriLoaderService } from './services/esri-loader.service';
+import { WidgetModule } from '../widget/widget.module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,8 @@ import { EsriLoaderService } from './services/esri-loader.service';
     SliderModule,
     InputTextModule,
     ButtonModule,
+    ProgressSpinnerModule,
+    WidgetModule,
   ],
   declarations: [
     WidgetContainerComponent,

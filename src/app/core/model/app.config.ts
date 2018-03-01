@@ -1,4 +1,3 @@
-
 import { InjectionToken } from '@angular/core';
 
 /**
@@ -7,18 +6,27 @@ import { InjectionToken } from '@angular/core';
 export let APP_CONFIG = new InjectionToken('app.config');
 
 export interface AppConfig {
-    appName: string;
-    themeColor: string;
-    arcgisApiVersion: string;
+  /**
+   * Nom de l'application, affiché en titre et dans le header.
+   */
+  appName: string;
+  /**
+   * Couleur SNCF de l'application.
+   */
+  themeColor: string;
+  /**
+   * Version de l'api arcgis.
+   */
+  apiVersion: string;
 }
 
 export const DEFAULT_APP_CONFIG: AppConfig = {
-    appName: 'Maquette xWidget',
-    arcgisApiVersion: '4.6',
+  appName: 'Maquette xWidgets',
+  apiVersion: '4.6',
 
-    themeColor: 'rgb(110, 30, 120)', // violet
+//    themeColor: 'rgb(110, 30, 120)', // violet
 //    themeColor: 'rgb(255, 182, 18)', // jaune-safran
-//    themeColor: 'rgb(0, 136, 206)', // bleu-primaire
+    themeColor: 'rgb(0, 136, 206)', // bleu-primaire
 //    themeColor: 'rgb(60, 55, 50)', // carbone
 //    themeColor: 'rgb(213, 43, 30)', // rouge-assistance
 //    themeColor: 'rgb(161, 0, 107)', // prune
