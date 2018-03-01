@@ -14,90 +14,103 @@ export class EsriMapService {
 
   constructor(private esriLoader: EsriLoaderService) {}
 
+  /**
+   * Charge une carte esri dans un élément du dom.
+   * @param mapProperties
+   * @param mapViewProperties
+   * @param mapEl
+   */
   loadMap(
     mapProperties: __esri.MapProperties,
     mapViewProperties: __esri.MapViewProperties,
     mapEl: ElementRef
-  ) {
-    return this.esriLoader.loadModules([
-        'esri/Map', 'esri/views/MapView'
-      ]).then(([
-        Map, MapView
-      ]: [__esri.MapConstructor, __esri.MapViewConstructor]) => {
-        // create map
-        let map = new Map(mapProperties);
+  ): Promise<{map: __esri.Map, mapView:  __esri.MapView}> {
+    return this.esriLoader
+      .loadModules(['esri/Map', 'esri/views/MapView'])
+      .then(
+        ([Map, MapView]: [
+          __esri.MapConstructor,
+          __esri.MapViewConstructor
+        ]) => {
+          // create map
+          const map = new Map(mapProperties);
 
-        // prepare properties that should be set locally
-        // create a new object so as to not modify the provided object
-        let newMapViewProps = Object.assign({}, mapViewProperties);
-        if (!newMapViewProps.container) newMapViewProps.container = mapEl.nativeElement.id;
-        if (!newMapViewProps.map) newMapViewProps.map = map;
+          // prepare properties that should be set locally
+          // create a new object so as to not modify the provided object
+          const newMapViewProps = Object.assign({}, mapViewProperties);
+          if (!newMapViewProps.container) {
+            newMapViewProps.container = mapEl.nativeElement.id;
+          }
+          if (!newMapViewProps.map) {
+            newMapViewProps.map = map;
+          }
 
-        // create the MapView
-        let mapView = new MapView(newMapViewProps);
+          // create the MapView
+          const mapView = new MapView(newMapViewProps);
 
-        this.map = map;
-        this.mapView = mapView;
+          this.map = map;
+          this.mapView = mapView;
 
-        this.isLoaded.emit();
+          this.isLoaded.emit();
 
-        return {
-          map: map,
-          mapView: mapView
+          return {
+            map,
+            mapView
+          };
         }
-      });
+      );
   }
-/**
+  /**
+   * Charge une webmap plutôt qu'une map.
+   *
+   * @param webMapProperties
+   * @param mapViewProperties
+   * @param mapEl
+   */
   loadWebMap(
     webMapProperties: __esri.WebMapProperties,
     mapViewProperties: __esri.MapViewProperties,
     mapEl: ElementRef
-  ) {
+  ): Promise<{map: __esri.Map, mapView:  __esri.MapView}> {
     return this.esriLoader
-      .load({
-        // the specific version of the API that is to be used
-        url: 'https://js.arcgis.com/4.3/'
-      })
-      .then(() => {
-        return this.esriLoader
-          .loadModules(['esri/views/MapView', 'esri/WebMap'])
-          .then(
-            ([MapView, WebMap]: [
-              __esri.MapViewConstructor,
-              __esri.WebMapConstructor
-            ]) => {
-              // create map
-              let map = new WebMap(webMapProperties);
+      .loadModules(['esri/views/MapView', 'esri/WebMap'])
+      .then(
+        ([MapView, WebMap]: [
+          __esri.MapViewConstructor,
+          __esri.WebMapConstructor
+        ]) => {
+          // create map
+          const map = new WebMap(webMapProperties);
 
-              // prepare properties that should be set locally
-              // create a new object so as to not modify the provided object
-              let newMapViewProps = this.extend({}, mapViewProperties);
-              if (!newMapViewProps.container)
-                newMapViewProps.container = mapEl.nativeElement.id;
-              if (!newMapViewProps.map) newMapViewProps.map = map;
+          // prepare properties that should be set locally
+          // create a new object so as to not modify the provided object
+          const newMapViewProps = Object.assign({}, mapViewProperties);
+          if (!newMapViewProps.container) {
+            newMapViewProps.container = mapEl.nativeElement.id;
+          }
+          if (!newMapViewProps.map) {
+            newMapViewProps.map = map;
+          }
 
-              // create the MapView
-              let mapView = new MapView(newMapViewProps);
+          // create the MapView
+          const mapView = new MapView(newMapViewProps);
 
-              this.map = map;
-              this.mapView = mapView;
+          this.map = map;
+          this.mapView = mapView;
 
-              this.isLoaded.emit();
+          this.isLoaded.emit();
 
-              return {
-                map: map,
-                mapView: mapView
-              };
-            }
-          );
-      });
-  }
- */
+          return {
+            map,
+            mapView
+          };
+        });
+      }
+
   /**
    * Ajoute un élément du dom à la mapView en tant que widget.
    */
   addWidget(element: HTMLElement, position: string) {
     this.mapView.ui.add(element, position);
   }
-
 }
