@@ -9,6 +9,7 @@ import { EsriWidgetDirective } from './directives/esri-widget.directive';
 import { WidgetComponent } from './components/widget/widget.component';
 import { WidgetHeaderComponent } from './components/widget-header/widget-header.component';
 import { WidgetPanelComponent } from './components/widget-panel/widget-panel.component';
+import { ExpandButtonComponent } from './components/expand-button/expand-button.component';
 
 @NgModule({
   imports: [
@@ -22,10 +23,12 @@ import { WidgetPanelComponent } from './components/widget-panel/widget-panel.com
     WidgetHeaderComponent,
     WidgetComponent,
     WidgetPanelComponent,
+    ExpandButtonComponent,
   ],
   exports: [
     WidgetComponent,
     EsriWidgetDirective,
+    ExpandButtonComponent,
   ],
 })
 export class WidgetModule { }

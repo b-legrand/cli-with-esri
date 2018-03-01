@@ -4,13 +4,24 @@
      [handle]="widgetHandle"
      (started)="handleDragStart($event)"
      (stopped)="handleDragEnd($event)"
+     (mouseenter)="incrementZIndex($event)"
+     (click)="incrementZIndex($event)"
      [enableGhostResize]="true"
      [preventDefaultEvent]="true"
      (resizeEnd)="handleResizeEnd($event)"
      [zIndexMoving]="999999"
+     [style.zIndex]="zIndex"
      [style.width.px]="state.size.width"
      [style.height.px]="state.size.height"
-     *ngIf="!state.closed"
+     [style.display]="state.closed ? 'none' : 'block'"
+     [ngClass]="{
+        'widget-state-closed': state.closed
+      , 'widget-state-open': !state.closed
+      , 'widget-state-folded': state.folded
+      , 'widget-state-unfolded': !state.folded
+      , 'widget-state-anchored': state.anchored
+      , 'widget-state-floating': !state.anchored
+      }"
      >
   <!--<widget-button esriWidget activated="state.active" [icon]="icon"></widget-button>-->
   <widget-header
@@ -18,6 +29,7 @@
     [foldable]="config.foldable"
     [closable]="config.closable"
     [anchorable]="config.anchorable"
+    (onStateChange)="handleStateChange($event)"
   >
     <div class="widget-handle" #widgetHandle>{{ title }}</div>
   </widget-header>
@@ -25,4 +37,16 @@
     <pre>{{ this.state | json }}</pre>
     <ng-content></ng-content>
   </widget-panel>
+</div>
+<!-- conteneur invisible -->
+<div *ngIf="contentLoaded" [style.display]="'none'">
+  <expand-button
+    esriWidget
+    [name]="title"
+    [iconClass]="icon"
+    [position]="position"
+    [index]="index"
+    [active]="!state.closed"
+    (activeChange)="handleActiveChange($event)"
+  ></expand-button>
 </div>

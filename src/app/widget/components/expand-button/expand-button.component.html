@@ -1,0 +1,11 @@
+<button
+  class="esri-widget esri-widget-button"
+  (click)="handleButtonClick()"
+  tabindex="0"
+>
+  <i
+    [class]="iconClass"
+    [title]="name"
+    [ngStyle]="{ 'color': active ? themeColor : disabledColor }"
+  ></i>
+</button>

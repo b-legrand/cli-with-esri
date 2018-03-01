@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild, Host, OnChanges} from '@angular/core';
 import {initialWidgetState, WidgetState} from '../../model/widget-state';
 import {ResizeEvent} from 'angular-resizable-element';
 import {WidgetConfig} from '../../model/widget-config';
@@ -19,7 +19,7 @@ import {WidgetConfig} from '../../model/widget-config';
   templateUrl: './widget.component.html',
   styleUrls: ['./widget.component.scss']
 })
-export class WidgetComponent implements OnInit {
+export class WidgetComponent implements OnInit, OnChanges {
 
   @Input() public state: WidgetState;
 
@@ -27,7 +27,27 @@ export class WidgetComponent implements OnInit {
 
   @Input() public title: string;
 
+  /**
+   * Si le widget a une icone de lancement attaché.
+   */
   @Input() public icon: string;
+
+  /**
+   * Position 'esri'
+   */
+  @Input() public position: string;
+
+  /**
+   * Index du bouton lanceur au sein d'une zone ui 'esri'.
+   */
+  @Input() public index: number;
+
+  /**
+   * Profondeur
+   */
+  @Input() public zIndex: number;
+
+  public contentLoaded = false;
 
   @ViewChild('widgetHandle') widgetHandle: ElementRef;
 
@@ -46,6 +66,13 @@ export class WidgetComponent implements OnInit {
     };
   }
 
+  ngOnChanges(changes) {
+    console.log(changes);
+    if (changes.position && changes.position.currentValue) {
+      this.contentLoaded = true;
+    }
+  }
+
   handleDragStart(event: DragEvent) {
     console.log('Element drag starts', event);
   }
@@ -60,14 +87,22 @@ export class WidgetComponent implements OnInit {
     this.state.size = {width, height};
   }
 
-  handleAnchor(event) {
-    // todo rattacher a un conteneur parent différent.
+  /**
+   * Gère la remontée du changement d'état depuis la barre de titre.
+   * @param event 
+   */
+  handleStateChange(event: WidgetState) {
+    this.state = event;
   }
 
-  handleClose(event) {
-    // todo
+  /**
+   * Remontée de l'activation depuis le bouton extends.
+   */
+  handleActiveChange(event: Boolean) {
+    this.state.closed = !event;
   }
 
-  handleFold(event) {
+  incrementZIndex() {
+    this.zIndex++;
   }
 }

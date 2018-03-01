@@ -1,0 +1,12 @@
+[class^="esri-icon-"], .fa {
+  // font-weight: bold;
+  font-size: 18px;
+  color: rgb(160, 160, 160);
+}
+.active [class^="esri-icon-"] {
+
+}
+// désactive la bordure
+button.esri-widget-button{
+  border-width: 0;
+}
