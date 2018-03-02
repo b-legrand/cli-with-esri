@@ -10,7 +10,7 @@ import { WidgetComponent } from './components/widget/widget.component';
 import { WidgetHeaderComponent } from './components/widget-header/widget-header.component';
 import { WidgetPanelComponent } from './components/widget-panel/widget-panel.component';
 import { ExpandButtonComponent } from './components/expand-button/expand-button.component';
-import WidgetStateManager from './services/widget-state-manager.service';
+import { WidgetStateManager } from './services/widget-state-manager.service';
 
 @NgModule({
   imports: [

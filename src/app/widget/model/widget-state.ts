@@ -54,7 +54,7 @@ export function initialWidgetState(): WidgetState {
   return {
     folded: false,
     closed: true,
-    anchored: false,
+    anchored: true,
     position: {
       left: window.innerWidth - width / 2,
       top: window.innerHeight - height / 2
