@@ -2,7 +2,7 @@
            [visible]="true"
            [style.width]="'50%'"
            [fullScreen]="fullscreen"
-            (onHide)="handleSidebarClose($event)">
+           (onHide)="handleSidebarClose($event)">
   <p-scrollPanel *ngIf="scrollable; else noscroll">
     <ng-content></ng-content>
   </p-scrollPanel>

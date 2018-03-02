@@ -25,13 +25,15 @@ export class SidebarPageComponent {
   /**
    * left ou right
    */
-  @Input() public position: string = 'right';
+  @Input() public position = 'right';
 
   @Input() public fullscreen: boolean;
 
+  @Input() public scrollable: boolean;
+
   constructor(private router: Router) { }
 
-  handleSidebarClose() {
+  handleSidebarClose(event: any) {
     // Retourne à la carte en vidant la zone sidebar
     this.router.navigate(['/']);
   }

@@ -26,9 +26,12 @@ import { WidgetComponent } from '../../../widget/components';
   styleUrls: ['./esri-map.component.scss']
 })
 export class EsriMapComponent implements OnInit {
+
   private map: __esri.Map;
+
   private mapView: __esri.MapView;
-  private isLoading = true;
+
+  public isLoading = true;
   /**
    * Référence vers l'élement conteneur de la map esri.
    */
