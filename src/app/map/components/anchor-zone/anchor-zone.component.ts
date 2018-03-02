@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import WidgetStateManager from '../../../widget/services/widget-state-manager.service';
 
 /**
  * La zone d'ancrage permets de regrouper les widgets socle dont l'état est à anchored.
- *
+ * L'élément du dom ou lui est fourni par l'appelant.
  */
 @Component({
   selector: 'anchor-zone',
@@ -22,6 +21,10 @@ export class AnchorZoneComponent implements OnInit {
   };
   constructor() { }
 
+  /**
+   * initialize la zone selon le paramètre position.
+   * valeurs possible : left, right ou rien (free zone)
+   */
   ngOnInit() {
     if (this.position === 'left') {
       delete this.zoneStyle.right;
