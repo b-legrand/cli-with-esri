@@ -22,10 +22,19 @@ import WidgetStateManager from '../../services/widget-state-manager.service';
 })
 export class WidgetComponent implements OnInit, OnChanges {
 
+  /**
+   * Etat
+   */
   @Input() public state: WidgetState;
 
+  /**
+   * Configuration
+   */
   @Input() public config: WidgetConfig;
 
+  /**
+   * Titre.
+   */
   @Input() public title: string;
 
   /**
@@ -56,6 +65,11 @@ export class WidgetComponent implements OnInit, OnChanges {
    */
   @ViewChild('widgetHandle') widgetHandle: ElementRef;
 
+  /**
+   * Conteneur
+   */
+  @ViewChild('widget') widget: ElementRef;
+
   constructor(private stateManager: WidgetStateManager) {
     this.state = initialWidgetState();
   }
@@ -79,20 +93,29 @@ export class WidgetComponent implements OnInit, OnChanges {
     }
   }
 
-  handleDragStart(event: DragEvent) {
-    console.log('Element drag starts', event);
-  }
+  handleDragStart(event: DragEvent) { }
 
   handleDragEnd(event: DragEvent) {
-    console.log('Element drag ended', event);
+    if (this.config.movable) {
+      // angular2-draggable fonctionne avec des translation css, ca fout le bazar selon le conteneur.
+      const { transform } = this.widget.nativeElement.style;
+      const offset = this.parseTransform(transform);
+      this.widget.nativeElement.style.left = this.state.position.left += offset.x;
+      this.widget.nativeElement.style.top = this.state.position.top += offset.y;
+      delete this.widget.nativeElement.style.transform;
+    }
   }
 
   handleResizeEnd(event: ResizeEvent): void {
-    console.log('Element was resized', event);
-    // x move
-    this.state.size.width += event.edges.right as number;
-    // y move
-    this.state.size.height += event.edges.bottom as number;
+    if (this.config.resizable) {
+      // x move
+      this.state.size.width += event.edges.right as number;
+      // y move
+      this.state.size.height += event.edges.bottom as number;
+      // force la taille
+      this.widget.nativeElement.style.width = this.state.size.width;
+      this.widget.nativeElement.style.height = this.state.size.height;
+    }
   }
 
   /**
@@ -110,15 +133,24 @@ export class WidgetComponent implements OnInit, OnChanges {
     this.state.closed = !event;
   }
 
-  /** 
+  /**
    * au survol ou au click, pousse le z-index par dessus les autres.
   */
   incrementZIndex() {
-    if(this.state.anchored) {
+    if (this.state.anchored) {
       return;
     }
     this.state.zIndex = this.stateManager.getMaxZIndex();
     this.state.zIndex++;
+  }
+
+  public parseTransform(transformString): {x: number, y: number} {
+    const formatExp = /translate\((.*)px, (.*)px\)/;
+    const extract = formatExp.exec(transformString);
+    return {
+      x: parseInt(extract[1], 10),
+      y: parseInt(extract[2], 10),
+    };
   }
 
 }

@@ -7,6 +7,9 @@
        #resizeHandle
        mwlResizeHandle
        [resizeEdges]="{bottom: true, right: true}"
+       (mousedown)="handleMouseDown($event)"
+       (mousemove)="handleMouseMove($event)"
+       (mouseup)="handleMouseUp($event)"
   >
     <svg:svg width="16px" height="16px"
              viewBox="0 0 6 6">
@@ -17,7 +20,7 @@
                   [attr.x]="x"
                   [attr.y]="y"
                   [attr.fill]="themeColor"
-                  [attr.opacity]="(x+y)/8"
+                  [attr.opacity]="(x + y)/8"
         ></svg:rect>
       </svg:g>
     </svg:svg>

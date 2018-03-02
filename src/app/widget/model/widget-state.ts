@@ -63,7 +63,7 @@ export function initialWidgetState(): WidgetState {
       width: 320,
       height: 240
     },
-    zIndex: 3000,
+    zIndex: 100,
   };
 }
 
