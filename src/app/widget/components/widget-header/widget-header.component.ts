@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter, Input, Output, Inject} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Inject} from '@angular/core';
 import { WidgetState } from '../../model/widget-state';
 
 import { APP_CONFIG, AppConfig } from '../../../core/model/app.config';
@@ -11,7 +11,7 @@ import { APP_CONFIG, AppConfig } from '../../../core/model/app.config';
   templateUrl: './widget-header.component.html',
   styleUrls: ['./widget-header.component.scss']
 })
-export class WidgetHeaderComponent implements OnInit {
+export class WidgetHeaderComponent {
 
   @Input() public state: WidgetState;
 
@@ -36,13 +36,18 @@ export class WidgetHeaderComponent implements OnInit {
    */
   @Input() public movable: boolean;
 
+  @Input() public onMoveStart: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input() public onMove: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input() public onMoveEnd: EventEmitter<any> = new EventEmitter<any>();
+
+  public moving = false;
+
   public themeColor: string;
 
   constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
     this.themeColor = appConfig.themeColor;
-  }
-
-  ngOnInit() {
   }
 
   handleAnchor(event) {
@@ -57,6 +62,33 @@ export class WidgetHeaderComponent implements OnInit {
   handleFold(event) {
     this.state.folded = !this.state.folded;
     this.stateChange.emit(this.state);
+  }
+
+  /**
+   * Démarrage du redimensionnement.
+   * @param event
+   */
+  handleMouseDown(event) {
+    this.onMoveStart.emit({});
+  }
+
+  /**
+   * Redimensionnement.
+   * @param event
+   */
+  handleMouseMove(event) {
+    if (!this.moving) {
+        return;
+    }
+    this.onMove.emit({});
+  }
+
+  /**
+   * Arrèt du redimensionnement.
+   * @param event
+   */
+  handleMouseUp(event) {
+    this.onMoveEnd.emit({});
   }
 
 }
