@@ -25,7 +25,7 @@ $headerHeight: 20px;
 
 // états en fonctions de WidgetState
 .widget-state-folded{
-
+    height: 20px;
 }
 .widget-state-unfolded{
     
@@ -37,9 +37,13 @@ $headerHeight: 20px;
     
 }
 .widget-state-anchored{
-   // position: relative;
-  //  height: auto;
+   position: relative;
+   right:0; top:0;
+   //  height: auto;
+    .widget-handle{
+        cursor: pointer;
+    }
 }
 .widget-state-floating{
-   // position: absolute;
+   position: absolute;
 }

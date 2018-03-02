@@ -48,8 +48,12 @@ export class WidgetComponent implements OnInit, OnChanges {
    */
   @Input() public zIndex: number;
 
+  // flag pour ne pas appliquer la directive esriWidget d'ajout a la map tant que la map esri n'est pas la.
   public contentLoaded = false;
 
+  /**
+   * Poignée
+   */
   @ViewChild('widgetHandle') widgetHandle: ElementRef;
 
   constructor(private stateManager: WidgetStateManager) {
@@ -57,6 +61,7 @@ export class WidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    // todo injecter l'état depuis unn service de stockage;
     this.state = initialWidgetState();
     this.config = {
       movable: true,
@@ -84,8 +89,10 @@ export class WidgetComponent implements OnInit, OnChanges {
 
   handleResizeEnd(event: ResizeEvent): void {
     console.log('Element was resized', event);
-    const {width, height} = event.rectangle;
-    this.state.size = {width, height};
+    // x move
+    this.state.size.width += event.edges.right as number;
+    // y move
+    this.state.size.height += event.edges.bottom as number;
   }
 
   /**
@@ -103,8 +110,15 @@ export class WidgetComponent implements OnInit, OnChanges {
     this.state.closed = !event;
   }
 
+  /** 
+   * au survol ou au click, pousse le z-index par dessus les autres.
+  */
   incrementZIndex() {
+    if(this.state.anchored) {
+      return;
+    }
     this.state.zIndex = this.stateManager.getMaxZIndex();
     this.state.zIndex++;
   }
+
 }

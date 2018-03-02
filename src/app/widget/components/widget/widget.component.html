@@ -10,8 +10,6 @@
      [preventDefaultEvent]="true"
      (resizeEnd)="handleResizeEnd($event)"
      [zIndex]="state.zIndex"
-     [style.width.px]="state.size.width"
-     [style.height.px]="state.size.height"
      [style.display]="state.closed ? 'none' : 'block'"
      [ngClass]="{
         'widget-state-closed': state.closed
@@ -32,7 +30,7 @@
   >
     <div class="widget-handle" #widgetHandle>{{ title }}</div>
   </widget-header>
-  <widget-panel [resizable]="config.resizable">
+  <widget-panel *ngIf="!state.folded" [resizable]="config.resizable && !state.anchored">
     <pre>{{ this.state | json }}</pre>
     <ng-content></ng-content>
   </widget-panel>

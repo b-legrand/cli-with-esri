@@ -21,14 +21,17 @@ export class WidgetStateManager {
       this.widgets.push(widgetState);
     }
 
-    updateState(widgetId, key, value: boolean) {
+    closeAll() {
+      this.widgets.forEach(widgetState => {
+        widgetState.closed = true;
+      });
     }
 
-    getWidgetStates() {
+    getWidgetStates(): Observable<WidgetState[]> {
       return Observable.of(this.widgets);
     }
 
-    getMaxZIndex() {
+    getMaxZIndex(): number {
       return Math.max(...this.widgets.map(widget => widget.zIndex));
     }
 
