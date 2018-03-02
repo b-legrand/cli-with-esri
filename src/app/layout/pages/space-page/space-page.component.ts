@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-space-page',
@@ -8,10 +8,14 @@ import {Router} from '@angular/router';
 })
 export class SpacePageComponent implements OnInit {
 
-  constructor(router: Router) { }
+  public spaceId: string;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.route.params.subscribe(params => {
+      this.spaceId = params.spaceId;
+    });
   }
 
 }

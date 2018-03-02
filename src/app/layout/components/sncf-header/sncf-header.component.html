@@ -6,13 +6,13 @@
   </div>
   <ul class="header-menu ui-g-8">
     <li class="header-text">
-      <a routerLink="/">Carte</a>
+      <a [routerLink]="['/', { outlets: { sidebar: null } } ]">Carte</a>
     </li>
     <li class="header-text">
-      <a routerLink="/space/1">Espace #1</a>
+      <a [routerLink]="['/space/1']">Espace #1</a>
     </li>
     <li class="header-text">
-      <a routerLink="/space/2">Espace #2</a>
+      <a [routerLink]="['/space/2']">Espace #2</a>
     </li>
     <li class="header-form">
       <form class="sncf-header__form">

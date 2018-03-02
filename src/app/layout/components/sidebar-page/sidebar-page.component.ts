@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 export enum SidebarSize {
   small = 'sm',
@@ -6,15 +7,10 @@ export enum SidebarSize {
   large = 'lg',
 }
 
-export enum SidebarPosition {
-  small= 'left',
-  medium= 'right',
-}
 /**
  * composant page / sidebar :
  *
  * Affiche le contenu dans une sidebar primeng : https://www.primefaces.org/primeng/#/sidebar
- *
  *
  */
 @Component({
@@ -22,15 +18,22 @@ export enum SidebarPosition {
   templateUrl: './sidebar-page.component.html',
   styleUrls: ['./sidebar-page.component.scss']
 })
-export class SidebarPageComponent implements OnInit {
+export class SidebarPageComponent {
 
   @Input() public size: SidebarSize;
 
-  @Input() public position: SidebarPosition;
+  /**
+   * left ou right
+   */
+  @Input() public position: string = 'right';
 
-  constructor() { }
+  @Input() public fullscreen: boolean;
 
-  ngOnInit() {
+  constructor(private router: Router) { }
+
+  handleSidebarClose() {
+    // Retourne à la carte en vidant la zone sidebar
+    this.router.navigate(['/']);
   }
 
 }

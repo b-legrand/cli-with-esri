@@ -3,24 +3,36 @@
   [mapProperties]="{basemap: 'gray'}"
   [mapViewProperties]="viewProps"
 >
-  <widget-container position="left">
-      <widget title=""></widget>
-      <widget title=""></widget>
-      <widget title=""></widget>
+  <widget-container position="top-left" [anchorZone]="dockZoneLeft">
+    <widget [title]="'Home'" icon="esri-icon-home"></widget>
+    <widget [title]="'Navigation'" icon="esri-icon-north-navigation"></widget>
+      <widget [title]="'Légende'" icon="esri-icon-handle-vertical"></widget>
+      <widget [title]="'Toc'" icon="esri-icon-layer-list"></widget>
+      <widget [title]="'Legend'" icon="esri-icon-Legend"></widget>
+      <widget [title]="'Basemap gallery'" icon="esri-icon-basemap"></widget>
+      <widget [title]="'Bookmarks'" icon="fa fa-book"></widget>
+      <widget [title]="'Context'" icon="fa fa-"></widget>
   </widget-container>
-  <widget-container position="right">
-      <widget title=""></widget>
-      <widget title=""></widget>
-      <widget title=""></widget>
+  <widget-container position="top-right" [anchorZone]="dockZoneRight">
+    <widget [title]="'Infobulle'" icon="fa fa-info-circle"></widget>
+    <widget [title]="'Import'" icon="esri-icon-upload"></widget>
+    <widget [title]="'Impression'" icon="esri-icon-printer"></widget>
+    <widget [title]="'Dessin'" icon="fa fa-paint-brush"></widget>
+    <widget [title]="'Localisation'" icon="esri-icon-locate"></widget>
+    <widget [title]="'Recherche par géométrie'" icon="esri-icon-search"></widget>
+    <widget [title]="'Filtre'" icon="fa fa-filter"></widget>
+    <widget [title]="'Requêtage'" icon="esri-icon-search"></widget>
+    <widget [title]="'Autre widgets.'" icon="esri-icon-plus"></widget>
   </widget-container>
-  <widget-container>
-      <widget title="Tableau de résultats" icon="'esri-icon'"></widget>
+  <widget-container #freeZone position="bottom-left">
+      <widget [title]="'Tableau de résultats'"
+              icon="esri-icon-table" position="bottom-left"></widget>
   </widget-container>
   <!--
   <widget-container position="right">
   </widget-container>
   -->
-  <anchor-zone position="left"></anchor-zone>
-  <anchor-zone position="right"></anchor-zone>
+  <anchor-zone position="left" #dockZoneLeft></anchor-zone>
+  <anchor-zone position="right" #dockZoneRight></anchor-zone>
 </esri-map>
-<router-outlet name="sidebar"></router-outlet>
+<router-outlet></router-outlet>
