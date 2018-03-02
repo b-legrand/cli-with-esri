@@ -6,6 +6,8 @@
     padding: 0;
 }
 
-@keyframes ui-progress-spinner-color {
-
+.map-loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

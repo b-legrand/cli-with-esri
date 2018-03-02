@@ -28,7 +28,7 @@ import { WidgetComponent } from '../../../widget/components';
 export class EsriMapComponent implements OnInit {
   private map: __esri.Map;
   private mapView: __esri.MapView;
-  private isLoading: boolean = true;
+  private isLoading = true;
   /**
    * Référence vers l'élement conteneur de la map esri.
    */
@@ -66,6 +66,9 @@ export class EsriMapComponent implements OnInit {
         this.mapViewProperties,
         this.mapEl
       );
+    } else {
+      console.error('Proper map properties were not provided');
+      return;
     }
     /* si besoin faire évoluer avec :
     else if (this.webMapProperties) {
@@ -76,10 +79,6 @@ export class EsriMapComponent implements OnInit {
       );
     }
     */
-    else {
-      console.error('Proper map properties were not provided');
-      return;
-    }
 
     mapPromise.then(mapInfo => {
       this.map = mapInfo.map;

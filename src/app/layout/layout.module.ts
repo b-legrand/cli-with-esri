@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { SidebarModule } from 'primeng/sidebar';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ProgressBarModule } from 'primeng/primeng';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -38,8 +39,10 @@ import { SncfThemeComponent } from './components/sncf-theme/sncf-theme.component
     CommonModule,
     RouterModule,
     MapModule,
+    // primeng
     SidebarModule,
     ScrollPanelModule,
+    ProgressBarModule,
   ],
 })
 export class LayoutModule { }
