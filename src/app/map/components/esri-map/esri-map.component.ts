@@ -14,16 +14,15 @@ import { WidgetComponent } from '../../../widget/components';
 
 /**
  * Composant map simplifié bas/niveau :
+ * Honteusement adapté depuis `angular-esri-components`
+ *
  * - N'est pas dans un widget parce que la vie est trop courte.
  * - recoit ses properties depuis son parent.
  * -
  * */
 @Component({
   selector: 'esri-map',
-  template: `
-    <div class='esri-map' id='esri-map' #map></div>
-    <ng-content></ng-content>
-  `,
+  templateUrl: './esri-map.component.html',
   styleUrls: ['./esri-map.component.scss']
 })
 export class EsriMapComponent implements OnInit {
@@ -92,6 +91,7 @@ export class EsriMapComponent implements OnInit {
         mapView: this.mapView
       });
       this.mapInit.complete();
+      this.isLoading = false;
     });
   }
 }
