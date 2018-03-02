@@ -11,7 +11,7 @@ export const routes: Routes = [
     component: HomePageComponent,
   },
   {
-    path: 'kitchen-sink/:componentSelector',
+    path: 'kitchen-sink',
     component: KitchenSinkComponent,
   },
   {

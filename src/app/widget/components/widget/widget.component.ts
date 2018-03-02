@@ -2,7 +2,7 @@ import {Component, ElementRef, Input, OnInit, ViewChild, Host, OnChanges} from '
 import {initialWidgetState, WidgetState} from '../../model/widget-state';
 import {ResizeEvent} from 'angular-resizable-element';
 import {WidgetConfig} from '../../model/widget-config';
-import WidgetStateManager from '../../services/widget-state-manager.service';
+import { WidgetStateManager } from '../../services/widget-state-manager.service';
 
 /**
  * Un composant socle widget est au minimum composé de :
@@ -71,7 +71,7 @@ export class WidgetComponent implements OnInit, OnChanges {
   @ViewChild('widget') widget: ElementRef;
 
   constructor(private stateManager: WidgetStateManager) {
-    this.state = initialWidgetState();
+    // this.state = initialWidgetState();
   }
 
   ngOnInit() {
