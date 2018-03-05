@@ -1,12 +1,15 @@
 {
-  "name": "cli-with-esri",
-  "version": "0.0.0",
-  "license": "MIT",
+  "name": "@sncf/socle-common",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --hmr",
     "build": "ng build --prod",
-    "test": "ng test",
+    "build:lib": "ng-packagr -p package.json",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --collectCoverage --coverageDirectory=coverage/",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "doc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json"
@@ -27,11 +30,15 @@
     "angular-resizable-element": "^2.0.0",
     "angular-split": "^1.0.0-rc.3",
     "angular2-draggable": "^1.2.1",
+    "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "esri-loader": "^2.2.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
+    "marked": "^0.3.17",
+    "ng-bootstrap": "^1.6.3",
     "primeng": "^5.2.0",
+    "redux": "^3.7.2",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
@@ -43,18 +50,40 @@
     "@types/arcgis-js-api": "^4.6.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
+    "@types/jest": "^22.1.4",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^22.4.2",
+    "jest-html-reporter": "^2.0.0",
+    "jest-preset-angular": "^5.2.0",
     "karma": "~2.0.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^2.1.0",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/jest.ts",
+    "testResultsProcessor": "./node_modules/jest-html-reporter",
+    "coverageDirectory": "coverage/",
+    "coverageReporters": [
+      "lcov",
+      "json",
+      "html",
+      "text"
+    ]
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    }
   }
 }

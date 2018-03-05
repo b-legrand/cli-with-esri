@@ -2,39 +2,54 @@ image: node:latest
 
 stages:
   - build
+  - test
   - deploy
-
 
 install:
   stage: build
   script:
     - npm install
-    - ./node_modules/@angular/cli/bin/ng build
-  artifacts:
-    paths:
-      - dist/
+    - npm run build
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
     policy: push
+  artifacts:
+    paths:
+      - dist/
 
-deploy_master:
+doc:
+  stage: test
+  script:
+    - echo "Génération de la documentation"
+    - npm run doc
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
+  artifacts:
+    paths:
+      - documentation/
+
+deploy:
   stage: deploy
   script:
     - echo "Deploy a review app"
-    - npm run build -- --base-href=/$CI_PROJECT_NAME/master/
     - mkdir -p /deployed/$CI_PROJECT_NAME
-    - rm -rf /deployed/$CI_PROJECT_NAME/master
-    - cp -r dist/ /deployed/$CI_PROJECT_NAME/master
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
+    - cp -r dist/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
+    - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
+    - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
+
   environment:
-    name: master
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master/index.html
-  only:
-    - master
+    name: $CI_COMMIT_REF_NAME
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/index.html
   dependencies:
-    - install
+    - test
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
@@ -42,14 +57,14 @@ deploy_master:
       - node_modules/
     policy: pull
 
-deploy_master_doc:
+deploy_coverage:
   stage: deploy
   script:
-    - echo "Deploy a review app doc"
+    - echo "Déploiement de la couverture de test"
     - npm run doc
     - mkdir -p /deployed/$CI_PROJECT_NAME
-    - rm -rf /deployed/$CI_PROJECT_NAME/master_doc
-    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/master_doc
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
+    - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
   environment:
     name: master_doc
     url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master_doc/index.html
