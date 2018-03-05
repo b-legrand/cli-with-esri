@@ -21,7 +21,7 @@ export interface AppConfig {
 }
 
 export const DEFAULT_APP_CONFIG: AppConfig = {
-  appName: 'Maquette xWidgets',
+  appName: 'Maquette widget-container',
   apiVersion: '4.6',
 
 //    themeColor: 'rgb(110, 30, 120)', // violet

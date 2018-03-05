@@ -47,17 +47,16 @@ const width = 320;
 const height = 240;
 
 /**
- * Créé un état initial avec le widget centré.
+ * Position initiale d'un widget.
  */
 export function initialWidgetState(): WidgetState {
-
   return {
     folded: false,
     closed: true,
     anchored: true,
     position: {
-      left: window.innerWidth - width / 2,
-      top: window.innerHeight - height / 2
+      left: 0,
+      top: 0
     },
     size: {
       width: 320,

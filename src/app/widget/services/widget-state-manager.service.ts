@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { WidgetState } from '../model/widget-state';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {AppStoreService} from '../../core/services/app-store.service';
 
 /**
  * Service de gestion de l'état des widgets.
@@ -13,8 +14,8 @@ export class WidgetStateManager {
 
     private widgets: WidgetState[] = [];
 
-    constructor() {
-      this.widgets = [];
+    constructor(private appStore: AppStoreService) {
+      this.widgets = appStore.getState().widgets;
     }
 
     addWidgetState(widgetState) {
