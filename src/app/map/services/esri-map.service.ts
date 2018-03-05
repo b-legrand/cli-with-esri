@@ -8,8 +8,11 @@ import { EsriLoaderService } from './esri-loader.service';
  */
 @Injectable()
 export class EsriMapService {
-  isLoaded = new EventEmitter();
+
+  public isLoaded = new EventEmitter();
+
   map: __esri.Map;
+
   mapView: __esri.MapView;
 
   constructor(private esriLoader: EsriLoaderService) {}
@@ -18,12 +21,12 @@ export class EsriMapService {
    * Charge une carte esri dans un élément du dom.
    * @param mapProperties
    * @param mapViewProperties
-   * @param mapEl
+   * @param mapEl élément du dom ou esri mets la carte.
    */
   loadMap(
     mapProperties: __esri.MapProperties,
     mapViewProperties: __esri.MapViewProperties,
-    mapEl: ElementRef
+    mapEl: HTMLElement
   ): Promise<{map: __esri.Map, mapView:  __esri.MapView}> {
     return this.esriLoader
       .loadModules(['esri/Map', 'esri/views/MapView'])
@@ -39,7 +42,7 @@ export class EsriMapService {
           // create a new object so as to not modify the provided object
           const newMapViewProps = Object.assign({}, mapViewProperties);
           if (!newMapViewProps.container) {
-            newMapViewProps.container = mapEl.nativeElement.id;
+            newMapViewProps.container = mapEl;
           }
           if (!newMapViewProps.map) {
             newMapViewProps.map = map;
@@ -70,7 +73,7 @@ export class EsriMapService {
   loadWebMap(
     webMapProperties: __esri.WebMapProperties,
     mapViewProperties: __esri.MapViewProperties,
-    mapEl: ElementRef
+    mapEl: HTMLElement
   ): Promise<{map: __esri.Map, mapView:  __esri.MapView}> {
     return this.esriLoader
       .loadModules(['esri/views/MapView', 'esri/WebMap'])
@@ -86,7 +89,7 @@ export class EsriMapService {
           // create a new object so as to not modify the provided object
           const newMapViewProps = Object.assign({}, mapViewProperties);
           if (!newMapViewProps.container) {
-            newMapViewProps.container = mapEl.nativeElement.id;
+            newMapViewProps.container = mapEl;
           }
           if (!newMapViewProps.map) {
             newMapViewProps.map = map;
@@ -106,7 +109,6 @@ export class EsriMapService {
           };
         });
       }
-
   /**
    * Ajoute un élément du dom à la mapView en tant que widget.
    */

@@ -39,7 +39,7 @@ export interface WidgetState {
   /**
    * Z-index (css) lorsque le widget est en mode flottant.
    */
-  zIndex: number;
+  zIndex?: number;
 
 }
 // taille par défaut d'un widget

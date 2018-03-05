@@ -45,7 +45,7 @@ export class EsriMapComponent implements OnInit {
   @Input() public mapProperties: __esri.MapProperties;
   @Input() public webMapProperties: __esri.WebMapProperties;
   @Input() public mapViewProperties: __esri.MapViewProperties = {};
-
+  @Output() public mapViewPropertiesChange = new EventEmitter<__esri.MapViewProperties>()
   @Output() mapInit = new EventEmitter();
 
   constructor(private mapService: EsriMapService) {}
@@ -67,7 +67,7 @@ export class EsriMapComponent implements OnInit {
       mapPromise = this.mapService.loadMap(
         this.mapProperties,
         this.mapViewProperties,
-        this.mapEl
+        this.mapEl.nativeElement
       );
     } else {
       console.error('Proper map properties were not provided');
