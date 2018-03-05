@@ -1,6 +1,6 @@
 <p-sidebar [position]="position"
            [visible]="true"
-           [style.width]="'50%'"
+           [style]="style"
            [fullScreen]="fullscreen"
            (onHide)="handleSidebarClose($event)">
   <p-scrollPanel *ngIf="scrollable; else noscroll">

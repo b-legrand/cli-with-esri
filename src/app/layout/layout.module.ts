@@ -18,6 +18,8 @@ import { SidebarPageComponent } from './components/sidebar-page/sidebar-page.com
 import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { SncfThemeComponent } from './components/sncf-theme/sncf-theme.component';
+import { LoremIpsumDirective } from './directives/lorem-ipsum.directive';
+import { MarkdownContentDirective } from './directives/markdown-content.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { SncfThemeComponent } from './components/sncf-theme/sncf-theme.component
     HelpPageComponent,
     AboutPageComponent,
     SncfThemeComponent,
+    LoremIpsumDirective,
+    MarkdownContentDirective,
   ],
   exports: [
     SncfHeaderComponent,
