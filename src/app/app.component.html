@@ -2,9 +2,9 @@
 <sncf-theme></sncf-theme>
 <esri-map
   [mapProperties]="{basemap: 'gray'}"
-  [mapViewProperties]="viewProps"
+  [mapViewProperties]="state.mapState.viewProps"
 >
-  <widget-container position="top-left" [anchorZone]="dockZoneLeft">
+  <widget-container position="top-left" [anchorZone]="'left'">
     <widget [title]="'Home'" icon="esri-icon-home"></widget>
     <widget [title]="'Navigation'" icon="esri-icon-north-navigation"></widget>
       <widget [title]="'Légende'" icon="esri-icon-handle-vertical"></widget>
@@ -12,9 +12,11 @@
       <widget [title]="'Legend'" icon="esri-icon-Legend"></widget>
       <widget [title]="'Basemap gallery'" icon="esri-icon-basemap"></widget>
       <widget [title]="'Bookmarks'" icon="fa fa-book"></widget>
-      <widget [title]="'Context'" icon="fa fa-"></widget>
+      <widget [title]="'Context'" icon="fa fa-">
+        Contenu du widget.
+      </widget>
   </widget-container>
-  <widget-container position="top-right" [anchorZone]="dockZoneRight">
+  <widget-container position="top-right" [anchorZone]="'right'">
     <widget [title]="'Infobulle'" icon="fa fa-info-circle"></widget>
     <widget [title]="'Import'" icon="esri-icon-upload"></widget>
     <widget [title]="'Impression'" icon="esri-icon-printer"></widget>
@@ -27,13 +29,8 @@
   </widget-container>
   <widget-container #freeZone position="bottom-left">
       <widget [title]="'Tableau de résultats'"
-              icon="esri-icon-table" position="bottom-left"></widget>
+              icon="esri-icon-table"
+              position="bottom-left"></widget>
   </widget-container>
-  <!--
-  <widget-container position="right">
-  </widget-container>
-  -->
-  <anchor-zone position="left" #dockZoneLeft></anchor-zone>
-  <anchor-zone position="right" #dockZoneRight></anchor-zone>
 </esri-map>
 <router-outlet></router-outlet>

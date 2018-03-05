@@ -7,3 +7,15 @@ export const environment = {
   production: false,
   hmr: true,
 };
+/** TODO environnements CDS SIG : */
+/*
+dev_pmsig
+dev_pmsig_https
+int_pmsigmd
+int_pmsigmd_https
+prod_pmsigmd
+prod_pmsigmd_https
+rec_pmsig
+rec_pmsig_https
+val_pmsig
+*/

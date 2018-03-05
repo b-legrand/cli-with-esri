@@ -1,5 +1,8 @@
-import { Component, Inject } from '@angular/core';
-import { AppConfig, APP_CONFIG } from './core/model/app.config';
+import {Component, Inject} from '@angular/core';
+import {APP_CONFIG, AppConfig} from './core/model/app.config';
+import WidgetState from './widget/model/widget-state';
+import {AppState} from './core/model/app.state';
+import { AppStoreService } from './core/services/app-store.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +11,34 @@ import { AppConfig, APP_CONFIG } from './core/model/app.config';
 })
 export class AppComponent {
   title: string;
-  viewProps: __esri.MapViewProperties;
   themeColor: string;
-  constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
+  state: AppState;
+
+  constructor(@Inject(APP_CONFIG) appConfig: AppConfig, store: AppStoreService) {
     this.themeColor = appConfig.themeColor;
     this.title = appConfig.appName;
-    this.viewProps = {
-      zoom: 6,
-      center: [2.2137, 46.2276]
+    this.state = initialState();
+    this.state =  {
+      widgets: [],
+      mapState: {
+        viewProps: {
+          zoom: 6,
+          center: [2.2137, 46.2276]
+        }
+      }
     };
   }
 }
+
+export function initialState() {
+  return {
+    widgets: [],
+    mapState: {
+      viewProps: {
+        zoom: 6,
+        center: [2.2137, 46.2276]
+      }
+    }
+  };
+}
+
