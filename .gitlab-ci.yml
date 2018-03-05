@@ -1,36 +1,56 @@
 image: node:latest
 
 stages:
+  - setup
   - build
   - test
   - deploy
 
-install-app:
-  stage: build
+cache:
+  untracked: true
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+    - node_modules/
+
+install:
+  stage: setup
   script:
     - npm install
-    - npm run build
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
     policy: push
+
+build-app:
+  stage: build
+  script:
+    - npm run build
+  dependencies:
+    - install
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
   artifacts:
     paths:
       - dist/
 
-install-lib:
+build-lib:
   stage: build
   script:
-    - npm install
     - npm run build:lib
+  dependencies:
+    - install
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
-    policy: push
+    policy: pull
   artifacts:
     paths:
       - dist/lib/
@@ -79,7 +99,7 @@ deploy:
     name: $CI_COMMIT_REF_NAME
     url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/index.html
   dependencies:
-    - test
+    - build-app
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
@@ -101,7 +121,7 @@ deploy_doc:
   only:
     - master
   dependencies:
-    - install
+    - doc
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
@@ -124,7 +144,7 @@ deploy_coverage:
   only:
     - master
   dependencies:
-    - install
+    - test
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
