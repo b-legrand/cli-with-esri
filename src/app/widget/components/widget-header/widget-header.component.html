@@ -1,4 +1,5 @@
-<div class="widget-header" [ngStyle]="{'background-color': themeColor}">
+<div class="widget-header"
+     [ngStyle]="{'background-color': themeColor}">
   <div class="widget-title"
        (dblclick)="handleFold($event)">
     <ng-content></ng-content>
@@ -6,9 +7,10 @@
   <!--
     Bouton plié
   -->
-  <a *ngIf="foldable"
+  <button *ngIf="foldable"
       (click)="handleFold($event)"
       class="widget-button"
+      [title]="state.folded ? 'Agrandir' : 'Réduire'"
   >
     <i class="esri-icon-expand"
        [ngClass]="{
@@ -16,13 +18,14 @@
         'up-arrow': !state.folded
        }"
     ></i>
-  </a>
+  </button>
   <!--
     Bouton ancrer
   -->
-  <a *ngIf="anchorable"
+  <button *ngIf="anchorable"
       (click)="handleAnchor($event)"
       class="widget-button"
+      [title]="state.anchored ? 'Détacher' : 'Ancrer'"
   >
     <i
        [ngClass]="{
@@ -30,14 +33,15 @@
        'esri-icon-dock-right': !state.anchored
       }"
     ></i>
-  </a>
+  </button>
   <!--
     Bouton fermer
   -->
-  <a *ngIf="closable"
+  <button *ngIf="closable"
       (click)="handleClose($event)"
       class="widget-button"
+      title="Fermer"
   >
     <i class="esri-icon-close"></i>
-  </a>
+  </button>
 </div>

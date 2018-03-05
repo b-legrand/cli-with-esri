@@ -36,14 +36,6 @@ export class WidgetHeaderComponent {
    */
   @Input() public movable: boolean;
 
-  @Input() public onMoveStart: EventEmitter<any> = new EventEmitter<any>();
-
-  @Input() public onMove: EventEmitter<any> = new EventEmitter<any>();
-
-  @Input() public onMoveEnd: EventEmitter<any> = new EventEmitter<any>();
-
-  public moving = false;
-
   public themeColor: string;
 
   constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
@@ -62,33 +54,6 @@ export class WidgetHeaderComponent {
   handleFold(event) {
     this.state.folded = !this.state.folded;
     this.stateChange.emit(this.state);
-  }
-
-  /**
-   * Démarrage du redimensionnement.
-   * @param event
-   */
-  handleMouseDown(event) {
-    this.onMoveStart.emit({});
-  }
-
-  /**
-   * Redimensionnement.
-   * @param event
-   */
-  handleMouseMove(event) {
-    if (!this.moving) {
-        return;
-    }
-    this.onMove.emit({});
-  }
-
-  /**
-   * Arrèt du redimensionnement.
-   * @param event
-   */
-  handleMouseUp(event) {
-    this.onMoveEnd.emit({});
   }
 
 }
