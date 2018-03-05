@@ -6,12 +6,6 @@ stages:
   - test
   - deploy
 
-cache:
-  untracked: true
-  key: "$CI_BUILD_REF_NAME"
-  paths:
-    - node_modules/
-
 install:
   stage: setup
   script:
@@ -30,7 +24,6 @@ build-app:
   dependencies:
     - install
   cache:
-    untracked: true
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
