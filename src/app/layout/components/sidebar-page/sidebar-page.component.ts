@@ -22,6 +22,8 @@ export class SidebarPageComponent {
 
   @Input() public size: SidebarSize;
 
+  @Input() public style: any;
+
   /**
    * left ou right
    */
