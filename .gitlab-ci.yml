@@ -42,6 +42,7 @@ build-app:
 build-lib:
   stage: build
   script:
+    - npm install
     - npm run build:lib
   dependencies:
     - install
