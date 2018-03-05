@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ViewContainerRef, ViewChild} from '@angular/core';
 
 /**
  * La zone d'ancrage permets de regrouper les widgets socle dont l'état est à anchored.
@@ -11,14 +11,23 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AnchorZoneComponent implements OnInit {
 
-  @Input() position: string;
+  @ViewChild('vc', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
+
+  @Input() public position: string;
+
+  @Input() public width = 320;
+
+  public scrollEnabled = false;
 
   public zoneStyle: any = {
-    left: '2.5em',
-    right: '2.5em',
-    bottom: 0,
-    top: '2.5em',
+    left: '62px',
+    right: '62px',
+    position: 'absolute',
+    top: 'calc(2.5em + 15px)',
+    bottom: '15px',
+    height: 'calc(100vh  - 2.5em  - 15px * 2)',
   };
+
   constructor() { }
 
   /**
@@ -28,11 +37,11 @@ export class AnchorZoneComponent implements OnInit {
   ngOnInit() {
     if (this.position === 'left') {
       delete this.zoneStyle.right;
-      this.zoneStyle['width.px'] = '280';
+      this.zoneStyle['width.px'] = this.width;
     }
     if (this.position === 'right') {
       delete this.zoneStyle.left;
-      this.zoneStyle['width.px'] = '280';
+      this.zoneStyle['width.px'] = this.width;
     }
   }
 

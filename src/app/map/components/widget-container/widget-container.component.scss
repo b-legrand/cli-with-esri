@@ -1,5 +1,10 @@
-.widget-container{
-    position: absolute;
-    /* important, permets aux évenement de transpercer et de tomber sur la map */
-    pointer-events: none;
+.widget-container {
+  position: absolute;
+  /* important, permets aux évenement de transpercer et de tomber sur la map */
+  pointer-events: none;
+  // 15px + 32px + 15px (gouttière esri + taille bouton esri + gouttière)
+  left: 62px;
+  right: 62px;
+  bottom: 15px;
+  top: calc(2.5em + 15px);
 }

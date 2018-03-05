@@ -1,5 +1,12 @@
+<!-- conteneur qui prends toute la carte  -->
 <div class="widget-container"
      [ngStyle]="containerStyle"
+     #containerBounds
 >
-    <ng-content></ng-content>
+  <ng-content></ng-content>
+  <ng-content #floatingView select=".widget-state-floating"></ng-content>
 </div>
+<!-- zone dockée -->
+<anchor-zone *ngIf="anchorZone" [position]="anchorZone">
+  <ng-content #anchorView select=".widget-state-anchored"></ng-content>
+</anchor-zone>

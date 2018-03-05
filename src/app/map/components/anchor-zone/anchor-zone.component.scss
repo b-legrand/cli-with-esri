@@ -1,6 +1,26 @@
-.widget-container{
+.anchor-zone{
   position: absolute;
-  top: 4em;
-  right: 5em;
-  left: 5em;
+  top: calc(2.5em + 15px);
+  bottom: 15px;
+
+}
+
+
+// désactivation styles scrollbar primeng
+:host .ui-widget-content {
+  background: transparent;
+  border: 0;
+}
+.ui-scrollpanel-wrapper {
+  border-right: 9px solid #f4f4f4;
+}
+
+.ui-scrollpanel-bar {
+  background-color: #1976d2;
+  opacity: 1;
+  transition: background-color .3s;
+}
+
+.ui-scrollpanel-bar:hover {
+  background-color: #135ba1;
 }
