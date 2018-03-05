@@ -11,6 +11,8 @@ import { WidgetHeaderComponent } from './components/widget-header/widget-header.
 import { WidgetPanelComponent } from './components/widget-panel/widget-panel.component';
 import { ExpandButtonComponent } from './components/expand-button/expand-button.component';
 import { WidgetStateManager } from './services/widget-state-manager.service';
+import { CoreModule } from '../core/core.module';
+import { TooltipModule, ScrollPanelModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -18,6 +20,10 @@ import { WidgetStateManager } from './services/widget-state-manager.service';
     AngularFontAwesomeModule,
     AngularDraggableModule,
     ResizableModule,
+    TooltipModule,
+    ScrollPanelModule,
+    //
+    CoreModule,
   ],
   declarations: [
     EsriWidgetDirective,
@@ -34,5 +40,8 @@ import { WidgetStateManager } from './services/widget-state-manager.service';
   providers: [
     WidgetStateManager,
   ],
+  entryComponents: [
+    WidgetComponent,
+  ]
 })
 export class WidgetModule { }

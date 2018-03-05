@@ -1,17 +1,19 @@
 <div class="socle-widget"
      #widget
-     ngDraggable
-     mwlResizable
-     [handle]="widgetHandle"
-     (started)="handleDragStart($event)"
-     (stopped)="handleDragEnd($event)"
      (mouseenter)="incrementZIndex()"
      (click)="incrementZIndex()"
-     [enableGhostResize]="true"
-     [preventDefaultEvent]="true"
-     (resizeEnd)="handleResizeEnd($event)"
-     [zIndex]="state.zIndex"
+     [ngDraggable]="config.resizable && !state.anchored"
+       [handle]="widgetHandle"
+       [preventDefaultEvent]="true"
+       [zIndex]="state.zIndex"
+       (started)="handleDragStart($event)"
+       (stopped)="handleDragEnd($event)"
+      mwlResizable
+       [enableGhostResize]="true"
+       (resizeEnd)="handleResizeEnd($event)"
      [style.display]="state.closed ? 'none' : 'block'"
+     [style.width]="!state.anchored ? state.size.width + 'px' : '100%'"
+     [style.height]="!state.anchored ? state.size.height + 'px': 'auto'"
      [ngClass]="{
         'widget-state-closed': state.closed
       , 'widget-state-open': !state.closed
