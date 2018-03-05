@@ -5,7 +5,7 @@ stages:
   - test
   - deploy
 
-install:
+install-app:
   stage: build
   script:
     - npm install
@@ -19,6 +19,21 @@ install:
   artifacts:
     paths:
       - dist/
+
+install-lib:
+  stage: build
+  script:
+    - npm install
+    - npm run build:lib
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: push
+  artifacts:
+    paths:
+      - dist/lib/
 
 doc:
   stage: test
@@ -35,6 +50,21 @@ doc:
     paths:
       - documentation/
 
+test:
+  stage: test
+  script:
+    - echo "Tests unitaires"
+    - npm run test:coverage
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
+  artifacts:
+    paths:
+      - coverage/
+
 deploy:
   stage: deploy
   script:
@@ -43,7 +73,7 @@ deploy:
     - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
     - cp -r dist/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
     - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
-    - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
+    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
 
   environment:
     name: $CI_COMMIT_REF_NAME
@@ -57,17 +87,40 @@ deploy:
       - node_modules/
     policy: pull
 
+deploy_doc:
+  stage: deploy
+  script:
+    - echo "Déploiement de la documentation"
+    - npm run doc
+    - mkdir -p /deployed/$CI_PROJECT_NAME
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
+    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
+  environment:
+    name: master_doc
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation/index.html
+  only:
+    - master
+  dependencies:
+    - install
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
+
+
 deploy_coverage:
   stage: deploy
   script:
     - echo "Déploiement de la couverture de test"
     - npm run doc
     - mkdir -p /deployed/$CI_PROJECT_NAME
-    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
     - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
   environment:
-    name: master_doc
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/master_doc/index.html
+    name: master_coverage
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage/index.html
   only:
     - master
   dependencies:
