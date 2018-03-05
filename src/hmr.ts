@@ -1,21 +1,23 @@
 import { NgModuleRef, ApplicationRef } from '@angular/core';
-import { createNewHosts } from '@angularclass/hmr';
+import { hmrModule } from '@angularclass/hmr';
 
 /**
  * Initialise le module HMR pour faire du rechargement de composant à chaud (sans recharger toute la page)
  *
- * @param module
- * @param {() => Promise<NgModuleRef<any>>} bootstrap
+ * @param module : module node.js injecté par webpack.
+ * @param bootstrap : résultat du bootstrapModule d'angular
  */
 export const hmrBootstrap = (module: any, bootstrap: () => Promise<NgModuleRef<any>>) => {
   let ngModule: NgModuleRef<any>;
+  // api webpack :
   module.hot.accept();
-  bootstrap().then(mod => ngModule = mod);
+  // une fois l'application angular initialisée.
+  bootstrap().then(mod => {
+    ngModule = mod;
+    // rattache les hooks sur le module.
+    hmrModule(mod, module);
+  });
   module.hot.dispose(() => {
-    const appRef: ApplicationRef = ngModule.injector.get(ApplicationRef);
-    const elements = appRef.components.map(c => c.location.nativeElement);
-    const makeVisible = createNewHosts(elements);
-    ngModule.destroy();
-    makeVisible();
+    // fait dans ngModule.destroy();
   });
 };
