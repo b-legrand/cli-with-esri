@@ -36,7 +36,7 @@ export class ExpandButtonComponent implements OnInit {
   ngOnInit() {
   }
 
-  public handleButtonClick() {
+  public handleButtonClick(event: any) {
     this.active = !this.active;
     this.activeChange.emit(this.active);
   }

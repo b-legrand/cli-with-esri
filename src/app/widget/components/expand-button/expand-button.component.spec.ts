@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExpandButtonComponent } from './expand-button.component';
+import { WidgetModule } from '../../widget.module';
+import { APP_CONFIG } from '../../../core/model/app.config';
 
 describe('ExpandButtonComponent', () => {
   let component: ExpandButtonComponent;
@@ -8,7 +10,9 @@ describe('ExpandButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExpandButtonComponent ]
+      declarations: [ ExpandButtonComponent ],
+      imports: [ WidgetModule ],
+      providers:[ { provide: APP_CONFIG, useValue: { themeColor: 'black' } }],
     })
     .compileComponents();
   }));

@@ -22,7 +22,13 @@ describe('WidgetHeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should create', () => {
+
+  it('should not have buttons when every state bool is false', () => {
     expect(component).toBeTruthy();
+    component.closable = false;
+    component.foldable = false;
+    component.anchorable = false;
+    fixture.detectChanges();
   });
+
 });

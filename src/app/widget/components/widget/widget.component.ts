@@ -1,8 +1,9 @@
-import {Component, ElementRef, Input, OnInit, ViewChild, Host, OnChanges} from '@angular/core';
-import {initialWidgetState, WidgetState} from '../../model/widget-state';
+import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {ResizeEvent} from 'angular-resizable-element';
+
+import {initialWidgetState, WidgetState} from '../../model/widget-state';
 import {WidgetConfig} from '../../model/widget-config';
-import { WidgetStateManager } from '../../services/widget-state-manager.service';
+import {WidgetStateManager} from '../../services/widget-state-manager.service';
 
 /**
  * Un composant socle widget est au minimum composé de :
@@ -18,7 +19,7 @@ import { WidgetStateManager } from '../../services/widget-state-manager.service'
 @Component({
   selector: 'widget',
   templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.scss']
+  styleUrls: ['./widget.component.scss'],
 })
 export class WidgetComponent implements OnInit, OnChanges {
 
@@ -53,9 +54,14 @@ export class WidgetComponent implements OnInit, OnChanges {
   @Input() public index: number;
 
   /**
-   * Profondeur
+   * Profondeur CSS.
    */
   @Input() public zIndex: number;
+
+  /**
+   * Limites pour le drag and drop
+   */
+  @Input() public boundaries: any;
 
   // flag pour ne pas appliquer la directive esriWidget d'ajout a la map tant que la map esri n'est pas la.
   public contentLoaded = false;
@@ -63,12 +69,12 @@ export class WidgetComponent implements OnInit, OnChanges {
   /**
    * Poignée
    */
-  @ViewChild('widgetHandle') widgetHandle: ElementRef;
+  @ViewChild('widgetHandle') public widgetHandle: ElementRef;
 
   /**
    * Conteneur
    */
-  @ViewChild('widget') widget: ElementRef;
+  @ViewChild('widget') public widget: ElementRef;
 
   constructor(private stateManager: WidgetStateManager) {
     // this.state = initialWidgetState();
@@ -87,18 +93,18 @@ export class WidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes) {
-    console.log(changes);
     if (changes.position && changes.position.currentValue) {
       this.contentLoaded = true;
     }
   }
 
-  handleDragStart(event: DragEvent) { }
+  handleDragStart(event: DragEvent) {
+  }
 
   handleDragEnd(event: DragEvent) {
-    if (this.config.movable) {
+    if (this.config.movable && !this.state.anchored) {
       // angular2-draggable fonctionne avec des translation css, ca fout le bazar selon le conteneur.
-      const { transform } = this.widget.nativeElement.style;
+      const {transform} = this.widget.nativeElement.style;
       const offset = this.parseTransform(transform);
       this.widget.nativeElement.style.left = this.state.position.left += offset.x;
       this.widget.nativeElement.style.top = this.state.position.top += offset.y;
@@ -135,7 +141,7 @@ export class WidgetComponent implements OnInit, OnChanges {
 
   /**
    * au survol ou au click, pousse le z-index par dessus les autres.
-  */
+   */
   incrementZIndex() {
     if (this.state.anchored) {
       return;
@@ -144,13 +150,18 @@ export class WidgetComponent implements OnInit, OnChanges {
     this.state.zIndex++;
   }
 
-  public parseTransform(transformString): {x: number, y: number} {
+  public parseTransform(transformString): { x: number, y: number } {
     const formatExp = /translate\((.*)px, (.*)px\)/;
     const extract = formatExp.exec(transformString);
-    return {
-      x: parseInt(extract[1], 10),
-      y: parseInt(extract[2], 10),
-    };
+    return (extract && extract.length)
+      ? {
+        x: parseInt(extract[1], 10),
+        y: parseInt(extract[2], 10),
+      }
+      : {
+        x: 0,
+        y: 0
+      };
   }
 
 }

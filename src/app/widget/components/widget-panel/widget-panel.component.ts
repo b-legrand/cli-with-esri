@@ -22,12 +22,6 @@ export class WidgetPanelComponent implements OnInit {
 
   @Input() public contentScroll: boolean;
 
-  @Input() public onResizeStart: EventEmitter<any> = new EventEmitter<any>();
-
-  @Input() public onResize: EventEmitter<any> = new EventEmitter<any>();
-
-  @Input() public onResizeEnd: EventEmitter<any> = new EventEmitter<any>();
-
   public isResizing = false;
 
   public startPosition?: { x: number, y: number };
@@ -39,38 +33,6 @@ export class WidgetPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  /**
-   * Démarrage du redimensionnement.
-   * @param event
-   */
-  handleMouseDown(event: MouseEvent) {
-    this.startPosition = {
-      x: event.clientX,
-      y: event.clientY,
-    };
-    this.isResizing = true;
-    event.preventDefault();
-    event.stopPropagation();
-    this.onResizeStart.emit({});
-  }
-
-  /**
-   * Redimensionnement.
-   * @param event
-   */
-  handleMouseMove(event: MouseEvent) {
-    event.preventDefault();
-    this.onResize.emit();
-  }
-
-  /**
-   * Arrèt du redimensionnement.
-   * @param event
-   */
-  handleMouseUp(event: MouseEvent) {
-    this.onResizeEnd.emit({});
   }
 
 }
