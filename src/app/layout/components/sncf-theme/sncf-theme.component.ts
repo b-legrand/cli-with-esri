@@ -36,11 +36,11 @@ export class SncfThemeComponent implements OnInit {
   /**
    * Les styles ayant besoin de la couleur.
    *
-   * @returns {string}
+   * @returns du css avec la couleur injectée.
    */
   cssTemplate(themeColor) {
     return [
-      `.ui-progress-spinner{stroke: ${themeColor};}`,
+      // loading primeng
       `.ui-progress-spinner{stroke: ${themeColor};}`,
       `@keyframes ui-progress-spinner-color {
           100%, 0% {stroke: ${themeColor};}
@@ -48,9 +48,12 @@ export class SncfThemeComponent implements OnInit {
           66% {stroke: ${themeColor};}
           80%, 90% {stroke: ${themeColor};}
       }`,
+      // scrollbar
+      `.ui-progress-bar-x:hover,.ui-progress-bar-y:hover,{background: ${themeColor};}`,
+      // titres / balises html par défaut.
       `h1,h2,h3,h4,h5,h6{color: ${themeColor};}`,
       `*:focus    {outline-color: ${themeColor};}`,
-      `h1,h2,h3,h4,h5,h6{stroke: ${themeColor};}`,
+      `.sncf-color, .couleur-theme{color: ${themeColor};}`,
     ].join('');
   }
 
