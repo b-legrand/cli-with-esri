@@ -12,7 +12,7 @@ import {WidgetState} from '../../model/widget-state';
 })
 export class ExpandButtonComponent implements OnInit {
 
-  @Input() public name: string;
+  @Input() public title: string;
 
   @Input() public iconClass: string;
 
