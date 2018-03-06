@@ -42,6 +42,9 @@ import {ScrollPanelModule} from 'primeng/primeng';
     WidgetContainerComponent,
     EsriMapComponent,
     AnchorZoneComponent,
+  ],
+  entryComponents: [
+    EsriMapComponent
   ]
 })
 export class MapModule {}
