@@ -42,7 +42,7 @@ export class EsriMapService {
           // create a new object so as to not modify the provided object
           const newMapViewProps = Object.assign({}, mapViewProperties);
           if (!newMapViewProps.container) {
-            newMapViewProps.container = mapEl;
+            newMapViewProps.container = mapEl as HTMLDivElement;
           }
           if (!newMapViewProps.map) {
             newMapViewProps.map = map;
@@ -89,7 +89,7 @@ export class EsriMapService {
           // create a new object so as to not modify the provided object
           const newMapViewProps = Object.assign({}, mapViewProperties);
           if (!newMapViewProps.container) {
-            newMapViewProps.container = mapEl;
+            newMapViewProps.container = mapEl as HTMLDivElement;
           }
           if (!newMapViewProps.map) {
             newMapViewProps.map = map;

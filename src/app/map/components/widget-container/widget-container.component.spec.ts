@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WidgetContainerComponent } from './widget-container.component';
+import { AnchorZoneComponent } from '..';
 
 describe('WidgetContainerComponent', () => {
   let component: WidgetContainerComponent;
@@ -8,7 +9,7 @@ describe('WidgetContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WidgetContainerComponent ]
+      declarations: [ WidgetContainerComponent, AnchorZoneComponent ],
     })
     .compileComponents();
   }));
