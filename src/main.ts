@@ -18,6 +18,7 @@ if (environment.hmr) {
   } else {
     console.error('HMR non actif pour webpack-dev-server!');
     console.log('Lancer npm run start ou ng serve --hmr');
+    bootstrap();
   }
 } else {
   bootstrap();
