@@ -19,23 +19,43 @@ describe('MapService', () => {
     });
   });
 
+  it('Un appel à loadScript doit ajouter le <script> principal dans le body', done => {
+    inject([EsriLoaderService], (service: EsriLoaderService) => {
+      service.loadScript()
+        .then(
+          element => {
+            console.info(element);
+            expect(element).toBeDefined();
+            // le point d'entrée principal de l'api existe dans la page
+            const scriptElements = document.querySelector('script[data-esri-loader]');
+            expect(scriptElements.length).toBeGreaterThan(0);
+            expect(service.isLoaded()).toBe(true);
+            done();
+          }
+        ).catch(reason => {
+        console.error(reason);
+        done.fail(reason);
+      });
+    })();
+  });
+
   it('Un appel à loadModules doit ajouter des <scripts> dans le body', done => {
     inject([EsriLoaderService], (service: EsriLoaderService) => {
-      return done();
       service.loadModules(['esri/Map'])
         .then(
           ([Map]: [__esri.MapConstructor]) => {
+            console.info(Map);
             expect(Map).toBeDefined();
             // le point d'entrée principal de l'api existe dans la page
             const scriptElements = document.querySelectorAll('script[data-esri-loader]');
             expect(scriptElements.length).toBeGreaterThan(0);
             expect(service.isLoaded()).toBe(true);
             done();
-          },
-          reason => {
-            done.fail(reason);
           }
-        ).catch(done.fail);
+        ).catch(reason => {
+          console.error(reason);
+          done.fail(reason);
+        });
     })();
   });
 

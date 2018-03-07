@@ -12,7 +12,7 @@
        [enableGhostResize]="true"
        (resizeEnd)="handleResizeEnd($event)"
      [style.display]="state.closed ? 'none' : 'block'"
-     [style.width]="!state.anchored ? state.size.width + 'px' : '100%'"
+     [style.width]="!state.anchored ? state.size.width + 'px' : '320px'"
      [style.height]="!state.anchored ? state.size.height + 'px': 'auto'"
      [ngClass]="{
         'widget-state-closed': state.closed
@@ -33,8 +33,9 @@
   >
     <div class="widget-handle" #widgetHandle>{{ title }}</div>
   </widget-header>
-  <widget-panel *ngIf="!state.folded" [resizable]="config.resizable && !state.anchored">
-    <pre>{{ this.state | json }}</pre>
+  <widget-panel *ngIf="!state.folded"
+                [scrollable]="config.scrollable"
+                [resizable]="config.resizable && !state.anchored">
     <ng-content></ng-content>
   </widget-panel>
 </div>

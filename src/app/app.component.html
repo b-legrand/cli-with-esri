@@ -1,36 +1,80 @@
 <sncf-header [title]="title"></sncf-header>
 <sncf-theme></sncf-theme>
-<esri-map
-  [mapProperties]="{basemap: 'gray'}"
-  [mapViewProperties]="state.mapState.viewProps"
->
-  <widget-container position="top-left" [anchorZone]="'left'">
-    <widget [title]="'Home'" icon="esri-icon-home"></widget>
-    <widget [title]="'Navigation'" icon="esri-icon-north-navigation"></widget>
-      <widget [title]="'Légende'" icon="esri-icon-handle-vertical"></widget>
-      <widget [title]="'Toc'" icon="esri-icon-layer-list"></widget>
-      <widget [title]="'Legend'" icon="esri-icon-Legend"></widget>
-      <widget [title]="'Basemap gallery'" icon="esri-icon-basemap"></widget>
-      <widget [title]="'Bookmarks'" icon="fa fa-book"></widget>
-      <widget [title]="'Context'" icon="fa fa-">
-        Contenu du widget.
-      </widget>
+<esri-map [mapProperties]="{basemap: 'gray'}"
+          [mapViewProperties]="state.mapState.viewProps">
+  <widget-container position="top-left"
+                    [anchorZone]="'left'">
+    <widget key="widget-home"
+            [title]="'Home'"
+            icon="esri-icon-home"></widget>
+    <widget key="widget-navigation"
+            [title]="'Navigation'"
+            icon="esri-icon-north-navigation"></widget>
+    <widget key="widget-legend"
+            [title]="'Légende'"
+            icon="esri-icon-handle-vertical"></widget>
+    <widget key="widget-layer-list"
+            [title]="'Toc'"
+            icon="esri-icon-layer-list">
+      Hello world
+    </widget>
+    <widget key="widget-basemap-gallery"
+            [title]="'Basemap gallery'"
+            icon="esri-icon-basemap"></widget>
+    <widget key="widget-bookmarks"
+            [title]="'Bookmarks'"
+            icon="fa fa-book">
+      <div loremIpsum>
+
+      </div>
+    </widget>
+    <widget key="widget-context"
+            [title]="'Context'"
+            icon="fa fa-cubes">
+      Contenu du widget Contexte.
+    </widget>
   </widget-container>
-  <widget-container position="top-right" [anchorZone]="'right'">
-    <widget [title]="'Infobulle'" icon="fa fa-info-circle"></widget>
-    <widget [title]="'Import'" icon="esri-icon-upload"></widget>
-    <widget [title]="'Impression'" icon="esri-icon-printer"></widget>
-    <widget [title]="'Dessin'" icon="fa fa-paint-brush"></widget>
-    <widget [title]="'Localisation'" icon="esri-icon-locate"></widget>
-    <widget [title]="'Recherche par géométrie'" icon="esri-icon-search"></widget>
-    <widget [title]="'Filtre'" icon="fa fa-filter"></widget>
-    <widget [title]="'Requêtage'" icon="esri-icon-search"></widget>
-    <widget [title]="'Autre widgets.'" icon="esri-icon-plus"></widget>
+  <widget-container position="top-right"
+                    [anchorZone]="'right'">
+    <widget key="widget-identify"
+            [title]="'Infobulle'"
+            icon="fa fa-info-circle"></widget>
+    <widget key="widget-import"
+            [title]="'Import'"
+            icon="esri-icon-upload"></widget>
+    <widget key="widget-print"
+            [title]="'Impression'"
+            icon="esri-icon-printer"></widget>
+    <widget key="widget-draw"
+            [title]="'Dessin'"
+            icon="fa fa-paint-brush"></widget>
+    <widget key="widget-locate"
+            [title]="'Localisation'"
+            icon="esri-icon-locate">
+          Hello world.      
+    </widget>
+    <widget key="widget-geometry-search"
+            [title]="'Recherche par géométrie'"
+            icon="esri-icon-search"></widget>
+    <widget key="widget-filter"
+            [title]="'Filtre'"
+            icon="fa fa-filter">
+      Filtrage      
+    </widget>
+    <widget key="widget-query"
+            [title]="'Requêtage'"
+            icon="esri-icon-search">
+          <h4>Requètage</h4></widget>
+    <widget key="widget-more"
+            [title]="'Autre widgets.'"
+            icon="esri-icon-plus"></widget>
   </widget-container>
-  <widget-container #freeZone position="bottom-left">
-      <widget [title]="'Tableau de résultats'"
-              icon="esri-icon-table"
-              position="bottom-left"></widget>
+  <widget-container #freeZone
+                    position="bottom-left">
+    <widget key="widget-result-panel"
+            [title]="'Tableau de résultats'"
+            icon="esri-icon-table"
+            position="bottom-left"></widget>
   </widget-container>
 </esri-map>
 <router-outlet></router-outlet>

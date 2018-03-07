@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {ResizeEvent} from 'angular-resizable-element';
+import { v4 } from 'uuid';
 
 import {initialWidgetState, WidgetState} from '../../model/widget-state';
 import {WidgetConfig} from '../../model/widget-config';
@@ -23,6 +24,10 @@ import {WidgetStateManager} from '../../services/widget-state-manager.service';
 })
 export class WidgetComponent implements OnInit, OnChanges {
 
+  /**
+   * Id technique.
+   */
+  @Input() public key: string;
   /**
    * Etat
    */
@@ -81,20 +86,29 @@ export class WidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    // todo injecter l'état depuis unn service de stockage;
-    this.state = initialWidgetState();
+    // todo injecter la config depuis un service de stockage;
     this.config = {
+      uuid: v4(),
+      name: this.key,
       movable: true,
       resizable: true,
       anchorable: true,
       closable: true,
       foldable: true,
     };
+    this.state = this.stateManager.getState(this.key) || initialWidgetState();
   }
 
   ngOnChanges(changes) {
     if (changes.position && changes.position.currentValue) {
       this.contentLoaded = true;
+    }
+    if (changes.state && !changes.state.currentValue) {
+      this.state = initialWidgetState();
+    }
+    if (changes.key && !changes.key.currentValue) {
+      console.error("NO KEY SET");
+      this.key = v4();
     }
   }
 

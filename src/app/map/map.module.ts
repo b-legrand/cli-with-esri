@@ -1,7 +1,6 @@
 // angular
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 // primeng
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -15,12 +14,11 @@ import { WidgetContainerComponent } from './components/widget-container/widget-c
 import { AnchorZoneComponent } from './components/anchor-zone/anchor-zone.component';
 import { EsriLoaderService } from './services/esri-loader.service';
 import { WidgetModule } from '../widget/widget.module';
-import {ScrollPanelModule} from 'primeng/primeng';
+import { ScrollPanelModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     SelectButtonModule,
     SliderModule,
     InputTextModule,

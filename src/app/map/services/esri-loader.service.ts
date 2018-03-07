@@ -1,11 +1,16 @@
-import {Injectable, Inject} from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import * as esriLoader from 'esri-loader';
-import {APP_CONFIG, AppConfig} from '../../core/model/app.config';
-import {environment} from '../../../environments/environment';
+import { APP_CONFIG, AppConfig } from '../../core/model/app.config';
+import { environment } from '../../../environments/environment';
+import { ILoadScriptOptions } from 'esri-loader';
+import 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
 
 /**
  * Encapsule esri-loader dans un service angular.
  *
+ * @see https://github.com/Esri/esri-loader
+*
  * Permets de charger les ressources de l'api esri en lazy loading
  * puis de fournir des modules dojo selon les besoin ensuite.
  *
@@ -20,6 +25,7 @@ export class EsriLoaderService {
     this.options = {
       // version de l'api arcgis.
       url: `https://js.arcgis.com/${appConfig.apiVersion}/`,
+      css: `https://js.arcgis.com/${appConfig.apiVersion}/esri/css/main.css`,
       dojoConfig: {
         async: true,
         debug: !environment.production, // attention, manière angular-cli, à adapter.
@@ -33,11 +39,22 @@ export class EsriLoaderService {
 
 
   /**
-   * Wrapper autour de la fonction principale de esri-loader
+   * Chargement des modules de l'api arcgis.
+   * Usage: loaderService.loadModules((['esri/Map']:[__esri.MapConstructor]) => {  });
    */
-  loadModules(modules: string[]) {
+  loadModules(modules: string[]): Promise<any[]> {
     return esriLoader.loadModules(modules, this.options);
   }
+
+  /**
+   * Wrapper autour de la fonction principale de esri-loader.
+   *
+   * Charge l'api arcgis uniquement.
+   */
+  loadScript(): Promise<HTMLScriptElement> {
+    return esriLoader.loadScript(this.options);
+  }
+
 }
 
 export default EsriLoaderService;

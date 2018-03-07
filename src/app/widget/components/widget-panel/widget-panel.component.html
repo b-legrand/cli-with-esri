@@ -1,6 +1,11 @@
 <div class="widget-panel">
   <div class="widget-content">
-    <ng-content></ng-content>
+    <p-scrollPanel *ngIf="scrollable; else noscroll;" [style]="{width: '100%'}">
+      <ng-content></ng-content>
+    </p-scrollPanel>
+    <ng-template #noscroll>
+        <ng-content></ng-content>
+    </ng-template>
   </div>
   <div class="widget-resize-button"
        *ngIf="resizable"

@@ -90,7 +90,7 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
     this.widgets.forEach(
       widget => {
       // ajout des widgets enfants au service global de gestion d'état
-      this.widgetStateManager.addWidgetState(widget.state);
+      this.widgetStateManager.addWidgetState(widget.key, widget.state);
       // todo répartir les widgets selon leur état.
       if (widget.state.anchored) {
         // this.freeZoneRef.detach(this.freeZoneRef.indexOf());

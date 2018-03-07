@@ -10,7 +10,7 @@ export class AppStoreService {
 
   private initialState(): AppState {
     this.state = {
-      widgets: [],
+      widgets: {},
       mapState: {
         viewProps: {
           zoom: 6,
@@ -22,14 +22,18 @@ export class AppStoreService {
   }
 
   constructor() {
+    // debugger;
     this.restore();
     window.onbeforeunload = (event) => {
+      console.dir('SAVE STATE:', this.state);
       this.save();
+      // event.preventDefault();
+      // event.stopImmediatePropagation();
     };
   }
 
   getState() {
-    return this.state || this.initialState();
+    return this.state;
   }
 
   update(state) {
@@ -38,7 +42,6 @@ export class AppStoreService {
   }
 
   save() {
-    window.alert('SAVE STATE ');
     window.localStorage.setItem(
       APP_STORE_KEY,
       JSON.stringify(this.state)
@@ -49,7 +52,7 @@ export class AppStoreService {
     const localState = JSON.parse(
       window.localStorage.getItem(APP_STORE_KEY)
     );
-    console.log(localState);
+    console.info('LOCAL STORAGE STATE', localState);
     if (!localState || localState === 'null') {
       this.state = this.initialState();
     } else {
