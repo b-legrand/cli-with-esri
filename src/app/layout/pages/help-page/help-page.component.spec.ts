@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HelpPageComponent } from './help-page.component';
+import { SidebarModule, ScrollPanelModule } from 'primeng/primeng';
+import { SidebarPageComponent } from '../../components/sidebar-page/sidebar-page.component';
 
 describe('HelpPageComponent', () => {
   let component: HelpPageComponent;
@@ -8,7 +10,11 @@ describe('HelpPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HelpPageComponent ]
+      declarations: [ HelpPageComponent, SidebarPageComponent ],
+      imports: [
+        SidebarModule,
+        ScrollPanelModule,
+      ]
     })
     .compileComponents();
   }));

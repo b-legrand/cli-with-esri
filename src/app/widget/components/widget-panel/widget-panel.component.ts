@@ -20,7 +20,7 @@ export class WidgetPanelComponent implements OnInit {
    */
   @Input() public resizable: boolean;
 
-  @Input() public contentScroll: boolean;
+  @Input() public scrollable: boolean;
 
   public isResizing = false;
 

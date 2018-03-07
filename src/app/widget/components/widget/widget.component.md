@@ -6,3 +6,4 @@ Le composant widget est une fenêtre générique pouvant être placé par dessus
 
 ## API
 
+## 

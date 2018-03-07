@@ -1,9 +1,13 @@
 /**
  * Configuration en dur d'un widget.
  *
- * Chaque config json de widget devrait hériter de celle là.
+ * Chaque config json de widget devrait hériter de celle là. ou s'ajouter dans data.
  */
 export interface WidgetConfig {
+  // uuid du widget
+  uuid: string;
+  // nom technique lisible du widget
+  name: string;
   // peut il être fermé ?
   closable?: boolean;
   // peut il être bougé ?
@@ -15,5 +19,7 @@ export interface WidgetConfig {
   // peut il être redimensionné ?
   resizable?: boolean;
   // son contenu est il scrollable
-  contentScroll?: boolean;
+  scrollable?: boolean;
+  // configuration fonctionnelle du widget 
+  data?: any;
 }

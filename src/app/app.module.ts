@@ -14,6 +14,7 @@ import { routes } from './routes';
 import {AppStoreService} from './core/services/app-store.service';
 import {CoreModule} from './core/core.module';
 import {LibraryModule} from './library/library.module';
+import { AppStore, appStoreProviders, createAppStore } from './core/model/app.store';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {LibraryModule} from './library/library.module';
     LibraryModule,
   ],
   providers: [
-    { provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG }
+    { provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG },
+    { provide: AppStore, useFactory: createAppStore}
   ],
   bootstrap: [AppComponent]
 })

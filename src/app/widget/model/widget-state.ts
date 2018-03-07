@@ -41,6 +41,10 @@ export interface WidgetState {
    */
   zIndex?: number;
 
+  /**
+   * Objet permettant au widgets de stocker leur état fonctionnel.
+   */
+  data?: any;
 }
 // taille par défaut d'un widget
 const width = 320;
@@ -55,13 +59,15 @@ export function initialWidgetState(): WidgetState {
     closed: true,
     anchored: true,
     position: {
-      left: 0,
-      top: 0
+      // la moitié de l'écran moins la moitié du widget - la marge = la position.
+      left: window.innerWidth/2 - width/2,
+      top: window.innerHeight/2 - height/2,
     },
     size: {
       width: 320,
       height: 240
     },
+    // attention, primeng à partir de 3000
     zIndex: 100,
   };
 }

@@ -6,13 +6,12 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { ResizableModule } from 'angular-resizable-element';
 
 import { EsriWidgetDirective } from './directives/esri-widget.directive';
-import { WidgetComponent } from './components/widget/widget.component';
-import { WidgetHeaderComponent } from './components/widget-header/widget-header.component';
-import { WidgetPanelComponent } from './components/widget-panel/widget-panel.component';
-import { ExpandButtonComponent } from './components/expand-button/expand-button.component';
+import { SocleWidgetDirective } from './directives/socle-widget.directive';
+import { WidgetComponent, WidgetHeaderComponent, WidgetPanelComponent, ExpandButtonComponent } from './components';
 import { WidgetStateManager } from './services/widget-state-manager.service';
 import { CoreModule } from '../core/core.module';
-import { TooltipModule, ScrollPanelModule } from 'primeng/primeng';
+import { TooltipModule } from 'primeng/tooltip';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   imports: [
@@ -26,6 +25,7 @@ import { TooltipModule, ScrollPanelModule } from 'primeng/primeng';
     CoreModule,
   ],
   declarations: [
+    SocleWidgetDirective,
     EsriWidgetDirective,
     WidgetHeaderComponent,
     WidgetComponent,
@@ -34,6 +34,7 @@ import { TooltipModule, ScrollPanelModule } from 'primeng/primeng';
   ],
   exports: [
     WidgetComponent,
+    SocleWidgetDirective,
     EsriWidgetDirective,
     ExpandButtonComponent,
   ],

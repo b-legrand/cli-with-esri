@@ -57,7 +57,7 @@ describe('WidgetHeaderComponent', () => {
     fixture.detectChanges();
 
     // vérifie qu'il n'y a qu'un bouton dans la barre de titre
-    const buttons = (debugElement.nativeElement as HTMLElement).querySelectorAll('button');
+    const buttons: NodeListOf<HTMLButtonElement> = debugElement.nativeElement.querySelectorAll('button');
     expect(buttons.length).toBe(1);
 
     expect(buttons[0].title).toBe('Fermer');
@@ -65,16 +65,16 @@ describe('WidgetHeaderComponent', () => {
   });
 
   // pour les tests suivant, on généralise la conf, le widget affiche les 3 boutons.
-  const getButtonsForState = (state: WidgetState) => {
+  const getButtonsForState = (state: WidgetState): NodeListOf<HTMLButtonElement> => {
     component.closable = true;
     component.foldable = true;
     component.anchorable = true;
     component.state = state;
     fixture.detectChanges();
-    return (debugElement.nativeElement as HTMLElement).querySelectorAll('button');
+    return debugElement.nativeElement.querySelectorAll('button');
   };
 
-  it('doit afficher une icone plier si le widget est ancré ', () => {
+  it('doit afficher une icone "maximiser" si le widget est ancré ', () => {
     const state = {
       anchored: false,
       closed: false,
@@ -85,8 +85,9 @@ describe('WidgetHeaderComponent', () => {
     const buttons = getButtonsForState(state);
 
     expect(buttons.length).toBe(3);
-    expect(buttons[1].title).toBe('Réduire');
-    expect(buttons[2].title).toBe('Ancrer');
+    expect(buttons[0].title).toBe('Réduire');
+    expect(buttons[1].title).toBe('Ancrer');
+    expect(buttons[2].title).toBe('Fermer');
 
   });
 });

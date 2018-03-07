@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "module": "commonjs",
     "types": [
+      "arcgis-js-api",
       "jest",
       "node"
     ]

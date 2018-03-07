@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { KitchenSinkComponent } from './kitchen-sink.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 describe('KitchenSinkComponent', () => {
   let component: KitchenSinkComponent;
@@ -8,7 +9,8 @@ describe('KitchenSinkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KitchenSinkComponent ]
+      declarations: [ KitchenSinkComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
