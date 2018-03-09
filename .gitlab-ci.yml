@@ -61,7 +61,7 @@ test:
   stage: test
   script:
     - echo "Tests unitaires"
-    - npm run test -- --collect-coverage
+    - npm run jest:coverage
   allow_failure: true
   cache:
     untracked: true
