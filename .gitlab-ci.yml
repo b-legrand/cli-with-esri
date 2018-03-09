@@ -61,7 +61,7 @@ test:
   stage: test
   script:
     - echo "Tests unitaires"
-#    - npm run test:coverage
+#   - npm run test:coverage
   allow_failure: true
   cache:
     untracked: true
@@ -72,6 +72,7 @@ test:
   artifacts:
     paths:
       - coverage/
+      - test-report.html
 
 e2e:
   stage: test
@@ -90,62 +91,21 @@ deploy:
   stage: deploy
   script:
     - echo "Deploy a review app"
-    - mkdir -p /deployed/$CI_PROJECT_NAME
-    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
+    - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
     - cp -r dist/lib/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app
     - cp -r dist/app/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/lib
+    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
+    - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
+    - cp test-report.html /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/test-report.html
 
   environment:
     name: $CI_COMMIT_REF_NAME
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/index.html
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/
   dependencies:
     - build-app
     - build-lib
-  cache:
-    untracked: true
-    key: "$CI_BUILD_REF_NAME"
-    paths:
-      - node_modules/
-    policy: pull
-
-deploy_doc:
-  stage: deploy
-  script:
-    - echo "Déploiement de la documentation"
-    - npm run doc
-    - mkdir -p /deployed/$CI_PROJECT_NAME
-    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
-    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
-  environment:
-    name: master_doc
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation/index.html
-  only:
-    - master
-  dependencies:
-    - doc
-  cache:
-    untracked: true
-    key: "$CI_BUILD_REF_NAME"
-    paths:
-      - node_modules/
-    policy: pull
-
-
-deploy_coverage:
-  stage: deploy
-  script:
-    - echo "Déploiement de la couverture de test"
-    - npm run jest:coverage
-    - mkdir -p /deployed/$CI_PROJECT_NAME
-    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
-    - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
-  environment:
-    name: master_coverage
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage/index.html
-  only:
-    - master
-  dependencies:
     - test
+    - doc
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
