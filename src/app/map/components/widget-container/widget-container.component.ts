@@ -13,6 +13,7 @@ import {
 import {WidgetComponent} from '../../../widget/components';
 import {EsriMapService} from '../../services/esri-map.service';
 import {WidgetStateManager} from '../../../widget/services/widget-state-manager.service';
+import {WidgetStackService} from '../../services/widget-stack.service';
 
 export enum WidgetContainerPosition {
   TOP_RIGHT,
@@ -25,12 +26,20 @@ export enum WidgetContainerPosition {
 const zoneWidth = 320;
 
 /**
- *
+ * Le widget container est chargé de :
+ * Recevoir en enfant les widgets déclarés par les applications :
+ * ```
+ * <widget-container>
+ *     <widget-x></widget-x>
+ *     <widget-y></widget-y>
+ * </widget-container>
+ * ```
  */
 @Component({
   selector: 'widget-container',
   templateUrl: './widget-container.component.html',
-  styleUrls: ['./widget-container.component.scss']
+  styleUrls: ['./widget-container.component.scss'],
+  providers: [WidgetStackService] // permets au sevice d'être injecté uniquement pour ce conteneur et sa zone d'ancrage
 })
 export class WidgetContainerComponent implements OnInit, AfterContentInit {
 
@@ -69,13 +78,9 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
     top: 'calc(2.5em + 15px)',
   };
 
-  private widgetFactory: ComponentFactory<WidgetComponent>;
-
   constructor(private esriMapService: EsriMapService,
               private widgetStateManager: WidgetStateManager,
-              private componentFactoryResolver: ComponentFactoryResolver) {
-    this.widgetFactory = this.componentFactoryResolver.resolveComponentFactory(WidgetComponent);
-  }
+              public stacks: WidgetStackService) { }
 
   /**
    * initialize les zone selon le paramètre position.

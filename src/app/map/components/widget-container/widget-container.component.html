@@ -3,10 +3,12 @@
      [ngStyle]="containerStyle"
      #containerBounds
 >
-  <ng-content></ng-content>
-  <ng-content #floatingView select=".widget-state-floating"></ng-content>
+  <ng-template *ngFor="let widgetPortal of stacks.floatingWidgets | async"
+               [cdkPortalOutlet]="widgetPortal"></ng-template>
 </div>
 <!-- zone dockée -->
 <anchor-zone *ngIf="anchorZone" [position]="anchorZone">
   <ng-content #anchorView select=".widget-state-anchored"></ng-content>
+  <ng-template *ngFor="let widgetPortal of stacks.anchoredWidgets | async"
+               [cdkPortalOutlet]="widgetPortal" ></ng-template>
 </anchor-zone>

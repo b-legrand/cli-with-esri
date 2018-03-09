@@ -28,6 +28,7 @@ export class SncfThemeComponent implements OnInit {
   ngOnInit() {
     // à l'ancienne :
     const style = document.createElement('style');
+    style['data-sncf-theme'];
     style.type = 'text/css';
     style.innerHTML = this.customCss;
     document.head.appendChild(style);

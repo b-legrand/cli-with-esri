@@ -6,7 +6,13 @@
     "module": "es2015",
     "types": [
       "arcgis-js-api"
-    ]
+    ],
+    "paths": {
+      "@socle/common/core": [ "../dist/lib/core" ],
+      "@socle/common/map": [ "../dist/lib/map" ],
+      "@socle/common/layout": [ "../dist/lib/layout" ],
+      "@socle/common/widget": [ "../dist/lib/widget" ]
+    }
   },
   "exclude": [
     "test.ts",

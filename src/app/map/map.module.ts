@@ -15,6 +15,7 @@ import { AnchorZoneComponent } from './components/anchor-zone/anchor-zone.compon
 import { EsriLoaderService } from './services/esri-loader.service';
 import { WidgetModule } from '../widget/widget.module';
 import { ScrollPanelModule } from 'primeng/primeng';
+import { PortalModule} from '@angular/cdk/portal';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { ScrollPanelModule } from 'primeng/primeng';
     ProgressSpinnerModule,
     ScrollPanelModule,
     WidgetModule,
+    PortalModule,
   ],
   declarations: [
     WidgetContainerComponent,

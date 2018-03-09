@@ -1,24 +1,25 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild, ContentChild} from '@angular/core';
 import {ResizeEvent} from 'angular-resizable-element';
 import { v4 } from 'uuid';
 
 import {initialWidgetState, WidgetState} from '../../model/widget-state';
 import {WidgetConfig} from '../../model/widget-config';
 import {WidgetStateManager} from '../../services/widget-state-manager.service';
+import { TemplatePortal } from '@angular/cdk/portal';
 
 /**
- * Un composant socle widget est au minimum composé de :
+ * Un composant fenètre de widget est composé de :
  *
- * - Un bouton ajouté à la map esri, avec une position et un index.
- * - une conteneur dépliable / affichable / ancrable suite au clic sur le bouton.
- * - le contenu du widget.
+ * - `expand-button` Bouton d'activation ajouté à la map esri, avec une position et un index.
+ * - `widget-header` Un conteneur dépliable / affichable / ancrable suite au clic sur le bouton.
+ * - `widget-panel` le contenu du widget.
  *
  * Il est chargé de :
  * - gérér et remonter les évenements drag / drop liés à son état.
  * - afficher le contenu selon son état.
  */
 @Component({
-  selector: 'widget',
+  selector: 'widget-window',
   templateUrl: './widget.component.html',
   styleUrls: ['./widget.component.scss'],
 })
@@ -80,6 +81,12 @@ export class WidgetComponent implements OnInit, OnChanges {
    * Conteneur
    */
   @ViewChild('widget') public widget: ElementRef;
+
+  /**
+   * Portail (template virtuel)
+   *
+   */
+  @ViewChild('widget') public widgetPortal: TemplatePortal<WidgetComponent>;
 
   constructor(private stateManager: WidgetStateManager) {
     // this.state = initialWidgetState();

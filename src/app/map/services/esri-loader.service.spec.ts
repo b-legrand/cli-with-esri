@@ -5,7 +5,9 @@ import {APP_CONFIG} from '../../core/model/app.config';
 
 describe('MapService', () => {
   const testAppConfig = {
-    apiVersion: '4.6'
+    appName: 'test',
+    apiVersion: '4.6',
+    themeColor: 'black',
   };
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -19,24 +21,22 @@ describe('MapService', () => {
     });
   });
 
-  it('Un appel à loadScript doit ajouter le <script> principal dans le body', done => {
-    inject([EsriLoaderService], (service: EsriLoaderService) => {
-      service.loadScript()
+  it('Un appel à loadModules doit ajouter le <script> principal dans le body', done => {
+    const esriLoaderService: EsriLoaderService = new EsriLoaderService(testAppConfig);
+    esriLoaderService.loadModules(['dojo'])
         .then(
           element => {
-            console.info(element);
             expect(element).toBeDefined();
             // le point d'entrée principal de l'api existe dans la page
-            const scriptElements = document.querySelector('script[data-esri-loader]');
+            const scriptElements: NodeListOf<HTMLScriptElement> = document.querySelectorAll('script[data-esri-loader]');
             expect(scriptElements.length).toBeGreaterThan(0);
-            expect(service.isLoaded()).toBe(true);
+            expect(esriLoaderService.isLoaded()).toBe(true);
             done();
           }
         ).catch(reason => {
         console.error(reason);
         done.fail(reason);
       });
-    })();
   });
 
   it('Un appel à loadModules doit ajouter des <scripts> dans le body', done => {

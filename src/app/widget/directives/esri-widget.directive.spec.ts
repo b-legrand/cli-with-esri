@@ -25,13 +25,22 @@ describe('EsriWidgetDirective', () => {
   let mapService: EsriMapService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestEsriWidgetComponent, EsriWidgetDirective, EsriMapComponent],
+      declarations: [
+        TestEsriWidgetComponent,
+        EsriWidgetDirective,
+        EsriMapComponent
+      ],
       providers: [
         EsriMapService,
         EsriLoaderService,
-        { provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG },
+        { 
+          provide: APP_CONFIG,
+          useValue: DEFAULT_APP_CONFIG
+        },
       ],
-      imports: [ProgressSpinnerModule]
+      imports: [
+        ProgressSpinnerModule,
+      ]
     });
     fixture = TestBed.createComponent(TestEsriWidgetComponent);
     mapService = TestBed.get(EsriMapService);

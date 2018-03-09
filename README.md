@@ -18,7 +18,7 @@ Il contient également les fonctionnalités suivantes :
 * Composant widget-container pour définir la position.
 * Menu SNCF personnalisable (inspiré par celui du kit-condor) 
 * Utilisation du Routeur angular, les routes s'affichent dans des sidebar.
-* Directive esriWidget pour mettre un composant en tant que widget custom de la map esri.
+* Directive `esriWidget` pour mettre un composant en tant que widget custom de la map esri.
 * Packaging en tant que librairie avec [ng-packagr](https://github.com/dherges/ng-packagr)
 
 ## Installation

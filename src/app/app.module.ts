@@ -13,7 +13,7 @@ import { APP_CONFIG, DEFAULT_APP_CONFIG } from './core/model/app.config';
 import { routes } from './routes';
 import {AppStoreService} from './core/services/app-store.service';
 import {CoreModule} from './core/core.module';
-import {LibraryModule} from './library/library.module';
+// import {LibraryModule} from './library/library.module';
 import { AppStore, appStoreProviders, createAppStore } from './core/model/app.store';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { AppStore, appStoreProviders, createAppStore } from './core/model/app.st
     WidgetModule,
     LayoutModule,
     CoreModule,
-    LibraryModule,
+    // LibraryModule,
   ],
   providers: [
     { provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG },
