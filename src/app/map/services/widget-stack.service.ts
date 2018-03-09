@@ -27,7 +27,7 @@ export class WidgetStackService {
   /**
    * Enregistre un Portal (<ng-template>, widget avec directive *cdkPortal)
    * auprès de ce service.
-   * @param {} widget
+   * @param widget
    */
   managePortal(widget: Portal<any>) {
     console.log('managePortal()', widget);
@@ -36,8 +36,8 @@ export class WidgetStackService {
   /**
    *
    * @param {Portal} widget
-   * @param {BehaviorSubject<Portal<any>[]>} first
-   * @param {BehaviorSubject<Portal<any>[]>} second
+   * @param first
+   * @param second
    */
   private switch(widget: Portal<any>, first: BehaviorSubject<Portal<any>[]>, second: BehaviorSubject<Portal<any>[]>) {
     const firstStack: Portal<any>[] = first.getValue();

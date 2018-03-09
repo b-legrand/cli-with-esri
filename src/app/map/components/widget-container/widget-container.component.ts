@@ -10,7 +10,7 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {WidgetComponent} from '../../../widget/components';
+import {WidgetWindowComponent} from '../../../widget/components';
 import {EsriMapService} from '../../services/esri-map.service';
 import {WidgetStateManager} from '../../../widget/services/widget-state-manager.service';
 import {WidgetStackService} from '../../services/widget-stack.service';
@@ -46,8 +46,8 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
   /**
    * Liste des widgets contenu dans ce conteneur.
    */
-  @ContentChildren(WidgetComponent) widgets: QueryList<WidgetComponent>;
-  @ContentChildren(WidgetComponent, { descendants: true}) childWidgets: QueryList<WidgetComponent>;
+  @ContentChildren(WidgetWindowComponent) widgets: QueryList<WidgetWindowComponent>;
+  @ContentChildren(WidgetWindowComponent, { descendants: true}) childWidgets: QueryList<WidgetWindowComponent>;
 
   /**
    * Zone d'ancrage pour ce conteneur. ('left' ou 'right' ou vide)
