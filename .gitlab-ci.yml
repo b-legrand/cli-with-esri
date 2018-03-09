@@ -26,7 +26,7 @@ build-app:
     policy: push
   artifacts:
     paths:
-      - dist/
+      - dist/app/
 
 build-lib:
   stage: build
@@ -92,15 +92,15 @@ deploy:
     - echo "Deploy a review app"
     - mkdir -p /deployed/$CI_PROJECT_NAME
     - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
-    - cp -r dist/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
-    - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
-    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/documentation
+    - cp -r dist/lib/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app
+    - cp -r dist/app/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/lib
 
   environment:
     name: $CI_COMMIT_REF_NAME
     url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/index.html
   dependencies:
     - build-app
+    - build-lib
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
@@ -135,7 +135,7 @@ deploy_coverage:
   stage: deploy
   script:
     - echo "Déploiement de la couverture de test"
-    - npm run doc
+    - npm run jest:coverage
     - mkdir -p /deployed/$CI_PROJECT_NAME
     - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
     - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/coverage
