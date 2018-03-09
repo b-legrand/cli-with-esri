@@ -1,5 +1,5 @@
 import {inject, TestBed} from '@angular/core/testing';
-
+import 'core-js/es6/promise';
 import {EsriLoaderService} from './esri-loader.service';
 import {APP_CONFIG} from '../../core/model/app.config';
 
