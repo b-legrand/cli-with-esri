@@ -5,14 +5,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --hmr",
-    "build": "npm run build:app & npm run build:lib",
-    "build:app": "ng build --prod",
-    "build:lib": "ng-packagr -p package.json",
+    "build": "rimraf dist && npm run build:app & npm run build:lib",
+    "build:app": "rimraf dist/app && ng build --prod",
+    "build:lib": "rimraf dist/lib && ng-packagr -p package.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverage --coverageDirectory=coverage/",
     "lint": "ng lint",
-    "tslint": "tslint src/*.ts -t verbose -p src/tsconfig.app.json",
+    "tslint": "tslint src/*.ts -p src/tsconfig.app.json -t verbose -t json -o issues.json",
     "tslint-fix": "tslint --fix src/*.ts -t verbose -p src/tsconfig.app.json",
     "e2e": "ng e2e",
     "doc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json"
