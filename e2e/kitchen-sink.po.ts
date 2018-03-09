@@ -1,12 +1,12 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class KitchenSinkPage {
   navigateTo() {
-    return browser.get('/');
+    return browser.get('/kitchen-sink');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getPageText() {
+    return element(by.css('kitchen-sink-page h1')).getText();
   }
 
 }

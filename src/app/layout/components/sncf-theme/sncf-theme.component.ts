@@ -15,6 +15,7 @@ import {APP_CONFIG, AppConfig} from '../../../core/model/app.config';
   selector: 'sncf-theme',
   styleUrls: ['./sncf-theme.component.scss'],
   template: '',
+  /* tslint:disable:use-view-encapsulation*/ // c'est ce qu'on veut.
   encapsulation: ViewEncapsulation.None,
 })
 export class SncfThemeComponent implements OnInit {
@@ -27,8 +28,8 @@ export class SncfThemeComponent implements OnInit {
 
   ngOnInit() {
     // à l'ancienne :
-    const style = document.createElement('style');
-    style['data-sncf-theme'];
+    const style: HTMLStyleElement = document.createElement('style');
+    style.attributes['data-sncf-theme'] = true;
     style.type = 'text/css';
     style.innerHTML = this.customCss;
     document.head.appendChild(style);
@@ -50,7 +51,7 @@ export class SncfThemeComponent implements OnInit {
           80%, 90% {stroke: ${themeColor};}
       }`,
       // scrollbar
-      `.ui-progress-bar-x:hover,.ui-progress-bar-y:hover,{background: ${themeColor};}`,
+      `.ui-progress-bar-x:hover,.ui-progress-bar-y:hover{background: ${themeColor};}`,
       // titres / balises html par défaut.
       `h1,h2,h3,h4,h5,h6{color: ${themeColor};}`,
       `*:focus    {outline-color: ${themeColor};}`,

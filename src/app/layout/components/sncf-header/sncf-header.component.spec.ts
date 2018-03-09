@@ -1,14 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture } from '@angular/core/testing';
 
 import { SncfHeaderComponent } from './sncf-header.component';
+import { RouterModule } from '@angular/router';
+import {TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('SncfHeaderComponent', () => {
   let component: SncfHeaderComponent;
   let fixture: ComponentFixture<SncfHeaderComponent>;
 
   beforeEach(async(() => {
+    const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
     TestBed.configureTestingModule({
-      declarations: [ SncfHeaderComponent ]
+      imports: [ ],
+      declarations: [ SncfHeaderComponent ],
+      providers: [ ]
     })
     .compileComponents();
   }));
