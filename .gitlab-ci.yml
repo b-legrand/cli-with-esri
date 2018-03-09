@@ -1,41 +1,29 @@
 image: node:latest
 
 stages:
-  - setup
   - build
   - test
   - deploy
+
+before_script:
+  - npm install
 
 cache:
   untracked: true
   key: "$CI_BUILD_REF_NAME"
   paths:
     - node_modules/
-
-install:
-  stage: setup
-  script:
-    - npm install
-  cache:
-    untracked: true
-    key: "$CI_BUILD_REF_NAME"
-    paths:
-      - node_modules/
-  artifacts:
-    paths:
-      - node_modules/
+  policy: pull
 
 build-app:
   stage: build
   script:
     - npm run build
-  dependencies:
-    - install
   cache:
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
-    policy: pull
+    policy: push
   artifacts:
     paths:
       - dist/
@@ -44,8 +32,6 @@ build-lib:
   stage: build
   script:
     - npm run build:lib
-  dependencies:
-    - install
   cache:
     untracked: true
     key: "$CI_BUILD_REF_NAME"
