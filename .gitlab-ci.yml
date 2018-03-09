@@ -61,7 +61,7 @@ test:
   stage: test
   script:
     - echo "Tests unitaires"
-#   - npm run test:coverage
+    - npm run test:coverage
   allow_failure: true
   cache:
     untracked: true
@@ -78,7 +78,7 @@ e2e:
   stage: test
   script:
     - echo "Tests end-to-end"
-#    - npm run e2e
+    - npm run e2e
   allow_failure: true
   cache:
     untracked: true
