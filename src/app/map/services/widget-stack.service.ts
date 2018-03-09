@@ -35,7 +35,7 @@ export class WidgetStackService {
 
   /**
    *
-   * @param {Portal} widget
+   * @param widget
    * @param first
    * @param second
    */
