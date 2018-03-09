@@ -19,7 +19,7 @@ export class ExpandButtonComponent implements OnInit {
   /**
    * Doit correspondre à la négation de state.closed du widget.
    */
-  @Input() public active: boolean = false;
+  @Input() public active = false;
 
   @Output() public activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 

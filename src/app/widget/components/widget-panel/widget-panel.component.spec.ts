@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WidgetPanelComponent } from './widget-panel.component';
-import {DebugElement} from '@angular/core';
+import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import { APP_CONFIG } from '../../../core/model/app.config';
 
 describe('WidgetPanelComponent', () => {
   let component: WidgetPanelComponent;
@@ -11,7 +12,9 @@ describe('WidgetPanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WidgetPanelComponent ]
+      declarations: [ WidgetPanelComponent ],
+      providers: [ { provide: APP_CONFIG, useValue: {themeColor: 'black'} }],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -31,7 +34,8 @@ describe('WidgetPanelComponent', () => {
     expect(component).toBeTruthy();
     component.resizable = true;
     fixture.detectChanges();
-    debugElement.query(By.css('.widget-resize-button'));
+    const resizeButton = debugElement.query(By.css('.widget-resize-button'));
+    expect(resizeButton).toBeDefined();
   });
 
   it('should not have a resizable button when [resizable]="false"', () => {

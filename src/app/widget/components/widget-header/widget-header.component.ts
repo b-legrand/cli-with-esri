@@ -16,6 +16,7 @@ export class WidgetHeaderComponent {
   @Input() public state: WidgetState;
 
   @Output() public stateChange: EventEmitter<WidgetState> = new EventEmitter<WidgetState>();
+
   /**
    * Affiche ou non le bouton fermer.
    */

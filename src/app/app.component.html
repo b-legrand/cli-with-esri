@@ -4,77 +4,77 @@
           [mapViewProperties]="state.mapState.viewProps">
   <widget-container position="top-left"
                     [anchorZone]="'left'">
-    <widget key="widget-home"
+    <widget-window key="widget-home"
             [title]="'Home'"
-            icon="esri-icon-home"></widget>
-    <widget key="widget-navigation"
+            icon="esri-icon-home"></widget-window>
+    <widget-window key="widget-navigation"
             [title]="'Navigation'"
-            icon="esri-icon-north-navigation"></widget>
-    <widget key="widget-legend"
+            icon="esri-icon-north-navigation"></widget-window>
+    <widget-window key="widget-legend"
             [title]="'Légende'"
-            icon="esri-icon-handle-vertical"></widget>
-    <widget key="widget-layer-list"
+            icon="esri-icon-handle-vertical"></widget-window>
+    <widget-window key="widget-layer-list"
             [title]="'Toc'"
             icon="esri-icon-layer-list">
       Hello world
-    </widget>
-    <widget key="widget-basemap-gallery"
+    </widget-window>
+    <widget-window key="widget-basemap-gallery"
             [title]="'Basemap gallery'"
-            icon="esri-icon-basemap"></widget>
-    <widget key="widget-bookmarks"
+            icon="esri-icon-basemap"></widget-window>
+    <widget-window key="widget-bookmarks"
             [title]="'Bookmarks'"
             icon="fa fa-book">
       <div loremIpsum>
 
       </div>
-    </widget>
-    <widget key="widget-context"
+    </widget-window>
+    <widget-window key="widget-context"
             [title]="'Context'"
             icon="fa fa-cubes">
       Contenu du widget Contexte.
-    </widget>
+    </widget-window>
   </widget-container>
   <widget-container position="top-right"
                     [anchorZone]="'right'">
-    <widget key="widget-identify"
+    <widget-window key="widget-identify"
             [title]="'Infobulle'"
-            icon="fa fa-info-circle"></widget>
-    <widget key="widget-import"
+            icon="fa fa-info-circle"></widget-window>
+    <widget-window key="widget-import"
             [title]="'Import'"
-            icon="esri-icon-upload"></widget>
-    <widget key="widget-print"
+            icon="esri-icon-upload"></widget-window>
+    <widget-window key="widget-print"
             [title]="'Impression'"
-            icon="esri-icon-printer"></widget>
-    <widget key="widget-draw"
+            icon="esri-icon-printer"></widget-window>
+    <widget-window key="widget-draw"
             [title]="'Dessin'"
-            icon="fa fa-paint-brush"></widget>
-    <widget key="widget-locate"
+            icon="fa fa-paint-brush"></widget-window>
+    <widget-window key="widget-locate"
             [title]="'Localisation'"
             icon="esri-icon-locate">
-          Hello world.      
-    </widget>
-    <widget key="widget-geometry-search"
+          Hello world. tralala pouet
+    </widget-window>
+    <widget-window key="widget-geometry-search"
             [title]="'Recherche par géométrie'"
-            icon="esri-icon-search"></widget>
-    <widget key="widget-filter"
+            icon="esri-icon-search"></widget-window>
+    <widget-window key="widget-filter"
             [title]="'Filtre'"
             icon="fa fa-filter">
       Filtrage      
-    </widget>
-    <widget key="widget-query"
+    </widget-window>
+    <widget-window key="widget-query"
             [title]="'Requêtage'"
             icon="esri-icon-search">
-          <h4>Requètage</h4></widget>
-    <widget key="widget-more"
+          <h4>Requètage</h4></widget-window>
+    <widget-window key="widget-more"
             [title]="'Autre widgets.'"
-            icon="esri-icon-plus"></widget>
+            icon="esri-icon-plus"></widget-window>
   </widget-container>
   <widget-container #freeZone
                     position="bottom-left">
-    <widget key="widget-result-panel"
+    <widget-window key="widget-result-panel"
             [title]="'Tableau de résultats'"
             icon="esri-icon-table"
-            position="bottom-left"></widget>
+            position="bottom-left"></widget-window>
   </widget-container>
 </esri-map>
 <router-outlet></router-outlet>

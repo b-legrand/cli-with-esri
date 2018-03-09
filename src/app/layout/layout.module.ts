@@ -20,6 +20,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { SncfThemeComponent } from './components/sncf-theme/sncf-theme.component';
 import { LoremIpsumDirective } from './directives/lorem-ipsum.directive';
 import { MarkdownContentDirective } from './directives/markdown-content.directive';
+import {MenuModule} from 'primeng/menu';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MarkdownContentDirective } from './directives/markdown-content.directiv
     SidebarModule,
     ScrollPanelModule,
     ProgressBarModule,
+    MenuModule,
   ],
 })
 export class LayoutModule { }

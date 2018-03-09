@@ -74,19 +74,34 @@ describe('WidgetHeaderComponent', () => {
     return debugElement.nativeElement.querySelectorAll('button');
   };
 
-  it('doit afficher une icone "maximiser" si le widget est ancré ', () => {
+  it('doit afficher les libellés "Réduire" et "Détacher" si le widget est déplié et flottant', () => {
     const state = {
       anchored: false,
       closed: false,
-      folded: true,
+      folded: false,
     };
 
-    // vérifie qu'il n'y a qu'un bouton dans la barre de titre
     const buttons = getButtonsForState(state);
 
     expect(buttons.length).toBe(3);
     expect(buttons[0].title).toBe('Réduire');
     expect(buttons[1].title).toBe('Ancrer');
+    expect(buttons[2].title).toBe('Fermer');
+
+  });
+
+  it('doit afficher les libellés "Agrandir" et "Détacher" si le widget est plié et ancré ', () => {
+    const state = {
+      anchored: true,
+      closed: true,
+      folded: true,
+    };
+
+    const buttons = getButtonsForState(state);
+
+    expect(buttons.length).toBe(3);
+    expect(buttons[0].title).toBe('Agrandir');
+    expect(buttons[1].title).toBe('Détacher');
     expect(buttons[2].title).toBe('Fermer');
 
   });

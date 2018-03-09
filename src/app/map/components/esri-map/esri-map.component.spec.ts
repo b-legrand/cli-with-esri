@@ -5,6 +5,8 @@ import { MapModule } from '../../map.module';
 import { EsriMapService } from '../../services/esri-map.service';
 import { EsriLoaderService } from '../../services/esri-loader.service';
 import { WidgetModule } from '../../../widget/widget.module';
+import { ProgressSpinnerModule } from 'primeng/primeng';
+import { APP_CONFIG } from '../../../core/model/app.config';
 
 describe('EsriMapComponent', () => {
   let component: EsriMapComponent;
@@ -13,9 +15,13 @@ describe('EsriMapComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [EsriMapComponent],
-      providers: [EsriMapService, EsriLoaderService],
-    })
-      .compileComponents();
+      imports: [ProgressSpinnerModule],
+      providers: [
+        EsriMapService,
+        EsriLoaderService,
+        { APP_CONFIG, useValue: { apiVersion: "4.6" } }
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { Injectable, ElementRef, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { EsriLoaderService } from './esri-loader.service';
 
 /**

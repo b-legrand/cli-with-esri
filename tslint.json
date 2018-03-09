@@ -1,6 +1,9 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier",
+    "tslint-sonarts",
+    "tslint-angular"
   ],
   "rules": {
     "arrow-return-shorthand": true,
@@ -76,6 +79,7 @@
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
+    "ordered-imports": false,
     "one-line": [
       true,
       "check-open-brace",
@@ -120,13 +124,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "",
       "kebab-case"
     ],
     "no-output-on-prefix": true,

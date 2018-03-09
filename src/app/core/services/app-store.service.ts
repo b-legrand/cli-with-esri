@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AppState} from '../model/app.state';
+import { AppState } from '../model/app.state';
 
 export const APP_STORE_KEY = 'socle-state';
 
