@@ -8,7 +8,7 @@
     "build": "rimraf dist && npm run build:app & npm run build:lib",
     "build:app": "rimraf dist/app && ng build --prod",
     "build:lib": "rimraf dist/lib && ng-packagr -p package.json",
-    "test": "jest",
+    "test": "ng test",
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverage --coverageDirectory=coverage/",
     "lint": "ng lint",
