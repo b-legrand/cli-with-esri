@@ -10,7 +10,7 @@ import {
   QueryList
 } from '@angular/core';
 import { EsriMapService } from '../../services/esri-map.service';
-import { WidgetComponent } from '../../../widget/components';
+import { WidgetWindowComponent } from '../../../widget/components';
 
 /**
  * Composant map simplifié bas/niveau :
@@ -40,7 +40,7 @@ export class EsriMapComponent implements OnInit {
   /**
    * Liste des widgets contenus dans cette map.
    */
-  @ContentChild(WidgetComponent) public child: QueryList<WidgetComponent>;
+  @ContentChild(WidgetWindowComponent) public child: QueryList<WidgetWindowComponent>;
 
   @Input() public mapProperties: __esri.MapProperties;
   @Input() public webMapProperties: __esri.WebMapProperties;

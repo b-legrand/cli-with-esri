@@ -7,7 +7,7 @@ import { ResizableModule } from 'angular-resizable-element';
 
 import { EsriWidgetDirective } from './directives/esri-widget.directive';
 import { SocleWidgetDirective } from './directives/socle-widget.directive';
-import { WidgetComponent, WidgetHeaderComponent, WidgetPanelComponent, ExpandButtonComponent } from './components';
+import { WidgetWindowComponent, WidgetHeaderComponent, WidgetPanelComponent, ExpandButtonComponent } from './components';
 import { WidgetStateManager } from './services/widget-state-manager.service';
 import { CoreModule } from '../core/core.module';
 import { TooltipModule } from 'primeng/tooltip';
@@ -28,12 +28,12 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     SocleWidgetDirective,
     EsriWidgetDirective,
     WidgetHeaderComponent,
-    WidgetComponent,
+    WidgetWindowComponent,
     WidgetPanelComponent,
     ExpandButtonComponent,
   ],
   exports: [
-    WidgetComponent,
+    WidgetWindowComponent,
     SocleWidgetDirective,
     EsriWidgetDirective,
     ExpandButtonComponent,
@@ -42,7 +42,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     WidgetStateManager,
   ],
   entryComponents: [
-    WidgetComponent,
+    WidgetWindowComponent,
   ]
 })
 export class WidgetModule { }

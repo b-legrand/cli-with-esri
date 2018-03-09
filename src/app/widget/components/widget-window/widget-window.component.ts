@@ -20,10 +20,10 @@ import { TemplatePortal } from '@angular/cdk/portal';
  */
 @Component({
   selector: 'widget-window',
-  templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.scss'],
+  templateUrl: './widget-window.component.html',
+  styleUrls: ['./widget-window.component.scss'],
 })
-export class WidgetComponent implements OnInit, OnChanges {
+export class WidgetWindowComponent implements OnInit, OnChanges {
 
   /**
    * Id technique.
@@ -40,14 +40,21 @@ export class WidgetComponent implements OnInit, OnChanges {
   @Input() public config: WidgetConfig;
 
   /**
-   * Titre.
+   * Titre de la fenètre.
    */
   @Input() public title: string;
 
   /**
    * Si le widget a une icone de lancement attaché.
+   *
+   * Doit contenir une classe d'icone css (`esri-icon-*` ou `fa fa-*`)
    */
   @Input() public icon: string;
+
+  /**
+   * Si le widget a une icone de lancement attaché.
+   */
+  @Input() public iconLabel: string;
 
   /**
    * Position 'esri'
@@ -86,11 +93,9 @@ export class WidgetComponent implements OnInit, OnChanges {
    * Portail (template virtuel)
    *
    */
-  @ViewChild('widget') public widgetPortal: TemplatePortal<WidgetComponent>;
+  @ViewChild('widget') public widgetPortal: TemplatePortal<WidgetWindowComponent>;
 
-  constructor(private stateManager: WidgetStateManager) {
-    // this.state = initialWidgetState();
-  }
+  constructor(private stateManager: WidgetStateManager) { }
 
   ngOnInit() {
     // todo injecter la config depuis un service de stockage;
@@ -156,7 +161,7 @@ export class WidgetComponent implements OnInit, OnChanges {
   /**
    * Remontée de l'activation depuis le bouton extends.
    */
-  handleActiveChange(event: Boolean) {
+  handleActiveChange(event: boolean) {
     this.state.closed = !event;
   }
 
