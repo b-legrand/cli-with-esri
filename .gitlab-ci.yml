@@ -18,7 +18,7 @@ cache:
 build-app:
   stage: build
   script:
-    - npm run build
+    - npm run build:app
   cache:
     key: "$CI_BUILD_REF_NAME"
     paths:
@@ -91,6 +91,7 @@ deploy:
   stage: deploy
   script:
     - echo "Deploy a review app"
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
     - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
     - cp -r dist/lib/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app
     - cp -r dist/app/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/lib
