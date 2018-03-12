@@ -6,6 +6,9 @@
     "module": "commonjs",
     "target": "es5",
     "types": [
+      "protractor",
+      "selenium-webdriver",
+      "cucumber",
       "jasmine",
       "jasminewd2",
       "node"
