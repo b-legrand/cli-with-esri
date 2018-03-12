@@ -67,7 +67,7 @@ test:
   image: frparrffgitlab.corp.capgemini.com:4567/infrastructure/dockerfiles/socle-npm-chrome
   script:
     - echo "Tests unitaires"
-    - npm run ng test --watch=false --single-run --code-coverage --browsers=Chromium_CI
+    - npm run ng test -- --watch=false --single-run --code-coverage --browsers=Chromium_CI
   allow_failure: true
   cache:
     untracked: true
