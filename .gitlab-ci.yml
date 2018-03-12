@@ -20,7 +20,7 @@ build-app:
   script:
     - apt-get update
     - apt-get -y install zip
-    - npm run build:app --base-href=/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app/
+    - npm run build:app -- --base-href=/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app/
     - cd dist/app/
     - zip -r ../$CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war *
   cache:
