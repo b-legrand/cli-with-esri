@@ -16,6 +16,7 @@
     "lint": "ng lint",
     "tslint": "tslint src/*.ts -p src/tsconfig.app.json -t verbose -t json -o issues.json",
     "tslint:fix": "tslint --fix src/**/*.ts -t verbose -p src/tsconfig.app.json",
+    "tslint:html": "ts-node ./tslintReporter.ts",
     "browser-sync": "npm run build:app && browser-sync start --server --ss ./dist/app/",
     "e2e": "ng e2e",
     "e2e:gitlab": "ng test --capabilities=Chrome_CI",
@@ -23,7 +24,8 @@
     "e2e:report": "node cucumberReport.js",
     "webdriver:update": "webdriver-manager update",
     "doc": "compodoc -p src/tsconfig.app.json",
-    "doc:serve": "compodoc -p src/tsconfig.app.json -s"
+    "doc:serve": "compodoc -p src/tsconfig.app.json -s",
+    "precommit": "lint-staged"
   },
   "private": true,
   "dependencies": {
@@ -90,6 +92,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lint-staged": "^7.0.0",
     "ng-packagr": "^2.1.0",
     "prettier": "^1.11.1",
     "protractor": "^5.1.2",
@@ -98,6 +101,7 @@
     "tslint": "~5.9.1",
     "tslint-angular": "^1.1.1",
     "tslint-config-prettier": "^1.9.0",
+    "tslint-html-report": "^1.0.7",
     "tslint-sonarts": "^1.6.0",
     "typescript": "~2.7.0",
     "webdriver-manager": "^12.0.6"
@@ -120,5 +124,20 @@
     "lib": {
       "entryFile": "public_api.ts"
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.ts": [
+      "prettier --parser typescript --write",
+      "tslint --fix",
+      "git add"
+    ],
+    "*.html": [
+      "html-beautify --wrap-attributes=force-aligned --wrap-line-length=120 --end-with-new-line",
+      "git add"
+    ]
   }
 }
