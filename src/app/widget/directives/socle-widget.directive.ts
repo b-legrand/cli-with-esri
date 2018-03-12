@@ -1,11 +1,11 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
 /**
  *
  */
 @Directive({
-  selector: "[socleWidget]"
+  selector: '[socleWidget]'
 })
 export class SocleWidgetDirective {
-    
+
 }

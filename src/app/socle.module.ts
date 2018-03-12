@@ -1,21 +1,15 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ApplicationRef, NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import {
-  removeNgStyles,
-  createNewHosts,
-  createInputTransfer
-} from "@angularclass/hmr";
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { MapModule } from "./map/map.module";
-import { WidgetModule } from "./widget/widget.module";
-import { LayoutModule } from "./layout/layout.module";
-import { CoreModule } from "./core/core.module";
-import { LibraryModule } from "./library/library.module";
+import { MapModule } from './map/map.module';
+import { WidgetModule } from './widget/widget.module';
+import { LayoutModule } from './layout/layout.module';
+import { CoreModule } from './core/core.module';
 
-import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./core/model/app.config";
-import { routes } from "./routes";
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from './core/model/app.config';
+import { APP_ROUTES } from './routes';
 
 /**
  * Module d'export des modules du socle.
@@ -24,14 +18,14 @@ import { routes } from "./routes";
 @NgModule({
   declarations: [],
   imports: [
-    // BrowserModule,
-    // BrowserAnimationsModule,
-    // RouterModule.forRoot(routes),
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(APP_ROUTES),
+    // modules internes
     MapModule,
     WidgetModule,
     LayoutModule,
     CoreModule,
-    LibraryModule
   ],
   providers: [{ provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG }]
 })

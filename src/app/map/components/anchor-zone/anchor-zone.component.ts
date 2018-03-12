@@ -13,12 +13,22 @@ export class AnchorZoneComponent implements OnInit {
 
   @ViewChild('vc', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
+  /**
+   * Position ('left' ou 'right')
+   */
   @Input() public position: string;
 
+  /**
+   * Largeur de la zone.
+   * à terme, à rendre responsive avec le BreakpointObserver d'@angular/cdk
+   */
   @Input() public width = 320;
 
   public scrollEnabled = false;
 
+  /**
+   * Styles scss appliquées sur la zone, ici car on enlève left or right dynamiquement selon la position
+   */
   public zoneStyle: any = {
     left: '62px',
     right: '62px',

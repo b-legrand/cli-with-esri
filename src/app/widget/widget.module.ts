@@ -13,6 +13,9 @@ import { CoreModule } from '../core/core.module';
 import { TooltipModule } from 'primeng/tooltip';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 
+/**
+ * Module widget, contient les composants nécéssaire à la composition d'un widget 'IHM'.
+ */
 @NgModule({
   imports: [
     CommonModule,

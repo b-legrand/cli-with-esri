@@ -32,7 +32,15 @@ export interface WidgetState {
    * Taille du widget.
    */
   size?: {
+
+    /**
+     * Largeur en pixels.
+     */
     width: number;
+
+    /**
+     * Hauteur en pixels.
+     */
     height: number;
   };
 
@@ -60,12 +68,12 @@ export function initialWidgetState(): WidgetState {
     anchored: true,
     position: {
       // la moitié de l'écran moins la moitié du widget - la marge = la position.
-      left: window.innerWidth/2 - width/2,
-      top: window.innerHeight/2 - height/2,
+      left: window.innerWidth / 2 - width / 2,
+      top: window.innerHeight / 2 - height / 2,
     },
     size: {
-      width: 320,
-      height: 240
+      width,
+      height
     },
     // attention, primeng à partir de 3000
     zIndex: 100,

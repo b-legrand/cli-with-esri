@@ -1,11 +1,11 @@
-import { NgModuleRef, ApplicationRef } from '@angular/core';
+import { NgModuleRef } from '@angular/core';
 import { hmrModule } from '@angularclass/hmr';
 
 /**
  * Initialise le module HMR pour faire du rechargement de composant à chaud (sans recharger toute la page)
  *
- * @param module : module node.js injecté par webpack.
- * @param bootstrap : résultat du bootstrapModule d'angular
+ * @param module : module injecté par webpack.
+ * @param bootstrap : {() => Promise<NgModuleRef<any>>} résultat du bootstrapModule d'angular
  */
 export const hmrBootstrap = (module: any, bootstrap: () => Promise<NgModuleRef<any>>) => {
   let ngModule: NgModuleRef<any>;

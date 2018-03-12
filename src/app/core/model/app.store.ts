@@ -1,6 +1,6 @@
-import { AppState, initialState } from "./app.state";
+import { AppState, initialState } from './app.state';
 import { InjectionToken } from '@angular/core';
-import { Store, createStore, Action, compose, StoreEnhancer } from "redux";
+import { Store, createStore, Action, compose, StoreEnhancer } from 'redux';
 
 // active l'extension redux-devtools si elle est présente
 const devtools: StoreEnhancer<AppState> =

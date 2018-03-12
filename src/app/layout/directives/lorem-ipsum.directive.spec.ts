@@ -6,7 +6,7 @@ import {EsriMapService} from '../../map/services/esri-map.service';
 import EsriLoaderService from '../../map/services/esri-loader.service';
 import {APP_CONFIG, DEFAULT_APP_CONFIG} from '../../core/model/app.config';
 
-// composant de test
+// composant de test de la directive
 @Component({
   template: `<div loremIpsum [words]="wordCount"></div>`
 })
@@ -33,7 +33,6 @@ describe('LoremIpsumDirective', () => {
   it('doit avoir du contenu généré dans innerHTML', () => {
     fixture.detectChanges();
     const divElement: HTMLElement = debugElement.nativeElement;
-    console.log(divElement.innerHTML);
     expect(divElement.innerHTML).toBeDefined();
     expect(divElement.innerHTML).toContain('Lorem ipsum');
   });
@@ -42,7 +41,6 @@ describe('LoremIpsumDirective', () => {
     component.wordCount = 10;
     fixture.detectChanges();
     const divElement: HTMLElement = debugElement.nativeElement;
-    console.log(divElement.innerText);
     expect(divElement.innerHTML).toBeDefined();
     expect(divElement.innerHTML).toContain('Lorem ipsum');
     expect(divElement.innerHTML.split(' ').length).toBeLessThan(11);

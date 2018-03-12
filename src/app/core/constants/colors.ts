@@ -1,6 +1,6 @@
-/** 
+/**
  * Couleurs de la charte graphique SNCF.
- * 
+ *
  * Pour usage au sein des styles js angular.
  */
 export enum Colors {
@@ -28,4 +28,4 @@ export enum Colors {
   WARM_GRAY_7 = 'rgb(152, 143, 134)',
   WARM_GRAY_9 = 'rgb(130, 120, 111)',
   WARM_GRAY_11 = 'rgb(103, 92, 83)',
-};
+}

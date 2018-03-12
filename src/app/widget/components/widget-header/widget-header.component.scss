@@ -26,8 +26,11 @@ $gutterSize: 2px;
   line-height: 1em;
   padding: 0;
   background: transparent;
+  text-shadow: none;
+  transition: text-shadow .3s ease-in-out;
   &:focus, &:hover {
     text-shadow: 0 0 2px white;
+    outline: none;
   }
 }
 .widget-title,

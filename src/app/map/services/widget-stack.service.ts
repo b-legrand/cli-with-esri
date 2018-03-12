@@ -12,12 +12,12 @@ export class WidgetStackService {
   /**
    * Liste des widgets ancrés au sein d'un widget-container.
    */
-  public anchoredWidgets: BehaviorSubject<Portal<any>[]>;
+  public anchoredWidgets: BehaviorSubject<Array<Portal<any>>>;
 
   /**
    * Liste des widgets à l'état flottant.
    */
-  public floatingWidgets: BehaviorSubject<Portal<any>[]>;
+  public floatingWidgets: BehaviorSubject<Array<Portal<any>>>;
 
   constructor() {
     this.floatingWidgets = new BehaviorSubject([]);
@@ -39,12 +39,12 @@ export class WidgetStackService {
    * @param first
    * @param second
    */
-  private switch(widget: Portal<any>, first: BehaviorSubject<Portal<any>[]>, second: BehaviorSubject<Portal<any>[]>) {
-    const firstStack: Portal<any>[] = first.getValue();
+  private switch(widget: Portal<any>, first: BehaviorSubject<Array<Portal<any>>>, second: BehaviorSubject<Array<Portal<any>>>) {
+    const firstStack: Array<Portal<any>> = first.getValue();
     // ajoute au premier tableau
    // firstStack.push(firstStack.indexOf(widget), 1);
 
-    let secondStack: Portal<any>[] = second.getValue();
+    let secondStack: Array<Portal<any>> = second.getValue();
     // enlève du deuxième
     secondStack = secondStack.splice(secondStack.indexOf(widget), 1);
     // renvoie aux abonnés.

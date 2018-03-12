@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ApplicationRef, NgModule} from '@angular/core';
+import { ApplicationRef, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
@@ -10,12 +10,16 @@ import { WidgetModule } from './widget/widget.module';
 import { LayoutModule } from './layout/layout.module';
 
 import { APP_CONFIG, DEFAULT_APP_CONFIG } from './core/model/app.config';
-import { routes } from './routes';
-import {AppStoreService} from './core/services/app-store.service';
-import {CoreModule} from './core/core.module';
+import { APP_ROUTES } from './routes';
+import { AppStoreService } from './core/services/app-store.service';
+import { CoreModule } from './core/core.module';
 // import {LibraryModule} from './library/library.module';
 import { AppStore, appStoreProviders, createAppStore } from './core/model/app.store';
 
+/**
+ * Module principal d'une application soclejs.
+ *
+ */
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,8 @@ import { AppStore, appStoreProviders, createAppStore } from './core/model/app.st
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(APP_ROUTES),
+    // modules common-socle
     MapModule,
     WidgetModule,
     LayoutModule,
@@ -67,7 +72,7 @@ export class AppModule {
    * Hook avant reload, on sauvegarde l'état.
    * @param store
    */
-  hmrOnDestroy(store) {
+  public hmrOnDestroy(store) {
     console.log('[HMR] onDestroy : store', store);
 
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
@@ -87,15 +92,11 @@ export class AppModule {
    * Restaure les composants.
    * @param store
    */
-  hmrAfterDestroy(store) {
+  public hmrAfterDestroy(store) {
     // display new elements
     store.disposeOldHosts();
     delete store.disposeOldHosts;
     // anything you need done the component is removed
   }
 
-  // les autres fonctions (non documentées de l'api)
-  hmrOnStatus(status) { }
-  hmrOnCheck() { }
-  hmrOnDecline() { }
 }

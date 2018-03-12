@@ -119,7 +119,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
       this.state = initialWidgetState();
     }
     if (changes.key && !changes.key.currentValue) {
-      console.error("NO KEY SET");
+      console.error('NO KEY SET');
       this.key = v4();
     }
   }
