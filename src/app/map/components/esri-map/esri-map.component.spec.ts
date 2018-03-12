@@ -19,7 +19,7 @@ describe('EsriMapComponent', () => {
       providers: [
         EsriMapService,
         EsriLoaderService,
-        { provider: APP_CONFIG, useValue: { apiVersion: "4.6" } }
+        { provide: APP_CONFIG, useValue: { apiVersion: '4.6' } }
       ],
     }).compileComponents();
   }));

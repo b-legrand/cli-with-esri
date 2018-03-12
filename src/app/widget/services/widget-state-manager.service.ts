@@ -8,7 +8,7 @@ import {AppStoreService} from '../../core/services/app-store.service';
  * Service de gestion de l'état des widgets.
  *
  * Permets d'effectuer des traitement de masse sur l'état des widgets de type ihm/socle.
- * 
+ *
  * - fermer tout d'un coup
  * - gérer les listes / ancrables/
  */
@@ -21,8 +21,7 @@ export class WidgetStateManager {
       this.widgets = appStore.getState().widgets;
     }
 
-    addWidgetState(id:string, widgetState: WidgetState) {
-      console.log(`add widget ${id} ${JSON.stringify(widgetState)}`);
+    addWidgetState(id: string, widgetState: WidgetState) {
       this.widgets[id] = widgetState;
     }
 
@@ -41,10 +40,10 @@ export class WidgetStateManager {
     }
 
     getMaxZIndex(): number {
-      const widgets = 
-      Object
-        .keys(this.widgets)
-        .map(key => this.widgets[key])
+      const widgets =
+        Object
+          .keys(this.widgets)
+          .map(key => this.widgets[key]);
       return Math.max(...widgets.map(widget => widget.zIndex));
     }
 

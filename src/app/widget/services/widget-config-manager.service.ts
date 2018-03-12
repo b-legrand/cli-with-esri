@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 /**
  * TODO, l'idée c'est d'injecter aux widgets leur configuration

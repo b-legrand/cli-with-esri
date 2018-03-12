@@ -1,8 +1,6 @@
-import {Component, Inject} from '@angular/core';
-import {APP_CONFIG, AppConfig} from './core/model/app.config';
-import WidgetState from './widget/model/widget-state';
-import {AppState} from './core/model/app.state';
-import { AppStoreService } from './core/services/app-store.service';
+import { Component, Inject } from '@angular/core';
+import { APP_CONFIG, AppConfig } from './core/model/app.config';
+import { AppState } from './core/model/app.state';
 import { Store } from 'redux';
 import { AppStore } from './core/model/app.store';
 

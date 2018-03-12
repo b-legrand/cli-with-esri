@@ -3,6 +3,7 @@
      [ngStyle]="containerStyle"
      #containerBounds
 >
+  <ng-content></ng-content>
   <ng-template *ngFor="let widgetPortal of stacks.floatingWidgets | async"
                [cdkPortalOutlet]="widgetPortal"></ng-template>
 </div>

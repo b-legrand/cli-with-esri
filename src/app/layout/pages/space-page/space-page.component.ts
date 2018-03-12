@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
+/**
+ * Page d'un espace, prends la largeur de l'écran + paramètres de route.
+ */
 @Component({
   selector: 'app-space-page',
   templateUrl: './space-page.component.html',
@@ -8,6 +11,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SpacePageComponent implements OnInit {
 
+  /**
+   * Identifiant d'un espace, à relier à SIGADM.
+   */
   public spaceId: string;
 
   constructor(private route: ActivatedRoute) { }

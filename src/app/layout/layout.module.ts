@@ -20,8 +20,12 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { SncfThemeComponent } from './components/sncf-theme/sncf-theme.component';
 import { LoremIpsumDirective } from './directives/lorem-ipsum.directive';
 import { MarkdownContentDirective } from './directives/markdown-content.directive';
-import {MenuModule} from 'primeng/menu';
+import { MenuModule } from 'primeng/menu';
+import { MermaidDirective } from './directives/mermaid.directive';
 
+/**
+ * Module offrant des composants de disposition générique aux applications.
+ */
 @NgModule({
   declarations: [
     HomePageComponent,
@@ -35,6 +39,7 @@ import {MenuModule} from 'primeng/menu';
     SncfThemeComponent,
     LoremIpsumDirective,
     MarkdownContentDirective,
+    MermaidDirective,
   ],
   exports: [
     SncfHeaderComponent,

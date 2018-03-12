@@ -15,14 +15,15 @@
     "test:coverage": "ng test --watch=false --single-run --code-coverage",
     "lint": "ng lint",
     "tslint": "tslint src/*.ts -p src/tsconfig.app.json -t verbose -t json -o issues.json",
-    "tslint-fix": "tslint --fix src/*.ts -t verbose -p src/tsconfig.app.json",
+    "tslint:fix": "tslint --fix src/**/*.ts -t verbose -p src/tsconfig.app.json",
     "browser-sync": "npm run build:app && browser-sync start --server --ss ./dist/app/",
     "e2e": "ng e2e",
     "e2e:gitlab": "ng test --capabilities=Chrome_CI",
     "e2e:debug": "node --inspect-brk ./node_modules/bin/protractor ./protractor.conf.js",
     "e2e:report": "node cucumberReport.js",
     "webdriver:update": "webdriver-manager update",
-    "doc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json"
+    "doc": "compodoc -p src/tsconfig.app.json",
+    "doc:serve": "compodoc -p src/tsconfig.app.json -s"
   },
   "private": true,
   "dependencies": {

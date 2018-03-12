@@ -28,12 +28,13 @@ const zoneWidth = 320;
 /**
  * Le widget container est chargé de :
  * Recevoir en enfant les widgets déclarés par les applications :
- * ```
+ *
+ * @example
  * <widget-container>
- *     <widget-x></widget-x>
- *     <widget-y></widget-y>
+ *             <widget-x></widget-x>
+ *             <widget-y></widget-y>
  * </widget-container>
- * ```
+ *
  */
 @Component({
   selector: 'widget-container',

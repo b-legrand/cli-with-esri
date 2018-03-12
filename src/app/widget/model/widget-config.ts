@@ -1,25 +1,52 @@
 /**
- * Configuration en dur d'un widget.
+ * Configuration en dur d'une fenètre de widget.
  *
  * Chaque config json de widget devrait hériter de celle là. ou s'ajouter dans data.
  */
 export interface WidgetConfig {
-  // uuid du widget
+
+  /**
+   * Identifiant unique / uuid du widget
+   */
   uuid: string;
-  // nom technique lisible du widget
+
+  /**
+   * nom technique lisible du widget
+   */
   name: string;
-  // peut il être fermé ?
+
+  /*
+   * peut il être fermé ?
+   */
   closable?: boolean;
-  // peut il être bougé ?
+
+  /**
+   * peut il être déplacé ?
+   */
   movable?: boolean;
-  // peut il être plié ?
+
+  /**
+   * peut il être plié ?
+   */
   foldable?: boolean;
-  // peut il être attaché ?
+
+  /**
+   * Peut il être ancré ?
+   */
   anchorable?: boolean;
-  // peut il être redimensionné ?
+
+  /**
+   * peut il être redimensionné ?
+   */
   resizable?: boolean;
-  // son contenu est il scrollable
+
+  /**
+   * son contenu est il scrollable
+   */
   scrollable?: boolean;
-  // configuration fonctionnelle du widget 
+
+  /**
+   * configuration fonctionnelle du widget
+   */
   data?: any;
 }

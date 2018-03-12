@@ -1,28 +1,39 @@
-<sncf-header [title]="title"></sncf-header>
+<sncf-header [title]="title" [logo]="true"></sncf-header>
 <sncf-theme></sncf-theme>
 <esri-map [mapProperties]="{basemap: 'gray'}"
           [mapViewProperties]="state.mapState.viewProps">
-  <widget-container position="top-left"
-                    [anchorZone]="'left'">
+          <!-- todo plus tard widget-navigation
+                <navigation-toolbar>
+                  <esri-button title="Accueil" icon="esri-icon-home"></esri-button>
+                  <esri-button title="Nord" icon="esri-icon-north-navigation"><esri-button>
+                  <esri-button title="Compass" icon="esri-icon-compass"><esri-button>
+                  <esri-button title="Compass" icon="esri-icon-north-navigation"><esri-button>
     <widget-window key="widget-home"
-            [title]="'Home'"
+            [title]="'TOC'"
             icon="esri-icon-home"></widget-window>
     <widget-window key="widget-navigation"
             [title]="'Navigation'"
             icon="esri-icon-north-navigation"></widget-window>
+                </navigation-toolbar>
+          -->
+  <widget-container position="top-left"
+                    [anchorZone]="'left'">
+    <widget-window key="widget-layer-list"
+            [title]="'Liste des couches'"
+            icon="esri-icon-layer-list">
+    </widget-window>
     <widget-window key="widget-legend"
             [title]="'Légende'"
-            icon="esri-icon-handle-vertical"></widget-window>
-    <widget-window key="widget-layer-list"
-            [title]="'Toc'"
-            icon="esri-icon-layer-list">
-      Hello world
-    </widget-window>
+            icon="esri-icon-handle-vertical">
+            Contenu widget légende
+        </widget-window>
     <widget-window key="widget-basemap-gallery"
-            [title]="'Basemap gallery'"
-            icon="esri-icon-basemap"></widget-window>
+            [title]="'Fond de plan'"
+            icon="esri-icon-basemap">
+        <div loremIpsum></div>
+        </widget-window>
     <widget-window key="widget-bookmarks"
-            [title]="'Bookmarks'"
+            [title]="'Géosignets'"
             icon="fa fa-book">
       <div loremIpsum>
 
@@ -63,7 +74,7 @@
     </widget-window>
     <widget-window key="widget-query"
             [title]="'Requêtage'"
-            icon="esri-icon-search">
+            icon="esri-icon-review">
           <h4>Requètage</h4></widget-window>
     <widget-window key="widget-more"
             [title]="'Autre widgets.'"
