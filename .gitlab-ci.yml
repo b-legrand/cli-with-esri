@@ -18,6 +18,7 @@ cache:
 build-app:
   stage: build
   script:
+    - apt-get update
     - apt-get install zip
     - npm run build:app --base-href=/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app/
     - zip -r $CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war dist/app
