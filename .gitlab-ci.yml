@@ -21,7 +21,8 @@ build-app:
     - apt-get update
     - apt-get -y install zip
     - npm run build:app --base-href=/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app/
-    - zip -r $CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war dist/app
+    - cd dist/app/
+    - zip -r ../$CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war *
   cache:
     key: "$CI_BUILD_REF_NAME"
     paths:
@@ -30,7 +31,7 @@ build-app:
   artifacts:
     paths:
       - dist/app/
-      - $CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war
+      - dist/$CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war
 
 build-lib:
   stage: build
