@@ -61,7 +61,8 @@ test:
   stage: test
   script:
     - echo "Tests unitaires"
-    - npm run ng test --watch=false --single-run --code-coverage
+    - npm run jest:coverage
+    #- npm run ng test --watch=false --single-run --code-coverage
   allow_failure: true
   cache:
     untracked: true
