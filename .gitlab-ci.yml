@@ -100,7 +100,7 @@ deploy-app:
     - echo "Deploy a review app"
     - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app
     - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app
-    - cp -r dist/app/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app
+    - cp -r dist/app/** /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app
 
   environment:
     name: $CI_COMMIT_REF_SLUG-app
@@ -116,7 +116,7 @@ deploy-coverage:
     - echo "Deploy test coverage"
     - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/cov
     - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/cov
- #   - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/cov
+ #   - cp -r coverage/**/* /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/cov
 #   - cp test-report.html /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/cov/test-report.html
   environment:
     name: $CI_COMMIT_REF_SLUG-cov
@@ -132,7 +132,7 @@ deploy-doc:
     - echo "Deploy documentation"
     - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/doc
     - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/doc
-    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/doc
+    - cp -r documentation/** /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/doc
 
   environment:
     name: $CI_COMMIT_REF_SLUG-doc
