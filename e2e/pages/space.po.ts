@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class SpacePageObject {
 
   navigateTo() {
     return browser.get('/space/1');
