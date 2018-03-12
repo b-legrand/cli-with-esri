@@ -18,7 +18,9 @@ cache:
 build-app:
   stage: build
   script:
-    - npm run build:app
+    - apt-get install zip
+    - npm run build:app --base-href=/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app/
+    - zip -r $CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war dist/app
   cache:
     key: "$CI_BUILD_REF_NAME"
     paths:
@@ -27,6 +29,7 @@ build-app:
   artifacts:
     paths:
       - dist/app/
+      - $CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war
 
 build-lib:
   stage: build
@@ -62,7 +65,7 @@ test:
   image: frparrffgitlab.corp.capgemini.com:4567/infrastructure/dockerfiles/socle-npm-chrome
   script:
     - echo "Tests unitaires"
-    - npm run ng test --watch=false --single-run --code-coverage
+    - npm run ng test --watch=false --single-run --code-coverage --browsers=Chromium_CI
   allow_failure: true
   cache:
     untracked: true
@@ -93,13 +96,13 @@ deploy-app:
   stage: deploy
   script:
     - echo "Deploy a review app"
-    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
-    - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
-    - cp -r dist/app/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app
+    - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app
+    - cp -r dist/app/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app
 
   environment:
     name: $CI_COMMIT_REF_NAME-app
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/app/
   dependencies:
     - build-app
 
@@ -109,13 +112,13 @@ deploy-coverage:
   stage: deploy
   script:
     - echo "Deploy test coverage"
-    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
-    - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME-cov
- #   - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME-cov
-#   - cp test-report.html /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME-cov/test-report.html
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/cov
+    - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/cov
+ #   - cp -r coverage/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/cov
+#   - cp test-report.html /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/cov/test-report.html
   environment:
     name: $CI_COMMIT_REF_NAME-cov
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME-cov/
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/cov/
   dependencies:
     - test
 
@@ -124,13 +127,13 @@ deploy-coverage:
 deploy-doc:
   stage: deploy
   script:
-    - echo "Deploy test coverage"
-    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME
-    - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME-doc
-    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME-doc
+    - echo "Deploy documentation"
+    - rm -rf /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/doc
+    - mkdir -p /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/doc
+    - cp -r documentation/ /deployed/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/doc
 
   environment:
     name: $CI_COMMIT_REF_NAME-doc
-    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME-doc/
+    url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/doc/
   dependencies:
     - doc
