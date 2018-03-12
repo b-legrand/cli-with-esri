@@ -59,10 +59,10 @@ doc:
 
 test:
   stage: test
+  image: frparrffgitlab.corp.capgemini.com:4567/infrastructure/dockerfiles/socle-npm-chrome
   script:
     - echo "Tests unitaires"
-    - npm run jest:coverage
-    #- npm run ng test --watch=false --single-run --code-coverage
+    - npm run ng test --watch=false --single-run --code-coverage
   allow_failure: true
   cache:
     untracked: true
@@ -77,6 +77,7 @@ test:
 
 e2e:
   stage: test
+  image: frparrffgitlab.corp.capgemini.com:4567/infrastructure/dockerfiles/socle-npm-chrome
   script:
     - echo "Tests end-to-end"
     - npm run e2e
