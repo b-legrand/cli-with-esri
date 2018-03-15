@@ -10,7 +10,7 @@ import 'rxjs/add/observable/fromPromise';
  * Encapsule esri-loader dans un service angular.
  *
  * @see https://github.com/Esri/esri-loader
-*
+ *
  * Permets de charger les ressources de l'api esri en lazy loading
  * puis de fournir des modules dojo selon les besoin ensuite.
  *
