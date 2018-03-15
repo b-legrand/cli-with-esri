@@ -1,20 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SncfThemeComponent } from './sncf-theme.component';
-import {APP_CONFIG} from '../../../core/model/app.config';
+import { APP_CONFIG } from '../../../core/model/app.config';
 
 describe('SncfThemeComponent', () => {
   const testConfig = { themeColor: 'black' };
   let component: SncfThemeComponent;
   let fixture: ComponentFixture<SncfThemeComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SncfThemeComponent ],
-      providers: [{ provide: APP_CONFIG, useValue: testConfig }]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [SncfThemeComponent],
+        providers: [{ provide: APP_CONFIG, useValue: testConfig }]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SncfThemeComponent);
@@ -27,7 +28,8 @@ describe('SncfThemeComponent', () => {
   });
 
   it('can generate the css with the provided theme color', () => {
-    expect(component.customCss).toMatch(/color :black/);
+    expect(component.customCss).toMatch(/color\: black/);
+    expect(component.customCss).toMatch(/stroke\: black/);
   });
 
   it('a généré une balise `<style>`', () => {
@@ -38,15 +40,23 @@ describe('SncfThemeComponent', () => {
     let styles: CSSStyleSheet;
 
     beforeEach(() => {
-      styles = document.styleSheets[0] as CSSStyleSheet;
+      const styleElement: HTMLStyleElement = document.querySelector(
+        'style[data-sncf-theme]'
+      );
+      styles = styleElement.sheet as CSSStyleSheet;
     });
 
     // vérifie qu'une règle existe pour le css selector
-    const ruleExistAndContains = (selector: string, attribute?: string, value?: string) => {
+    const ruleExistAndContains = (
+      selector: string,
+      attribute?: string,
+      value?: string
+    ) => {
       const predicate = (rule: CSSStyleRule) => rule.selectorText === selector;
       let foundRule: CSSStyleRule;
-      for (const iRule: CSSStyleRule of styles.cssRules) {
-        if (iRule.selectorText === selector) {
+      for (let i = 0; i < styles.cssRules.length; i++) {
+        console.dir(styles.cssRules[i]);
+        if (styles.cssRules[i].cssText === selector) {
           expect(foundRule).toBeDefined();
           if (attribute) {
             expect(foundRule.style[attribute]).toBeDefined();
@@ -56,6 +66,8 @@ describe('SncfThemeComponent', () => {
           }
           break;
         }
+      }
+      if (!foundRule) {
       }
     };
 
