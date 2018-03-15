@@ -1,5 +1,5 @@
 import { Component, Inject, ViewEncapsulation, OnInit } from '@angular/core';
-import {APP_CONFIG, AppConfig} from '../../../core/model/app.config';
+import { APP_CONFIG, AppConfig } from '../../../core/model/app.config';
 
 /**
  * Composant servant à injecter du style global
@@ -19,7 +19,6 @@ import {APP_CONFIG, AppConfig} from '../../../core/model/app.config';
   encapsulation: ViewEncapsulation.None,
 })
 export class SncfThemeComponent implements OnInit {
-
   public customCss: string;
 
   constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
@@ -29,7 +28,8 @@ export class SncfThemeComponent implements OnInit {
   ngOnInit() {
     // à l'ancienne :
     const style: HTMLStyleElement = document.createElement('style');
-    style.attributes['data-sncf-theme'] = true;
+    // mets un attribut data-sncf-theme sur le <style> pour le récupérer lors des TU.
+    style.dataset.sncfTheme = 'true';
     style.type = 'text/css';
     style.innerHTML = this.customCss;
     document.head.appendChild(style);
@@ -58,5 +58,4 @@ export class SncfThemeComponent implements OnInit {
       `.sncf-color, .couleur-theme{color: ${themeColor};}`,
     ].join('');
   }
-
 }
