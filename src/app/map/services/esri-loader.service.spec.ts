@@ -2,8 +2,10 @@ import {inject, TestBed} from '@angular/core/testing';
 import 'core-js/es6/promise';
 import {EsriLoaderService} from './esri-loader.service';
 import {APP_CONFIG} from '../../core/model/app.config';
-
-describe('MapService', () => {
+if (window['jest']) {
+  jest.setTimeout(30000);
+}
+describe('EsriLoaderService', () => {
   const testAppConfig = {
     appName: 'test',
     apiVersion: '4.6',
@@ -21,46 +23,51 @@ describe('MapService', () => {
     });
   });
 
-  it('Un appel à loadModules doit ajouter le <script> principal dans le body', done => {
+  afterEach(() => {
+    // Nettoie les scripts ajoutés par esri-loader entre chaque test
+    const scriptElements = document.querySelectorAll('script[src^="https://js.arcgis.com]');
+    scriptElements.forEach((value) => {
+      document.head.removeChild(value);
+    });
+  });
+
+  it(`Un appel à loadScript doit charger l'api arcgis via une balise script dans le body`, done => {
     const esriLoaderService: EsriLoaderService = new EsriLoaderService(testAppConfig);
-    esriLoaderService.loadModules(['dojo'])
+    esriLoaderService.loadScript()
         .then(
           element => {
+            // le require() de dojo est présent dans global
+            expect(window['require']).toBeDefined();
+            // esri-loader nous renvoie la balise script.
             expect(element).toBeDefined();
+            expect(element.src).toBe(`https://js.arcgis.com/${testAppConfig.apiVersion}/`);
+            expect(element.dataset.esriLoader).toBe('loaded');
             // le point d'entrée principal de l'api existe dans la page
             const scriptElements: NodeListOf<HTMLScriptElement> = document.querySelectorAll('script[data-esri-loader]');
             expect(scriptElements.length).toBeGreaterThan(0);
-            expect(esriLoaderService.isLoaded()).toBe(true);
             done();
           }
         ).catch(reason => {
-        console.error(reason);
         done.fail(reason);
       });
   });
 
-  it('Un appel à loadModules doit ajouter des <scripts> dans le body', done => {
+  it('Un appel à loadModules([\'esri/Map\']) doit charger la classe Map d\'esri', done => {
     inject([EsriLoaderService], (service: EsriLoaderService) => {
       service.loadModules(['esri/Map'])
         .then(
           ([Map]: [__esri.MapConstructor]) => {
-            console.info(Map);
-            expect(Map).toBeDefined();
+            // on peut construire un objet  'esri/Map':
+            expect(Map.constructor).toBeDefined();
             // le point d'entrée principal de l'api existe dans la page
             const scriptElements = document.querySelectorAll('script[data-esri-loader]');
             expect(scriptElements.length).toBeGreaterThan(0);
-            expect(service.isLoaded()).toBe(true);
             done();
           }
         ).catch(reason => {
-          console.error(reason);
           done.fail(reason);
         });
     })();
   });
-
-  it('doit permettre ', inject([EsriLoaderService], (service: EsriLoaderService) => {
-    expect(service).toBeTruthy();
-  }));
 
 });
