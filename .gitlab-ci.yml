@@ -1,9 +1,11 @@
 image: node:latest
 
 stages:
+  - install
   - build
   - test
   - deploy
+  - package
 
 before_script:
   - npm install
@@ -15,23 +17,29 @@ cache:
     - node_modules/
   policy: pull
 
-build-app:
-  stage: build
+# Etape 1 on pousse le cache pour les lancements suivants
+setup:
+  stage: install
   script:
-    - apt-get update
-    - apt-get -y install zip
-    - npm run build:app -- --base-href=/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app/
-    - cd dist/app/
-    - zip -r ../$CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war *
+    - npm ls
   cache:
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
     policy: push
+
+build-app:
+  stage: build
+  script:
+    - npm run build:app -- --base-href=/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/app/
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
   artifacts:
     paths:
       - dist/app/
-      - dist/$CI_PROJECT_NAME_$CI_COMMIT_REF_SLUG.war
 
 build-lib:
   stage: build
@@ -139,3 +147,20 @@ deploy-doc:
     url: http://frparrffgitlab.corp.capgemini.com:9080/$CI_PROJECT_NAME/$CI_COMMIT_REF_SLUG/doc/
   dependencies:
     - doc
+
+war:
+  stage: package
+  script:
+    - apt-get update
+    - apt-get -y install zip
+    - npm run build:app -- --base-href=/ergonomie-soclejs
+    - cd dist/app/
+    - zip -r ../ergonomie-soclejs.war *
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+    policy: pull
+  artifacts:
+    paths:
+      - dist/ergonomie-soclejs.war
