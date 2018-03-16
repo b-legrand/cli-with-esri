@@ -19,9 +19,9 @@ export const LOREM_IPSUM = [
 export class LoremIpsumDirective implements OnChanges {
 
   /**
-   * Nombre de mots maximum.
+   * Nombre de mots maximum peut être passé en paramètre.
    */
-  @Input() words: number;
+  @Input() loremIpsum: number;
 
   constructor(private el: ElementRef) { }
 
@@ -31,12 +31,12 @@ export class LoremIpsumDirective implements OnChanges {
 
   private generate() {
     let output = '';
-    if (!this.words ) {
+    if (!this.loremIpsum ) {
       return LOREM_IPSUM;
     }
+    // si un param est fourni, on redécoupe et on limite.
     const latinWords = LOREM_IPSUM.split(' ');
-    for (let i = 0; i < this.words - 1; i++) {
-      // const randIndex = Math.floor(Math.random() * latinWords.length);
+    for (let i = 0; i < this.loremIpsum - 1; i++) {
       output += latinWords[i] + ' ';
     }
     return output;
