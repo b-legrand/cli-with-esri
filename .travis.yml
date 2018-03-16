@@ -41,10 +41,10 @@ build:
   - ng build --prod
 
 test:
-  - ng test --watch=false --single-run=true --code-coverage --browsers=Chrome_CI
+  - ng test --watch=false --single-run --no-progress --code-coverage --browser=Chrome_CI
 
 e2e:
-  - ng e2e
+  - ng e2e --no-progress
 
 deploy:
   provider: pages
