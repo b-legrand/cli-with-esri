@@ -35,12 +35,16 @@ cache:
 stages:
   - build
   - test
+  - e2e
 
 build:
   - ng build --prod
 
 test:
-  - ng test --watch=false --single-run --code-coverage --browsers=Chrome_CI
+  - ng test --watch=false --single-run=true --code-coverage --browsers=Chrome_CI
+
+e2e:
+  - ng e2e
 
 deploy:
   provider: pages
