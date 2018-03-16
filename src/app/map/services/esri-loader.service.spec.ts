@@ -25,10 +25,12 @@ describe('EsriLoaderService', () => {
 
   afterEach(() => {
     // Nettoie les scripts ajoutés par esri-loader entre chaque test
-    const scriptElements = document.querySelectorAll('script[src^="https://js.arcgis.com]');
-    scriptElements.forEach((value) => {
-      document.head.removeChild(value);
-    });
+    const scriptElements = Array.from(
+        document.querySelectorAll('script[src^="https://js.arcgis.com]')
+    );
+    for (const script of scriptElements) {
+      document.head.removeChild(script);
+    }
   });
 
   it(`Un appel à loadScript doit charger l'api arcgis via une balise script dans le body`, done => {
