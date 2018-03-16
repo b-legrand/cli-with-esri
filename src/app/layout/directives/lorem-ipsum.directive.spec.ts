@@ -8,7 +8,7 @@ import {APP_CONFIG, DEFAULT_APP_CONFIG} from '../../core/model/app.config';
 
 // composant de test de la directive
 @Component({
-  template: `<div loremIpsum [words]="wordCount"></div>`
+  template: `<div [loremIpsum]="wordCount"></div>`
 })
 class TestLoremIpsumComponent {
   @Input() public wordCount: number;
