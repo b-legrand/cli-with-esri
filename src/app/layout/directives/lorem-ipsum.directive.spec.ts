@@ -1,10 +1,7 @@
 import { LoremIpsumDirective } from './lorem-ipsum.directive';
 import { Component, DebugElement, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {EsriMapService} from '../../map/services/esri-map.service';
-import EsriLoaderService from '../../map/services/esri-loader.service';
-import {APP_CONFIG, DEFAULT_APP_CONFIG} from '../../core/model/app.config';
+import { By } from '@angular/platform-browser';
 
 // composant de test de la directive
 @Component({
@@ -44,6 +41,15 @@ describe('LoremIpsumDirective', () => {
     expect(divElement.innerHTML).toBeDefined();
     expect(divElement.innerHTML).toContain('Lorem ipsum');
     expect(divElement.innerHTML.split(' ').length).toBeLessThan(11);
+  });
+
+  it('un nombre de mots supérieur au texte de base génère du texte aléatoire.', () => {
+    component.wordCount = 300;
+    fixture.detectChanges();
+    const divElement: HTMLElement = debugElement.nativeElement;
+    expect(divElement.innerHTML).toBeDefined();
+    expect(divElement.innerHTML).toContain('Lorem ipsum');
+    expect(divElement.innerHTML.split(' ').length).toBeGreaterThan(280);
   });
 
 });
