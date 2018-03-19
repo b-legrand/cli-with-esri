@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AngularDraggableModule } from 'angular2-draggable';
 import { ResizableModule } from 'angular-resizable-element';
 
@@ -11,7 +10,7 @@ import { WidgetWindowComponent, WidgetHeaderComponent, WidgetPanelComponent, Exp
 import { WidgetStateManager } from './services/widget-state-manager.service';
 import { CoreModule } from '../core/core.module';
 import { TooltipModule } from 'primeng/tooltip';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 /**
  * Module widget, contient les composants nécéssaire à la composition d'un widget 'IHM'.
@@ -19,11 +18,10 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 @NgModule({
   imports: [
     CommonModule,
-    AngularFontAwesomeModule,
     AngularDraggableModule,
     ResizableModule,
     TooltipModule,
-    ScrollPanelModule,
+    PerfectScrollbarModule,
     //
     CoreModule,
   ],
@@ -43,6 +41,13 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
   ],
   providers: [
     WidgetStateManager,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: {
+        suppressScrollY: true,
+        wheelPropagation: true,
+      }
+    }
   ],
   entryComponents: [
     WidgetWindowComponent,

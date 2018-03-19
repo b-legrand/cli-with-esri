@@ -50,12 +50,19 @@ export class SncfThemeComponent implements OnInit {
           66% {stroke: ${themeColor};}
           80%, 90% {stroke: ${themeColor};}
       }`,
-      // scrollbar
+      // progress en ligne
       `.ui-progress-bar-x:hover,.ui-progress-bar-y:hover{background: ${themeColor};}`,
       // titres / balises html par défaut.
       `h1,h2,h3,h4,h5,h6{color: ${themeColor};}`,
       `*:focus    {outline-color: ${themeColor};}`,
       `.sncf-color, .couleur-theme{color: ${themeColor};}`,
+      `.ui-scrollpanel-bar:hover{background-color:  ${themeColor}}`,
+      // perfect-scrollbar
+      `.ps__rail-y:focus>.ps__thumb-y,.ps__thumb-y,`,
+      `.ps__rail-y:hover>.ps__thumb-y,`,
+      `.ps__rail-x:focus>.ps__thumb-x,.ps__thumb-x,`,
+      `.ps__rail-x:hover>.ps__thumb-x{
+          background-color: ${themeColor}; }`
     ].join('');
   }
 }
