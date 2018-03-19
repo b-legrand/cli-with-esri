@@ -11,7 +11,6 @@ class TestLoremIpsumComponent {
   @Input() public wordCount: number;
 }
 
-
 describe('LoremIpsumDirective', () => {
 
   let component: TestLoremIpsumComponent;
