@@ -72,11 +72,14 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
   @Input() public zIndex: number;
 
   /**
-   * Limites pour le drag and drop
+   * Limites pour le drag and drop, injectées par le widget-container.
    */
-  @Input() public boundaries: any;
+  @Input() public boundaries: ElementRef;
 
-  // flag pour ne pas appliquer la directive esriWidget d'ajout a la map tant que la map esri n'est pas la.
+  /**
+   * flag pour ne pas appliquer la directive esriWidget d'ajout à la map
+   * tant que la map esri n'est pas la.
+   */
   public contentLoaded = false;
 
   /**
@@ -107,6 +110,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
       anchorable: true,
       closable: true,
       foldable: true,
+      scrollable: true,
     };
     this.state = this.stateManager.getState(this.key) || initialWidgetState();
   }

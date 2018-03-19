@@ -1,8 +1,6 @@
 import {
   AfterContentInit,
   Component,
-  ComponentFactory,
-  ComponentFactoryResolver,
   ContentChildren, ElementRef,
   Input,
   OnInit,
@@ -40,7 +38,7 @@ const zoneWidth = 320;
   selector: 'widget-container',
   templateUrl: './widget-container.component.html',
   styleUrls: ['./widget-container.component.scss'],
-  providers: [WidgetStackService] // permets au sevice d'être injecté uniquement pour ce conteneur et sa zone d'ancrage
+  providers: [WidgetStackService] // permets au service d'être injecté uniquement pour ce conteneur et sa zone d'ancrage
 })
 export class WidgetContainerComponent implements OnInit, AfterContentInit {
 
@@ -48,6 +46,10 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
    * Liste des widgets contenu dans ce conteneur.
    */
   @ContentChildren(WidgetWindowComponent) widgets: QueryList<WidgetWindowComponent>;
+
+  /**
+   * Liste des widgets enfants. ( de 2nd niveau & plus )
+   */
   @ContentChildren(WidgetWindowComponent, { descendants: true}) childWidgets: QueryList<WidgetWindowComponent>;
 
   /**
@@ -65,6 +67,9 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
    */
   @ViewChild('anchorView', {read: ViewContainerRef}) anchorZoneRef: ViewContainerRef;
 
+  /**
+   * Référence vers le cadre pour limiter le drag & drop
+   */
   @ViewChild('containerBounds', {read: ElementRef}) bounds: ElementRef;
 
   /**
@@ -97,14 +102,8 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
       widget => {
       // ajout des widgets enfants au service global de gestion d'état
       this.widgetStateManager.addWidgetState(widget.key, widget.state);
-      // todo répartir les widgets selon leur état.
-      if (widget.state.anchored) {
-        // this.freeZoneRef.detach(this.freeZoneRef.indexOf());
-        // this.anchorZoneRef.insert(widget);
-      } else {
-        // this.freeZoneRef.insert();
-      }
       // injecte les contraintes de ce conteneur
+        widget.boundaries = this.bounds.nativeElement;
     });
     // les widgets ayant un [icon] de définit sont ajouté à la map esri.
     this.widgets

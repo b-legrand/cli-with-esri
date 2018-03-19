@@ -1,19 +1,27 @@
+
 .widget-panel {
   position: relative;
   overflow: hidden;
-  height: calc(100% - 20px);// hauteur de l'entête
+  height: calc(100% - 30px);// hauteur de l'entête + 2 * padding :
+  padding: 5px;
 }
 
 .widget-content {
   user-select: none;
-  margin: 2px;
+  font-size: 14px;
 }
 
 .widget-resize-button {
   width: 16px;
   height: 16px;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 5px;
+  right: 5px;
   cursor: nwse-resize;
+}
+
+// surcharges perfect-scrollbar
+.ps__rail-y,
+.ps__rail-x{
+  background-color: transparent;
 }

@@ -1,12 +1,11 @@
 <div class="widget-panel">
-  <div class="widget-content">
-    <p-scrollPanel *ngIf="scrollable; else noscroll;" [style]="{width: '100%'}">
-      <ng-content></ng-content>
-    </p-scrollPanel>
-    <ng-template #noscroll>
+    <perfect-scrollbar [scrollIndicators]
+                       [config]="scrollConfig"
+                       style="max-width: 600px; max-height: 400px;">
+      <div class="widget-content">
         <ng-content></ng-content>
-    </ng-template>
-  </div>
+      </div>
+    </perfect-scrollbar>
   <div class="widget-resize-button"
        *ngIf="resizable"
        #resizeHandle
@@ -14,7 +13,7 @@
        [resizeEdges]="{bottom: true, right: true}"
   >
     <svg:svg width="16px" height="16px"
-             viewBox="0 0 6 6">
+             viewBox="0 0 5 5">
       <svg:g *ngFor="let y of [0, 2, 4]">
         <svg:rect *ngFor="let x of [0, 2, 4]"
                   width="1"
