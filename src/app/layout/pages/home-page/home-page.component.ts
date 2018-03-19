@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 /**
- * Composant routé home page, lié à /
- *
+ * Composant routé home page.
+ * Page d'atterrissage, par exemple si l'utilisateur n'a pas les droits pour la carte.
  * Doit pouvoir service à remonter des alertes / warning.
  */
 @Component({
