@@ -1,6 +1,6 @@
 <div class="socle-widget"
      #widget
-     (click)="incrementZIndex()"
+     (mousedown)="incrementZIndex()"
      [ngDraggable]="config.resizable && !state.anchored"
        [handle]="widgetHandle"
        [preventDefaultEvent]="true"
@@ -32,6 +32,7 @@
     <div class="widget-handle" #widgetHandle>{{ title }}</div>
   </widget-header>
   <widget-panel *ngIf="!state.folded"
+                [size]="state.size"
                 [scrollable]="config.scrollable"
                 [resizable]="config.resizable && !state.anchored">
     <ng-content></ng-content>
