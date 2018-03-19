@@ -39,6 +39,13 @@ export class LoremIpsumDirective implements OnChanges {
     for (let i = 0; i < this.loremIpsum - 1; i++) {
       output += latinWords[i] + ' ';
     }
+    // on prends des mots au pif ensuite
+    if (this.loremIpsum > latinWords.length) {
+      for (let i = latinWords.length; i < this.loremIpsum - 1; i++) {
+        const randIndex = Math.floor(Math.random() * latinWords.length);
+        output += latinWords[randIndex] + ' ';
+      }
+    }
     return output;
   }
 }
