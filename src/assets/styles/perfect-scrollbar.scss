@@ -1,5 +1,8 @@
 /*
- * Container style
+ * theme custom de perfect-scrollbar.
+ * Les couleurs ont été enlevées et sont gérées par le composant sncf-theme.
+ * Attention, le thème n'est actif que quand on utilise la directive `[perfectScrollbar]`
+ * et pas le composant `<perfect-scrollbar>` qui embarque ses css.
  */
 .ps {
   overflow: hidden !important;
@@ -69,7 +72,7 @@
   -webkit-transition: background-color .2s linear, height .2s ease-in-out;
   height: 6px;
   /* there must be 'bottom' for ps__thumb-x */
-  bottom: 2px;
+  bottom: 0;
   /* please don't change 'position' */
   position: absolute;
 }
@@ -81,7 +84,7 @@
   -webkit-transition: background-color .2s linear, width .2s ease-in-out;
   width: 6px;
   /* there must be 'right' for ps__thumb-y */
-  right: 2px;
+  right: 0;
   /* please don't change 'position' */
   position: absolute;
 }
