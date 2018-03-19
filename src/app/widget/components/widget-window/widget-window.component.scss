@@ -1,12 +1,13 @@
 $widgetPadding: 2px;
 $headerHeight: 20px;
 
-.socle-widget{
+.widget-window{
     /** même ombre qu'esri.*/
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     background: white;
     /** on remets les evenement pointer (désactivés par widget-container) */
     pointer-events: all;
+  // transition: height .2s ease-in-out;
 }
 .widget-content{
     min-height: 42px;
@@ -28,13 +29,13 @@ $headerHeight: 20px;
     height: 20px;
 }
 .widget-state-unfolded{
-    
+    height: auto;
 }
 .widget-state-closed{
-    
+
 }
 .widget-state-opened{
-    
+
 }
 .widget-state-anchored{
    position: relative;
