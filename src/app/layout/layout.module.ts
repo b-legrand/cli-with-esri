@@ -20,6 +20,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { SncfThemeComponent } from './components/sncf-theme/sncf-theme.component';
 import { LoremIpsumDirective } from './directives/lorem-ipsum.directive';
 import { MenuModule } from 'primeng/menu';
+import { MapPageComponent } from './components/map-page/map-page.component';
 
 /**
  * Module offrant des composants de disposition générique aux applications.
@@ -36,6 +37,7 @@ import { MenuModule } from 'primeng/menu';
     AboutPageComponent,
     SncfThemeComponent,
     LoremIpsumDirective,
+    MapPageComponent,
   ],
   exports: [
     SncfHeaderComponent,
