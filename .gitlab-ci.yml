@@ -21,7 +21,7 @@ cache:
 setup:
   stage: install
   script:
-    - npm ls
+    - npm install
   cache:
     key: "$CI_BUILD_REF_NAME"
     paths:
