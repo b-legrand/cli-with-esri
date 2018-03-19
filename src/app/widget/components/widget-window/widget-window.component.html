@@ -1,4 +1,4 @@
-<div class="socle-widget"
+<div class="widget-window"
      #widget
      (mousedown)="incrementZIndex()"
      [ngDraggable]="config.resizable && !state.anchored"
@@ -12,7 +12,7 @@
        (resizeEnd)="handleResizeEnd($event)"
      [style.display]="state.closed ? 'none' : 'block'"
      [style.width]="!state.anchored ? state.size.width + 'px' : '320px'"
-     [style.height]="!state.anchored ? state.size.height + 'px': 'auto'"
+     [style.height]="!state.anchored ? (state.folded?20:state.size.height) + 'px': 'auto'"
      [ngClass]="{
         'widget-state-closed': state.closed
       , 'widget-state-open': !state.closed
