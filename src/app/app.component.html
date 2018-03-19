@@ -21,11 +21,12 @@
     <widget-window key="widget-layer-list"
             [title]="'Liste des couches'"
             icon="esri-icon-layer-list">
+      <div [loremIpsum]="420" [style.width.px]="420"></div>
     </widget-window>
     <widget-window key="widget-legend"
             [title]="'Légende'"
             icon="esri-icon-handle-vertical">
-            Contenu widget légende
+            <div loremIpsum></div>
         </widget-window>
     <widget-window key="widget-basemap-gallery"
             [title]="'Fond de plan'"
@@ -35,57 +36,70 @@
     <widget-window key="widget-bookmarks"
             [title]="'Géosignets'"
             icon="fa fa-book">
-      <div loremIpsum>
-
-      </div>
+      <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-context"
             [title]="'Context'"
             icon="fa fa-cubes">
-      Contenu du widget Contexte.
+      <div loremIpsum></div>
     </widget-window>
   </widget-container>
   <widget-container position="top-right"
                     [anchorZone]="'right'">
     <widget-window key="widget-identify"
             [title]="'Infobulle'"
-            icon="fa fa-info-circle"></widget-window>
+            icon="fa fa-info-circle">
+      <div loremIpsum></div>
+    </widget-window>
     <widget-window key="widget-import"
             [title]="'Import'"
-            icon="esri-icon-upload"></widget-window>
+            icon="esri-icon-upload">
+      <div loremIpsum></div>
+    </widget-window>
     <widget-window key="widget-print"
             [title]="'Impression'"
-            icon="esri-icon-printer"></widget-window>
+            icon="esri-icon-printer">
+      <div loremIpsum></div>
+    </widget-window>
     <widget-window key="widget-draw"
             [title]="'Dessin'"
-            icon="fa fa-paint-brush"></widget-window>
+            icon="fa fa-paint-brush">
+      <div loremIpsum></div>
+    </widget-window>
     <widget-window key="widget-locate"
             [title]="'Localisation'"
             icon="esri-icon-locate">
-          Hello world. tralala pouet
+      <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-geometry-search"
             [title]="'Recherche par géométrie'"
-            icon="esri-icon-search"></widget-window>
+            icon="esri-icon-search">
+      <div loremIpsum></div>
+    </widget-window>
     <widget-window key="widget-filter"
             [title]="'Filtre'"
             icon="fa fa-filter">
-      Filtrage
+      <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-query"
             [title]="'Requêtage'"
             icon="esri-icon-review">
-          <h4>Requètage</h4></widget-window>
+      <div loremIpsum></div>
+    </widget-window>
     <widget-window key="widget-more"
             [title]="'Autre widgets.'"
-            icon="esri-icon-plus"></widget-window>
+            icon="esri-icon-plus">
+      <div loremIpsum></div>
+    </widget-window>
   </widget-container>
   <widget-container #freeZone
                     position="bottom-left">
     <widget-window key="widget-result-panel"
             [title]="'Tableau de résultats'"
             icon="esri-icon-table"
-            position="bottom-left"></widget-window>
+            position="bottom-left">
+      <div loremIpsum></div>
+    </widget-window>
   </widget-container>
 </esri-map>
 <router-outlet></router-outlet>
