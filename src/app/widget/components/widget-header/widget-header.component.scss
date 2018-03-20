@@ -10,7 +10,7 @@ $gutterSize: 2px;
   flex: 2;
   align-self: flex-start;
   font-size: 16px;
-  line-height: 21px;
+  line-height: $headerHeight;
   padding-left: 4px;
   overflow: hidden;
 }
@@ -20,9 +20,8 @@ $gutterSize: 2px;
   color: white;
   text-decoration: none;
   cursor: pointer;
-  width: $headerHeight - $gutterSize;
-  height: $headerHeight - $gutterSize;
-  margin-left: $gutterSize;
+  width: $headerHeight;
+  height: $headerHeight;
   border: 0;
   line-height: 1em;
   padding: 0;
@@ -42,13 +41,12 @@ $gutterSize: 2px;
 .widget-move-handle {
   cursor: move;
 }
-// y' apas d'icone double chevron vertical dans les icones esri
+// il n'y a pas d'icone double chevron vertical dans les icones esri
 // du coup on prend une horizontale et on la tourne :
 .esri-icon-expand{
   &:before{
     transform-origin: center center;
     display: block;
-    transition: transform .2s ease-in-out;
   }
   &.up-arrow:before{
     transform: rotate(90deg);
