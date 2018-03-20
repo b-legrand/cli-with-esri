@@ -153,7 +153,7 @@ war:
   script:
     - apt-get update
     - apt-get -y install zip
-    - npm run build:app -- --base-href=/ergonomie-soclejs
+    - npm run build:app -- --base-href=/ergonomie-soclejs/
     - cd dist/app/
     - zip -r ../ergonomie-soclejs.war *
   cache:
