@@ -33,6 +33,6 @@ export interface AppConfig {
 export const DEFAULT_APP_CONFIG: AppConfig = {
   appName: 'Maquette widget-container',
   apiVersion: '4.6',
-  themeColor: SncfColor.VertPomme as string,
+  themeColor: SncfColor.BleuPrimaire as string,
 };
 
