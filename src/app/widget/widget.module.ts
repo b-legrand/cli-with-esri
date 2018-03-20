@@ -5,7 +5,6 @@ import { AngularDraggableModule } from 'angular2-draggable';
 import { ResizableModule } from 'angular-resizable-element';
 
 import { EsriWidgetDirective } from './directives/esri-widget.directive';
-import { SocleWidgetDirective } from './directives/socle-widget.directive';
 import { WidgetWindowComponent, WidgetHeaderComponent, WidgetPanelComponent, ExpandButtonComponent } from './components';
 import { WidgetStateManager } from './services/widget-state-manager.service';
 import { CoreModule } from '../core/core.module';
@@ -26,7 +25,6 @@ import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule } from 'ngx-perfect-sc
     CoreModule,
   ],
   declarations: [
-    SocleWidgetDirective,
     EsriWidgetDirective,
     WidgetHeaderComponent,
     WidgetWindowComponent,
@@ -35,7 +33,6 @@ import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule } from 'ngx-perfect-sc
   ],
   exports: [
     WidgetWindowComponent,
-    SocleWidgetDirective,
     EsriWidgetDirective,
     ExpandButtonComponent,
   ],
