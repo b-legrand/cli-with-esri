@@ -26,7 +26,7 @@ $gutterSize: 2px;
   line-height: 1em;
   padding: 0;
   background: transparent;
-  transition: text-shadow .3s ease-in-out;
+  transition: text-shadow .1s ease-in-out;
   &:focus, &:hover {
     text-shadow: 0 0 3px white;
     outline: none;
@@ -49,7 +49,7 @@ $gutterSize: 2px;
     display: block;
   }
   &.up-arrow:before{
-    transform: rotate(90deg);
+    transform: rotate(90deg) translateY(-2px);
   }
   &.down-arrow:before{
     transform: rotate(-90deg);
