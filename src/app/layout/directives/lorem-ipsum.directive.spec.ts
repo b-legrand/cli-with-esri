@@ -16,6 +16,7 @@ describe('LoremIpsumDirective', () => {
   let component: TestLoremIpsumComponent;
   let fixture: ComponentFixture<TestLoremIpsumComponent>;
   let debugElement: DebugElement;
+  const expectedText = 'Lorem ipsum';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,7 +31,7 @@ describe('LoremIpsumDirective', () => {
     fixture.detectChanges();
     const divElement: HTMLElement = debugElement.nativeElement;
     expect(divElement.innerHTML).toBeDefined();
-    expect(divElement.innerHTML).toContain('Lorem ipsum');
+    expect(divElement.innerHTML).toContain(expectedText);
   });
 
   it('le nombre de mots peut être passé en entrée.', () => {
@@ -38,7 +39,7 @@ describe('LoremIpsumDirective', () => {
     fixture.detectChanges();
     const divElement: HTMLElement = debugElement.nativeElement;
     expect(divElement.innerHTML).toBeDefined();
-    expect(divElement.innerHTML).toContain('Lorem ipsum');
+    expect(divElement.innerHTML).toContain(expectedText);
     expect(divElement.innerHTML.split(' ').length).toBeLessThan(11);
   });
 
@@ -47,7 +48,7 @@ describe('LoremIpsumDirective', () => {
     fixture.detectChanges();
     const divElement: HTMLElement = debugElement.nativeElement;
     expect(divElement.innerHTML).toBeDefined();
-    expect(divElement.innerHTML).toContain('Lorem ipsum');
+    expect(divElement.innerHTML).toContain(expectedText);
     expect(divElement.innerHTML.split(' ').length).toBeGreaterThan(280);
   });
 
