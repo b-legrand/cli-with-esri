@@ -7,22 +7,23 @@
 >
   <!-- template pour les noeuds/conteneurs -->
   <ng-template let-node pTemplate="group">
-    <div [innerHtml]="node.label | highlight: filter">
+    <div [innerHtml]="node.label | highlight: filter"
+         [visibleForScale]="scale"
+         [minScale]="node.data.minScale"
+         [maxScale]="node.data.maxScale">
     </div>
   </ng-template>
+  <!-- template pour les feuilles -->
   <ng-template let-node pTemplate="leaf">
-    <div [pTooltip]="'<i class=\'fa fa-eye\'></i>&nbsp;de 1/' + node.data.minScale +' à 1/'+node.data.maxScale + '<div class=\'layer-tooltip-detail\'><img class=\'icon\' src=\'favicon.ico\'>'+node.label+'</div>'"
-         tooltipPosition="right"
-         [escape]="false" #target
-         (mouseover)="details.show($event, target)"
-         (mouseout)="details.hide($event, target)"
-         [innerHtml]="node.label | highlight: filter"
-    ></div>
-    <!-- solution 2 : overlaypanel -->
-    <p-overlayPanel #details
-                    [appendTo]="body">
-      <div><i class="fa fa-eye-o"></i>{{ 'de 1/'+node.data.minScale+' à 1/'+node.data.maxScale }}</div>
-      <br/><img src="favicon.ico"/>{{ node.label }}
-    </p-overlayPanel>
+    <!-- juste pour la maquette, tooltip à améliorer, en composant ou à transformer en overlay -->
+    <div [visibleForScale]="scale"
+         [minScale]="node.data.minScale"
+         [maxScale]="node.data.maxScale"
+         [pTooltip]="'<i class=\'fa fa-eye\'></i>&nbsp;de 1/' + node.data.minScale +' à 1/'+node.data.maxScale + '<div class=\'layer-tooltip-detail\'><img class=\'icon\' src=\'favicon.ico\'>'+node.label+'</div>'"
+         [tooltipPosition]="right"
+         [tooltipDisabled]="!tooltip"
+         [escape]="false"
+         [innerHtml]="node.label | highlight: filter">
+    </div>
   </ng-template>
 </p-tree>
