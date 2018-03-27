@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as layersData from '../data/layers.json';
 import { TreeNode } from 'primeng/api';
-import { forIn, isObject, isArray } from 'lodash';
 
 interface SubLayer {
   title: string;
@@ -42,7 +41,6 @@ export class LayerTreeNodeService {
       treeNode.leaf = false;
       this.applyFolderIcons(treeNode);
     }
-    console.dir(treeNode);
     return treeNode;
   }
 
@@ -61,8 +59,6 @@ export class LayerTreeNodeService {
   }
 
   public applyFolderIcons(treeNode: TreeNode): TreeNode {
-    // treeNode.expandedIcon = 'fa-folder-open';
-    // treeNode.collapsedIcon = 'fa-folder';
     treeNode.expandedIcon = 'fa-folder-open-o';
     treeNode.collapsedIcon = 'fa-folder-o';
     return treeNode;

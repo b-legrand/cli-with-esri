@@ -57,7 +57,7 @@ export class FilteredLayerListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes ) {
-    if (changes.filter.currentValue) {
+    if (changes.filter) {
       console.log(changes.filter.currentValue);
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 /**
  * composant s
@@ -11,7 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class TableOfContentsComponent implements OnInit {
 
   /**
-   * texte saisi par l'utilisateur pour filtrer les couches.
+   * Todo injecter les layers esri depuis l'état,
+   * Gérer une liste filtréée à passer à <filtered-layer-list>
+   */
+  @Input() public layers;
+
+  /**
+   * Echelle de la carte, optionnel, si pas renseigné, les couches non visibles à l'échelle.
+   */
+  @Input() public scale: number;
+
+  /**
+   * Texte saisi par l'utilisateur pour filtrer les couches.
    */
   public filterText: string;
 
@@ -22,5 +33,15 @@ export class TableOfContentsComponent implements OnInit {
 
   handleFilterChange($event) {
     this.filterText = $event.target.value;
+  }
+
+  handleNodeSelect($event: any) {
+    // todo remonter l'évènement au parent.
+    console.dir($event);
+  }
+
+  handleNodeUnselect($event: any) {
+    // todo remonter l'évènement au parent.
+    console.dir($event);
   }
 }

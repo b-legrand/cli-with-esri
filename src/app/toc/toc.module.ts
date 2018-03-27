@@ -10,8 +10,8 @@ import { TableOfContentsComponent } from './components/table-of-contents/table-o
 import { LayerTreeNodeService } from './services/layer-tree-node.service';
 import { FilteredLayerListComponent } from './components/filtered-layer-list/filtered-layer-list.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
-import {FormsModule} from '@angular/forms';
-import {OverlayPanelModule} from 'primeng/primeng';
+import { FormsModule} from '@angular/forms';
+import { VisibleForScaleDirective } from './directives/visible-for-scale.directive';
 
 const TOC_MODULE_COMPONENTS = [
   FilteredLayerListComponent,
@@ -23,7 +23,6 @@ const TOC_MODULE_COMPONENTS = [
     CommonModule,
     FormsModule,
     TreeModule,
-    OverlayPanelModule,
     TooltipModule,
     InputTextModule,
   ],
@@ -31,6 +30,7 @@ const TOC_MODULE_COMPONENTS = [
     TableOfContentsComponent,
     FilteredLayerListComponent,
     HighlightPipe,
+    VisibleForScaleDirective,
   ],
   providers: [
     LayerTreeNodeService,

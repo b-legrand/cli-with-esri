@@ -1,12 +1,28 @@
+<label><!-- fournit l'échelle pour debug -->
+  <span>Scale:</span>
+  <input type="range" [(ngModel)]="scale" min="70" max="7559040" width="100%"/>
+  <output>1/{{scale}}</output>
+  <input type="number" [(ngModel)]="scale"/>
+</label>
+
+
 <form [style.marginBottom.px]="5">
   <div class="ui-inputgroup">
-    <input type="text" pInputText placeholder="Filtrer..."
+    <input type="text" pInputText
+           placeholder="Filtrer..."
            (ngModel)="filterText"
            (keypress)="handleFilterChange($event)"
            (keyup)="handleFilterChange($event)">
-    <span class="ui-inputgroup-addon"><i class="fa fa-filter"></i></span>
+    <span class="ui-inputgroup-addon">
+      <i class="fa fa-filter"></i>
+    </span>
   </div>
 </form>
-<filtered-layer-list [filter]="filterText" [tooltip]="true">
+<filtered-layer-list [filter]="filterText"
+                     [tooltip]="true"
+                     [scale]="scale"
+                     (nodeUnselect)="handleNodeUnselect($event)"
+                     (nodeSelect)="handleNodeSelect($event)"
+>
 
 </filtered-layer-list>
