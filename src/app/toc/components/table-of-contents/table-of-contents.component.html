@@ -1,0 +1,12 @@
+<form [style.marginBottom.px]="5">
+  <div class="ui-inputgroup">
+    <input type="text" pInputText placeholder="Filtrer..."
+           (ngModel)="filterText"
+           (keypress)="handleFilterChange($event)"
+           (keyup)="handleFilterChange($event)">
+    <span class="ui-inputgroup-addon"><i class="fa fa-filter"></i></span>
+  </div>
+</form>
+<filtered-layer-list [filter]="filterText" [tooltip]="true">
+
+</filtered-layer-list>
