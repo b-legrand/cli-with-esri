@@ -1,0 +1,28 @@
+<p-tree
+  [value]="layers"
+  selectionMode="checkbox"
+  [(selection)]="selectedLayers"
+  (onNodeSelect)="nodeSelect.emit($event)"
+  (onNodeUnselect)="nodeUnselect.emit($event)"
+>
+  <!-- template pour les noeuds/conteneurs -->
+  <ng-template let-node pTemplate="group">
+    <div [innerHtml]="node.label | highlight: filter">
+    </div>
+  </ng-template>
+  <ng-template let-node pTemplate="leaf">
+    <div [pTooltip]="'<i class=\'fa fa-eye\'></i>&nbsp;de 1/' + node.data.minScale +' à 1/'+node.data.maxScale + '<div class=\'layer-tooltip-detail\'><img class=\'icon\' src=\'favicon.ico\'>'+node.label+'</div>'"
+         tooltipPosition="right"
+         [escape]="false" #target
+         (mouseover)="details.show($event, target)"
+         (mouseout)="details.hide($event, target)"
+         [innerHtml]="node.label | highlight: filter"
+    ></div>
+    <!-- solution 2 : overlaypanel -->
+    <p-overlayPanel #details
+                    [appendTo]="body">
+      <div><i class="fa fa-eye-o"></i>{{ 'de 1/'+node.data.minScale+' à 1/'+node.data.maxScale }}</div>
+      <br/><img src="favicon.ico"/>{{ node.label }}
+    </p-overlayPanel>
+  </ng-template>
+</p-tree>
