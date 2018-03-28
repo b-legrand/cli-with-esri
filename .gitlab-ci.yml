@@ -155,7 +155,7 @@ war:
     - apt-get -y install zip
     - npm run build:app -- --base-href=/ergonomie-soclejs/
     - cd dist/app/
-    - zip -r ../ergonomie-soclejs.war *
+    - zip -r ../ergonomie-soclejs.zip *
   cache:
     key: "$CI_BUILD_REF_NAME"
     paths:
@@ -163,4 +163,4 @@ war:
     policy: pull
   artifacts:
     paths:
-      - dist/ergonomie-soclejs.war
+      - dist/ergonomie-soclejs.zip
