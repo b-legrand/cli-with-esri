@@ -1,22 +1,38 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {TreeNode} from 'primeng/api';
-import {LayerTreeNodeService} from '../../services/layer-tree-node.service';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from "@angular/core";
+import { TreeNode } from "primeng/api";
+import { LayerTreeNodeService } from "../../services/layer-tree-node.service";
 
+/**
+ * Composant permettant à l'utilisateur de filtrer une liste de couche.
+ * gère une liste filtrée en état local.
+ */
 @Component({
-  selector: 'filtered-layer-list',
-  templateUrl: './filtered-layer-list.component.html',
-  styleUrls: ['./filtered-layer-list.component.scss']
+  selector: "filtered-layer-list",
+  templateUrl: "./filtered-layer-list.component.html",
+  styleUrls: ["./filtered-layer-list.component.scss"],
 })
 export class FilteredLayerListComponent implements OnInit, OnChanges {
-
   /**
    * Texte de filtrage.
    */
   @Input() public filter: string;
 
+  /**
+   * Echelle (optionnel)
+   */
   @Input() public scale: number;
 
-  @Input() public tooltip: boolean;
+  /**
+   * Active le tooltip de détail (optionnel)
+   */
+  @Input() public tooltipEnabled: boolean;
 
   /**
    * Evenement du `tree` primeng
@@ -30,36 +46,34 @@ export class FilteredLayerListComponent implements OnInit, OnChanges {
 
   public layers: TreeNode[] = [
     {
-      type: 'folder',
-      label: 'Couches',
+      type: "folder",
+      label: "Couches",
       leaf: false,
-      children: []
+      children: [],
     },
     {
-      type: 'folder',
-      label: 'Couches utilisateur',
+      type: "folder",
+      label: "Couches utilisateur",
       leaf: false,
-      children: [
-      ]
+      children: [],
     },
   ];
 
   public selectedLayers: TreeNode[] = [];
 
   constructor(private layerTreeNodes: LayerTreeNodeService) {
+    // fixme, a transformer depuis l'input vers le filteredLayer
     layerTreeNodes.getLayerNodes().subscribe(data => {
       this.layers.map(layerTreeNodes.applyFolderIcons);
       this.layers[0].children = data;
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  ngOnChanges(changes ) {
+  ngOnChanges(changes) {
     if (changes.filter) {
       console.log(changes.filter.currentValue);
     }
   }
-
 }

@@ -1,17 +1,28 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FilteredLayerListComponent } from './filtered-layer-list.component';
+import { FilteredLayerListComponent } from "./filtered-layer-list.component";
+import { TreeModule } from "primeng/tree";
+import { HighlightPipe } from "../../pipes/highlight.pipe";
+import { LayerTreeNodeService } from "../../services/layer-tree-node.service";
+import { VisibleForScaleDirective } from "../../directives/visible-for-scale.directive";
 
-describe('FilteredLayerListComponent', () => {
+describe("FilteredLayerListComponent", () => {
   let component: FilteredLayerListComponent;
   let fixture: ComponentFixture<FilteredLayerListComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FilteredLayerListComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          FilteredLayerListComponent,
+          HighlightPipe,
+          VisibleForScaleDirective,
+        ],
+        imports: [TreeModule],
+        providers: [LayerTreeNodeService],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FilteredLayerListComponent);
@@ -19,7 +30,7 @@ describe('FilteredLayerListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -10,7 +10,8 @@
     <div [innerHtml]="node.label | highlight: filter"
          [visibleForScale]="scale"
          [minScale]="node.data.minScale"
-         [maxScale]="node.data.maxScale">
+         [maxScale]="node.data.maxScale"
+         tabindex="0" role="group">
     </div>
   </ng-template>
   <!-- template pour les feuilles -->
@@ -21,8 +22,8 @@
          [maxScale]="node.data.maxScale"
          [pTooltip]="'<i class=\'fa fa-eye\'></i>&nbsp;de 1/' + node.data.minScale +' à 1/'+node.data.maxScale + '<div class=\'layer-tooltip-detail\'><img class=\'icon\' src=\'favicon.ico\'>'+node.label+'</div>'"
          [tooltipPosition]="right"
-         [tooltipDisabled]="!tooltip"
          [escape]="false"
+         tabindex="0" role="treeitem"
          [innerHtml]="node.label | highlight: filter">
     </div>
   </ng-template>

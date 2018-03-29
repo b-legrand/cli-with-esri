@@ -1,15 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
 
 /**
  * composant s
  */
 @Component({
-  selector: 'table-of-contents',
-  templateUrl: './table-of-contents.component.html',
-  styleUrls: ['./table-of-contents.component.scss']
+  selector: "table-of-contents",
+  templateUrl: "./table-of-contents.component.html",
+  styleUrls: ["./table-of-contents.component.scss"],
 })
 export class TableOfContentsComponent implements OnInit {
-
   /**
    * Todo injecter les layers esri depuis l'état,
    * Gérer une liste filtréée à passer à <filtered-layer-list>
@@ -26,10 +25,9 @@ export class TableOfContentsComponent implements OnInit {
    */
   public filterText: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   handleFilterChange($event) {
     this.filterText = $event.target.value;
