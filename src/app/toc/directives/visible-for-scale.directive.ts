@@ -1,29 +1,34 @@
-import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from "@angular/core";
 
 /**
  * Directive appliquant une opacité de 0,5 si l'échelle fournie est hors des bornes.
  */
 @Directive({
-  selector: '[visibleForScale]'
+  selector: "[visibleForScale]",
 })
 export class VisibleForScaleDirective implements OnChanges {
-
   /**
    * Echelle
    */
-  @Input('visibleForScale') scale: number;
+  @Input("visibleForScale") public scale: number;
 
   /**
    * Echelle min.
    */
-  @Input() minScale: number;
+  @Input() public minScale: number;
 
   /**
    * Echelle max.
    */
-  @Input() maxScale: number;
+  @Input() public maxScale: number;
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.scale) {
@@ -39,9 +44,8 @@ export class VisibleForScaleDirective implements OnChanges {
     if (!scale) {
       return true;
     }
-    const greaterThanMin = (1 / this.minScale <= 1 / scale);
-    const lessThanMax = (1 / scale <= 1 / this.maxScale);
+    const greaterThanMin = 1 / this.minScale <= 1 / scale;
+    const lessThanMax = 1 / scale <= 1 / this.maxScale;
     return greaterThanMin && lessThanMax;
   }
-
 }
