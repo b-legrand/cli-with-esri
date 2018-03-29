@@ -2,13 +2,13 @@
 .widget-panel {
   position: relative;
   overflow: hidden;
-  height: calc(100% - 30px);// hauteur de l'entête + 2 * padding :
-  padding: 5px;
+  height: calc(100% - 20px);// hauteur de l'entête :
 }
 
 .widget-content {
   user-select: none;
   font-size: 14px;
+  margin: 5px;
 }
 
 .widget-resize-button {
