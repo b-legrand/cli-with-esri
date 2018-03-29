@@ -41,3 +41,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# reports
+documentation/
+test-report.html
+yarn-error.log
+yarn.lock
