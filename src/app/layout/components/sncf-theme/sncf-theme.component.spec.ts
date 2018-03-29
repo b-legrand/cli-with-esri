@@ -54,7 +54,7 @@ describe("SncfThemeComponent", () => {
     ) => {
       const predicate = (rule: CSSStyleRule) => rule.selectorText === selector;
       let foundRule: CSSRule;
-      for (const cssRule: CSSRule of styles.cssRules) {
+      for (const cssRule of styles.cssRules) {
         if (cssRule.cssText === selector) {
           foundRule = cssRule;
           expect(foundRule).toBeDefined();
