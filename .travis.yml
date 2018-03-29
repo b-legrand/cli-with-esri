@@ -39,7 +39,7 @@ stages:
   - e2e
 
 build:
-  - ng build --prod
+  - ng build --prod --base-href=cli-with-esri/
 
 test:
   - ng test --watch=false --single-run --no-progress --code-coverage --browser=Chrome_CI
@@ -48,6 +48,7 @@ e2e:
   - ng e2e --no-progress
 
 deploy:
+  local-dir: dist/app
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
