@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppState } from '../model/app.state';
+import { AppState, getInitialState } from '../model/app.state';
 
 export const APP_STORE_KEY = 'socle-state';
 
@@ -7,19 +7,6 @@ export const APP_STORE_KEY = 'socle-state';
 export class AppStoreService {
 
   private state: any;
-
-  private initialState(): AppState {
-    this.state = {
-      widgets: {},
-      mapState: {
-        viewProps: {
-          zoom: 6,
-          center: [2.2137, 46.2276]
-        }
-      }
-    };
-    return this.state;
-  }
 
   constructor() {
     // debugger;
@@ -54,7 +41,7 @@ export class AppStoreService {
     );
     console.info('LOCAL STORAGE STATE', localState);
     if (!localState || localState === 'null') {
-      this.state = this.initialState();
+      this.state = getInitialState();
     } else {
       this.state = localState;
     }
