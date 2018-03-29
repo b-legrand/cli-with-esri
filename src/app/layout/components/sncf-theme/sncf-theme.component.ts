@@ -1,5 +1,5 @@
-import { Component, Inject, ViewEncapsulation, OnInit } from '@angular/core';
-import { APP_CONFIG, AppConfig } from '../../../core/model/app.config';
+import { Component, Inject, OnInit, ViewEncapsulation } from "@angular/core";
+import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
 
 /**
  * Composant servant à injecter du style global
@@ -12,9 +12,9 @@ import { APP_CONFIG, AppConfig } from '../../../core/model/app.config';
  *
  */
 @Component({
-  selector: 'sncf-theme',
-  styleUrls: ['./sncf-theme.component.scss'],
-  template: '',
+  selector: "sncf-theme",
+  styleUrls: ["./sncf-theme.component.scss"],
+  template: "",
   /* tslint:disable:use-view-encapsulation*/ // c'est ce qu'on veut.
   encapsulation: ViewEncapsulation.None,
 })
@@ -27,10 +27,10 @@ export class SncfThemeComponent implements OnInit {
 
   ngOnInit() {
     // à l'ancienne :
-    const style: HTMLStyleElement = document.createElement('style');
+    const style: HTMLStyleElement = document.createElement("style");
     // mets un attribut data-sncf-theme sur le <style> pour le récupérer lors des TU.
-    style.dataset.sncfTheme = 'true';
-    style.type = 'text/css';
+    style.dataset.sncfTheme = "true";
+    style.type = "text/css";
     style.innerHTML = this.customCss;
     document.head.appendChild(style);
   }
@@ -56,13 +56,14 @@ export class SncfThemeComponent implements OnInit {
       `h1,h2,h3,h4,h5,h6{color: ${themeColor};}`,
       `*:focus    {outline-color: ${themeColor};}`,
       `.sncf-color, .couleur-theme{color: ${themeColor};}`,
-      `.ui-scrollpanel-bar:hover{background-color:  ${themeColor}}`,
+      `.ui-scrollpanel-bar:hover,`,
+      `.ui-state-highlight{background-color:  ${themeColor}}`,
       // perfect-scrollbar
       `.ps__rail-y:focus>.ps__thumb-y,.ps__thumb-y,`,
       `.ps__rail-y:hover>.ps__thumb-y,`,
       `.ps__rail-x:focus>.ps__thumb-x,.ps__thumb-x,`,
       `.ps__rail-x:hover>.ps__thumb-x{
-          background-color: ${themeColor}; }`
-    ].join('');
+          background-color: ${themeColor}; }`,
+    ].join("");
   }
 }

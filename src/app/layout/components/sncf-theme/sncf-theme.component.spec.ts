@@ -1,10 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SncfThemeComponent } from './sncf-theme.component';
-import { APP_CONFIG } from '../../../core/model/app.config';
+import { SncfThemeComponent } from "./sncf-theme.component";
+import { APP_CONFIG } from "../../../core/model/app.config";
 
-describe('SncfThemeComponent', () => {
-  const testConfig = { themeColor: 'black' };
+describe("SncfThemeComponent", () => {
+  const testConfig = { themeColor: "black" };
   let component: SncfThemeComponent;
   let fixture: ComponentFixture<SncfThemeComponent>;
 
@@ -12,9 +12,9 @@ describe('SncfThemeComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [SncfThemeComponent],
-        providers: [{ provide: APP_CONFIG, useValue: testConfig }]
+        providers: [{ provide: APP_CONFIG, useValue: testConfig }],
       }).compileComponents();
-    })
+    }),
   );
 
   beforeEach(() => {
@@ -23,25 +23,25 @@ describe('SncfThemeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  it('can generate the css with the provided theme color', () => {
+  it("can generate the css with the provided theme color", () => {
     expect(component.customCss).toMatch(/color\: black/);
     expect(component.customCss).toMatch(/stroke\: black/);
   });
 
-  it('a généré une balise `<style>`', () => {
+  it("a généré une balise `<style>`", () => {
     expect(document.styleSheets.length).toBeGreaterThan(0);
   });
 
-  describe('a généré des sélecteurs css', () => {
+  describe("a généré des sélecteurs css", () => {
     let styles: CSSStyleSheet;
 
     beforeEach(() => {
       const styleElement: HTMLStyleElement = document.querySelector(
-        'style[data-sncf-theme]'
+        "style[data-sncf-theme]",
       );
       styles = styleElement.sheet as CSSStyleSheet;
     });
@@ -50,13 +50,13 @@ describe('SncfThemeComponent', () => {
     const ruleExistAndContains = (
       selector: string,
       attribute?: string,
-      value?: string
+      value?: string,
     ) => {
       const predicate = (rule: CSSStyleRule) => rule.selectorText === selector;
-      let foundRule: CSSStyleRule;
-      for (let i = 0; i < styles.cssRules.length; i++) {
-        console.dir(styles.cssRules[i]);
-        if (styles.cssRules[i].cssText === selector) {
+      let foundRule: CSSRule;
+      for (const cssRule: CSSRule of styles.cssRules) {
+        if (cssRule.cssText === selector) {
+          foundRule = cssRule;
           expect(foundRule).toBeDefined();
           if (attribute) {
             expect(foundRule.style[attribute]).toBeDefined();
@@ -71,15 +71,15 @@ describe('SncfThemeComponent', () => {
       }
     };
 
-    it('pour la couleur des titres', () => {
-      ruleExistAndContains('h1,h2,h3,h4,h5,h6', 'color');
+    it("pour la couleur des titres", () => {
+      ruleExistAndContains("h1,h2,h3,h4,h5,h6", "color");
     });
 
-    it('pour le spinner primeng', () => {
-      ruleExistAndContains('.ui-progress-spinner', 'stroke', 'black');
+    it("pour le spinner primeng", () => {
+      ruleExistAndContains(".ui-progress-spinner", "stroke", "black");
     });
-    it('pour des classes custom', () => {
-      ruleExistAndContains('.sncf-color, .couleur-theme');
+    it("pour des classes custom", () => {
+      ruleExistAndContains(".sncf-color, .couleur-theme");
     });
   });
 });
