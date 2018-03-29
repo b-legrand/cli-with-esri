@@ -4,8 +4,8 @@ import { LocalStorageService } from "./local-storage.service";
 describe("LocalStorageService", () => {
   const valueKey = "storage-key";
 
-  const valueObject: {
-    attribute: 42;
+  const valueObject: any = {
+    attribute: 42,
   };
   let localStorage: LocalStorageService;
 
