@@ -52,11 +52,10 @@ describe("SncfThemeComponent", () => {
       attribute?: string,
       value?: string,
     ) => {
-      const predicate = (rule: CSSStyleRule) => rule.selectorText === selector;
-      let foundRule: CSSRule;
-      for (const cssRule of styles.cssRules) {
-        if (cssRule.cssText === selector) {
-          foundRule = cssRule;
+      let foundRule: CSSStyleRule;
+      for (let i = 0; i < styles.cssRules.length; i++) {
+        if (styles.cssRules[i].cssText === selector) {
+          foundRule = styles.cssRules[i] as CSSStyleRule;
           expect(foundRule).toBeDefined();
           if (attribute) {
             expect(foundRule.style[attribute]).toBeDefined();
