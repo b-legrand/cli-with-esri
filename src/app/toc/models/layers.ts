@@ -5,14 +5,11 @@ import { SubLayer } from "./sub-layer.vo";
 export const STUB_LAYERS: SubLayer[] = [
   {
     "uid": "service-s01-gaia-voie-v2",
-    "type": "dynamic",
     "title": "Infrastructures voies",
-    "url": "{service-carto-protocol}://{service-carto-base-url}:{service-carto-port}/arcgis/rest/services/gaiav2/socle_gaia_voie_v2/MapServer",
-    "token": "{service-carto-pmsig-token}",
+    "url": "/arcgis/rest/services/gaiav2/socle_gaia_voie_v2/MapServer",
     "sublayers": [
       {
         "uid": "service-s01-gaia-voie-v2-0000-protection",
-        "keyhab": "",
         "title": "Protection",
         "id": "0",
         "visible": false,
@@ -21,7 +18,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s01-gaia-voie-v2-0001-jdz",
-            "keyhab": "",
             "title": "Joint de zone",
             "id": "1",
             "visible": false,
@@ -30,7 +26,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0002-zep",
-            "keyhab": "",
             "title": "Zone élémentaire de protection",
             "id": "2",
             "visible": false,
@@ -41,7 +36,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0003-signaux",
-        "keyhab": "",
         "title": "Signaux",
         "id": "3",
         "visible": false,
@@ -50,7 +44,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s01-gaia-voie-v2-0004-saa",
-            "keyhab": "",
             "title": "Signaux d'arrêt ou d'annonce",
             "id": "4",
             "visible": false,
@@ -59,7 +52,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0005-sd",
-            "keyhab": "",
             "title": "Signaux divers",
             "id": "5",
             "visible": false,
@@ -68,7 +60,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0006-slv",
-            "keyhab": "",
             "title": "Signaux de limitation de vitesse",
             "id": "6",
             "visible": false,
@@ -77,7 +68,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0007-sm",
-            "keyhab": "",
             "title": "Signaux de manoeuvre",
             "id": "7",
             "visible": false,
@@ -86,7 +76,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0008-sdte",
-            "keyhab": "",
             "title": "Signaux dédiés à la traction électrique",
             "id": "8",
             "visible": false,
@@ -95,7 +84,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0009-stvm",
-            "keyhab": "",
             "title": "Signaux TVM",
             "id": "9",
             "visible": false,
@@ -106,7 +94,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0010-if",
-        "keyhab": "",
         "title": "Installations fixes",
         "id": "10",
         "visible": false,
@@ -115,7 +102,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s01-gaia-voie-v2-0011-dbc",
-            "keyhab": "",
             "title": "Détecteurs de boite chaude",
             "id": "11",
             "visible": false,
@@ -124,7 +110,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0012-quai",
-            "keyhab": "",
             "title": "Quai",
             "id": "12",
             "visible": false,
@@ -135,7 +120,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0013-decoup",
-        "keyhab": "",
         "title": "Découpages",
         "id": "13",
         "visible": false,
@@ -144,7 +128,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s01-gaia-voie-v2-0014-courbe",
-            "keyhab": "",
             "title": "Courbe",
             "id": "14",
             "visible": false,
@@ -153,7 +136,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0015-dcl",
-            "keyhab": "",
             "title": "Déclivité",
             "id": "15",
             "visible": false,
@@ -162,7 +144,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0016-ec",
-            "keyhab": "",
             "title": "Eléments caténaires (sections élémentaires)",
             "id": "16",
             "visible": false,
@@ -171,7 +152,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0017-ev",
-            "keyhab": "",
             "title": "Etat de la voie",
             "id": "17",
             "visible": false,
@@ -180,7 +160,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0018-glvoh",
-            "keyhab": "",
             "title": "Gabarit limite voyageurs des obstacles hauts",
             "id": "18",
             "visible": false,
@@ -189,7 +168,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0019-glfoh",
-            "keyhab": "",
             "title": "Gabarit limite fret des obstacles hauts",
             "id": "19",
             "visible": false,
@@ -198,7 +176,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-00020-ipcs",
-            "keyhab": "",
             "title": "Installations permanentes de contre-sens",
             "id": "20",
             "visible": false,
@@ -207,7 +184,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0021-msc",
-            "keyhab": "",
             "title": "Masses Sens Croissant",
             "id": "21",
             "visible": false,
@@ -216,7 +192,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0022-msd",
-            "keyhab": "",
             "title": "Masses Sens Décroissant",
             "id": "22",
             "visible": false,
@@ -225,7 +200,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0023-nlv",
-            "keyhab": "",
             "title": "Nom local des voies",
             "id": "23",
             "visible": false,
@@ -234,7 +208,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0024-sc",
-            "keyhab": "",
             "title": "Sens de circulation",
             "id": "24",
             "visible": false,
@@ -243,7 +216,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0025-te",
-            "keyhab": "",
             "title": "Type d'électrification",
             "id": "25",
             "visible": false,
@@ -252,7 +224,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0026-vsc",
-            "keyhab": "",
             "title": "Vitesses Sens Croissant",
             "id": "26",
             "visible": false,
@@ -261,7 +232,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0027-vsd",
-            "keyhab": "",
             "title": "Vitesses Sens Décroissant",
             "id": "27",
             "visible": false,
@@ -272,7 +242,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0028-vp",
-        "keyhab": "",
         "title": "Voies Principales",
         "id": "28",
         "visible": true,
@@ -281,7 +250,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s01-gaia-voie-v2-0029-ev",
-            "keyhab": "",
             "title": "Extrémités de voies",
             "id": "29",
             "visible": true,
@@ -290,7 +258,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0030-ndv",
-            "keyhab": "",
             "title": "Noeuds de voies",
             "id": "30",
             "visible": true,
@@ -299,7 +266,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0031-tdv",
-            "keyhab": "",
             "title": "Tronçons de voies",
             "id": "31",
             "visible": true,
@@ -308,7 +274,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0032-voies",
-            "keyhab": "",
             "title": "Voies",
             "id": "32",
             "visible": true,
@@ -319,7 +284,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0033-vsaf",
-        "keyhab": "",
         "title": "Voies de SAF",
         "id": "33",
         "visible": true,
@@ -328,7 +292,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s01-gaia-voie-v2-0034-safn",
-            "keyhab": "",
             "title": "Noeud",
             "id": "34",
             "visible": true,
@@ -337,7 +300,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0035-saft",
-            "keyhab": "",
             "title": "Troncon",
             "id": "35",
             "visible": true,
@@ -348,7 +310,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0036-lignes",
-        "keyhab": "",
         "title": "Lignes",
         "id": "36",
         "visible": true,
@@ -358,7 +319,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0037-sp",
-        "keyhab": "",
         "title": "Signalisation permanente",
         "id": "37",
         "visible": false,
@@ -368,7 +328,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s01-gaia-voie-v2-0038-pe",
-        "keyhab": "",
         "title": "Profils électriques",
         "id": "38",
         "visible": false,
@@ -377,7 +336,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s01-gaia-voie-v2-0039-ec1",
-            "keyhab": "",
             "title": "Engins classe 1 (1000 A)",
             "id": "39",
             "visible": false,
@@ -386,7 +344,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0040-ec2",
-            "keyhab": "",
             "title": "Engins classe 2 (1600 A)",
             "id": "40",
             "visible": false,
@@ -395,7 +352,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0041-ec3",
-            "keyhab": "",
             "title": "Engins classe 3 (2500 A)",
             "id": "41",
             "visible": false,
@@ -404,7 +360,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0042-ec4",
-            "keyhab": "",
             "title": "Engins classe 4 (4000 A)",
             "id": "42",
             "visible": false,
@@ -413,7 +368,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s01-gaia-voie-v2-0043-ec5",
-            "keyhab": "",
             "title": "Engins classe 5 (5000 A)",
             "id": "43",
             "visible": false,
@@ -426,17 +380,11 @@ export const STUB_LAYERS: SubLayer[] = [
   },
   {
     "uid": "service-s02-gaia-ligne-v2",
-    "keyhab": "",
-    "type": "dynamic",
     "title": "Infrastructures ligne",
-    "url": [
-      "{service-carto-protocol}://{service-carto-base-url}:{service-carto-port}",
-      "/arcgis/rest/services/gaiav2/socle_gaia_ligne_v2/MapServer"].join(""),
-    "token": "{service-carto-pmsig-token}",
+    "url": "/arcgis/rest/services/gaiav2/socle_gaia_ligne_v2/MapServer",
     "sublayers": [
       {
         "uid": "service-s02-gaia-ligne-v2-0000-nl",
-        "keyhab": "",
         "title": "Noeuds Lignes",
         "id": "0",
         "visible": false,
@@ -445,7 +393,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0001-ad",
-            "keyhab": "",
             "title": "Anomalie de distance",
             "id": "1",
             "visible": false,
@@ -454,7 +401,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0002-ar",
-            "keyhab": "",
             "title": "Anomalie de repère",
             "id": "2",
             "visible": false,
@@ -463,7 +409,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0003-noeuds",
-            "keyhab": "",
             "title": "Noeuds",
             "id": "3",
             "visible": false,
@@ -474,7 +419,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0004-sar",
-        "keyhab": "",
         "title": "Sections d'Accès au Réseau",
         "id": "4",
         "visible": false,
@@ -483,7 +427,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0005-pr",
-            "keyhab": "",
             "title": "PR extrémité",
             "id": "5",
             "visible": false,
@@ -492,7 +435,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0006-sar",
-            "keyhab": "",
             "title": "SAR",
             "id": "6",
             "visible": false,
@@ -503,7 +445,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0007-saf",
-        "keyhab": "",
         "title": "Secteurs d'Activité ferroviaire",
         "id": "7",
         "visible": false,
@@ -512,7 +453,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0008-ch",
-            "keyhab": "",
             "title": "Chantiers",
             "id": "8",
             "visible": false,
@@ -521,7 +461,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0009-ep",
-            "keyhab": "",
             "title": "Embranchements particuliers",
             "id": "9",
             "visible": false,
@@ -530,7 +469,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0010-eim",
-            "keyhab": "",
             "title": "Etablissements industriels ou de maintenance",
             "id": "10",
             "visible": false,
@@ -539,7 +477,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0011-et",
-            "keyhab": "",
             "title": "Etablissements traction",
             "id": "11",
             "visible": false,
@@ -548,7 +485,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0012-triage",
-            "keyhab": "",
             "title": "Triages",
             "id": "12",
             "visible": false,
@@ -559,7 +495,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0013-pe",
-        "keyhab": "",
         "title": "Points Encadrants",
         "id": "13",
         "visible": true,
@@ -568,7 +503,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0014-acces",
-            "keyhab": "",
             "title": "Accès",
             "id": "14",
             "visible": true,
@@ -577,7 +511,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0015-gare",
-            "keyhab": "",
             "title": "Gare",
             "id": "15",
             "visible": true,
@@ -586,7 +519,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0016-ptr",
-            "keyhab": "",
             "title": "Ponts-rails",
             "id": "16",
             "visible": true,
@@ -595,7 +527,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0017-ptrl",
-            "keyhab": "",
             "title": "Ponts-rails linéaires",
             "id": "17",
             "visible": true,
@@ -604,7 +535,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0018-ptr",
-            "keyhab": "",
             "title": "Ponts-routes",
             "id": "18",
             "visible": true,
@@ -613,7 +543,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0019-rk",
-            "keyhab": "",
             "title": "Repères kilométriques (RK)",
             "id": "19",
             "visible": true,
@@ -622,7 +551,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0020-tun",
-            "keyhab": "",
             "title": "Tunnels",
             "id": "20",
             "visible": true,
@@ -631,7 +559,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0021-tunl",
-            "keyhab": "",
             "title": "Tunnels linéaires",
             "id": "21",
             "visible": true,
@@ -642,7 +569,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0022-pn",
-        "keyhab": "",
         "title": "Passages à Niveau",
         "id": "22",
         "visible": true,
@@ -651,7 +577,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0023-pnd",
-            "keyhab": "",
             "title": "Passages à Niveau (détail)",
             "id": "23",
             "visible": true,
@@ -660,7 +585,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0024-pnipsn",
-            "keyhab": "",
             "title": "Passages à niveau IPSN",
             "id": "24",
             "visible": true,
@@ -671,7 +595,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0025-if",
-        "keyhab": "",
         "title": "Installations Fixes",
         "id": "25",
         "visible": false,
@@ -680,7 +603,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0026-ct",
-            "keyhab": "",
             "title": "Centre technique",
             "id": "26",
             "visible": true,
@@ -689,7 +611,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0027-dbc",
-            "keyhab": "",
             "title": "Détecteurs de boîtes chaudes",
             "id": "27",
             "visible": true,
@@ -698,7 +619,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0028-ps",
-            "keyhab": "",
             "title": "Passages souterrains",
             "id": "28",
             "visible": true,
@@ -707,7 +627,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0029-psl",
-            "keyhab": "",
             "title": "Passerelles",
             "id": "29",
             "visible": true,
@@ -716,7 +635,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0030-poste",
-            "keyhab": "",
             "title": "Postes",
             "id": "30",
             "visible": true,
@@ -725,7 +643,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0031-ss",
-            "keyhab": "",
             "title": "Sous-stations",
             "id": "31",
             "visible": true,
@@ -734,7 +651,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0032-sr",
-            "keyhab": "",
             "title": "Stations radio",
             "id": "32",
             "visible": true,
@@ -743,7 +659,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0033-tvpp",
-            "keyhab": "",
             "title": "Traversées de voies pour piétons",
             "id": "33",
             "visible": true,
@@ -752,7 +667,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0034-zncc",
-            "keyhab": "",
             "title": "Zones neutres (CC)",
             "id": "34",
             "visible": true,
@@ -763,7 +677,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0035-pr",
-        "keyhab": "",
         "title": "PR",
         "id": "35",
         "visible": true,
@@ -772,7 +685,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0036-pr",
-            "keyhab": "",
             "title": "PR",
             "id": "36",
             "visible": false,
@@ -781,7 +693,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0037-loc",
-            "keyhab": "",
             "title": "Localisateur",
             "id": "37",
             "visible": false,
@@ -792,7 +703,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0038-lp",
-        "keyhab": "",
         "title": "Lignes Principales",
         "id": "38",
         "visible": true,
@@ -801,7 +711,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0039-lp",
-            "keyhab": "",
             "title": "Lignes Principales",
             "id": "39",
             "visible": true,
@@ -810,7 +719,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0040-l",
-            "keyhab": "",
             "title": "Lignes",
             "id": "40",
             "visible": true,
@@ -821,7 +729,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0041-dl",
-        "keyhab": "",
         "title": "Découpages des Lignes",
         "id": "41",
         "visible": true,
@@ -830,7 +737,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0042-cr",
-            "keyhab": "",
             "title": "Canal Radio",
             "id": "42",
             "visible": true,
@@ -839,7 +745,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0043-catl",
-            "keyhab": "",
             "title": "Catégories des lignes",
             "id": "43",
             "visible": false,
@@ -848,7 +753,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0044-cwa",
-            "keyhab": "",
             "title": "Charge des wagons admissibles",
             "id": "44",
             "visible": false,
@@ -857,7 +761,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0045-cec",
-            "keyhab": "",
             "title": "Classement de l'entretien caténaire",
             "id": "45",
             "visible": false,
@@ -866,7 +769,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0046-cad",
-            "keyhab": "",
             "title": "Clôtures à droite",
             "id": "46",
             "visible": false,
@@ -875,7 +777,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0047-cag",
-            "keyhab": "",
             "title": "Clôtures à gauche",
             "id": "47",
             "visible": false,
@@ -884,7 +785,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0048-cdl",
-            "keyhab": "",
             "title": "Consigne de Ligne",
             "id": "48",
             "visible": false,
@@ -893,7 +793,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0049-emd",
-            "keyhab": "",
             "title": "Entretien matières dangereuses",
             "id": "49",
             "visible": false,
@@ -902,7 +801,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0050-glvoh",
-            "keyhab": "",
             "title": "Gabarit limite voyageurs des obstacles hauts",
             "id": "50",
             "visible": false,
@@ -911,7 +809,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0051-emd",
-            "keyhab": "",
             "title": "Gabarit limite fret des obstacles hauts",
             "id": "51",
             "visible": false,
@@ -920,7 +817,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0052-gd",
-            "keyhab": "",
             "title": "Groupes Demaux",
             "id": "52",
             "visible": true,
@@ -929,7 +825,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0053-guic",
-            "keyhab": "",
             "title": "Groupes UIC",
             "id": "53",
             "visible": false,
@@ -938,7 +833,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0054-kvb",
-            "keyhab": "",
             "title": "KVB",
             "id": "54",
             "visible": false,
@@ -947,7 +841,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0055-lr",
-            "keyhab": "",
             "title": "Lignes régulées",
             "id": "55",
             "visible": false,
@@ -956,7 +849,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0056-mc",
-            "keyhab": "",
             "title": "Mode de cantonnement",
             "id": "56",
             "visible": false,
@@ -965,7 +857,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0057-me",
-            "keyhab": "",
             "title": "Mode d'électrification",
             "id": "57",
             "visible": false,
@@ -974,7 +865,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0058-otd",
-            "keyhab": "",
             "title": "Ouvrage en terre à droite",
             "id": "58",
             "visible": false,
@@ -983,7 +873,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0059-otg",
-            "keyhab": "",
             "title": "Ouvrage en terre à gauche",
             "id": "59",
             "visible": false,
@@ -992,7 +881,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0060-rsl",
-            "keyhab": "",
             "title": "Radio sol-train",
             "id": "60",
             "visible": false,
@@ -1001,7 +889,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0061-re",
-            "keyhab": "",
             "title": "Régime d'exploitation",
             "id": "61",
             "visible": false,
@@ -1010,7 +897,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0062-rt",
-            "keyhab": "",
             "title": "Renseignements Techniques",
             "id": "62",
             "visible": false,
@@ -1019,7 +905,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0063-rgc",
-            "keyhab": "",
             "title": "Responsable Graphique Circulation ",
             "id": "63",
             "visible": false,
@@ -1028,7 +913,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0064-sl",
-            "keyhab": "",
             "title": "Statut des lignes",
             "id": "64",
             "visible": false,
@@ -1037,7 +921,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0065-tm",
-            "keyhab": "",
             "title": "Trafic marchandises",
             "id": "65",
             "visible": false,
@@ -1046,7 +929,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0066-tre",
-            "keyhab": "",
             "title": "Trafic rapide et express",
             "id": "66",
             "visible": false,
@@ -1055,7 +937,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0067-tter",
-            "keyhab": "",
             "title": "Trafic TER",
             "id": "67",
             "visible": false,
@@ -1064,7 +945,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0068-tt",
-            "keyhab": "",
             "title": "Trafic Transilien",
             "id": "68",
             "visible": false,
@@ -1073,7 +953,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0069-ts",
-            "keyhab": "",
             "title": "Type de suivi",
             "id": "69",
             "visible": false,
@@ -1082,7 +961,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0070-vml",
-            "keyhab": "",
             "title": "Vitesse max ligne",
             "id": "70",
             "visible": false,
@@ -1093,7 +971,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0071-cexp",
-        "keyhab": "",
         "title": "Compétences Exploitations",
         "id": "71",
         "visible": false,
@@ -1102,7 +979,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0072-ceici",
-            "keyhab": "",
             "title": "Compétences EIC infrastructure",
             "id": "72",
             "visible": false,
@@ -1111,7 +987,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0072-ccogcr",
-            "keyhab": "",
             "title": "Compétences COGC Régulation",
             "id": "73",
             "visible": false,
@@ -1122,7 +997,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0074-cm",
-        "keyhab": "",
         "title": "Compétences Maintenances",
         "id": "74",
         "visible": false,
@@ -1131,7 +1005,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0075-ebat",
-            "keyhab": "",
             "title": "Etablissements BAT",
             "id": "75",
             "visible": false,
@@ -1140,7 +1013,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0076-ecat",
-            "keyhab": "",
             "title": "Etablissements CAT",
             "id": "76",
             "visible": false,
@@ -1149,7 +1021,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0077-ealm",
-            "keyhab": "",
             "title": "Etablissements EALM",
             "id": "77",
             "visible": false,
@@ -1158,7 +1029,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0078-eealr",
-            "keyhab": "",
             "title": "Etablissements EALR",
             "id": "78",
             "visible": false,
@@ -1167,7 +1037,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0079-eee",
-            "keyhab": "",
             "title": "Etablissements EE",
             "id": "79",
             "visible": false,
@@ -1176,7 +1045,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0080-eoa",
-            "keyhab": "",
             "title": "Etablissements OA",
             "id": "80",
             "visible": false,
@@ -1185,7 +1053,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0081-eseg",
-            "keyhab": "",
             "title": "Etablissements SEG",
             "id": "81",
             "visible": false,
@@ -1194,7 +1061,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0082-eset",
-            "keyhab": "",
             "title": "Etablissements SET",
             "id": "82",
             "visible": false,
@@ -1203,7 +1069,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0083-esm",
-            "keyhab": "",
             "title": "Etablissements SM",
             "id": "83",
             "visible": false,
@@ -1212,7 +1077,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0084-evoie",
-            "keyhab": "",
             "title": "Etablissements VOIE",
             "id": "84",
             "visible": false,
@@ -1221,7 +1085,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0085-upbat",
-            "keyhab": "",
             "title": "UP BAT",
             "id": "85",
             "visible": false,
@@ -1230,7 +1093,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0086-upcat",
-            "keyhab": "",
             "title": "UP CAT",
             "id": "86",
             "visible": false,
@@ -1239,7 +1101,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0087-upealm",
-            "keyhab": "",
             "title": "UP EALM",
             "id": "87",
             "visible": false,
@@ -1248,7 +1109,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0088-upealr",
-            "keyhab": "",
             "title": "UP EALR",
             "id": "88",
             "visible": false,
@@ -1257,7 +1117,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0089-upee",
-            "keyhab": "",
             "title": "UP EE",
             "id": "89",
             "visible": false,
@@ -1266,7 +1125,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0090-upoa",
-            "keyhab": "",
             "title": "UP OA",
             "id": "90",
             "visible": false,
@@ -1275,7 +1133,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0091-upseg",
-            "keyhab": "",
             "title": "UP SEG",
             "id": "91",
             "visible": false,
@@ -1284,7 +1141,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0092-upset",
-            "keyhab": "",
             "title": "UP SET",
             "id": "92",
             "visible": false,
@@ -1293,7 +1149,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0093-upsm",
-            "keyhab": "",
             "title": "UP SM",
             "id": "93",
             "visible": false,
@@ -1302,7 +1157,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0094-upvoie",
-            "keyhab": "",
             "title": "UP VOIE",
             "id": "94",
             "visible": false,
@@ -1313,7 +1167,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0095-pex",
-        "keyhab": "",
         "title": "Particularités d'Exploitation",
         "id": "95",
         "visible": false,
@@ -1332,7 +1185,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0097-cat",
-        "keyhab": "",
         "title": "Caténaires",
         "id": "97",
         "visible": false,
@@ -1341,7 +1193,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0098-ecat",
-            "keyhab": "",
             "title": "Elements caténaires",
             "id": "98",
             "visible": false,
@@ -1352,7 +1203,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0099-seg",
-        "keyhab": "",
         "title": "Segmentations",
         "id": "99",
         "visible": false,
@@ -1361,7 +1211,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0100-seggp",
-            "keyhab": "",
             "title": "Segment de gestion ponctuel",
             "id": "100",
             "visible": false,
@@ -1370,7 +1219,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0101-segs",
-            "keyhab": "",
             "title": "Segment stratégique",
             "id": "101",
             "visible": false,
@@ -1379,7 +1227,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0102-seg",
-            "keyhab": "",
             "title": "Segments",
             "id": "102",
             "visible": false,
@@ -1390,7 +1237,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0103-typeent",
-        "keyhab": "",
         "title": "Type d'entreprise",
         "id": "103",
         "visible": false,
@@ -1399,7 +1245,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0104-gerant",
-            "keyhab": "",
             "title": "Gérant",
             "id": "104",
             "visible": false,
@@ -1408,7 +1253,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0105-prop",
-            "keyhab": "",
             "title": "Propriétaire",
             "id": "105",
             "visible": false,
@@ -1417,7 +1261,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0106-rdgt",
-            "keyhab": "",
             "title": "Responsable de gestion du trafic",
             "id": "106",
             "visible": false,
@@ -1426,7 +1269,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0107-rde",
-            "keyhab": "",
             "title": "Responsable de l'entretien",
             "id": "107",
             "visible": false,
@@ -1437,7 +1279,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0108-ddl",
-        "keyhab": "",
         "title": "Débit des Lignes",
         "id": "108",
         "visible": false,
@@ -1446,7 +1287,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0109-ddl",
-            "keyhab": "",
             "title": "Débit des lignes",
             "id": "109",
             "visible": false,
@@ -1457,7 +1297,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0110-per",
-        "keyhab": "",
         "title": "Périmètres",
         "id": "110",
         "visible": false,
@@ -1466,7 +1305,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s02-gaia-ligne-v2-0111-cl",
-            "keyhab": "",
             "title": "Commune linéaire",
             "id": "111",
             "visible": false,
@@ -1475,7 +1313,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0112-dl",
-            "keyhab": "",
             "title": "Département linéaire",
             "id": "112",
             "visible": false,
@@ -1484,7 +1321,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0113-ral",
-            "keyhab": "",
             "title": "Régions Administratives linéaires",
             "id": "113",
             "visible": false,
@@ -1493,7 +1329,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0114-rrffl",
-            "keyhab": "",
             "title": "Régions RFF linéaires",
             "id": "114",
             "visible": false,
@@ -1502,7 +1337,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s02-gaia-ligne-v2-0115-rsncfl",
-            "keyhab": "",
             "title": "Régions SNCF linéaires",
             "id": "115",
             "visible": false,
@@ -1513,7 +1347,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s02-gaia-ligne-v2-0116-pkloc",
-        "keyhab": "",
         "title": "PK Localisation",
         "id": "116",
         "visible": true,
@@ -1525,15 +1358,12 @@ export const STUB_LAYERS: SubLayer[] = [
   },
   {
     "uid": "service-s03-territoires",
-    "keyhab": "",
-    "type": "dynamic",
     "title": "Territoires",
-    "url": "{service-carto-protocol}://{service-carto-base-url}:{service-carto-port}/arcgis/rest/services/sigext/socle_sigext_territoires/MapServer",
-    "token": "{service-carto-pmsig-token}",
+    "type": "dynamic",
+    "url": "/arcgis/rest/services/sigext/socle_sigext_territoires/MapServer",
     "sublayers": [
       {
         "uid": "service-s03-territoires-0000-tm",
-        "keyhab": "",
         "title": "Territoires métiers",
         "id": "0",
         "visible": true,
@@ -1542,7 +1372,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s03-territoires-0001-rtp",
-            "keyhab": "",
             "title": "Régions TP",
             "id": "1",
             "visible": false,
@@ -1551,7 +1380,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s03-territoires-0002-rrff",
-            "keyhab": "",
             "title": "Régions RFF",
             "id": "2",
             "visible": false,
@@ -1560,7 +1388,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s03-territoires-0003-reic",
-            "keyhab": "",
             "title": "Régions EIC",
             "id": "3",
             "visible": false,
@@ -1569,7 +1396,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s03-territoires-0004-rsncf",
-            "keyhab": "",
             "title": "Régions SNCF",
             "id": "3",
             "visible": true,
@@ -1580,7 +1406,6 @@ export const STUB_LAYERS: SubLayer[] = [
       },
       {
         "uid": "service-s03-territoires-0005-ta",
-        "keyhab": "",
         "title": "Territoires Administratifs",
         "id": "5",
         "visible": true,
@@ -1589,7 +1414,6 @@ export const STUB_LAYERS: SubLayer[] = [
         "sublayers": [
           {
             "uid": "service-s03-territoires-0006-lm",
-            "keyhab": "",
             "title": "Limites hexagonales",
             "id": "6",
             "visible": false,
@@ -1598,7 +1422,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s03-territoires-0007-ra",
-            "keyhab": "",
             "title": "Régions Administratives",
             "id": "7",
             "visible": true,
@@ -1607,7 +1430,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s03-territoires-0008-dept",
-            "keyhab": "",
             "title": "Départements",
             "id": "8",
             "visible": true,
@@ -1616,7 +1438,6 @@ export const STUB_LAYERS: SubLayer[] = [
           },
           {
             "uid": "service-s03-territoires-0009-com",
-            "keyhab": "",
             "title": "Communes",
             "id": "9",
             "visible": true,
