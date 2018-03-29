@@ -42,7 +42,7 @@ build:
   - ng build --prod --base-href=cli-with-esri/
 
 test:
-  - ng test --watch=false --single-run --no-progress --code-coverage --browser=Chrome_CI
+  - ng test --watch=false --single-run=true --no-progress --code-coverage --browser=Chrome_CI --log-level=debug
 
 e2e:
   - ng e2e --no-progress
