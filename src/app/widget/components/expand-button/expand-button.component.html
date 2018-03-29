@@ -2,6 +2,7 @@
   class="esri-widget esri-widget-button"
   (click)="handleButtonClick($event)"
   tabindex="0"
+  [attr.aria-label]="title"
   [pTooltip]="title"
 >
   <i
