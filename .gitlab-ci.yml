@@ -41,19 +41,19 @@ build-app:
     paths:
       - dist/app/
 
-build-lib:
-  stage: build
-  script:
-    - npm run build:lib
-  cache:
-    untracked: true
-    key: "$CI_BUILD_REF_NAME"
-    paths:
-      - node_modules/
-    policy: pull
-  artifacts:
-    paths:
-      - dist/lib/
+#build-lib:
+#  stage: build
+#  script:
+#    - npm run build:lib
+#  cache:
+#    untracked: true
+#    key: "$CI_BUILD_REF_NAME"
+#    paths:
+#      - node_modules/
+#    policy: pull
+#  artifacts:
+#    paths:
+#      - dist/lib/
 
 doc:
   stage: test
