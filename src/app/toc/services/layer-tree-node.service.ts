@@ -2,24 +2,9 @@ import { Inject, Injectable, InjectionToken } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import { TreeNode } from "primeng/api";
-import * as layersData from "../data/layers.json";
+import { STUB_LAYERS } from "../models/layers";
+import { SubLayer } from "../models/sub-layer.vo";
 
-/**
- * Paramètres d'entrées.
- */
-interface SubLayer {
-  title: string;
-  uid: string;
-  id: string;
-  // containers
-  token?: string;
-  url?: string;
-  sublayers?: SubLayer[];
-  // leafs
-  visible?: boolean;
-  minScale?: number;
-  maxScale?: number;
-}
 // point d'injection pour pouvoir tester.
 export const LAYERS = new InjectionToken("map.layers");
 /**
@@ -32,7 +17,7 @@ export class LayerTreeNodeService {
 
   public getLayerNodes(): Observable<TreeNode[]> {
     if (!this.layers) {
-      this.layers = (layersData as any).layers;
+      this.layers = STUB_LAYERS;
     }
     return Observable.of(
       this.layers.map(layer => this.layersToTreeNode(layer)),

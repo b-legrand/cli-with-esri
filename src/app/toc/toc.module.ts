@@ -15,7 +15,7 @@ import { FilteredLayerListComponent } from "./components/filtered-layer-list/fil
 import { HighlightPipe } from "./pipes/highlight.pipe";
 import { FormsModule } from "@angular/forms";
 import { VisibleForScaleDirective } from "./directives/visible-for-scale.directive";
-import * as layersData from "./data/layers.json";
+import { STUB_LAYERS } from "./models/layers";
 
 const TOC_MODULE_COMPONENTS = [
   FilteredLayerListComponent,
@@ -38,7 +38,7 @@ const TOC_MODULE_COMPONENTS = [
   ],
   providers: [
     LayerTreeNodeService,
-    { provide: LAYERS, useValue: (layersData as any).layers },
+    { provide: LAYERS, useValue: STUB_LAYERS },
   ],
   exports: [TableOfContentsComponent],
   entryComponents: [TableOfContentsComponent],
