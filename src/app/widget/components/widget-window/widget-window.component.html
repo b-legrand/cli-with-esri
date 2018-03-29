@@ -29,7 +29,10 @@
     [anchorable]="config.anchorable"
     (onStateChange)="handleStateChange($event)"
   >
-    <div class="widget-handle" #widgetHandle>{{ title }}</div>
+    <div class="widget-handle" #widgetHandle>
+      <i [class]="icon"></i>
+      {{ title }}
+    </div>
   </widget-header>
   <widget-panel *ngIf="!state.folded"
                 [size]="state.size"
