@@ -1,4 +1,4 @@
-import { AppState, initialState } from './app.state';
+import { AppState, getInitialState } from './app.state';
 import { InjectionToken } from '@angular/core';
 import { Store, createStore, Action, compose, StoreEnhancer } from 'redux';
 
@@ -10,7 +10,7 @@ const devtools: StoreEnhancer<AppState> =
 export function createAppStore(): Store<AppState> {
     return createStore<AppState>(
         // todo mettre en place des reducers
-        (state: AppState = initialState(), action: Action): AppState => state,
+        (state: AppState = getInitialState(), action: Action): AppState => state,
         compose(devtools)
     );
 }
