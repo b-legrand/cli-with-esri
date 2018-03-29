@@ -4,7 +4,7 @@
 export interface SubLayer {
   title: string;
   uid: string;
-  id: string;
+  id?: string;
   type?: string;
   // containers
   token?: string;
