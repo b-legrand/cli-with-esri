@@ -11,7 +11,7 @@ describe("AppState", () => {
   it("initialState() renvoie un appState", () => {
     expect(state).toBeDefined();
     expect(state.maps["default"]).toBeDefined();
-    expect(state.widgets).toBe({});
+    expect(state.widgets).toEqual({});
   });
 
 });
