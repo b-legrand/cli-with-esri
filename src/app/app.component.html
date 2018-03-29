@@ -1,33 +1,29 @@
 <sncf-header [title]="title" [logo]="true"></sncf-header>
 <sncf-theme></sncf-theme>
 <esri-map [mapProperties]="{basemap: 'gray'}"
-          [mapViewProperties]="state.mapState.viewProps">
+          [mapViewProperties]="state.maps.default.viewProps">
           <!-- todo plus tard widget-navigation
                 <navigation-toolbar>
                   <esri-button title="Accueil" icon="esri-icon-home"></esri-button>
+                  <esri-button title="Zoom In" icon="esri-icon-zoom-plus"><esri-button>
+                  <esri-button title="Zoom Out" icon="esri-icon-zoom-minus"><esri-button>
                   <esri-button title="Nord" icon="esri-icon-north-navigation"><esri-button>
                   <esri-button title="Compass" icon="esri-icon-compass"><esri-button>
-                  <esri-button title="Compass" icon="esri-icon-north-navigation"><esri-button>
-    <widget-window key="widget-home"
-            [title]="'TOC'"
-            icon="esri-icon-home"></widget-window>
-    <widget-window key="widget-navigation"
-            [title]="'Navigation'"
-            icon="esri-icon-north-navigation"></widget-window>
-                </navigation-toolbar>
+                  <esri-button title="North" icon="esri-icon-north-navigation"><esri-button>
+               </navigation-toolbar>
           -->
   <widget-container position="top-left"
                     [anchorZone]="'left'">
     <widget-window key="widget-layer-list"
             [title]="'Liste des couches'"
             icon="esri-icon-layer-list">
-      <div [loremIpsum]="420" [style.minWidth.px]="420"></div>
+      <table-of-contents></table-of-contents>
     </widget-window>
     <widget-window key="widget-legend"
             [title]="'Légende'"
             icon="esri-icon-handle-vertical">
-            <div loremIpsum></div>
-        </widget-window>
+      <div [loremIpsum]="420" [style.minWidth.px]="420"></div>
+    </widget-window>
     <widget-window key="widget-basemap-gallery"
             [title]="'Fond de plan'"
             icon="esri-icon-basemap">
