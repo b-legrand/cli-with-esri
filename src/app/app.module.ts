@@ -5,14 +5,15 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import { MapModule } from './map/map.module';
 import { WidgetModule } from './widget/widget.module';
 import { LayoutModule } from './layout/layout.module';
+import { TocModule } from './toc/toc.module';
 
 import { APP_CONFIG, DEFAULT_APP_CONFIG } from './core/model/app.config';
 import { APP_ROUTES } from './routes';
 import { AppStoreService } from './core/services/app-store.service';
-import { CoreModule } from './core/core.module';
 // import {LibraryModule} from './library/library.module';
 import { AppStore, appStoreProviders, createAppStore } from './core/model/app.store';
 
@@ -33,6 +34,7 @@ import { AppStore, appStoreProviders, createAppStore } from './core/model/app.st
     WidgetModule,
     LayoutModule,
     CoreModule,
+    TocModule,
     // LibraryModule,
   ],
   providers: [
