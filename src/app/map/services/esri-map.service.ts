@@ -38,8 +38,7 @@ export class EsriMapService {
           // create map
           const map = new Map(mapProperties);
 
-          // prepare properties that should be set locally
-          // create a new object so as to not modify the provided object
+          // copie les propriétés pour ne pas toucher à la source.
           const newMapViewProps = Object.assign({}, mapViewProperties);
           if (!newMapViewProps.container) {
             newMapViewProps.container = mapEl as HTMLDivElement;
@@ -48,7 +47,7 @@ export class EsriMapService {
             newMapViewProps.map = map;
           }
 
-          // create the MapView
+          // créé la MapView
           const mapView = new MapView(newMapViewProps);
 
           this.map = map;
@@ -82,11 +81,10 @@ export class EsriMapService {
           __esri.MapViewConstructor,
           __esri.WebMapConstructor
         ]) => {
-          // create map
+          // créé la webmap
           const map = new WebMap(webMapProperties);
 
-          // prepare properties that should be set locally
-          // create a new object so as to not modify the provided object
+          // créé un nouvel objet props pour éviter d etoucher à la source.
           const newMapViewProps = Object.assign({}, mapViewProperties);
           if (!newMapViewProps.container) {
             newMapViewProps.container = mapEl as HTMLDivElement;
@@ -95,7 +93,7 @@ export class EsriMapService {
             newMapViewProps.map = map;
           }
 
-          // create the MapView
+          // créé la MapView
           const mapView = new MapView(newMapViewProps);
 
           this.map = map;

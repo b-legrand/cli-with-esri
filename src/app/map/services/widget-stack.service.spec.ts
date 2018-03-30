@@ -1,48 +1,25 @@
-import {TestBed, inject, ComponentFixture} from '@angular/core/testing';
+import { inject, TestBed } from "@angular/core/testing";
 
-import { EsriMapService } from './esri-map.service';
-import EsriLoaderService from './esri-loader.service';
-import {APP_CONFIG, DEFAULT_APP_CONFIG} from '../../core/model/app.config';
-import {Component, DebugElement, ElementRef} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import { WidgetStackService } from "./widget-stack.service";
 
 
-describe('MapService', () => {
+describe("WidgetStackService", () => {
   let element: HTMLElement;
-  let mapService: EsriMapService;
+  let widgetStackService: WidgetStackService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        EsriMapService,
-        EsriLoaderService,
-        {
-          provide: APP_CONFIG,
-          useValue: DEFAULT_APP_CONFIG
-        }
-      ]
+        WidgetStackService,
+      ],
     });
-    mapService = TestBed.get(EsriMapService);
-    element = document.createElement('div');
-    element.id = 'map-container';
+    widgetStackService = TestBed.get(WidgetStackService);
+    element = document.createElement("div");
+    element.id = "map-container";
   });
 
-  it('should be created', inject([EsriMapService], (service: EsriMapService) => {
+  it("should be created", inject([WidgetStackService], (service: WidgetStackService) => {
     expect(service).toBeTruthy();
-  }));
-
-  it('can be asked to provide a map', inject([EsriMapService], (service: EsriMapService, done) => {
-    service.loadMap(
-      { basemap: 'streets'},
-      { zoom: 6, center: []},
-      element
-      ).then(items => {
-        expect(items.map).toBeTruthy();
-        expect(items.mapView).toBeTruthy();
-      done();
-    }).catch(reason => {
-      done.fail(reason);
-    });
   }));
 
 });
