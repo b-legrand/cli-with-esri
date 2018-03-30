@@ -1,16 +1,13 @@
 import {
   Component,
-  OnInit,
-  Input,
-  ViewChild,
-  EventEmitter,
   ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
   Output,
-  ContentChild,
-  QueryList
-} from '@angular/core';
-import { EsriMapService } from '../../services/esri-map.service';
-import { WidgetWindowComponent } from '../../../widget/components';
+  ViewChild,
+} from "@angular/core";
+import { EsriMapService } from "../../services/esri-map.service";
 
 /**
  * Composant map simplifié bas/niveau :
@@ -26,12 +23,11 @@ import { WidgetWindowComponent } from '../../../widget/components';
  * </esri-map>
  */
 @Component({
-  selector: 'esri-map',
-  templateUrl: './esri-map.component.html',
-  styleUrls: ['./esri-map.component.scss']
+  selector: "esri-map",
+  templateUrl: "./esri-map.component.html",
+  styleUrls: ["./esri-map.component.scss"],
 })
 export class EsriMapComponent implements OnInit {
-
   private map: __esri.Map;
 
   private mapView: __esri.MapView;
@@ -41,20 +37,14 @@ export class EsriMapComponent implements OnInit {
    */
   public isLoading = true;
 
-
   /**
    * Référence vers l'élement conteneur de la map esri.
    */
-  @ViewChild('map') public mapEl: ElementRef;
-
-  /**
-   * Liste des widgets contenus dans cette map.
-   */
-  @ContentChild(WidgetWindowComponent) public child: QueryList<WidgetWindowComponent>;
+  @ViewChild("map") public mapEl: ElementRef;
 
   /**
    * Propriétés de la Map esri.
-   *
+   * {@link https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#properties-summary}
    * Example :
    * ```json
    * { basemap: "streets" }
@@ -78,7 +68,8 @@ export class EsriMapComponent implements OnInit {
   /**
    * Callback remonté lorsque les propriétés change.
    */
-  @Output() public mapViewPropertiesChange = new EventEmitter<__esri.MapViewProperties>();
+  @Output()
+  public mapViewPropertiesChange = new EventEmitter<__esri.MapViewProperties>();
 
   /**
    * Callback remonté lorsque la carte est chargée.
@@ -92,33 +83,34 @@ export class EsriMapComponent implements OnInit {
       // map is already initialized
       return;
     }
-
     this.loadMap();
   }
 
   loadMap() {
     let mapPromise: Promise<any>;
-
     // determine if loading a WebMap or creating a custom map
     if (this.mapProperties) {
       mapPromise = this.mapService.loadMap(
         this.mapProperties,
         this.mapViewProperties,
-        this.mapEl.nativeElement
+        this.mapEl.nativeElement,
       );
-    } else {
-      console.error('Proper map properties were not provided');
-      return;
     }
-    /* si besoin faire évoluer avec :
-    else if (this.webMapProperties) {
+
+    if (this.webMapProperties) {
       mapPromise = this.mapService.loadWebMap(
         this.webMapProperties,
         this.mapViewProperties,
-        this.mapEl
+        this.mapEl.nativeElement,
       );
     }
-    */
+
+    if (!mapPromise) {
+      console.error(
+        "ERREUR: composant esri-map initialisé sans les propriétés",
+      );
+      return;
+    }
 
     mapPromise.then(mapInfo => {
       this.map = mapInfo.map;
@@ -127,7 +119,7 @@ export class EsriMapComponent implements OnInit {
       // emit event informing application that the map has been loaded
       this.mapLoaded.emit({
         map: this.map,
-        mapView: this.mapView
+        mapView: this.mapView,
       });
       this.mapLoaded.complete();
       this.isLoading = false;
@@ -135,15 +127,16 @@ export class EsriMapComponent implements OnInit {
   }
 
   attachEvents(mapView: __esri.MapView, watchUtils: __esri.watchUtils) {
-    mapView.on('zoom', event => {
-      console.log('zoom', event);
+    mapView.on("zoom", event => {
+      console.log("zoom", event);
     });
-    mapView.on('move', event => {
-      console.log('move', event);
+    mapView.on("move", event => {
+      console.log("move", event);
     });
-    watchUtils.watch(mapView, 'stationary', (value: boolean) => {
-      console.log('stationary', value);
-      if (value) {// est passé de faux (en mouvement) à vrai (immobile)
+    watchUtils.watch(mapView, "stationary", (value: boolean) => {
+      console.log("stationary", value);
+      if (value) {
+        // est passé de faux (en mouvement) à vrai (immobile)
         this.mapViewPropertiesChange.emit({
           center: [mapView.center.x, mapView.center.y],
           zoom: mapView.zoom,
@@ -151,5 +144,4 @@ export class EsriMapComponent implements OnInit {
       }
     });
   }
-
 }
