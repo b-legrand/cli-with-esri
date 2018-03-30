@@ -1,18 +1,24 @@
-import { Directive, OnInit, ElementRef, Input } from '@angular/core';
-import { EsriMapService } from '../../map/services/esri-map.service';
+import { Directive, OnInit, ElementRef, Input } from "@angular/core";
+import { EsriMapService } from "../../map/services/esri-map.service";
 
 /**
  * But de cette directive :
  * cacher les manipulations du dom faites par un composant qui veut s'inscrire en tant que widget esri.
+ * Permets de gérer de manière transparente l'inscription des widgets, ils n'ont plus à s'ajouter automatiquement.
  */
 @Directive({
-  selector: '[esriWidget]'
+  selector: "[esriWidget]",
 })
-export class EsriWidgetDirective  implements OnInit {
+export class EsriWidgetDirective implements OnInit {
+  /**
+   * Position dans l'ui esri ('top-left','bottom-left','top-right','bottom-right')
+   */
+  @Input() public position: string;
 
-  @Input() position: string;
-
-  @Input() index: number;
+  /**
+   * Index dans la zone.
+   */
+  @Input() public index: number;
 
   private el: HTMLElement;
 
@@ -22,9 +28,8 @@ export class EsriWidgetDirective  implements OnInit {
 
   ngOnInit() {
     this.mapService.isLoaded.subscribe(() => {
-      // after map is loaded then add widget
+      // Une fois la map chargée, ajoute le widget.
       this.mapService.addWidget(this.el, this.position);
     });
   }
-
 }
