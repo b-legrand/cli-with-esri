@@ -46,7 +46,6 @@
     "angular-resizable-element": "^2.0.0",
     "angular-split": "^1.0.0-rc.3",
     "angular2-draggable": "1.3.1",
-    "bootstrap": "^4.0.0",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.4.1",
     "dexie": "^2.0.2",
@@ -57,9 +56,10 @@
     "marked": "^0.3.17",
     "mermaid": "^7.1.2",
     "moment": "^2.21.0",
-    "ng-bootstrap": "^1.6.3",
+    "ngx-cookie-service": "^1.0.10",
     "ngx-markdown": "^1.5.2",
     "ngx-perfect-scrollbar": "^5.3.5",
+    "ngx-popper": "^2.7.0",
     "primeng": "^5.2.0",
     "prismjs": "^1.12.2",
     "redux": "^3.7.2",
@@ -83,6 +83,7 @@
     "cucumber-html-reporter": "^4.0.2",
     "husky": "^0.14.3",
     "jasmine-core": "~2.8.0",
+    "jasmine-expect": "^3.8.3",
     "jasmine-spec-reporter": "~4.2.1",
     "jest": "^22.4.2",
     "jest-html-reporter": "^2.0.0",
@@ -122,7 +123,12 @@
     "dest": "dist/lib",
     "workingDirectory": ".ng_build",
     "lib": {
-      "entryFile": "public_api.ts"
+      "entryFile": "public_api.ts",
+      "externals": {
+        "@angular/animations": "ng.animations",
+        "@ngrx/store": "ngrx.store",
+        "@ngrx/router-store": "ngrx.routerStore"
+      }
     }
   },
   "lint-staged": {
@@ -131,7 +137,7 @@
       "git add"
     ],
     "*.ts": [
-      "prettier --parser typescript --write",
+      "prettier --parser typescript --write --trailing-comma all",
       "tslint --fix src/**/*.ts -t verbose -p src/tsconfig.app.json",
       "git add"
     ],
