@@ -30,6 +30,7 @@ describe('EsriLoaderService', () => {
     );
     for (const script of scriptElements) {
       document.head.removeChild(script);
+      document.body.removeChild(script);
     }
   });
 
