@@ -1,32 +1,33 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { WidgetPanelComponent } from './widget-panel.component';
-import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
-import {By} from '@angular/platform-browser';
-import { APP_CONFIG } from '../../../core/model/app.config';
+import { WidgetPanelComponent } from "./widget-panel.component";
+import { DebugElement, NO_ERRORS_SCHEMA } from "@angular/core";
+import { By } from "@angular/platform-browser";
+import { APP_CONFIG } from "../../../core/model/app.config";
 
-describe('WidgetPanelComponent', () => {
+describe("WidgetPanelComponent", () => {
   let component: WidgetPanelComponent;
   let fixture: ComponentFixture<WidgetPanelComponent>;
   let debugElement: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ WidgetPanelComponent ],
-      providers: [ { provide: APP_CONFIG, useValue: {themeColor: 'black'} }],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [WidgetPanelComponent],
+        providers: [{ provide: APP_CONFIG, useValue: { themeColor: "black" } }],
+        schemas: [NO_ERRORS_SCHEMA],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    debugElement = fixture.debugElement.query(By.css('.widget-panel'));
+    debugElement = fixture.debugElement.query(By.css(".widget-panel"));
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
@@ -34,7 +35,7 @@ describe('WidgetPanelComponent', () => {
     expect(component).toBeTruthy();
     component.resizable = true;
     fixture.detectChanges();
-    const resizeButton = debugElement.query(By.css('.widget-resize-button'));
+    const resizeButton = debugElement.query(By.css(".widget-resize-button"));
     expect(resizeButton).toBeDefined();
   });
 
@@ -43,5 +44,4 @@ describe('WidgetPanelComponent', () => {
     component.resizable = false;
     fixture.detectChanges();
   });
-
 });

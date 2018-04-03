@@ -1,6 +1,6 @@
-import {Component, Input, Inject, ViewChild} from '@angular/core';
-import {APP_CONFIG, AppConfig} from '../../../core/model/app.config';
-import {PerfectScrollbarDirective} from 'ngx-perfect-scrollbar';
+import { Component, Input, Inject, ViewChild } from "@angular/core";
+import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
+import { PerfectScrollbarDirective } from "ngx-perfect-scrollbar";
 
 /**
  * Ce composant gère le contenu et le redimensionnement d'un wiget socle à travers :
@@ -10,12 +10,11 @@ import {PerfectScrollbarDirective} from 'ngx-perfect-scrollbar';
  *
  */
 @Component({
-  selector: 'widget-panel',
-  templateUrl: './widget-panel.component.html',
-  styleUrls: ['./widget-panel.component.scss']
+  selector: "widget-panel",
+  templateUrl: "./widget-panel.component.html",
+  styleUrls: ["./widget-panel.component.scss"],
 })
 export class WidgetPanelComponent {
-
   /**
    * Affiche ou non le bouton déplacer.
    */
@@ -36,7 +35,7 @@ export class WidgetPanelComponent {
 
   public isResizing = false;
 
-  public startPosition?: { x: number, y: number };
+  public startPosition?: { x: number; y: number };
 
   /**
    * Configuration de `perfect-scrollbar`
@@ -54,5 +53,4 @@ export class WidgetPanelComponent {
   constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
     this.themeColor = appConfig.themeColor;
   }
-
 }
