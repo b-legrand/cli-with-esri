@@ -18,7 +18,7 @@ describe("LocalStorageService", () => {
 
   beforeEach(() => {
     // nettoier
-    localStorage.setItem(valueKey, undefined);
+    localStorage.removeItem(valueKey);
   });
 
   it(
@@ -35,7 +35,8 @@ describe("LocalStorageService", () => {
       service.setItem(valueKey, valueObject);
 
       const storedObject = service.getItem(valueKey);
-      expect(storedObject).toBe(valueObject);
+      // verifie
+      expect(storedObject).toEqual(valueObject);
     }),
   );
 
@@ -43,7 +44,11 @@ describe("LocalStorageService", () => {
     "fournit la fonction getItem()",
 
     inject([LocalStorageService], (service: LocalStorageService) => {
-      expect(service.getItem(valueKey)).not.toBeDefined();
+      expect(service.getItem(valueKey)).toBe(null);
+
+      service.setItem(valueKey, valueObject);
+
+      expect(service.getItem(valueKey)).toEqual(valueObject);
     }),
   );
 });
