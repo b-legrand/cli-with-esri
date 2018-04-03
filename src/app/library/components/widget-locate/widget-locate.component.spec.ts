@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { WidgetLocateComponent } from './widget-locate.component';
+import { WidgetLocateComponent } from "./widget-locate.component";
 
-describe('WidgetLocateComponent', () => {
+describe("WidgetLocateComponent", () => {
   let component: WidgetLocateComponent;
   let fixture: ComponentFixture<WidgetLocateComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ WidgetLocateComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [WidgetLocateComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetLocateComponent);
@@ -19,7 +20,7 @@ describe('WidgetLocateComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

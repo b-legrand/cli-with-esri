@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'widget-bookmark',
-  templateUrl: './widget-bookmark.component.html',
-  styleUrls: ['./widget-bookmark.component.css']
+  selector: "widget-bookmark",
+  templateUrl: "./widget-bookmark.component.html",
+  styleUrls: ["./widget-bookmark.component.css"],
 })
 export class WidgetBookmarkComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

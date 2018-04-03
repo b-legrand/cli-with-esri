@@ -1,26 +1,46 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 // widgets
-import { WidgetAboutComponent } from './components/widget-about/widget-about.component';
-import { WidgetBookmarkComponent } from './components/widget-bookmark/widget-bookmark.component';
-import { WidgetDrawComponent } from './components/widget-draw/widget-draw.component';
-import { WidgetFilterComponent } from './components/widget-filter/widget-filter.component';
-import { WidgetQueryComponent } from './components/widget-query/widget-query.component';
-import { WidgetGeolocationComponent } from './components/widget-geolocation/widget-geolocation.component';
-import {MapModule} from '../map/map.module';
-import {CoreModule} from '../core/core.module';
-import {WidgetModule} from '../widget/widget.module';
-import { WidgetPopupComponent } from './components/widget-popup/widget-popup.component';
-import { WidgetLayerListComponent } from './components/widget-layer-list/widget-layer-list.component';
-import { WidgetHomeComponent } from './components/widget-home/widget-home.component';
-import { WidgetZoomComponent } from './components/widget-zoom/widget-zoom.component';
-import { WidgetPrintComponent } from './components/widget-print/widget-print.component';
-import { WidgetLocateComponent } from './components/widget-locate/widget-locate.component';
-import { WidgetCompassComponent } from './components/widget-compass/widget-compass.component';
-import { WidgetSearchComponent } from './components/widget-search/widget-search.component';
+import { WidgetAboutComponent } from "./components/widget-about/widget-about.component";
+import { WidgetBookmarkComponent } from "./components/widget-bookmark/widget-bookmark.component";
+import { WidgetDrawComponent } from "./components/widget-draw/widget-draw.component";
+import { WidgetFilterComponent } from "./components/widget-filter/widget-filter.component";
+import { WidgetQueryComponent } from "./components/widget-query/widget-query.component";
+import { WidgetGeolocationComponent } from "./components/widget-geolocation/widget-geolocation.component";
+import { MapModule } from "../map/map.module";
+import { CoreModule } from "../core/core.module";
+import { WidgetModule } from "../widget/widget.module";
+import { WidgetPopupComponent } from "./components/widget-popup/widget-popup.component";
+import { WidgetLayerListComponent } from "./components/widget-layer-list/widget-layer-list.component";
+import { WidgetHomeComponent } from "./components/widget-home/widget-home.component";
+import { WidgetZoomComponent } from "./components/widget-zoom/widget-zoom.component";
+import { WidgetPrintComponent } from "./components/widget-print/widget-print.component";
+import { WidgetLocateComponent } from "./components/widget-locate/widget-locate.component";
+import { WidgetCompassComponent } from "./components/widget-compass/widget-compass.component";
+import { WidgetSearchComponent } from "./components/widget-search/widget-search.component";
+import { AccordionModule } from "primeng/primeng";
+import { WidgetGeometrySearchComponent } from "./components/widget-geometry-search/widget-geometry-search.component";
+
+const LIBRARY_COMPONENTS = [
+  WidgetHomeComponent,
+  WidgetAboutComponent,
+  WidgetBookmarkComponent,
+  WidgetDrawComponent,
+  WidgetFilterComponent,
+  WidgetQueryComponent,
+  WidgetGeolocationComponent,
+  WidgetPopupComponent,
+  WidgetLayerListComponent,
+  WidgetPrintComponent,
+  WidgetLocateComponent,
+  WidgetZoomComponent,
+  WidgetCompassComponent,
+  WidgetSearchComponent,
+  WidgetGeometrySearchComponent,
+];
 
 /**
- * Librairie de wigets socle.
+ * Librairie de widgets socle.
  *
  * Un widget 'plugin' est ce qui existe actuellement = un composanng angular
  * La différence dans cette appli c'est qu'au lieu d'interagir directement avec l'api esri
@@ -33,38 +53,10 @@ import { WidgetSearchComponent } from './components/widget-search/widget-search.
     MapModule,
     CoreModule,
     WidgetModule,
+    // primeng
+    AccordionModule,
   ],
-  declarations: [
-    WidgetHomeComponent,
-    WidgetAboutComponent,
-    WidgetBookmarkComponent,
-    WidgetDrawComponent,
-    WidgetFilterComponent,
-    WidgetQueryComponent,
-    WidgetGeolocationComponent,
-    WidgetPopupComponent,
-    WidgetLayerListComponent,
-    WidgetPrintComponent,
-    WidgetLocateComponent,
-    WidgetZoomComponent,
-    WidgetCompassComponent,
-    WidgetSearchComponent,
-  ],
-  exports: [
-    WidgetHomeComponent,
-    WidgetAboutComponent,
-    WidgetBookmarkComponent,
-    WidgetDrawComponent,
-    WidgetFilterComponent,
-    WidgetQueryComponent,
-    WidgetGeolocationComponent,
-    WidgetPopupComponent,
-    WidgetLayerListComponent,
-    WidgetPrintComponent,
-    WidgetLocateComponent,
-    WidgetZoomComponent,
-    WidgetCompassComponent,
-    WidgetSearchComponent,
-  ]
+  declarations: LIBRARY_COMPONENTS,
+  exports: LIBRARY_COMPONENTS,
 })
-export class LibraryModule { }
+export class LibraryModule {}

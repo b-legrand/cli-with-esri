@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { WidgetHomeComponent } from './widget-home.component';
+import { WidgetHomeComponent } from "./widget-home.component";
 
-describe('WidgetHomeComponent', () => {
+describe("WidgetHomeComponent", () => {
   let component: WidgetHomeComponent;
   let fixture: ComponentFixture<WidgetHomeComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ WidgetHomeComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [WidgetHomeComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetHomeComponent);
@@ -19,7 +20,7 @@ describe('WidgetHomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
