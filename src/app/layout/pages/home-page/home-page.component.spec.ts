@@ -1,19 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { HomePageComponent } from './home-page.component';
-import { DebugElement } from '@angular/core';
+import { HomePageComponent } from "./home-page.component";
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from "@angular/core";
 
-describe('HomePageComponent', () => {
+describe("HomePageComponent", () => {
   let component: HomePageComponent;
   let fixture: ComponentFixture<HomePageComponent>;
   let debugElement: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HomePageComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [HomePageComponent],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomePageComponent);
@@ -22,13 +24,7 @@ describe('HomePageComponent', () => {
     debugElement = fixture.debugElement;
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
-
-  it('should display <<Hello World>>', () => {
-    expect(debugElement.nativeElement).toBeTruthy();
-    expect(debugElement.nativeElement.textContent).toContain('Hello World!');
-  });
-
 });
