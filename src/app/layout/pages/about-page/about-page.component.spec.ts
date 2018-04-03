@@ -4,7 +4,6 @@ import { RouterModule } from "@angular/router";
 import { SidebarModule } from "primeng/sidebar";
 
 import { AboutPageComponent } from "./about-page.component";
-import { SidebarPageComponent } from "../../components/sidebar-page/sidebar-page.component";
 
 describe("AboutPageComponent", () => {
   let component: AboutPageComponent;
@@ -13,7 +12,7 @@ describe("AboutPageComponent", () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [AboutPageComponent, SidebarPageComponent],
+        declarations: [AboutPageComponent],
         imports: [SidebarModule, RouterModule],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
       }).compileComponents();

@@ -4,7 +4,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { HelpPageComponent } from "./help-page.component";
 import { SidebarModule, ScrollPanelModule } from "primeng/primeng";
-import { SidebarPageComponent } from "../../components/sidebar-page/sidebar-page.component";
 
 describe("HelpPageComponent", () => {
   let component: HelpPageComponent;
@@ -13,7 +12,7 @@ describe("HelpPageComponent", () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [HelpPageComponent, SidebarPageComponent],
+        declarations: [HelpPageComponent],
         imports: [SidebarModule, ScrollPanelModule],
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
       }).compileComponents();

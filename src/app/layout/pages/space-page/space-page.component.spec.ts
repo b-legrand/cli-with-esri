@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { SpacePageComponent } from "./space-page.component";
-import { SidebarPageComponent } from "../../components/sidebar-page/sidebar-page.component";
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 describe("SpacePageComponent", () => {
   let component: SpacePageComponent;
@@ -11,8 +11,8 @@ describe("SpacePageComponent", () => {
     TestBed.configureTestingModule({
         declarations: [
           SpacePageComponent,
-          SidebarPageComponent,
         ],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
       })
       .compileComponents();
   }));
