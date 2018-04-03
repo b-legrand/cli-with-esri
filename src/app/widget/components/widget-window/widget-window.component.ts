@@ -1,11 +1,20 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild, ContentChild} from '@angular/core';
-import {ResizeEvent} from 'angular-resizable-element';
-import { v4 } from 'uuid';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
+import { ResizeEvent } from "angular-resizable-element";
+import { v4 } from "uuid";
 
-import {initialWidgetState, WidgetState} from '../../model/widget-state';
-import {WidgetConfig} from '../../model/widget-config';
-import {WidgetStateManager} from '../../services/widget-state-manager.service';
-import { TemplatePortal } from '@angular/cdk/portal';
+import { initialWidgetState, WidgetState } from "../../model/widget-state";
+import { WidgetConfig } from "../../model/widget-config";
+import { WidgetStateManager } from "../../services/widget-state-manager.service";
+import { TemplatePortal } from "@angular/cdk/portal";
+import { Store } from "@ngrx/store";
+import { WidgetActionTypes, WidgetInit } from "../../actions/widget.actions";
 
 /**
  * Un composant fenètre de widget est composé de :
@@ -19,16 +28,16 @@ import { TemplatePortal } from '@angular/cdk/portal';
  * - afficher le contenu selon son état.
  */
 @Component({
-  selector: 'widget-window',
-  templateUrl: './widget-window.component.html',
-  styleUrls: ['./widget-window.component.scss'],
+  selector: "widget-window",
+  templateUrl: "./widget-window.component.html",
+  styleUrls: ["./widget-window.component.scss"],
 })
 export class WidgetWindowComponent implements OnInit, OnChanges {
-
   /**
    * Id technique.
    */
   @Input() public key: string;
+
   /**
    * Etat
    */
@@ -74,7 +83,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
   /**
    * Limites pour le drag and drop, injectées par le widget-container.
    */
-  @Input() public boundaries: ElementRef;
+  @Input() public boundaries: HTMLElement;
 
   /**
    * flag pour ne pas appliquer la directive esriWidget d'ajout à la map
@@ -85,23 +94,27 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
   /**
    * Poignée
    */
-  @ViewChild('widgetHandle') public widgetHandle: ElementRef;
+  @ViewChild("widgetHandle") public widgetHandle: ElementRef;
 
   /**
    * Conteneur
    */
-  @ViewChild('widget') public widget: ElementRef;
+  @ViewChild("widget") public widget: ElementRef;
 
   /**
    * Portail (template virtuel)
    *
    */
-  @ViewChild('widget') public widgetPortal: TemplatePortal<WidgetWindowComponent>;
+  @ViewChild("widget")
+  public widgetPortal: TemplatePortal<WidgetWindowComponent>;
 
-  constructor(private stateManager: WidgetStateManager) { }
+  constructor(
+    private stateManager: WidgetStateManager,
+    private store: Store<any>,
+  ) {}
 
   ngOnInit() {
-    // todo injecter la config depuis un service de stockage;
+    // todo injecter la config depuis le parent;
     this.config = {
       uuid: v4(),
       name: this.key,
@@ -112,31 +125,41 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
       foldable: true,
       scrollable: true,
     };
-    this.state = this.stateManager.getState(this.key) || initialWidgetState();
+    this.store
+      .select(state => state.widgets[this.key])
+      .subscribe(widgetState => {
+        if (!widgetState) {
+          this.state = initialWidgetState();
+          this.store.dispatch(
+            new WidgetInit({
+              key: this.key,
+              state: this.state,
+            }),
+          );
+        } else {
+          this.state = widgetState;
+        }
+      });
   }
 
   ngOnChanges(changes) {
     if (changes.position && changes.position.currentValue) {
       this.contentLoaded = true;
     }
-    if (changes.state && !changes.state.currentValue) {
-      this.state = initialWidgetState();
-    }
     if (changes.key && !changes.key.currentValue) {
-      console.error('NO KEY SET');
       this.key = v4();
     }
   }
 
-  handleDragStart(event: DragEvent) {
-  }
+  handleDragStart(event: DragEvent) {}
 
   handleDragEnd(event: DragEvent) {
     if (this.config.movable && !this.state.anchored) {
       // angular2-draggable fonctionne avec des translation css, ca fout le bazar selon le conteneur.
-      const {transform} = this.widget.nativeElement.style;
+      const { transform } = this.widget.nativeElement.style;
       const offset = this.parseTransform(transform);
-      this.widget.nativeElement.style.left = this.state.position.left += offset.x;
+      this.widget.nativeElement.style.left = this.state.position.left +=
+        offset.x;
       this.widget.nativeElement.style.top = this.state.position.top += offset.y;
       delete this.widget.nativeElement.style.transform;
     }
@@ -180,18 +203,17 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
     this.state.zIndex++;
   }
 
-  public parseTransform(transformString): { x: number, y: number } {
+  public parseTransform(transformString): { x: number; y: number } {
     const formatExp = /translate\((.*)px, (.*)px\)/;
     const extract = formatExp.exec(transformString);
-    return (extract && extract.length)
+    return extract && extract.length
       ? {
-        x: parseInt(extract[1], 10),
-        y: parseInt(extract[2], 10),
-      }
+          x: parseInt(extract[1], 10),
+          y: parseInt(extract[2], 10),
+        }
       : {
-        x: 0,
-        y: 0
-      };
+          x: 0,
+          y: 0,
+        };
   }
-
 }

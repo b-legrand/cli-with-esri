@@ -1,17 +1,23 @@
-import {Component, Inject, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {APP_CONFIG, AppConfig} from '../../../core/model/app.config';
-import {WidgetState} from '../../model/widget-state';
+import {
+  Component,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+} from "@angular/core";
+import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
+import { WidgetState } from "../../model/widget-state";
 
 /**
  * L'expand button est un bouton de style esri permettant d'activer / désactiver le widget qui l'utilise.
  */
 @Component({
-  selector: 'expand-button',
-  templateUrl: './expand-button.component.html',
-  styleUrls: ['./expand-button.component.scss']
+  selector: "expand-button",
+  templateUrl: "./expand-button.component.html",
+  styleUrls: ["./expand-button.component.scss"],
 })
 export class ExpandButtonComponent implements OnInit {
-
   @Input() public title: string;
 
   @Input() public iconClass: string;
@@ -21,9 +27,10 @@ export class ExpandButtonComponent implements OnInit {
    */
   @Input() public active = false;
 
-  @Output() public activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  public activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public disabledColor = 'rgb(160, 160, 160)';
+  public disabledColor = "rgb(160, 160, 160)";
 
   public themeColor: string;
 
@@ -33,12 +40,10 @@ export class ExpandButtonComponent implements OnInit {
     this.themeColor = appConfig.themeColor;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public handleButtonClick(event: any) {
     this.active = !this.active;
     this.activeChange.emit(this.active);
   }
-
 }
