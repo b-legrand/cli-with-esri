@@ -13,9 +13,10 @@ Fonctionnalité: Application::Socle
         Et j'attends 10 secondes
         Alors la carte s'affiche
         Et l'api arcgis a été chargée en version "4.6"
+        Et je prends une capture d'écran
 
     Scénario: Configuration de la couleur principale
-    
+
         Soit une application du socle nommée "Application"
         Et une configuration de l'api arcgis en "4.6"
         Et une couleur de thème à "#000000"
@@ -25,7 +26,7 @@ Fonctionnalité: Application::Socle
         Et la couleur du titre est "#000000"
 
     Scénario: Configuration de la carte esri
-    
+
         Soit une application du socle nommée "Application"
         Et une configuration de la carte "4.6"
         Quand j'accède à l'adresse "/space/1"

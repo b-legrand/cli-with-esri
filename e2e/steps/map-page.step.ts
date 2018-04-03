@@ -1,4 +1,4 @@
-import { defineSupportCode, Then, When, Given, Before } from "cucumber";
+import { defineSupportCode} from "cucumber";
 import { MapPageObject } from "../pages/map.po";
 
 defineSupportCode(({ Given, When, Then, Before }) => {
