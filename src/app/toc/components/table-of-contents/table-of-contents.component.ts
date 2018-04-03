@@ -10,7 +10,7 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class TableOfContentsComponent implements OnInit {
   /**
-   * Todo injecter les layers esri depuis l'état,
+   * Todo injecter les layers esri depuis le composant appelant.
    * Gérer une liste filtréée à passer à <filtered-layer-list>
    */
   @Input() public layers;
