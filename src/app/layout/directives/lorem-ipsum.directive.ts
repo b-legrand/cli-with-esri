@@ -36,8 +36,10 @@ export class LoremIpsumDirective implements OnChanges {
     }
     // si un param est fourni, on redécoupe et on limite.
     const latinWords = LOREM_IPSUM.split(' ');
-    latinWords.forEach(word => {
-        output += word;
+    latinWords.forEach((word, index) => {
+      if (index < this.loremIpsum - 1) {
+        output += ` ${word}`;
+      }
     });
     // on prends des mots au pif ensuite
     if (this.loremIpsum > latinWords.length) {
