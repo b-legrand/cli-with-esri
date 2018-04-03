@@ -13,8 +13,8 @@ import { initialWidgetState, WidgetState } from "../../model/widget-state";
 import { WidgetConfig } from "../../model/widget-config";
 import { WidgetStateManager } from "../../services/widget-state-manager.service";
 import { TemplatePortal } from "@angular/cdk/portal";
-import { Store } from "@ngrx/store";
-import { WidgetActionTypes, WidgetInit } from "../../actions/widget.actions";
+// import { Store } from "@ngrx/store";
+// import { WidgetActionTypes, WidgetInit } from "../../actions/widget.actions";
 
 /**
  * Un composant fenètre de widget est composé de :
@@ -110,7 +110,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
 
   constructor(
     private stateManager: WidgetStateManager,
-    private store: Store<any>,
+    // private store: Store<any>,
   ) {}
 
   ngOnInit() {
@@ -125,26 +125,15 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
       foldable: true,
       scrollable: true,
     };
-    this.store
-      .select(state => state.widgets[this.key])
-      .subscribe(widgetState => {
-        if (!widgetState) {
-          this.state = initialWidgetState();
-          this.store.dispatch(
-            new WidgetInit({
-              key: this.key,
-              state: this.state,
-            }),
-          );
-        } else {
-          this.state = widgetState;
-        }
-      });
+    this.state = this.stateManager.getState(this.key) || initialWidgetState();
   }
 
   ngOnChanges(changes) {
     if (changes.position && changes.position.currentValue) {
       this.contentLoaded = true;
+    }
+    if (changes.state && !changes.state.currentValue) {
+      this.state = initialWidgetState();
     }
     if (changes.key && !changes.key.currentValue) {
       this.key = v4();
