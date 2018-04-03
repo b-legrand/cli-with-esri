@@ -1,16 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SpacePageComponent } from './space-page.component';
+import { SpacePageComponent } from "./space-page.component";
+import { SidebarPageComponent } from "../../components/sidebar-page/sidebar-page.component";
 
-describe('SpacePageComponent', () => {
+describe("SpacePageComponent", () => {
   let component: SpacePageComponent;
   let fixture: ComponentFixture<SpacePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpacePageComponent ]
-    })
-    .compileComponents();
+        declarations: [
+          SpacePageComponent,
+          SidebarPageComponent,
+        ],
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +23,7 @@ describe('SpacePageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -3,9 +3,9 @@
            [style]="style"
            [fullScreen]="fullscreen"
            (onHide)="handleSidebarClose($event)">
-  <p-scrollPanel *ngIf="scrollable; else noscroll">
+  <perfect-scrollbar *ngIf="scrollable; else noscroll">
     <ng-content></ng-content>
-  </p-scrollPanel>
+  </perfect-scrollbar>
   <ng-template #noscroll>
     <ng-content></ng-content>
   </ng-template>

@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
 export enum SidebarSize {
-  small = 'sm',
-  medium = 'md',
-  large = 'lg',
+  small = "sm",
+  medium = "md",
+  large = "lg",
 }
 
 /**
@@ -14,12 +14,11 @@ export enum SidebarSize {
  *
  */
 @Component({
-  selector: 'sidebar-page',
-  templateUrl: './sidebar-page.component.html',
-  styleUrls: ['./sidebar-page.component.scss']
+  selector: "sidebar-page",
+  templateUrl: "./sidebar-page.component.html",
+  styleUrls: ["./sidebar-page.component.scss"],
 })
 export class SidebarPageComponent {
-
   @Input() public size: SidebarSize;
 
   @Input() public style: any;
@@ -27,17 +26,16 @@ export class SidebarPageComponent {
   /**
    * left ou right
    */
-  @Input() public position = 'right';
+  @Input() public position = "right";
 
   @Input() public fullscreen: boolean;
 
   @Input() public scrollable: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   handleSidebarClose(event: any) {
     // Retourne à la carte en vidant la zone sidebar
-    this.router.navigate(['/']);
+    this.router.navigate(["/"]);
   }
-
 }
