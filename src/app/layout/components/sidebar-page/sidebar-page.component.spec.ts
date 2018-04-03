@@ -1,25 +1,30 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SidebarPageComponent } from './sidebar-page.component';
-import { SidebarModule, ScrollPanelModule } from 'primeng/primeng';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarPageComponent } from "./sidebar-page.component";
+import { SidebarModule } from "primeng/primeng";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { Router } from "@angular/router";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 
-describe('SidebarPageComponent', () => {
+describe("SidebarPageComponent", () => {
   let component: SidebarPageComponent;
   let fixture: ComponentFixture<SidebarPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarPageComponent ],
-      imports: [ SidebarModule, ScrollPanelModule, NoopAnimationsModule ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-      providers: [ 
-        { provide: Router}
-      ]
-    })
-    .compileComponents();
+        declarations: [SidebarPageComponent],
+        imports: [
+          SidebarModule,
+          PerfectScrollbarModule,
+          NoopAnimationsModule,
+        ],
+        schemas: [NO_ERRORS_SCHEMA],
+        providers: [
+          { provide: Router },
+        ],
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -28,7 +33,7 @@ describe('SidebarPageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
