@@ -3,7 +3,7 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnInit,
+  OnChanges,
   Output,
   ViewChild,
 } from "@angular/core";
@@ -27,7 +27,7 @@ import { EsriMapService } from "../../services/esri-map.service";
   templateUrl: "./esri-map.component.html",
   styleUrls: ["./esri-map.component.scss"],
 })
-export class EsriMapComponent implements OnInit {
+export class EsriMapComponent implements OnChanges {
   private map: __esri.Map;
 
   private mapView: __esri.MapView;
@@ -78,12 +78,14 @@ export class EsriMapComponent implements OnInit {
 
   constructor(private mapService: EsriMapService) {}
 
-  ngOnInit() {
+  ngOnChanges() {
     if (this.map) {
       // map is already initialized
       return;
     }
-    this.loadMap();
+    if (!this.mapProperties || !this.webMapProperties) {
+      this.loadMap();
+    }
   }
 
   loadMap() {
@@ -103,13 +105,6 @@ export class EsriMapComponent implements OnInit {
         this.mapViewProperties,
         this.mapEl.nativeElement,
       );
-    }
-
-    if (!mapPromise) {
-      console.error(
-        "ERREUR: composant esri-map initialisé sans les propriétés",
-      );
-      return;
     }
 
     mapPromise.then(mapInfo => {

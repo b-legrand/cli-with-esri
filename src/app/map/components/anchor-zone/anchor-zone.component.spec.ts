@@ -13,9 +13,9 @@ describe("AnchorZoneComponent", () => {
       TestBed.configureTestingModule({
         declarations: [AnchorZoneComponent],
         imports: [ScrollPanelModule],
-        schemas: [CUSTOM_ELEMENTS_SCHEMA]
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
       }).compileComponents();
-    })
+    }),
   );
 
   beforeEach(() => {

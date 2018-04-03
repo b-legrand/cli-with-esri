@@ -1,5 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { EsriLoaderService } from './esri-loader.service';
+import { Injectable, EventEmitter } from "@angular/core";
+import { EsriLoaderService } from "./esri-loader.service";
 
 /**
  * Service de fourniture de la map esri.
@@ -8,7 +8,6 @@ import { EsriLoaderService } from './esri-loader.service';
  */
 @Injectable()
 export class EsriMapService {
-
   public isLoaded = new EventEmitter();
 
   map: __esri.Map;
@@ -26,10 +25,10 @@ export class EsriMapService {
   loadMap(
     mapProperties: __esri.MapProperties,
     mapViewProperties: __esri.MapViewProperties,
-    mapEl: HTMLElement
-  ): Promise<{map: __esri.Map, mapView:  __esri.MapView}> {
+    mapEl: HTMLElement,
+  ): Promise<{ map: __esri.Map; mapView: __esri.MapView }> {
     return this.esriLoader
-      .loadModules(['esri/Map', 'esri/views/MapView'])
+      .loadModules(["esri/Map", "esri/views/MapView"])
       .then(
         ([Map, MapView]: [
           __esri.MapConstructor,
@@ -57,9 +56,9 @@ export class EsriMapService {
 
           return {
             map,
-            mapView
+            mapView,
           };
-        }
+        },
       );
   }
   /**
@@ -72,17 +71,17 @@ export class EsriMapService {
   loadWebMap(
     webMapProperties: __esri.WebMapProperties,
     mapViewProperties: __esri.MapViewProperties,
-    mapEl: HTMLElement
-  ): Promise<{map: __esri.Map, mapView:  __esri.MapView}> {
+    mapEl: HTMLElement,
+  ): Promise<{ map: __esri.WebMap; mapView: __esri.MapView }> {
     return this.esriLoader
-      .loadModules(['esri/views/MapView', 'esri/WebMap'])
+      .loadModules(["esri/views/MapView", "esri/WebMap"])
       .then(
         ([MapView, WebMap]: [
           __esri.MapViewConstructor,
           __esri.WebMapConstructor
         ]) => {
           // créé la webmap
-          const map = new WebMap(webMapProperties);
+          const map: __esri.WebMap = new WebMap(webMapProperties);
 
           // créé un nouvel objet props pour éviter d etoucher à la source.
           const newMapViewProps = Object.assign({}, mapViewProperties);
@@ -103,10 +102,11 @@ export class EsriMapService {
 
           return {
             map,
-            mapView
+            mapView,
           };
-        });
-      }
+        },
+      );
+  }
   /**
    * Ajoute un élément du dom à la mapView en tant que widget.
    */
