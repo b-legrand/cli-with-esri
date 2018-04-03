@@ -40,5 +40,4 @@ describe("HighlightPipe", () => {
     const result = pipe.transform("Astérix", "TER");
     expect(result).toBe("As<b>tér</b>ix");
   });
-
 });

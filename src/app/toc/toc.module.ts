@@ -36,10 +36,7 @@ const TOC_MODULE_COMPONENTS = [
     HighlightPipe,
     VisibleForScaleDirective,
   ],
-  providers: [
-    LayerTreeNodeService,
-    { provide: LAYERS, useValue: STUB_LAYERS },
-  ],
+  providers: [LayerTreeNodeService, { provide: LAYERS, useValue: STUB_LAYERS }],
   exports: [TableOfContentsComponent],
   entryComponents: [TableOfContentsComponent],
 })
