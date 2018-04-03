@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { WidgetPrintComponent } from './widget-print.component';
+import { WidgetPrintComponent } from "./widget-print.component";
 
-describe('WidgetPrintComponent', () => {
+describe("WidgetPrintComponent", () => {
   let component: WidgetPrintComponent;
   let fixture: ComponentFixture<WidgetPrintComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ WidgetPrintComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [WidgetPrintComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetPrintComponent);
@@ -19,7 +20,7 @@ describe('WidgetPrintComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { WidgetLayerListComponent } from './widget-layer-list.component';
+import { WidgetLayerListComponent } from "./widget-layer-list.component";
 
-describe('WidgetLayerListComponent', () => {
+describe("WidgetLayerListComponent", () => {
   let component: WidgetLayerListComponent;
   let fixture: ComponentFixture<WidgetLayerListComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ WidgetLayerListComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [WidgetLayerListComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetLayerListComponent);
@@ -19,7 +20,7 @@ describe('WidgetLayerListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

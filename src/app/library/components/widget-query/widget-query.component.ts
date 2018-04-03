@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'widget-query',
-  templateUrl: './widget-query.component.html',
-  styleUrls: ['./widget-query.component.css']
+  selector: "widget-query",
+  templateUrl: "./widget-query.component.html",
+  styleUrls: ["./widget-query.component.css"],
 })
 export class WidgetQueryComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,3 +1,3 @@
 export interface ViewModelProvider<T> {
-    setViewModel(t:T)
+  setViewModel(t: T);
 }

@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { WidgetBookmarkComponent } from './widget-bookmark.component';
+import { WidgetBookmarkComponent } from "./widget-bookmark.component";
 
-describe('WidgetBookmarkComponent', () => {
+describe("WidgetBookmarkComponent", () => {
   let component: WidgetBookmarkComponent;
   let fixture: ComponentFixture<WidgetBookmarkComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ WidgetBookmarkComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [WidgetBookmarkComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetBookmarkComponent);
@@ -19,7 +20,7 @@ describe('WidgetBookmarkComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
