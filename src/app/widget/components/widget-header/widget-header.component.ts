@@ -49,6 +49,7 @@ export class WidgetHeaderComponent {
     this.state.anchored = !this.state.anchored;
     this.stateChange.emit(this.state);
   }
+
   handleClose(event) {
     this.state.closed = !this.state.closed;
     this.stateChange.emit(this.state);
