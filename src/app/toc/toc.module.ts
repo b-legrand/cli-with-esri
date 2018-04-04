@@ -15,7 +15,7 @@ import { FilteredLayerListComponent } from "./components/filtered-layer-list/fil
 import { HighlightPipe } from "./pipes/highlight.pipe";
 import { FormsModule } from "@angular/forms";
 import { VisibleForScaleDirective } from "./directives/visible-for-scale.directive";
-import { STUB_LAYERS } from "./models/layers";
+import { STUB_LAYERS } from "./models/layers.mock";
 
 const TOC_MODULE_COMPONENTS = [
   FilteredLayerListComponent,

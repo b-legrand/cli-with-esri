@@ -3,7 +3,10 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { FilteredLayerListComponent } from "./filtered-layer-list.component";
 import { TreeModule } from "primeng/tree";
 import { HighlightPipe } from "../../pipes/highlight.pipe";
-import { LayerTreeNodeService } from "../../services/layer-tree-node.service";
+import {
+  LAYERS,
+  LayerTreeNodeService,
+} from "../../services/layer-tree-node.service";
 import { VisibleForScaleDirective } from "../../directives/visible-for-scale.directive";
 
 describe("FilteredLayerListComponent", () => {
@@ -19,7 +22,10 @@ describe("FilteredLayerListComponent", () => {
           VisibleForScaleDirective,
         ],
         imports: [TreeModule],
-        providers: [LayerTreeNodeService],
+        providers: [
+          LayerTreeNodeService,
+          { provide: LAYERS, useValue: undefined },
+        ],
       }).compileComponents();
     }),
   );
