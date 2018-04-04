@@ -1,26 +1,21 @@
 // angular
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 // primeng
 import { TreeModule } from "primeng/tree";
 import { InputTextModule } from "primeng/inputtext";
 import { TooltipModule } from "primeng/tooltip";
 
-import { TableOfContentsComponent } from "./components/table-of-contents/table-of-contents.component";
 import {
   LAYERS,
   LayerTreeNodeService,
 } from "./services/layer-tree-node.service";
+import { LayerListComponent } from "./components/layer-list/layer-list.component";
 import { FilteredLayerListComponent } from "./components/filtered-layer-list/filtered-layer-list.component";
 import { HighlightPipe } from "./pipes/highlight.pipe";
-import { FormsModule } from "@angular/forms";
 import { VisibleForScaleDirective } from "./directives/visible-for-scale.directive";
 import { STUB_LAYERS } from "./models/layers.mock";
-
-const TOC_MODULE_COMPONENTS = [
-  FilteredLayerListComponent,
-  TableOfContentsComponent,
-];
 
 @NgModule({
   imports: [
@@ -31,13 +26,13 @@ const TOC_MODULE_COMPONENTS = [
     InputTextModule,
   ],
   declarations: [
-    TableOfContentsComponent,
+    LayerListComponent,
     FilteredLayerListComponent,
     HighlightPipe,
     VisibleForScaleDirective,
   ],
   providers: [LayerTreeNodeService, { provide: LAYERS, useValue: STUB_LAYERS }],
-  exports: [TableOfContentsComponent],
-  entryComponents: [TableOfContentsComponent],
+  exports: [LayerListComponent],
+  entryComponents: [LayerListComponent],
 })
 export class TocModule {}

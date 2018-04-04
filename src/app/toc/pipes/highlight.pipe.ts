@@ -53,7 +53,7 @@ export class HighlightPipe implements PipeTransform {
       // on prend les index dans la chaine sans accents.
       const startIndex = cleanText.indexOf(cleanText.match(regex)[0]);
       const endIndex = startIndex + cleanPattern.length;
-      console.log(startIndex, endIndex, cleanText, cleanPattern);
+
       // on mets en valeur dans la chaine avec accent
       return `${text.slice(0, startIndex)}<b>${text.slice(
         startIndex,
