@@ -8,6 +8,7 @@ import {
   LayerTreeNodeService,
 } from "../../services/layer-tree-node.service";
 import { VisibleForScaleDirective } from "../../directives/visible-for-scale.directive";
+import { TooltipModule } from "primeng/primeng";
 
 describe("FilteredLayerListComponent", () => {
   let component: FilteredLayerListComponent;
@@ -21,7 +22,7 @@ describe("FilteredLayerListComponent", () => {
           HighlightPipe,
           VisibleForScaleDirective,
         ],
-        imports: [TreeModule],
+        imports: [TreeModule, TooltipModule],
         providers: [
           LayerTreeNodeService,
           { provide: LAYERS, useValue: undefined },

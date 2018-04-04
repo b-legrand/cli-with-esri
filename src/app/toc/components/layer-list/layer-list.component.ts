@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import EventEmitter = NodeJS.EventEmitter;
 
 /**
  * Composant générique affichant une liste de couches filtrables.
@@ -20,6 +21,9 @@ export class LayerListComponent implements OnInit {
    */
   @Input() public scale: number;
 
+  @Output() public nodeSelect: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() public nodeUnselect: EventEmitter<any> = new EventEmitter<any>();
   /**
    * Texte saisi par l'utilisateur pour filtrer les couches.
    */
@@ -34,12 +38,10 @@ export class LayerListComponent implements OnInit {
   }
 
   handleNodeSelect($event: any) {
-    // todo remonter l'évènement au parent.
-    console.dir($event);
+    this.nodeSelect.emit($event);
   }
 
   handleNodeUnselect($event: any) {
-    // todo remonter l'évènement au parent.
-    console.dir($event);
+    this.nodeUnselect.emit($event);
   }
 }
