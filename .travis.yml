@@ -1,4 +1,4 @@
-sudo: required
+sudo: false
 dist: trusty
 language: node_js
 
@@ -42,10 +42,10 @@ build:
   - ng build --prod --base-href=cli-with-esri/
 
 test:
-  - ng test --single-run --no-progress --code-coverage --browser=Chrome_CI --log-level=debug
+  - npm run test -- --single-run --no-progress --code-coverage --browser=Chrome_CI --log-level=debug
 
 e2e:
-  - ng e2e --no-progress
+  - npm run e2e -- --no-progress
 
 deploy:
   local-dir: dist/app
