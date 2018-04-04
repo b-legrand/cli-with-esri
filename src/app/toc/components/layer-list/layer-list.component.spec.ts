@@ -8,6 +8,7 @@ import { HighlightPipe } from "../../pipes/highlight.pipe";
 import { TooltipModule } from "primeng/tooltip";
 import { InputTextModule } from "primeng/inputtext";
 import { TreeModule } from "primeng/tree";
+import { LayerTreeNodeService } from "../../services/layer-tree-node.service";
 
 describe("LayerListComponent", () => {
   let component: LayerListComponent;
@@ -28,6 +29,9 @@ describe("LayerListComponent", () => {
           InputTextModule,
           TreeModule,
         ],
+        providers: [
+          LayerTreeNodeService,
+        ]
       }).compileComponents();
     }),
   );
