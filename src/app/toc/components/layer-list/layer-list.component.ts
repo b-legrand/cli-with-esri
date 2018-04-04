@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
 
 /**
- * composant s
+ * Composant générique affichant une liste de couches filtrables.
  */
 @Component({
-  selector: "table-of-contents",
-  templateUrl: "./layer-list.html",
+  selector: "layer-list",
+  templateUrl: "./layer-list.component.html",
   styleUrls: ["./layer-list.component.scss"],
 })
 export class LayerListComponent implements OnInit {

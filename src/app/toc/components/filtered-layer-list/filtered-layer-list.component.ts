@@ -76,4 +76,14 @@ export class FilteredLayerListComponent implements OnInit, OnChanges {
       console.log(changes.filter.currentValue);
     }
   }
+  // temporaire en attendant un composant plus personnalisé
+  tooltipTemplate(minScale: number, maxScale: number, label: string) {
+    return [
+      `<i class="fa fa-eye"></i>`,
+      `&nbsp;de 1/${minScale} à 1/${maxScale}`,
+      `<div class="layer-tooltip-detail">`,
+      `<img class="icon" src="favicon.ico">${label}`,
+      `</div>`,
+    ].join("");
+  }
 }

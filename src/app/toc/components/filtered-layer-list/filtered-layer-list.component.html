@@ -20,7 +20,7 @@
     <div [visibleForScale]="scale"
          [minScale]="node.data.minScale"
          [maxScale]="node.data.maxScale"
-         [pTooltip]="'<i class=\'fa fa-eye\'></i>&nbsp;de 1/' + node.data.minScale +' à 1/'+node.data.maxScale + '<div class=\'layer-tooltip-detail\'><img class=\'icon\' src=\'favicon.ico\'>'+node.label+'</div>'"
+         [pTooltip]="tooltipTemplate(node.data.minScale, node.data.maxScale, node.label)"
          tooltipPosition="right"
          appendTo="body"
          [escape]="false"
