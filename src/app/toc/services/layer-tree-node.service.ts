@@ -2,7 +2,7 @@ import { Inject, Injectable, InjectionToken } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import { TreeNode } from "primeng/api";
-import { STUB_LAYERS } from "../models/layers";
+import { STUB_LAYERS } from "../models/layers.mock";
 import { SubLayer } from "../models/sub-layer.vo";
 
 // point d'injection pour pouvoir tester.
