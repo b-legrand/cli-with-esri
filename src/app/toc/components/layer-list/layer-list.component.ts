@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
-import EventEmitter = NodeJS.EventEmitter;
+import { Component, Input, OnInit, EventEmitter } from "@angular/core";
 
 /**
  * Composant générique affichant une liste de couches filtrables.
