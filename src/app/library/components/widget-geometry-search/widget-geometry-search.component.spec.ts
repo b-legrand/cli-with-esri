@@ -14,7 +14,12 @@ describe("WidgetGeometrySearchComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetGeometrySearchComponent],
-        imports: [WidgetModule, MapModule, AccordionModule, NoopAnimationsModule],
+        imports: [
+          WidgetModule,
+          MapModule,
+          AccordionModule,
+          NoopAnimationsModule,
+        ],
       }).compileComponents();
     }),
   );
