@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetFilterComponent } from "./widget-filter.component";
+import { WidgetModule } from "../../../widget/widget.module";
+import { MapModule } from "../../../map/map.module";
 
 describe("WidgetFilterComponent", () => {
   let component: WidgetFilterComponent;
@@ -10,6 +12,7 @@ describe("WidgetFilterComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetFilterComponent],
+        imports: [WidgetModule, MapModule],
       }).compileComponents();
     }),
   );

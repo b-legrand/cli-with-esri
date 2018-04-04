@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetZoomComponent } from "./widget-zoom.component";
+import { WidgetModule } from "../../../widget/widget.module";
+import { MapModule } from "../../../map/map.module";
 
 describe("WidgetZoomComponent", () => {
   let component: WidgetZoomComponent;
@@ -10,6 +12,7 @@ describe("WidgetZoomComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetZoomComponent],
+        imports: [WidgetModule, MapModule],
       }).compileComponents();
     }),
   );

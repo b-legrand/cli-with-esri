@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetPrintComponent } from "./widget-print.component";
+import { WidgetModule } from "../../../widget/widget.module";
+import { MapModule } from "../../../map/map.module";
 
 describe("WidgetPrintComponent", () => {
   let component: WidgetPrintComponent;
@@ -10,6 +12,7 @@ describe("WidgetPrintComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetPrintComponent],
+        imports: [WidgetModule, MapModule],
       }).compileComponents();
     }),
   );

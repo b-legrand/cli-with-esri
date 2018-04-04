@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetGeometrySearchComponent } from "./widget-geometry-search.component";
 import { AccordionModule } from "primeng/primeng";
+import { WidgetModule } from "../../../widget/widget.module";
+import { MapModule } from "../../../map/map.module";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 describe("WidgetGeometrySearchComponent", () => {
   let component: WidgetGeometrySearchComponent;
@@ -11,7 +14,7 @@ describe("WidgetGeometrySearchComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetGeometrySearchComponent],
-        imports: [AccordionModule],
+        imports: [WidgetModule, MapModule, AccordionModule, NoopAnimationsModule],
       }).compileComponents();
     }),
   );

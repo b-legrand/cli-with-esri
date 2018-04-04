@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetBookmarkComponent } from "./widget-bookmark.component";
+import { WidgetModule } from "../../../widget/widget.module";
+import { MapModule } from "../../../map/map.module";
 
 describe("WidgetBookmarkComponent", () => {
   let component: WidgetBookmarkComponent;
@@ -10,6 +12,7 @@ describe("WidgetBookmarkComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetBookmarkComponent],
+        imports: [WidgetModule, MapModule],
       }).compileComponents();
     }),
   );

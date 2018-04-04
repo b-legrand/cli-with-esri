@@ -4,6 +4,7 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
 
 import { WidgetCompassComponent } from "./widget-compass.component";
 import { MapModule } from "../../../map/map.module";
+import { WidgetModule } from "../../../widget/widget.module";
 
 describe("WidgetCompassComponent", () => {
   let component: WidgetCompassComponent;
@@ -12,8 +13,8 @@ describe("WidgetCompassComponent", () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        imports: [MapModule],
         declarations: [WidgetCompassComponent],
+        imports: [WidgetModule, MapModule],
       }).compileComponents();
     }),
   );

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetSearchComponent } from "./widget-search.component";
+import { WidgetModule } from "../../../widget/widget.module";
+import { MapModule } from "../../../map/map.module";
 
 describe("WidgetSearchComponent", () => {
   let component: WidgetSearchComponent;
@@ -10,6 +12,7 @@ describe("WidgetSearchComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetSearchComponent],
+        imports: [WidgetModule, MapModule],
       }).compileComponents();
     }),
   );

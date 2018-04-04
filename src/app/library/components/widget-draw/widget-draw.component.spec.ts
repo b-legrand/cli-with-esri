@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { WidgetDrawComponent } from "./widget-draw.component";
 import { WidgetModule } from "../../../widget/widget.module";
 import { NO_ERRORS_SCHEMA } from "@angular/core";
-import { EsriLoaderService } from "../../../map/services/esri-loader.service";
+import { MapModule } from "../../../map/map.module";
 
 describe("WidgetDrawComponent", () => {
   let component: WidgetDrawComponent;
@@ -13,7 +13,7 @@ describe("WidgetDrawComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetDrawComponent],
-        providers: [EsriLoaderService],
+        imports: [WidgetModule, MapModule],
         schemas: [NO_ERRORS_SCHEMA],
       }).compileComponents();
     }),
