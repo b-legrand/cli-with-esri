@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetGeolocationComponent } from "./widget-geolocation.component";
-import { EsriLoaderService } from "../../../map/services/esri-loader.service";
 import { WidgetModule } from "../../../widget/widget.module";
 import { MapModule } from "../../../map/map.module";
 
