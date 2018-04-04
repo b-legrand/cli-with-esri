@@ -20,21 +20,29 @@ import { WidgetCompassComponent } from "./components/widget-compass/widget-compa
 import { WidgetSearchComponent } from "./components/widget-search/widget-search.component";
 import { AccordionModule } from "primeng/primeng";
 import { WidgetGeometrySearchComponent } from "./components/widget-geometry-search/widget-geometry-search.component";
+import { WidgetBasemapGalleryComponent } from "./components/widget-basemap-gallery/widget-basemap-gallery.component";
+import { WidgetBasemapToggleComponent } from "./components/widget-basemap-toggle/widget-basemap-toggle.component";
+import { WidgetTrackComponent } from "./components/widget-track/widget-track.component";
+import { WidgetLegendComponent } from "./components/widget-legend/widget-legend.component";
 
 const LIBRARY_COMPONENTS = [
   WidgetHomeComponent,
   WidgetAboutComponent,
+  WidgetBasemapGalleryComponent,
+  WidgetBasemapToggleComponent,
   WidgetBookmarkComponent,
   WidgetDrawComponent,
+  WidgetCompassComponent,
   WidgetFilterComponent,
   WidgetQueryComponent,
   WidgetGeolocationComponent,
   WidgetPopupComponent,
   WidgetLayerListComponent,
+  WidgetLegendComponent,
   WidgetPrintComponent,
   WidgetLocateComponent,
+  WidgetTrackComponent,
   WidgetZoomComponent,
-  WidgetCompassComponent,
   WidgetSearchComponent,
   WidgetGeometrySearchComponent,
 ];
