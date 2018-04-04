@@ -9,7 +9,7 @@ import { SubLayer } from "../models/sub-layer.vo";
 export const LAYERS = new InjectionToken("map.layers");
 /**
  * Service permettant de transformer les données de couches en arbre.
- * pour le composant filtered-layer-list.
+ * au format attendu par le composant filtered-layer-list.
  */
 @Injectable()
 export class LayerTreeNodeService {
