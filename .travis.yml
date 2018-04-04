@@ -35,7 +35,7 @@ cache:
 
 script:
   - npm run build --prod --base-href=cli-with-esri/
-  - npm run test -- --single-run --no-progress --code-coverage --browser=Chrome_CI --log-level=debug
+  - npm run test -- --single-run --no-progress --code-coverage --log-level=debug
   - npm run e2e -- --no-progress
 
 deploy:
