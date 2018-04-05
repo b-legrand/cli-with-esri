@@ -62,7 +62,7 @@ describe("WidgetWindowComponent", () => {
     let wrapperfixture: ComponentFixture<TestWidgetWindowComponent>;
 
     beforeEach(() => {
-      wrapperfixture = TestBed.createComponent(WidgetWindowComponent);
+      wrapperfixture = TestBed.createComponent(TestWidgetWindowComponent);
       wrapperComponent = fixture.componentInstance;
       wrapperfixture.detectChanges();
       debugElement = wrapperfixture.debugElement;
@@ -81,8 +81,11 @@ describe("WidgetWindowComponent", () => {
       expect(wrapperComponent).toBeTruthy();
       debugElement.queryAll(By.css(".widget-panel"));
     });
+
     it("should create", () => {
       expect(wrapperComponent).toBeTruthy();
     });
+
   });
+
 });

@@ -7,7 +7,6 @@ import { PerfectScrollbarDirective } from "ngx-perfect-scrollbar";
  *
  * Il recoit et dispatche les informations.
  *
- *
  */
 @Component({
   selector: "widget-panel",
@@ -32,10 +31,6 @@ export class WidgetPanelComponent {
 
   /** Présent si besoin de se rattacher aux évènements du scroll */
   @ViewChild(PerfectScrollbarDirective) scroll: PerfectScrollbarDirective;
-
-  public isResizing = false;
-
-  public startPosition?: { x: number; y: number };
 
   /**
    * Configuration de `perfect-scrollbar`
