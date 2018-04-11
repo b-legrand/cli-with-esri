@@ -1,7 +1,7 @@
 // données temporaire pur la maquette, tirée de la config du widget-map.
 // doit correspondre aux attributs d'un Layer esri @see {__esri.LayerProperties}
 import { SubLayer } from "./sub-layer.vo";
-
+/* tslint:disable:object-literal-sort-keys */
 export const STUB_LAYERS: SubLayer[] = [
   {
     uid: "service-s01-gaia-voie-v2",
