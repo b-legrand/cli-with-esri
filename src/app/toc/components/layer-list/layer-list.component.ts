@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 /**
  * Composant générique affichant une liste de couches filtrables.
@@ -8,9 +8,9 @@ import { Component, Input, OnInit, EventEmitter } from "@angular/core";
   templateUrl: "./layer-list.component.html",
   styleUrls: ["./layer-list.component.scss"],
 })
-export class LayerListComponent implements OnInit {
+export class LayerListComponent {
   /**
-   * Todo injecter les layers esri depuis le composant appelant.
+   * TODO US183/widget-toc injecter les layers esri depuis le composant appelant.
    * Gérer une liste filtréée à passer à <filtered-layer-list>
    */
   @Input() public layers: __esri.FeatureLayer[];
@@ -28,19 +28,16 @@ export class LayerListComponent implements OnInit {
    */
   public filterText: string;
 
-  constructor() {}
-
-  ngOnInit() {}
-
-  handleFilterChange($event) {
+  public handleFilterChange($event: any): void {
     this.filterText = $event.target.value;
+    // TODO US187 : mettre en oeuvre le filtrage de l'arbre (layers => filteredLayers à passer à filtered-layer-list)
   }
 
-  handleNodeSelect($event: any) {
+  public handleNodeSelect($event: any): void {
     this.nodeSelect.emit($event);
   }
 
-  handleNodeUnselect($event: any) {
+  public handleNodeUnselect($event: any): void {
     this.nodeUnselect.emit($event);
   }
 }

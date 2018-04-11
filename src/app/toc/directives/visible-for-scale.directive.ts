@@ -8,6 +8,8 @@ import {
 
 /**
  * Directive appliquant une opacité de 0,5 si l'échelle fournie est hors des bornes.
+ * On vérifie principalement que 1/minScale < 1/scale < 1/maxScale
+ * Si l'échelle est undefined, l'opacité est mise à 1.
  */
 @Directive({
   selector: "[visibleForScale]",
@@ -30,7 +32,7 @@ export class VisibleForScaleDirective implements OnChanges {
 
   constructor(private el: ElementRef) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes.scale) {
       if (this.isVisibleForScale(this.scale)) {
         this.el.nativeElement.style.opacity = 1;
@@ -40,7 +42,7 @@ export class VisibleForScaleDirective implements OnChanges {
     }
   }
 
-  private isVisibleForScale(scale): boolean {
+  private isVisibleForScale(scale: number): boolean {
     if (!scale) {
       return true;
     }

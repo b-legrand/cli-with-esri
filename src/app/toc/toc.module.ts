@@ -18,6 +18,14 @@ import { VisibleForScaleDirective } from "./directives/visible-for-scale.directi
 import { STUB_LAYERS } from "./models/layers.mock";
 
 @NgModule({
+  declarations: [
+    LayerListComponent,
+    FilteredLayerListComponent,
+    HighlightPipe,
+    VisibleForScaleDirective,
+  ],
+  entryComponents: [LayerListComponent],
+  exports: [LayerListComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,14 +33,9 @@ import { STUB_LAYERS } from "./models/layers.mock";
     TooltipModule,
     InputTextModule,
   ],
-  declarations: [
-    LayerListComponent,
-    FilteredLayerListComponent,
-    HighlightPipe,
-    VisibleForScaleDirective,
+  providers: [
+    LayerTreeNodeService,
+    { provide: LAYERS, useValue: STUB_LAYERS },
   ],
-  providers: [LayerTreeNodeService, { provide: LAYERS, useValue: STUB_LAYERS }],
-  exports: [LayerListComponent],
-  entryComponents: [LayerListComponent],
 })
 export class TocModule {}

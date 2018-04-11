@@ -1,10 +1,10 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-export function cleanupRegexChars(input: string) {
+export function cleanupRegexChars(input: string): string {
   return input.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
 
-export function normalize(input: string) {
+export function normalize(input: string): string {
   const accents =
     "ÀÁÂÃÄÅàáâãäåßÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
   const accentsOut =
@@ -20,14 +20,16 @@ export function normalize(input: string) {
 /**
  * Transformation permettant de mettre en gras un texte.
  *
- * Usage:
+ * Recherche insensible à la casse et aux accents.
+ *
+ * ## Usage:
  *     <input type="text" [(ngModel)]="filter">
  *     <div [innerHTML]="myAwesomeText  | highlight : filter"></div>
  *
  */
 @Pipe({ name: "highlight" })
 export class HighlightPipe implements PipeTransform {
-  transform(text: string, search): string {
+  public transform(text: string, search: string): string {
     // si rien a filtrer on quitte
     if (!search || !search.length) {
       return text;
@@ -36,9 +38,11 @@ export class HighlightPipe implements PipeTransform {
     const pattern = cleanupRegexChars(search);
 
     const regex = new RegExp(pattern, "gi");
+    // remplace si on a trouvé le texte.
     if (text.match(regex)) {
       return text.replace(regex, match => `<b>${match}</b>`);
     } else {
+      // relance une recherche sans accents.
       return this.normalizedSearch(text, pattern);
     }
   }

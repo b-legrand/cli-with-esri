@@ -24,6 +24,12 @@ export class LayerTreeNodeService {
     );
   }
 
+  public applyFolderIcons(treeNode: TreeNode): TreeNode {
+    treeNode.expandedIcon = "fa-folder-open-o";
+    treeNode.collapsedIcon = "fa-folder-o";
+    return treeNode;
+  }
+
   private layersToTreeNode(layer: SubLayer): TreeNode {
     const treeNode: TreeNode = this.layerToNode(layer);
     // si la couche a des sous-couches, on récurse
@@ -41,20 +47,15 @@ export class LayerTreeNodeService {
   private layerToNode(layer: SubLayer): TreeNode {
     const { title, uid, visible, minScale, maxScale } = layer;
     return {
-      label: title,
       data: {
         uid,
         visible,
-        minScale,
         maxScale,
+        minScale,
       },
+      label: title,
       type: "leaf",
     };
   }
 
-  public applyFolderIcons(treeNode: TreeNode): TreeNode {
-    treeNode.expandedIcon = "fa-folder-open-o";
-    treeNode.collapsedIcon = "fa-folder-o";
-    return treeNode;
-  }
 }
