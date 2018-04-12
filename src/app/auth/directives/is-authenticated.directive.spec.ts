@@ -1,3 +1,0 @@
-describe("IsAuthenticatedDirective", () => {
-  // TODO test
-});
