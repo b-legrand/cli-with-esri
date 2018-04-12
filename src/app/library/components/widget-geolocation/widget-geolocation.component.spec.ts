@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { WidgetGeolocationComponent } from "./widget-geolocation.component";
 import { WidgetModule } from "../../../widget/widget.module";
 import { MapModule } from "../../../map/map.module";
+import { CoreModule } from "../../../core/core.module";
 
 describe("WidgetGeolocationComponent", () => {
   let component: WidgetGeolocationComponent;
@@ -12,7 +13,7 @@ describe("WidgetGeolocationComponent", () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [WidgetGeolocationComponent],
-        imports: [WidgetModule, MapModule],
+        imports: [WidgetModule, MapModule, CoreModule],
       }).compileComponents();
     }),
   );

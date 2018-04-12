@@ -28,3 +28,9 @@ export const ANONYMOUS_USER: User = {
   isAnonymous: true,
   login: "anonyme",
 } as User;
+
+export interface Authenticate {
+  login: string;
+  password: string;
+  token: string;
+}

@@ -1,15 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
-import { MapModule } from './map/map.module';
-import { WidgetModule } from './widget/widget.module';
-import { LayoutModule } from './layout/layout.module';
-import { CoreModule } from './core/core.module';
+import { MapModule } from "./map/map.module";
+import { WidgetModule } from "./widget/widget.module";
+import { LayoutModule } from "./layout/layout.module";
+import { CoreModule } from "./core/core.module";
 
-import { APP_CONFIG, DEFAULT_APP_CONFIG } from './core/model/app.config';
-import { APP_ROUTES } from './routes';
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./core/model/app.config";
+import { APP_ROUTES } from "./routes";
 
 /**
  * Module d'export des modules du socle.
@@ -27,6 +27,11 @@ import { APP_ROUTES } from './routes';
     LayoutModule,
     CoreModule,
   ],
-  providers: [{ provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG }]
+  providers: [
+    {
+      provide: APP_CONFIG,
+      useValue: DEFAULT_APP_CONFIG,
+    },
+  ],
 })
 export class SocleModule {}
