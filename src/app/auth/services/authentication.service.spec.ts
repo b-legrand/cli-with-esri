@@ -4,7 +4,6 @@ import {
   HttpClientTestingModule,
 } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
-import { Logger } from "../../service/logger/logger.service";
 
 describe("AuthenticationService", () => {
   let authService: AuthenticationService;
@@ -15,8 +14,6 @@ describe("AuthenticationService", () => {
       imports: [HttpClientTestingModule],
       providers: [
         AuthenticationService,
-        Logger,
-        { provide: "loggerName", useValue: "AuthenticationServiceTestLogger" },
       ],
     });
     authService = TestBed.get(AuthenticationService);

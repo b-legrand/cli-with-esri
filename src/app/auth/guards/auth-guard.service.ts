@@ -9,7 +9,6 @@ import { AuthenticationService } from "../services/authentication.service";
 export class AuthGuardService implements CanActivate {
   constructor(
     private authService: AuthenticationService,
-    private logger: Logger,
   ) {}
 
   public canActivate(route: ActivatedRouteSnapshot): boolean {
