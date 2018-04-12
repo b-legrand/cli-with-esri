@@ -1,50 +1,65 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ApplicationRef, NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ApplicationRef, NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import {
+  removeNgStyles,
+  createNewHosts,
+  createInputTransfer,
+} from "@angularclass/hmr";
 
-import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
-import { MapModule } from './map/map.module';
-import { WidgetModule } from './widget/widget.module';
-import { LayoutModule } from './layout/layout.module';
-import { TocModule } from './toc/toc.module';
+import { AppComponent } from "./app.component";
+import { CoreModule } from "./core/core.module";
+import { LibraryModule } from "./library/library.module";
+import { MapModule } from "./map/map.module";
+import { WidgetModule } from "./widget/widget.module";
+import { LayoutModule } from "./layout/layout.module";
+import { TocModule } from "./toc/toc.module";
 
-import { APP_CONFIG, DEFAULT_APP_CONFIG } from './core/model/app.config';
-import { APP_ROUTES } from './routes';
-import { AppStoreService } from './core/services/app-store.service';
-// import {LibraryModule} from './library/library.module';
-import { AppStore, appStoreProviders, createAppStore } from './core/model/app.store';
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./core/model/app.config";
+import { APP_ROUTES } from "./routes";
+import "rxjs/add/operator/take";
 
+import { Action, Store, StoreModule, ActionReducerMap } from "@ngrx/store";
+import { AppState, getInitialState } from "./core/model/app.state";
+import { metaReducers } from "./core/reducers/meta.reducers";
+import { AppActionTypes } from "./core/actions/core.actions";
+
+/** Juste pour typer ce que nous donne `angular-class/hmr` */
+export interface StoreType {
+  state: AppState;
+  restoreInputValues: () => void;
+  disposeOldHosts: () => void;
+}
+
+export const reducers: ActionReducerMap<any> = {};
 /**
  * Module principal d'une application soclejs.
  *
  */
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(APP_ROUTES),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      initialState: getInitialState,
+    }),
     // modules common-socle
     MapModule,
     WidgetModule,
     LayoutModule,
     CoreModule,
+    LibraryModule,
     TocModule,
-    // LibraryModule,
   ],
-  providers: [
-    { provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG },
-    { provide: AppStore, useFactory: createAppStore}
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG }],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef, private appStore: AppStoreService) {}
+  constructor(public appRef: ApplicationRef, private appStore: Store<any>) {}
 
   /**
    * Callback appelé suite à un rechargement à chaud.
@@ -56,12 +71,17 @@ export class AppModule {
     if (!store || !store.state) {
       return;
     }
-    console.log('[HMR] onInit : store', store);
-    console.log('store.state.data:', store.state.data);
+    console.log("[HMR] onInit : store", store);
+    console.log("store.state.data:", store.state.data);
 
-    this.appStore.update(store.state);
-
-    if ('restoreInputValues' in store) {
+    // restore l'état auprès de ngrx en envoyant une action RefreshState.
+    if (store.state) {
+      this.appStore.dispatch({
+        type: AppActionTypes.RefreshState,
+        payload: store.state,
+      } as Action);
+    }
+    if ("restoreInputValues" in store) {
       store.restoreInputValues();
     }
     // change detection
@@ -75,17 +95,21 @@ export class AppModule {
    * @param store
    */
   public hmrOnDestroy(store) {
-    console.log('[HMR] onDestroy : store', store);
+    console.log("[HMR] onDestroy : store", store);
 
-    const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+    const cmpLocation = this.appRef.components.map(
+      cmp => cmp.location.nativeElement,
+    );
     // recreate elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
     // inject your AppStore and grab state then set it on store
-    const appState = this.appStore.getState();
-    console.log('[HMR] storing state', appState);
-    store.state = Object.assign({}, appState);
+    this.appStore.take(1).subscribe(appState => {
+      console.log("[HMR] storing state", appState);
+      store.state = Object.assign({}, appState);
+    });
+
     // save input values
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     // remove styles
     removeNgStyles();
   }
@@ -100,5 +124,4 @@ export class AppModule {
     delete store.disposeOldHosts;
     // anything you need done the component is removed
   }
-
 }

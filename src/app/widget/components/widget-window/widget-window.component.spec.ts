@@ -8,29 +8,34 @@ import { WidgetConfig } from "../../model/widget-config";
 import { By } from "@angular/platform-browser";
 import { WidgetStackService } from "../../../map/services/widget-stack.service";
 import { WidgetStateManager } from "../../services/widget-state-manager.service";
+import { Store, StoreModule } from "@ngrx/store";
+import { appReducer } from "../../../core/reducers/app.reducer";
+import { AppState } from "../../../core/model/app.state";
 
 describe("WidgetWindowComponent", () => {
+  let store: Store<AppState>;
   let component: WidgetWindowComponent;
   let fixture: ComponentFixture<WidgetWindowComponent>;
   let debugElement: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
         declarations: [
           WidgetWindowComponent,
           WidgetHeaderComponent,
           WidgetPanelComponent,
         ],
-        schemas: [
-          NO_ERRORS_SCHEMA,
-        ],
-        providers: [
-          WidgetStateManager,
-          WidgetStackService,
-        ],
-      })
-      .compileComponents();
-  }));
+        imports: [StoreModule.forRoot()],
+        schemas: [NO_ERRORS_SCHEMA],
+        providers: [WidgetStateManager, WidgetStackService],
+      }).compileComponents();
+
+      store = TestBed.get(Store);
+      // surveille les appels à Store.dispatch et les laisse passer.
+      spyOn(store, "dispatch").and.callThrough();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetWindowComponent);
@@ -43,7 +48,6 @@ describe("WidgetWindowComponent", () => {
   });
 
   describe("WidgetWindowComponent Usage", () => {
-
     // composant de test
     @Component({
       template: `
@@ -85,7 +89,5 @@ describe("WidgetWindowComponent", () => {
     it("should create", () => {
       expect(wrapperComponent).toBeTruthy();
     });
-
   });
-
 });

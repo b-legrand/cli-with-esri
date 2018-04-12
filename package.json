@@ -24,7 +24,8 @@
     "e2e:report": "node cucumberReport.js",
     "webdriver:update": "webdriver-manager update",
     "doc": "compodoc -p src/tsconfig.app.json",
-    "doc:serve": "compodoc -p src/tsconfig.app.json -s"
+    "doc:serve": "compodoc -p src/tsconfig.app.json -s",
+    "precommit": "lint-staged"
   },
   "private": true,
   "dependencies": {
@@ -59,12 +60,12 @@
     "mermaid": "^7.1.2",
     "moment": "^2.21.0",
     "ngx-cookie-service": "^1.0.10",
+    "ngx-localstorage": "^2.0.1",
     "ngx-markdown": "^1.5.2",
     "ngx-perfect-scrollbar": "^5.3.5",
     "ngx-popper": "^2.7.0",
     "primeng": "^5.2.0",
     "prismjs": "^1.12.2",
-    "redux": "^3.7.2",
     "rxjs": "^5.5.6",
     "uuid": "^3.2.1",
     "web-animations-js": "^2.3.1",
@@ -112,7 +113,7 @@
   "jest": {
     "preset": "jest-preset-angular",
     "setupTestFrameworkScriptFile": "<rootDir>/src/jest.ts",
-    "//testResultsProcessor": "./node_modules/jest-html-reporter",
+    "testResultsProcessor": "./node_modules/jest-html-reporter",
     "coverageDirectory": "coverage/",
     "coverageReporters": [
       "lcov",
@@ -140,7 +141,7 @@
     ],
     "*.ts": [
       "prettier --parser typescript --write --trailing-comma all",
-      "tslint --fix src/**/*.ts -t verbose -p src/tsconfig.app.json",
+      "tslint --fix src/**/*.ts -t verbose --project . --config ./src/tsconfig.app.json --force",
       "git add"
     ],
     "*.html": [

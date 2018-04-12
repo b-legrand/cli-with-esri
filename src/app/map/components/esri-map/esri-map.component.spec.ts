@@ -2,40 +2,37 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { EsriMapComponent } from "./esri-map.component";
 import { EsriMapService } from "../../services/esri-map.service";
+import { EsriLoaderService } from "../../services/esri-loader.service";
 import { ProgressSpinnerModule } from "primeng/primeng";
 import { APP_CONFIG } from "../../../core/model/app.config";
-
+import { DebugElement } from "@angular/core";
 
 describe("EsriMapComponent", () => {
   let component: EsriMapComponent;
   let fixture: ComponentFixture<EsriMapComponent>;
-  const mapServiceSpy = {
-    loadMap: () => {},
-    loadWebMap: () => {},
-  };
+  let debugEl: DebugElement;
+
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
         declarations: [EsriMapComponent],
         imports: [ProgressSpinnerModule],
         providers: [
-          { provide: EsriMapService, useValue: mapServiceSpy },
+          EsriMapService,
+          EsriLoaderService,
           { provide: APP_CONFIG, useValue: { apiVersion: "4.6" } },
         ],
       }).compileComponents();
-      // fausses fonctions loadMap/loadWebmap du EsriMapService.
-      spyOn(mapServiceSpy, "loadMap").and.returnValue(Promise.resolve({map: {}, mapView: {}}));
-      spyOn(mapServiceSpy, "loadWebMap").and.returnValue(Promise.resolve({map: {}, mapView: {}}));
     }),
   );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EsriMapComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    debugEl = fixture.debugElement;
   });
 
-  describe("Charge une 'esri/Map' avec des MapProperties.", () => {
+  it("Charge une 'esri/Map' avec des MapProperties.", () => {
     expect(component).toBeTruthy();
     component.mapProperties = { basemap: "gray" };
     component.mapViewProperties = {
@@ -46,10 +43,12 @@ describe("EsriMapComponent", () => {
     fixture.detectChanges();
 
     expect(component).toBeTruthy();
+    component.mapLoaded.subscribe(data => {
+      console.log(data);
+    });
   });
 
-  describe("Charge une 'esri/WebMap' avec des WebMapProperties.", () => {
-    expect(component).toBeTruthy();
+  it("Charge une 'esri/WebMap' avec des WebMapProperties.", () => {
     component.webMapProperties = {
       portalItem: {
         id: "e691172598f04ea8881cd2a4adaa45ba",
@@ -63,5 +62,8 @@ describe("EsriMapComponent", () => {
     fixture.detectChanges();
 
     expect(component).toBeTruthy();
+    component.mapLoaded.subscribe(data => {
+      console.log(data);
+    });
   });
 });

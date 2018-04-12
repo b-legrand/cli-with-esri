@@ -1,6 +1,6 @@
-import {APP_CONFIG, DEFAULT_APP_CONFIG} from './model/app.config';
-import {NgModule} from '@angular/core';
-import {AppStoreService} from './services/app-store.service';
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./model/app.config";
+import { NgModule } from "@angular/core";
+import { AppStoreService } from "./services/app-store/app-store.service";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,6 @@ import {AppStoreService} from './services/app-store.service';
       provide: APP_CONFIG,
       useValue: DEFAULT_APP_CONFIG,
     },
-  ]
+  ],
 })
-export class CoreModule {
-}
+export class CoreModule {}

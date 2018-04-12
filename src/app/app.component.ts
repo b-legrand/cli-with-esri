@@ -1,13 +1,13 @@
-import { Component, Inject } from '@angular/core';
-import { APP_CONFIG, AppConfig } from './core/model/app.config';
-import { AppState } from './core/model/app.state';
-import { Store } from 'redux';
-import { AppStore } from './core/model/app.store';
+import { Component, Inject } from "@angular/core";
+import { APP_CONFIG, AppConfig } from "./core/model/app.config";
+import { AppState } from "./core/model/app.state";
+import { Store } from "@ngrx/store";
+import "rxjs/add/operator/take";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
   title: string;
@@ -15,11 +15,11 @@ export class AppComponent {
   state: AppState;
 
   constructor(
-     @Inject(APP_CONFIG) appConfig: AppConfig,
-     @Inject(AppStore) private store: Store<AppState>
-    ) {
+    @Inject(APP_CONFIG) appConfig: AppConfig,
+    private store: Store<any>,
+  ) {
     this.themeColor = appConfig.themeColor;
     this.title = appConfig.appName;
-    this.state = store.getState();
+    this.store.take(1).subscribe(s => (this.state = s));
   }
 }

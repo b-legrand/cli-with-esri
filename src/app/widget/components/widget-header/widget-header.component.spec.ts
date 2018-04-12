@@ -80,7 +80,6 @@ describe("WidgetHeaderComponent", () => {
   };
 
   describe("Libellés des boutons", () => {
-
     it("doit afficher les libellés 'Réduire' et 'Détacher' si le widget est déplié et flottant", () => {
       const state = {
         anchored: false,
@@ -110,11 +109,10 @@ describe("WidgetHeaderComponent", () => {
       expect(buttons[1].title).toBe("Détacher");
       expect(buttons[2].title).toBe("Fermer");
     });
-
   });
 
   describe("Evènements", () => {
-    let buttons: HTMLButtonElement[];
+    let buttons: NodeListOf<HTMLButtonElement>;
     beforeEach(() => {
       buttons = getButtonsForState({
         anchored: true,
@@ -149,7 +147,5 @@ describe("WidgetHeaderComponent", () => {
 
       buttons[0].click();
     });
-
   });
-
 });

@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnInit,
   Output,
   ViewChild,
 } from "@angular/core";
@@ -121,15 +122,8 @@ export class EsriMapComponent implements OnChanges {
     });
   }
 
-  attachEvents(mapView: __esri.MapView, watchUtils: __esri.watchUtils) {
-    mapView.on("zoom", event => {
-      console.log("zoom", event);
-    });
-    mapView.on("move", event => {
-      console.log("move", event);
-    });
+  public attachEvents(mapView: __esri.MapView, watchUtils: __esri.watchUtils) {
     watchUtils.watch(mapView, "stationary", (value: boolean) => {
-      console.log("stationary", value);
       if (value) {
         // est passé de faux (en mouvement) à vrai (immobile)
         this.mapViewPropertiesChange.emit({
