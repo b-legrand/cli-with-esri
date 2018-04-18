@@ -135,16 +135,16 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "**/*.js": [
       "prettier --write",
       "git add"
     ],
-    "*.ts": [
-      "prettier --parser typescript --write --trailing-comma all",
-      "tslint --fix src/**/*.ts -t verbose --project . --config ./src/tsconfig.app.json --force",
+    "**/*.ts": [
+      "prettier --parser typescript --write --print-width 120 --trailing-comma all",
+      "tslint --fix -t verbose --project . --config ./src/tsconfig.app.json --force",
       "git add"
     ],
-    "*.html": [
+    "**/*.html": [
       "html-beautify --wrap-attributes=force-aligned --wrap-line-length=120 --end-with-new-line",
       "git add"
     ]
