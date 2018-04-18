@@ -2,11 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ApplicationRef, NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import {
-  removeNgStyles,
-  createNewHosts,
-  createInputTransfer,
-} from "@angularclass/hmr";
+import { removeNgStyles, createNewHosts, createInputTransfer } from "@angularclass/hmr";
 
 import { AppComponent } from "./app.component";
 import { CoreModule } from "./core/core.module";
@@ -24,6 +20,8 @@ import { Action, Store, StoreModule, ActionReducerMap } from "@ngrx/store";
 import { AppState, getInitialState } from "./core/model/app.state";
 import { metaReducers } from "./core/reducers/meta.reducers";
 import { AppActionTypes } from "./core/actions/core.actions";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { environment } from "../environments/environment";
 
 /** Juste pour typer ce que nous donne `angular-class/hmr` */
 export interface StoreType {
@@ -46,6 +44,10 @@ export const reducers: ActionReducerMap<any> = {};
     StoreModule.forRoot(reducers, {
       metaReducers,
       initialState: getInitialState,
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
     }),
     // modules common-socle
     MapModule,
@@ -97,9 +99,7 @@ export class AppModule {
   public hmrOnDestroy(store) {
     console.log("[HMR] onDestroy : store", store);
 
-    const cmpLocation = this.appRef.components.map(
-      cmp => cmp.location.nativeElement,
-    );
+    const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
     // recreate elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
     // inject your AppStore and grab state then set it on store
