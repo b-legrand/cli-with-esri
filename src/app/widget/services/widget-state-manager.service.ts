@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
 import { WidgetState } from "../model/widget-state";
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/observable/of";
 import { AppStoreService } from "../../core/services/app-store/app-store.service";
 
 /**
