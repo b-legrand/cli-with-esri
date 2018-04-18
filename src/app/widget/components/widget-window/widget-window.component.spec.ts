@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
+import { v4 } from "uuid";
 import { WidgetWindowComponent } from "./widget-window.component";
 import { WidgetHeaderComponent, WidgetPanelComponent } from "..";
-import { Component, DebugElement, NO_ERRORS_SCHEMA } from "@angular/core";
+import { Component, DebugElement, Input, NO_ERRORS_SCHEMA } from "@angular/core";
 import WidgetState from "../../model/widget-state";
 import { WidgetConfig } from "../../model/widget-config";
 import { By } from "@angular/platform-browser";
@@ -11,83 +11,77 @@ import { WidgetStateManager } from "../../services/widget-state-manager.service"
 import { Store, StoreModule } from "@ngrx/store";
 import { appReducer } from "../../../core/reducers/app.reducer";
 import { AppState } from "../../../core/model/app.state";
+import { AppStoreService } from "../../../core/services/app-store/app-store.service";
+import { APP_CONFIG, AppConfig, DEFAULT_APP_CONFIG } from "../../../core/model/app.config";
+import * as CoreActions from "../../../core/actions/core.actions";
+
+// composant de test
+@Component({
+  template: `
+        <widget-window key="test-widget-window"
+                       [title]="'Mon widget'"
+                       [icon]="'esri-icon-class'"
+                       [config]="config"
+        >Contenu du widget
+        </widget-window>`,
+})
+class TestWidgetWindowComponent {
+  @Input() public state: WidgetState;
+  @Input() public config: WidgetConfig;
+}
 
 describe("WidgetWindowComponent", () => {
   let store: Store<AppState>;
-  let component: WidgetWindowComponent;
-  let fixture: ComponentFixture<WidgetWindowComponent>;
+  let component: TestWidgetWindowComponent;
+  let fixture: ComponentFixture<TestWidgetWindowComponent>;
   let debugElement: DebugElement;
+  const fakeState: AppState = {
+    widgets: {
+      "test-widget-window": {
+        closed: false,
+        folded: false,
+        anchored: false,
+        position: { left: 0, top: 0 },
+        size: { width: 320, height: 240 },
+      },
+    },
+  };
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [
-          WidgetWindowComponent,
-          WidgetHeaderComponent,
-          WidgetPanelComponent,
-        ],
-        imports: [StoreModule.forRoot()],
+        declarations: [WidgetWindowComponent, WidgetHeaderComponent, WidgetPanelComponent, TestWidgetWindowComponent],
+        imports: [StoreModule.forRoot(appReducer)],
         schemas: [NO_ERRORS_SCHEMA],
-        providers: [WidgetStateManager, WidgetStackService],
+        providers: [
+          WidgetStateManager,
+          WidgetStackService,
+          AppStoreService,
+          { provide: APP_CONFIG, useValue: DEFAULT_APP_CONFIG },
+        ],
       }).compileComponents();
 
       store = TestBed.get(Store);
       // surveille les appels à Store.dispatch et les laisse passer.
       spyOn(store, "dispatch").and.callThrough();
+      store.dispatch(new CoreActions.RefreshStateAction(fakeState));
     }),
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WidgetWindowComponent);
+    fixture = TestBed.createComponent(TestWidgetWindowComponent);
     component = fixture.componentInstance;
+    // remplit le store avec un faux état.
     fixture.detectChanges();
   });
 
   it("should create", () => {
+    component.config = {
+      name: "test-widget",
+      uuid: v4(),
+    };
     expect(component).toBeTruthy();
-  });
-
-  describe("WidgetWindowComponent Usage", () => {
-    // composant de test
-    @Component({
-      template: `
-        <widget-window key="mon-widget"
-                       [title]="'Mon widget'"
-                       [icon]="'esri-icon-class'"
-        >Contenu du widget
-        </widget-window>`,
-    })
-    class TestWidgetWindowComponent {
-      public state: WidgetState;
-      public config: WidgetConfig;
-    }
-
-    let wrapperComponent: TestWidgetWindowComponent;
-    let wrapperfixture: ComponentFixture<TestWidgetWindowComponent>;
-
-    beforeEach(() => {
-      wrapperfixture = TestBed.createComponent(TestWidgetWindowComponent);
-      wrapperComponent = fixture.componentInstance;
-      wrapperfixture.detectChanges();
-      debugElement = wrapperfixture.debugElement;
-    });
-
-    it("should create", () => {
-      expect(wrapperComponent).toBeTruthy();
-    });
-
-    it("should create", () => {
-      wrapperComponent.state = {
-        folded: true,
-        anchored: true,
-        closed: true,
-      };
-      expect(wrapperComponent).toBeTruthy();
-      debugElement.queryAll(By.css(".widget-panel"));
-    });
-
-    it("should create", () => {
-      expect(wrapperComponent).toBeTruthy();
-    });
+    debugElement = fixture.debugElement;
+    debugElement.queryAll(By.css(".widget-panel"));
   });
 });

@@ -11,8 +11,7 @@ import { Location } from "@angular/common";
 import { LayoutModule as CdkLayoutModule } from "@angular/cdk/layout";
 
 @Component({ template: "<div>fake home </div>" })
-class TestHomeComponent {
-}
+class TestHomeComponent {}
 
 export const fakeRoutes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },

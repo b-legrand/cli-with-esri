@@ -30,19 +30,9 @@ export class WidgetStateManager {
     });
   }
 
-  getWidgetStates(): Observable<WidgetState[]> {
-    return Observable.of(
-      Object.keys(this.widgets).map(key => this.widgets[key]),
-    );
-  }
-
   getMaxZIndex(): number {
     const widgets = Object.keys(this.widgets).map(key => this.widgets[key]);
-    return Math.max(...widgets.map(widget => widget.zIndex));
-  }
-
-  getState(id: string): WidgetState {
-    return this.widgets[id];
+    return Math.max(...widgets.map(widget => widget.zIndex || 0));
   }
 }
 

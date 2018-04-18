@@ -41,11 +41,7 @@ import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
     LoremIpsumDirective,
     MapPageComponent,
   ],
-  exports: [
-    SncfHeaderComponent,
-    SncfThemeComponent,
-    LoremIpsumDirective,
-  ],
+  exports: [SncfHeaderComponent, SncfThemeComponent, LoremIpsumDirective],
   imports: [
     CommonModule,
     RouterModule,

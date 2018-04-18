@@ -5,12 +5,15 @@ import { APP_BASE_HREF } from "@angular/common";
 import { NO_ERRORS_SCHEMA } from "@angular/core";
 import * as fromRoot from "./core/reducers/app.reducer";
 import * as fromWidgets from "./widget/reducers/widgets.reducer";
-import { combineReducers, StoreModule, select } from "@ngrx/store";
+import { combineReducers, StoreModule, select, Store } from "@ngrx/store";
+import { AppState, getInitialState } from "./core/model/app.state";
+import { LoadStateAction } from "./core/actions/core.actions";
 
 describe("AppComponent", () => {
+  let store: Store<AppState>;
   beforeEach(
     async(() => {
-      TestBed.configureTestingModule({
+      return TestBed.configureTestingModule({
         declarations: [],
         imports: [
           AppModule,
@@ -21,9 +24,20 @@ describe("AppComponent", () => {
         ],
         providers: [{ provide: APP_BASE_HREF, useValue: "/" }],
         schemas: [NO_ERRORS_SCHEMA],
-      }).compileComponents();
+      })
+        .compileComponents()
+        .then(() => {
+          store = TestBed.get(Store);
+          // surveille les appels à Store.dispatch et les laisse passer.
+          spyOn(store, "dispatch").and.callThrough();
+        });
     }),
   );
+
+  beforeEach(() => {
+    store.dispatch(new LoadStateAction(getInitialState()));
+  });
+
   it(
     "should create the app",
     async(() => {
@@ -33,22 +47,11 @@ describe("AppComponent", () => {
     }),
   );
   it(
-    `should have as title 'app'`,
+    `Doit avoir le titre 'Maquette ergonomie'`,
     async(() => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;
       expect(app.title).toEqual("Maquette ergonomie");
-    }),
-  );
-  it(
-    "should render title in a h1 tag",
-    async(() => {
-      const fixture = TestBed.createComponent(AppComponent);
-      fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector("h1").textContent).toContain(
-        "Maquette ergonomie",
-      );
     }),
   );
 });

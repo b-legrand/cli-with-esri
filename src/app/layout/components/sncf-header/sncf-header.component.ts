@@ -14,7 +14,6 @@ import { MenuItem } from "primeng/api";
   styleUrls: ["./sncf-header.component.scss"],
 })
 export class SncfHeaderComponent implements OnInit {
-
   /**
    * Nom de l'application
    */
@@ -38,23 +37,17 @@ export class SncfHeaderComponent implements OnInit {
   public layout: string;
 
   constructor(breakpointObserver: BreakpointObserver) {
-    breakpointObserver.observe([
-      Breakpoints.Handset,
-    ]).subscribe(result => {
+    breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
       if (result.matches) {
         this.layout = "handset";
       }
     });
-    breakpointObserver.observe([
-      Breakpoints.Tablet,
-    ]).subscribe(result => {
+    breakpointObserver.observe([Breakpoints.Tablet]).subscribe(result => {
       if (result.matches) {
         this.layout = "tablet";
       }
     });
-    breakpointObserver.observe([
-      Breakpoints.Web,
-    ]).subscribe(result => {
+    breakpointObserver.observe([Breakpoints.Web]).subscribe(result => {
       if (result.matches) {
         this.layout = "web";
       }
@@ -84,5 +77,4 @@ export class SncfHeaderComponent implements OnInit {
       ];
     }
   }
-
 }

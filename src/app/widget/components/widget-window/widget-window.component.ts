@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from "@angular/core";
 import { ResizeEvent } from "angular-resizable-element";
 import { v4 } from "uuid";
 
@@ -105,31 +98,29 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
    * Portail (template virtuel)
    *
    */
-  @ViewChild("widget")
-  public widgetPortal: TemplatePortal<WidgetWindowComponent>;
+  @ViewChild("widget") public widgetPortal: TemplatePortal<WidgetWindowComponent>;
 
-  constructor(
-    private stateManager: WidgetStateManager,
-    private store: Store<any>,
-  ) {}
+  constructor(private stateManager: WidgetStateManager, private store: Store<any>) {}
 
   ngOnInit() {
     // todo injecter la config depuis le parent;
-    this.config = {
-      uuid: v4(),
-      name: this.key,
-      movable: true,
-      resizable: true,
-      anchorable: true,
-      closable: true,
-      foldable: true,
-      scrollable: true,
-    };
+    if (!this.config) {
+      this.config = {
+        uuid: v4(),
+        name: this.key,
+        movable: true,
+        resizable: true,
+        anchorable: true,
+        closable: true,
+        foldable: true,
+        scrollable: true,
+      };
+    }
     this.store
-      .select(state => state.widgets[this.key])
+      .select("widgets")
+      .select(widgets => (widgets ? widgets[this.key] : undefined))
       .subscribe(widgetState => {
-        console.log(`GOT WIDGET STATE for ${this.key}`, widgetState);
-        if (!widgetState) {
+        if (!widgetState && !!this.key) {
           this.state = initialWidgetState();
           this.store.dispatch(
             new WidgetInit({
@@ -159,8 +150,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
       // angular2-draggable fonctionne avec des translation css, ca fout le bazar selon le conteneur.
       const { transform } = this.widget.nativeElement.style;
       const offset = this.parseTransform(transform);
-      this.widget.nativeElement.style.left = this.state.position.left +=
-        offset.x;
+      this.widget.nativeElement.style.left = this.state.position.left += offset.x;
       this.widget.nativeElement.style.top = this.state.position.top += offset.y;
       delete this.widget.nativeElement.style.transform;
     }

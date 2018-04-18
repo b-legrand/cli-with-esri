@@ -4,7 +4,6 @@
  * Chaque config json de widget devrait hériter de celle là. ou s'ajouter dans data.
  */
 export interface WidgetConfig {
-
   /**
    * Identifiant unique / uuid du widget
    */
@@ -49,4 +48,9 @@ export interface WidgetConfig {
    * configuration fonctionnelle du widget
    */
   data?: any;
+
+  /**
+   * N'importe quelle clé/valeur, on est souple sur la config.
+   */
+  [key: string]: any;
 }

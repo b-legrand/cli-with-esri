@@ -41,7 +41,7 @@
     <ng-content></ng-content>
   </widget-panel>
 </div>
-<!-- conteneur invisible -->
+<!-- conteneur invisible Seul reste dans le dom le composant -->
 <div *ngIf="contentLoaded" [style.display]="'none'">
   <expand-button
     esriWidget
