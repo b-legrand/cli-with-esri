@@ -16,6 +16,7 @@ import { EsriLoaderService } from "./services/esri-loader.service";
 import { WidgetModule } from "../widget/widget.module";
 import { ScrollPanelModule } from "primeng/primeng";
 import { PortalModule } from "@angular/cdk/portal";
+import { ButtonToolbarComponent } from "./components/button-toolbar/button-toolbar.component";
 
 @NgModule({
   imports: [
@@ -29,11 +30,7 @@ import { PortalModule } from "@angular/cdk/portal";
     WidgetModule,
     PortalModule,
   ],
-  declarations: [
-    WidgetContainerComponent,
-    EsriMapComponent,
-    AnchorZoneComponent,
-  ],
+  declarations: [WidgetContainerComponent, EsriMapComponent, AnchorZoneComponent, ButtonToolbarComponent],
   providers: [EsriMapService, EsriLoaderService],
   exports: [WidgetContainerComponent, EsriMapComponent, AnchorZoneComponent],
   entryComponents: [EsriMapComponent],
