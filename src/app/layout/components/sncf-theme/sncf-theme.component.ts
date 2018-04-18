@@ -14,9 +14,8 @@ import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
 @Component({
   selector: "sncf-theme",
   styleUrls: ["./sncf-theme.component.scss"],
-  template: "",
-  /* tslint:disable:use-view-encapsulation*/ // c'est ce qu'on veut.
-  encapsulation: ViewEncapsulation.None,
+  template: "", // c'est ce qu'on veut.
+  /* tslint:disable:use-view-encapsulation*/ encapsulation: ViewEncapsulation.None,
 })
 export class SncfThemeComponent implements OnInit {
   public customCss: string;

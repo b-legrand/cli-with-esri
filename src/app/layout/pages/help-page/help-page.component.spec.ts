@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
-
 import { HelpPageComponent } from "./help-page.component";
 import { SidebarModule, ScrollPanelModule } from "primeng/primeng";
 

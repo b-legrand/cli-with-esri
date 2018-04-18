@@ -11,21 +11,16 @@ describe("SidebarPageComponent", () => {
   let component: SidebarPageComponent;
   let fixture: ComponentFixture<SidebarPageComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
         declarations: [SidebarPageComponent],
-        imports: [
-          SidebarModule,
-          PerfectScrollbarModule,
-          NoopAnimationsModule,
-        ],
+        imports: [SidebarModule, PerfectScrollbarModule, NoopAnimationsModule],
         schemas: [NO_ERRORS_SCHEMA],
-        providers: [
-          { provide: Router },
-        ],
-      })
-      .compileComponents();
-  }));
+        providers: [{ provide: Router }],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SidebarPageComponent);
@@ -36,5 +31,4 @@ describe("SidebarPageComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
-
 });
