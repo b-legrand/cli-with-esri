@@ -1,11 +1,4 @@
-import {
-  Component,
-  Inject,
-  Input,
-  OnInit,
-  Output,
-  EventEmitter,
-} from "@angular/core";
+import { Component, Inject, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
 
 /**
@@ -26,8 +19,7 @@ export class ExpandButtonComponent implements OnInit {
    */
   @Input() public active = false;
 
-  @Output()
-  public activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public disabledColor = "rgb(160, 160, 160)";
 

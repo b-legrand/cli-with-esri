@@ -14,10 +14,7 @@ import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
 export class WidgetHeaderComponent {
   @Input() public state: WidgetState;
 
-  @Output()
-  public stateChange: EventEmitter<WidgetState> = new EventEmitter<
-    WidgetState
-  >();
+  @Output() public stateChange: EventEmitter<WidgetState> = new EventEmitter<WidgetState>();
 
   /**
    * Affiche ou non le bouton fermer.
