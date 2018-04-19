@@ -45,9 +45,7 @@ describe("WidgetHeaderComponent", () => {
     fixture.detectChanges();
 
     // vérifie qu'il n'y aucun bouton dans la barre de titre
-    const buttons = (debugElement.nativeElement as HTMLElement).querySelectorAll(
-      "button",
-    );
+    const buttons = (debugElement.nativeElement as HTMLElement).querySelectorAll("button");
     expect(buttons.length).toBe(0);
   });
 
@@ -59,18 +57,14 @@ describe("WidgetHeaderComponent", () => {
     fixture.detectChanges();
 
     // vérifie qu'il n'y a qu'un bouton dans la barre de titre
-    const buttons: NodeListOf<
-      HTMLButtonElement
-    > = debugElement.nativeElement.querySelectorAll("button");
+    const buttons: NodeListOf<HTMLButtonElement> = debugElement.nativeElement.querySelectorAll("button");
     expect(buttons.length).toBe(1);
 
     expect(buttons[0].title).toBe("Fermer");
   });
 
   // pour les tests suivant, on généralise la conf, le widget affiche les 3 boutons.
-  const getButtonsForState = (
-    state: WidgetState,
-  ): NodeListOf<HTMLButtonElement> => {
+  const getButtonsForState = (state: WidgetState): NodeListOf<HTMLButtonElement> => {
     component.closable = true;
     component.foldable = true;
     component.anchorable = true;

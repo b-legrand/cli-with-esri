@@ -22,11 +22,7 @@ describe("EsriWidgetDirective", () => {
   let mapService: EsriMapService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TestEsriWidgetComponent,
-        EsriWidgetDirective,
-        EsriMapComponent,
-      ],
+      declarations: [TestEsriWidgetComponent, EsriWidgetDirective, EsriMapComponent],
       providers: [
         EsriMapService,
         EsriLoaderService,

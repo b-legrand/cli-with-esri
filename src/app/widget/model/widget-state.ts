@@ -2,7 +2,6 @@
  * Objet représentant l'état d'un widget.
  */
 export interface WidgetState {
-
   /**
    * Widget fermé/inactif.
    */
@@ -26,13 +25,12 @@ export interface WidgetState {
   /**
    * Position à l'écran.
    */
-  position?: { left: number, top: number };
+  position?: { left: number; top: number };
 
   /**
    * Taille du widget.
    */
   size?: {
-
     /**
      * Largeur en pixels.
      */
@@ -73,7 +71,7 @@ export function initialWidgetState(): WidgetState {
     },
     size: {
       width,
-      height
+      height,
     },
     // attention, primeng à partir de 3000
     zIndex: 100,
