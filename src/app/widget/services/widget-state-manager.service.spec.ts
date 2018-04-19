@@ -1,4 +1,4 @@
-import { WidgetState } from "../model/widget-state";
+import { WidgetState } from "../models/widget-state";
 import "rxjs/add/observable/of";
 import { AppStoreService } from "../../core/services/app-store/app-store.service";
 import { async, inject, TestBed } from "@angular/core/testing";

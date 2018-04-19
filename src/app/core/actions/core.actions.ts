@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { AppState } from "../model/app.state";
+import { AppState } from "../models/app.state";
 
 export enum AppActionTypes {
   LoadState = "[App] Load state",

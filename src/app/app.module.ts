@@ -12,12 +12,12 @@ import { WidgetModule } from "./widget/widget.module";
 import { LayoutModule } from "./layout/layout.module";
 import { TocModule } from "./toc/toc.module";
 
-import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./core/model/app.config";
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./core/models/app.config";
 import { APP_ROUTES } from "./routes";
 import "rxjs/add/operator/take";
 
 import { Action, Store, StoreModule, ActionReducerMap } from "@ngrx/store";
-import { AppState, getInitialState } from "./core/model/app.state";
+import { AppState, getInitialState } from "./core/models/app.state";
 import { metaReducers } from "./core/reducers/meta.reducers";
 import { AppActionTypes } from "./core/actions/core.actions";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";

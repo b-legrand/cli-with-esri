@@ -1,5 +1,5 @@
 import { Component, Input, Inject, ViewChild } from "@angular/core";
-import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
+import { APP_CONFIG, AppConfig } from "../../../core/models/app.config";
 import { PerfectScrollbarDirective } from "ngx-perfect-scrollbar";
 
 /**

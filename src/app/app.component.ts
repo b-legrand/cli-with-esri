@@ -1,6 +1,6 @@
 import { Component, Inject } from "@angular/core";
-import { APP_CONFIG, AppConfig } from "./core/model/app.config";
-import { AppState } from "./core/model/app.state";
+import { APP_CONFIG, AppConfig } from "./core/models/app.config";
+import { AppState } from "./core/models/app.state";
 import { Store } from "@ngrx/store";
 import "rxjs/add/operator/take";
 
@@ -14,10 +14,7 @@ export class AppComponent {
   themeColor: string;
   state: AppState;
 
-  constructor(
-    @Inject(APP_CONFIG) appConfig: AppConfig,
-    private store: Store<any>,
-  ) {
+  constructor(@Inject(APP_CONFIG) appConfig: AppConfig, private store: Store<any>) {
     this.themeColor = appConfig.themeColor;
     this.title = appConfig.appName;
     this.store.take(1).subscribe(s => (this.state = s));

@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { WidgetHeaderComponent } from "./widget-header.component";
 import { By } from "@angular/platform-browser";
 import { DebugElement } from "@angular/core";
-import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
-import WidgetState from "../../model/widget-state";
+import { APP_CONFIG, AppConfig } from "../../../core/models/app.config";
+import WidgetState from "../../models/widget-state";
 
 describe("WidgetHeaderComponent", () => {
   const testAppConfig: AppConfig = {

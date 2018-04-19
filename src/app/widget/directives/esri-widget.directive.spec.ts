@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 import { EsriMapService } from "../../map/services/esri-map.service";
 import { EsriLoaderService } from "../../map/services/esri-loader.service";
-import { APP_CONFIG, DEFAULT_APP_CONFIG } from "../../core/model/app.config";
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from "../../core/models/app.config";
 import { EsriMapComponent } from "../../map/components";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 

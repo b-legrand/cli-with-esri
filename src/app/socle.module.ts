@@ -8,7 +8,7 @@ import { WidgetModule } from "./widget/widget.module";
 import { LayoutModule } from "./layout/layout.module";
 import { CoreModule } from "./core/core.module";
 
-import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./core/model/app.config";
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from "./core/models/app.config";
 import { APP_ROUTES } from "./routes";
 
 /**

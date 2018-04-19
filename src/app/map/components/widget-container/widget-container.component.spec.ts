@@ -9,7 +9,7 @@ import { PortalModule } from "@angular/cdk/portal";
 import { EsriMapService } from "../../services/esri-map.service";
 import EsriLoaderService from "../../services/esri-loader.service";
 import { Store, StoreModule } from "@ngrx/store";
-import { AppState } from "../../../core/model/app.state";
+import { AppState } from "../../../core/models/app.state";
 import { appReducer } from "../../../core/reducers/app.reducer";
 import { AppStoreService } from "../../../core/services/app-store/app-store.service";
 
@@ -24,12 +24,7 @@ describe("WidgetContainerComponent", () => {
       TestBed.configureTestingModule({
         imports: [WidgetModule, PortalModule, StoreModule.forRoot(appReducer)],
         declarations: [WidgetContainerComponent, AnchorZoneComponent],
-        providers: [
-          WidgetStackService,
-          EsriMapService,
-          EsriLoaderService,
-          AppStoreService,
-        ],
+        providers: [WidgetStackService, EsriMapService, EsriLoaderService, AppStoreService],
         schemas: [NO_ERRORS_SCHEMA],
       }).compileComponents();
 

@@ -22,8 +22,7 @@ const fakeLayers = [
             visible: false,
             minScale: 144447,
             maxScale: 70,
-            definitionExpression:
-              "TO_DATE({now},'YYYYMMDD') BETWEEN DDA AND DFA",
+            definitionExpression: "TO_DATE({now},'YYYYMMDD') BETWEEN DDA AND DFA",
           },
         ],
       },
@@ -33,10 +32,7 @@ const fakeLayers = [
 describe("LayerTreeNodeService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        LayerTreeNodeService,
-        { provide: LAYERS, useValue: fakeLayers },
-      ],
+      providers: [LayerTreeNodeService, { provide: LAYERS, useValue: fakeLayers }],
     });
   });
 

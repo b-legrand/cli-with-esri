@@ -3,10 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { FilteredLayerListComponent } from "./filtered-layer-list.component";
 import { TreeModule } from "primeng/tree";
 import { HighlightPipe } from "../../pipes/highlight.pipe";
-import {
-  LAYERS,
-  LayerTreeNodeService,
-} from "../../services/layer-tree-node.service";
+import { LAYERS, LayerTreeNodeService } from "../../services/layer-tree-node.service";
 import { VisibleForScaleDirective } from "../../directives/visible-for-scale.directive";
 import { TooltipModule } from "primeng/primeng";
 
@@ -17,16 +14,9 @@ describe("FilteredLayerListComponent", () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [
-          FilteredLayerListComponent,
-          HighlightPipe,
-          VisibleForScaleDirective,
-        ],
+        declarations: [FilteredLayerListComponent, HighlightPipe, VisibleForScaleDirective],
         imports: [TreeModule, TooltipModule],
-        providers: [
-          LayerTreeNodeService,
-          { provide: LAYERS, useValue: undefined },
-        ],
+        providers: [LayerTreeNodeService, { provide: LAYERS, useValue: undefined }],
       }).compileComponents();
     }),
   );

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { AppState } from "../../model/app.state";
+import { AppState } from "../../models/app.state";
 import { Store } from "@ngrx/store";
 import * as CoreActions from "../../actions/core.actions";
 import "rxjs/add/operator/take";

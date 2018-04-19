@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, Inject } from "@angular/core";
-import { WidgetState } from "../../model/widget-state";
+import { WidgetState } from "../../models/widget-state";
 
-import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
+import { APP_CONFIG, AppConfig } from "../../../core/models/app.config";
 
 /**
  * Ce composant représente la barre de titre d'un widget.

@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ViewContainerRef,
-  ViewChild,
-} from "@angular/core";
+import { Component, OnInit, Input, ViewContainerRef, ViewChild } from "@angular/core";
 
 /**
  * La zone d'ancrage permets de regrouper les widgets socle dont l'état est à anchored.

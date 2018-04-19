@@ -1,6 +1,6 @@
 import { AppActionTypes, AppActions } from "../actions/core.actions";
 import { Action } from "@ngrx/store";
-import { getInitialState } from "../model/app.state";
+import { getInitialState } from "../models/app.state";
 
 /**
  * Réducteur racine / application;

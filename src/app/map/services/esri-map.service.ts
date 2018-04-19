@@ -29,37 +29,32 @@ export class EsriMapService {
   ): Promise<{ map: __esri.Map; mapView: __esri.MapView }> {
     return this.esriLoader
       .loadModules(["esri/Map", "esri/views/MapView"])
-      .then(
-        ([Map, MapView]: [
-          __esri.MapConstructor,
-          __esri.MapViewConstructor
-        ]) => {
-          // create map
-          const map = new Map(mapProperties);
+      .then(([Map, MapView]: [__esri.MapConstructor, __esri.MapViewConstructor]) => {
+        // create map
+        const map = new Map(mapProperties);
 
-          // copie les propriétés pour ne pas toucher à la source.
-          const newMapViewProps = Object.assign({}, mapViewProperties);
-          if (!newMapViewProps.container) {
-            newMapViewProps.container = mapEl as HTMLDivElement;
-          }
-          if (!newMapViewProps.map) {
-            newMapViewProps.map = map;
-          }
+        // copie les propriétés pour ne pas toucher à la source.
+        const newMapViewProps = Object.assign({}, mapViewProperties);
+        if (!newMapViewProps.container) {
+          newMapViewProps.container = mapEl as HTMLDivElement;
+        }
+        if (!newMapViewProps.map) {
+          newMapViewProps.map = map;
+        }
 
-          // créé la MapView
-          const mapView = new MapView(newMapViewProps);
+        // créé la MapView
+        const mapView = new MapView(newMapViewProps);
 
-          this.map = map;
-          this.mapView = mapView;
+        this.map = map;
+        this.mapView = mapView;
 
-          this.isLoaded.emit();
+        this.isLoaded.emit();
 
-          return {
-            map,
-            mapView,
-          };
-        },
-      );
+        return {
+          map,
+          mapView,
+        };
+      });
   }
   /**
    * Charge une webmap plutôt qu'une map.
@@ -75,37 +70,32 @@ export class EsriMapService {
   ): Promise<{ map: __esri.WebMap; mapView: __esri.MapView }> {
     return this.esriLoader
       .loadModules(["esri/views/MapView", "esri/WebMap"])
-      .then(
-        ([MapView, WebMap]: [
-          __esri.MapViewConstructor,
-          __esri.WebMapConstructor
-        ]) => {
-          // créé la webmap
-          const map: __esri.WebMap = new WebMap(webMapProperties);
+      .then(([MapView, WebMap]: [__esri.MapViewConstructor, __esri.WebMapConstructor]) => {
+        // créé la webmap
+        const map: __esri.WebMap = new WebMap(webMapProperties);
 
-          // créé un nouvel objet props pour éviter d etoucher à la source.
-          const newMapViewProps = Object.assign({}, mapViewProperties);
-          if (!newMapViewProps.container) {
-            newMapViewProps.container = mapEl as HTMLDivElement;
-          }
-          if (!newMapViewProps.map) {
-            newMapViewProps.map = map;
-          }
+        // créé un nouvel objet props pour éviter d etoucher à la source.
+        const newMapViewProps = Object.assign({}, mapViewProperties);
+        if (!newMapViewProps.container) {
+          newMapViewProps.container = mapEl as HTMLDivElement;
+        }
+        if (!newMapViewProps.map) {
+          newMapViewProps.map = map;
+        }
 
-          // créé la MapView
-          const mapView = new MapView(newMapViewProps);
+        // créé la MapView
+        const mapView = new MapView(newMapViewProps);
 
-          this.map = map;
-          this.mapView = mapView;
+        this.map = map;
+        this.mapView = mapView;
 
-          this.isLoaded.emit();
+        this.isLoaded.emit();
 
-          return {
-            map,
-            mapView,
-          };
-        },
-      );
+        return {
+          map,
+          mapView,
+        };
+      });
   }
   /**
    * Ajoute un élément du dom à la mapView en tant que widget.

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { ExpandButtonComponent } from "./expand-button.component";
-import { APP_CONFIG } from "../../../core/model/app.config";
+import { APP_CONFIG } from "../../../core/models/app.config";
 import { TooltipModule } from "primeng/primeng";
 import { DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";

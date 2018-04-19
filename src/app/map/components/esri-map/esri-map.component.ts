@@ -1,13 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  ViewChild,
-} from "@angular/core";
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from "@angular/core";
 import { EsriMapService } from "../../services/esri-map.service";
 
 /**
@@ -69,8 +60,7 @@ export class EsriMapComponent implements OnChanges {
   /**
    * Callback remonté lorsque les propriétés change.
    */
-  @Output()
-  public mapViewPropertiesChange = new EventEmitter<__esri.MapViewProperties>();
+  @Output() public mapViewPropertiesChange = new EventEmitter<__esri.MapViewProperties>();
 
   /**
    * Callback remonté lorsque la carte est chargée.
@@ -93,19 +83,11 @@ export class EsriMapComponent implements OnChanges {
     let mapPromise: Promise<any>;
     // determine if loading a WebMap or creating a custom map
     if (this.mapProperties) {
-      mapPromise = this.mapService.loadMap(
-        this.mapProperties,
-        this.mapViewProperties,
-        this.mapEl.nativeElement,
-      );
+      mapPromise = this.mapService.loadMap(this.mapProperties, this.mapViewProperties, this.mapEl.nativeElement);
     }
 
     if (this.webMapProperties) {
-      mapPromise = this.mapService.loadWebMap(
-        this.webMapProperties,
-        this.mapViewProperties,
-        this.mapEl.nativeElement,
-      );
+      mapPromise = this.mapService.loadWebMap(this.webMapProperties, this.mapViewProperties, this.mapEl.nativeElement);
     }
 
     mapPromise.then(mapInfo => {
