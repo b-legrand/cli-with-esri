@@ -34,9 +34,7 @@ export class AppStoreService {
   }
 
   restore() {
-    const localState: AppState = JSON.parse(
-      window.localStorage.getItem(APP_STORE_KEY),
-    );
+    const localState: AppState = JSON.parse(window.localStorage.getItem(APP_STORE_KEY));
     this.store.dispatch(new CoreActions.RefreshStateAction(localState));
   }
 

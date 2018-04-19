@@ -1,7 +1,6 @@
 import { AppState, getInitialState } from "./app.state";
 
 describe("AppState", () => {
-
   let state: AppState;
 
   beforeEach(() => {
@@ -13,5 +12,4 @@ describe("AppState", () => {
     expect(state.maps["default"]).toBeDefined();
     expect(state.widgets).toEqual({});
   });
-
 });
