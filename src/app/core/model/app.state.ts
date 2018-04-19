@@ -6,19 +6,19 @@ import { WidgetState } from "../../widget/model/widget-state";
 export interface AppState {
   /** Etats des widgets */
   widgets?: {
-    [key: string]: WidgetState
+    [key: string]: WidgetState;
   };
   /** Etat de la carte */
   maps?: {
     [key: string]: {
       /** Propriétés de la vue esri */
-      viewProps: __esri.MapViewProperties,
+      viewProps: __esri.MapViewProperties;
       /**
        * non implémenté, mais ca serait bien d'avoir les couches.
        * surtout pour filtrer par habilitation + garder les couches ouvertes précédemment.
        */
-      layers?: any
-    }
+      layers?: any;
+    };
   };
   // à faire ensuite, les routes
 }
@@ -29,12 +29,12 @@ export function getInitialState() {
     widgets: {},
     /** Etat de la carte */
     maps: {
-      "default": {
+      default: {
         viewProps: {
           zoom: 6,
-          center: [2.2137, 46.2276]
-        }
-      }
-    }
+          center: [2.2137, 46.2276],
+        },
+      },
+    },
   };
 }

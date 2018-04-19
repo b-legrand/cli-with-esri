@@ -10,7 +10,6 @@ export let APP_CONFIG = new InjectionToken("app.config");
  * Configuration de base d'une application socle.
  */
 export interface AppConfig {
-
   /**
    * Nom de l'application, affiché en titre et dans le header.
    */
@@ -35,4 +34,3 @@ export const DEFAULT_APP_CONFIG: AppConfig = {
   apiVersion: "4.6",
   themeColor: SncfColor.BleuPrimaire as string,
 };
-
