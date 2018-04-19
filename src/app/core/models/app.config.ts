@@ -31,6 +31,6 @@ export interface AppConfig {
  */
 export const DEFAULT_APP_CONFIG: AppConfig = {
   appName: "Maquette ergonomie",
-  apiVersion: "4.6",
+  apiVersion: "4.7",
   themeColor: SncfColor.BleuPrimaire as string,
 };

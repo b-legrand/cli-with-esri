@@ -19,9 +19,7 @@ export class LayerTreeNodeService {
     if (!this.layers) {
       this.layers = STUB_LAYERS;
     }
-    return Observable.of(
-      this.layers.map(layer => this.layersToTreeNode(layer)),
-    );
+    return Observable.of(this.layers.map(layer => this.layersToTreeNode(layer)));
   }
 
   public applyFolderIcons(treeNode: TreeNode): TreeNode {
@@ -34,9 +32,7 @@ export class LayerTreeNodeService {
     const treeNode: TreeNode = this.layerToNode(layer);
     // si la couche a des sous-couches, on récurse
     if (layer.sublayers) {
-      treeNode.children = layer.sublayers.map(child =>
-        this.layersToTreeNode(child),
-      );
+      treeNode.children = layer.sublayers.map(child => this.layersToTreeNode(child));
       treeNode.type = "group";
       treeNode.leaf = false;
       this.applyFolderIcons(treeNode);
@@ -57,5 +53,4 @@ export class LayerTreeNodeService {
       type: "leaf",
     };
   }
-
 }

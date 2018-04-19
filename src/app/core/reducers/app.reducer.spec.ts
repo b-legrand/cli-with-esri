@@ -1,5 +1,5 @@
 import { appReducer } from "./app.reducer";
-import { getInitialState } from "../model/app.state";
+import { getInitialState } from "../models/app.state";
 
 describe("App reducer", () => {
   it("doit renvoyer l'état initial", () => {

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { WidgetPanelComponent } from "./widget-panel.component";
 import { DebugElement, NO_ERRORS_SCHEMA } from "@angular/core";
 import { By } from "@angular/platform-browser";
-import { APP_CONFIG } from "../../../core/model/app.config";
+import { APP_CONFIG } from "../../../core/models/app.config";
 
 describe("WidgetPanelComponent", () => {
   let component: WidgetPanelComponent;

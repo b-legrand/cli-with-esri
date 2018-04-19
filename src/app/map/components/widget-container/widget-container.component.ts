@@ -45,8 +45,7 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
   /**
    * Liste des widgets contenu dans ce conteneur.
    */
-  @ContentChildren(WidgetWindowComponent)
-  widgets: QueryList<WidgetWindowComponent>;
+  @ContentChildren(WidgetWindowComponent) widgets: QueryList<WidgetWindowComponent>;
 
   /**
    * Liste des widgets enfants. ( de 2nd niveau & plus )
@@ -111,13 +110,11 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
       widget.boundaries = this.bounds.nativeElement;
     });
     // les widgets ayant un [icon] de définit sont ajouté à la map esri.
-    this.widgets
-      .filter(widget => widget.icon !== undefined)
-      .forEach((widget, i) => {
-        widget.position = this.position;
-        widget.index = i;
-        widget.contentLoaded = true;
-      });
+    this.widgets.filter(widget => widget.icon !== undefined).forEach((widget, i) => {
+      widget.position = this.position;
+      widget.index = i;
+      widget.contentLoaded = true;
+    });
   }
 
   public attachWidgetsToAnchorZone() {}

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from "@angular/core";
 import * as esriLoader from "esri-loader";
-import { APP_CONFIG, AppConfig } from "../../core/model/app.config";
+import { APP_CONFIG, AppConfig } from "../../core/models/app.config";
 import { environment } from "../../../environments/environment";
 
 import "rxjs/Observable";
@@ -30,8 +30,8 @@ export class EsriLoaderService {
         async: true,
         debug: !environment.production, // attention, manière angular-cli, à adapter.
         has: {
-          "esri-featurelayer-webgl": 1
-        }
+          "esri-featurelayer-webgl": 1,
+        },
       },
     };
   }

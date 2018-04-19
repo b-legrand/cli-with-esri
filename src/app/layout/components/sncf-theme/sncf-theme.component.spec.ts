@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { SncfThemeComponent } from "./sncf-theme.component";
-import { APP_CONFIG } from "../../../core/model/app.config";
+import { APP_CONFIG } from "../../../core/models/app.config";
 
 describe("SncfThemeComponent", () => {
   const testConfig = { themeColor: "black" };
@@ -40,18 +40,12 @@ describe("SncfThemeComponent", () => {
     let styles: CSSStyleSheet;
 
     beforeEach(() => {
-      const styleElement: HTMLStyleElement = document.querySelector(
-        "style[data-sncf-theme]",
-      );
+      const styleElement: HTMLStyleElement = document.querySelector("style[data-sncf-theme]");
       styles = styleElement.sheet as CSSStyleSheet;
     });
 
     // vérifie qu'une règle existe pour le css selector
-    const ruleExistAndContains = (
-      selector: string,
-      attribute?: string,
-      value?: string,
-    ) => {
+    const ruleExistAndContains = (selector: string, attribute?: string, value?: string) => {
       let foundRule: CSSStyleRule;
       for (let i = 0; i < styles.cssRules.length; i++) {
         if (styles.cssRules[i].cssText === selector) {

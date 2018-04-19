@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from "@angular/core";
-import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
+import { APP_CONFIG, AppConfig } from "../../../core/models/app.config";
 
 /**
  * Composant servant à injecter du style global

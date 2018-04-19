@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { WidgetState } from "../model/widget-state";
+import { WidgetState } from "../models/widget-state";
 
 export enum WidgetActionTypes {
   Init = "[Widget] Init",

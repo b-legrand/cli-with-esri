@@ -18,22 +18,9 @@ describe("LayerListComponent", () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [
-          LayerListComponent,
-          FilteredLayerListComponent,
-          VisibleForScaleDirective,
-          HighlightPipe,
-        ],
-        imports: [
-          FormsModule,
-          TooltipModule,
-          InputTextModule,
-          TreeModule,
-        ],
-        providers: [
-          LayerTreeNodeService,
-          { provide: LAYERS, useValue: STUB_LAYERS },
-        ]
+        declarations: [LayerListComponent, FilteredLayerListComponent, VisibleForScaleDirective, HighlightPipe],
+        imports: [FormsModule, TooltipModule, InputTextModule, TreeModule],
+        providers: [LayerTreeNodeService, { provide: LAYERS, useValue: STUB_LAYERS }],
       }).compileComponents();
     }),
   );

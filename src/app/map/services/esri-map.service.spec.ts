@@ -2,7 +2,7 @@ import { inject, TestBed } from "@angular/core/testing";
 
 import { EsriMapService } from "./esri-map.service";
 import { EsriLoaderService } from "./esri-loader.service";
-import { APP_CONFIG, DEFAULT_APP_CONFIG } from "../../core/model/app.config";
+import { APP_CONFIG, DEFAULT_APP_CONFIG } from "../../core/models/app.config";
 
 describe("MapService", () => {
   let element: HTMLElement;

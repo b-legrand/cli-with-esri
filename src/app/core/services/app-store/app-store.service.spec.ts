@@ -2,7 +2,7 @@ import { inject, TestBed } from "@angular/core/testing";
 
 import { AppStoreService } from "./app-store.service";
 import * as CoreActions from "../../actions/core.actions";
-import { AppState } from "../../model/app.state";
+import { AppState } from "../../models/app.state";
 import { Store, StoreModule } from "@ngrx/store";
 
 import { appReducer } from "../../reducers/app.reducer";

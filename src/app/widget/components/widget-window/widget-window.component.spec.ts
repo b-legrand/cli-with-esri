@@ -3,16 +3,16 @@ import { v4 } from "uuid";
 import { WidgetWindowComponent } from "./widget-window.component";
 import { WidgetHeaderComponent, WidgetPanelComponent } from "..";
 import { Component, DebugElement, Input, NO_ERRORS_SCHEMA } from "@angular/core";
-import WidgetState from "../../model/widget-state";
-import { WidgetConfig } from "../../model/widget-config";
+import WidgetState from "../../models/widget-state";
+import { WidgetConfig } from "../../models/widget-config";
 import { By } from "@angular/platform-browser";
 import { WidgetStackService } from "../../../map/services/widget-stack.service";
 import { WidgetStateManager } from "../../services/widget-state-manager.service";
 import { Store, StoreModule } from "@ngrx/store";
 import { appReducer } from "../../../core/reducers/app.reducer";
-import { AppState } from "../../../core/model/app.state";
+import { AppState } from "../../../core/models/app.state";
 import { AppStoreService } from "../../../core/services/app-store/app-store.service";
-import { APP_CONFIG, AppConfig, DEFAULT_APP_CONFIG } from "../../../core/model/app.config";
+import { APP_CONFIG, AppConfig, DEFAULT_APP_CONFIG } from "../../../core/models/app.config";
 import * as CoreActions from "../../../core/actions/core.actions";
 
 // composant de test

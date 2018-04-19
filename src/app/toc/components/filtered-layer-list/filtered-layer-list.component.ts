@@ -66,11 +66,7 @@ export class FilteredLayerListComponent implements OnInit {
   }
 
   // TODO US184 : composant plus personnalisé
-  public tooltipTemplate(
-    minScale: number,
-    maxScale: number,
-    label: string,
-  ): string {
+  public tooltipTemplate(minScale: number, maxScale: number, label: string): string {
     return [
       `<i class="fa fa-eye"></i>`,
       `&nbsp;de 1/${minScale} à 1/${maxScale}`,

@@ -4,7 +4,7 @@ import { EsriMapComponent } from "./esri-map.component";
 import { EsriMapService } from "../../services/esri-map.service";
 import { EsriLoaderService } from "../../services/esri-loader.service";
 import { ProgressSpinnerModule } from "primeng/primeng";
-import { APP_CONFIG } from "../../../core/model/app.config";
+import { APP_CONFIG } from "../../../core/models/app.config";
 import { DebugElement } from "@angular/core";
 
 describe("EsriMapComponent", () => {
@@ -17,11 +17,7 @@ describe("EsriMapComponent", () => {
       TestBed.configureTestingModule({
         declarations: [EsriMapComponent],
         imports: [ProgressSpinnerModule],
-        providers: [
-          EsriMapService,
-          EsriLoaderService,
-          { provide: APP_CONFIG, useValue: { apiVersion: "4.6" } },
-        ],
+        providers: [EsriMapService, EsriLoaderService, { provide: APP_CONFIG, useValue: { apiVersion: "4.6" } }],
       }).compileComponents();
     }),
   );

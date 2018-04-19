@@ -1,4 +1,4 @@
-import { WidgetState } from "../../widget/model/widget-state";
+import { WidgetState } from "../../widget/models/widget-state";
 
 /**
  * Objet centralisant l'état de l'application.

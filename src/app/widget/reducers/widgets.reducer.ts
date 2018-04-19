@@ -1,7 +1,7 @@
 import { Action } from "@ngrx/store";
 import { WidgetAction, WidgetActionTypes } from "../actions/widget.actions";
-import { AppState } from "../../core/model/app.state";
-import { WidgetState } from "../model/widget-state";
+import { AppState } from "../../core/models/app.state";
+import { WidgetState } from "../models/widget-state";
 
 export function widgetsReducer(state: AppState, action: WidgetAction) {
   switch (action.type /*

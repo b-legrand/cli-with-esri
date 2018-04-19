@@ -5,10 +5,8 @@ export function cleanupRegexChars(input: string): string {
 }
 
 export function normalize(input: string): string {
-  const accents =
-    "ÀÁÂÃÄÅàáâãäåßÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
-  const accentsOut =
-    "AAAAAAaaaaaaBOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
+  const accents = "ÀÁÂÃÄÅàáâãäåßÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
+  const accentsOut = "AAAAAAaaaaaaBOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
   return input
     .split("")
     .map((letter, index) => {
@@ -59,10 +57,10 @@ export class HighlightPipe implements PipeTransform {
       const endIndex = startIndex + cleanPattern.length;
 
       // on mets en valeur dans la chaine avec accent
-      return `${text.slice(0, startIndex)}<b>${text.slice(
-        startIndex,
+      return `${text.slice(0, startIndex)}<b>${text.slice(startIndex, endIndex)}</b>${text.slice(
         endIndex,
-      )}</b>${text.slice(endIndex, text.length)}`;
+        text.length,
+      )}`;
     }
     return text;
   }

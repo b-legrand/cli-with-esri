@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { WidgetState } from "../model/widget-state";
+import { WidgetState } from "../models/widget-state";
 import { AppStoreService } from "../../core/services/app-store/app-store.service";
 
 /**

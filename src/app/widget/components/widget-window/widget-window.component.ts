@@ -2,8 +2,8 @@ import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from "@ang
 import { ResizeEvent } from "angular-resizable-element";
 import { v4 } from "uuid";
 
-import { initialWidgetState, WidgetState } from "../../model/widget-state";
-import { WidgetConfig } from "../../model/widget-config";
+import { initialWidgetState, WidgetState } from "../../models/widget-state";
+import { WidgetConfig } from "../../models/widget-config";
 import { WidgetStateManager } from "../../services/widget-state-manager.service";
 import { TemplatePortal } from "@angular/cdk/portal";
 import { Store } from "@ngrx/store";

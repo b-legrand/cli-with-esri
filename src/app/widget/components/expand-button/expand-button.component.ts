@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit, Output, EventEmitter } from "@angular/core";
-import { APP_CONFIG, AppConfig } from "../../../core/model/app.config";
+import { APP_CONFIG, AppConfig } from "../../../core/models/app.config";
 
 /**
  * L'expand button est un bouton de style esri permettant d'activer / désactiver le widget qui l'utilise.

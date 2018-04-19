@@ -6,7 +6,7 @@ import { NO_ERRORS_SCHEMA } from "@angular/core";
 import * as fromRoot from "./core/reducers/app.reducer";
 import * as fromWidgets from "./widget/reducers/widgets.reducer";
 import { combineReducers, StoreModule, select, Store } from "@ngrx/store";
-import { AppState, getInitialState } from "./core/model/app.state";
+import { AppState, getInitialState } from "./core/models/app.state";
 import { LoadStateAction } from "./core/actions/core.actions";
 
 describe("AppComponent", () => {

@@ -1,10 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from "@angular/core";
+import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from "@angular/core";
 
 /**
  * Directive appliquant une opacité de 0,5 si l'échelle fournie est hors des bornes.

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Portal} from '@angular/cdk/portal';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Injectable } from "@angular/core";
+import { Portal } from "@angular/cdk/portal";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
 /**
  * Service chargé de répartir chaque widget dans les zones qui vont bien selon leur état.
@@ -8,7 +8,6 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
  */
 @Injectable()
 export class WidgetStackService {
-
   /**
    * Liste des widgets ancrés au sein d'un widget-container.
    */
@@ -30,7 +29,7 @@ export class WidgetStackService {
    * @param widget
    */
   managePortal(widget: Portal<any>) {
-    console.log('managePortal()', widget);
+    console.log("managePortal()", widget);
   }
 
   /**
@@ -39,10 +38,14 @@ export class WidgetStackService {
    * @param first
    * @param second
    */
-  private switch(widget: Portal<any>, first: BehaviorSubject<Array<Portal<any>>>, second: BehaviorSubject<Array<Portal<any>>>) {
+  private switch(
+    widget: Portal<any>,
+    first: BehaviorSubject<Array<Portal<any>>>,
+    second: BehaviorSubject<Array<Portal<any>>>,
+  ) {
     const firstStack: Array<Portal<any>> = first.getValue();
     // ajoute au premier tableau
-   // firstStack.push(firstStack.indexOf(widget), 1);
+    // firstStack.push(firstStack.indexOf(widget), 1);
 
     let secondStack: Array<Portal<any>> = second.getValue();
     // enlève du deuxième
@@ -53,19 +56,10 @@ export class WidgetStackService {
   }
 
   attach(portal: Portal<any>) {
-    this.switch(
-      portal,
-      this.anchoredWidgets,
-      this.floatingWidgets
-    );
+    this.switch(portal, this.anchoredWidgets, this.floatingWidgets);
   }
 
   detach(portal: Portal<any>) {
-    this.switch(
-      portal,
-      this.floatingWidgets,
-      this.anchoredWidgets,
-    );
+    this.switch(portal, this.floatingWidgets, this.anchoredWidgets);
   }
-
 }
