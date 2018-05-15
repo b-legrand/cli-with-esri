@@ -15,7 +15,7 @@ export enum WidgetActionTypes {
 }
 
 export interface WidgetAction extends Action {
-  payload: { key } | any;
+  payload: { key: string } | any;
 }
 
 export class WidgetInit implements WidgetAction {
