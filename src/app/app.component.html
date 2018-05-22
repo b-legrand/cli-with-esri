@@ -1,8 +1,9 @@
-<sncf-header [title]="title" [logo]="true"></sncf-header>
+<sncf-header [title]="title"
+             [logo]="true"></sncf-header>
 <sncf-theme></sncf-theme>
 <esri-map [mapProperties]="{basemap: 'gray'}"
           [mapViewProperties]="state.maps.default.viewProps">
-          <!-- todo plus tard widget-navigation
+  <!-- todo plus tard widget-navigation
                 <navigation-toolbar>
                   <esri-button title="Accueil" icon="esri-icon-home"></esri-button>
                   <esri-button title="Zoom In" icon="esri-icon-zoom-plus"><esri-button>
@@ -15,89 +16,90 @@
   <widget-container position="top-left"
                     [anchorZone]="'left'">
     <widget-window key="widget-layer-list"
-            [title]="'Liste des couches'"
-            icon="esri-icon-layer-list">
+                   [title]="'Liste des couches'"
+                   icon="esri-icon-layer-list">
       <layer-list></layer-list>
     </widget-window>
+    <app-widget-layer-list></app-widget-layer-list>
     <widget-window key="widget-legend"
-            [title]="'Légende'"
-            icon="esri-icon-handle-vertical">
-      <div [loremIpsum]="420" [style.minWidth.px]="420"></div>
+                   [title]="'Légende'"
+                   icon="esri-icon-handle-vertical">
+      <div [loremIpsum]="420"
+           [style.minWidth.px]="420"></div>
     </widget-window>
     <widget-window key="widget-basemap-gallery"
-            [title]="'Fond de plan'"
-            icon="esri-icon-basemap">
-        <div loremIpsum></div>
-        </widget-window>
+                   [title]="'Fond de plan'"
+                   icon="esri-icon-basemap">
+      <div loremIpsum></div>
+    </widget-window>
     <widget-window key="widget-bookmarks"
-            [title]="'Géosignets'"
-            icon="fa fa-book">
+                   [title]="'Géosignets'"
+                   icon="fa fa-book">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-context"
-            [title]="'Context'"
-            icon="fa fa-cubes">
+                   [title]="'Context'"
+                   icon="fa fa-cubes">
       <div loremIpsum></div>
     </widget-window>
   </widget-container>
   <widget-container position="top-right"
                     [anchorZone]="'right'">
     <widget-window key="widget-identify"
-            [title]="'Infobulle'"
-            icon="fa fa-info-circle">
+                   [title]="'Infobulle'"
+                   icon="fa fa-info-circle">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-import"
-            [title]="'Import'"
-            icon="esri-icon-upload">
+                   [title]="'Import'"
+                   icon="esri-icon-upload">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-print"
-            [title]="'Impression'"
-            icon="esri-icon-printer">
+                   [title]="'Impression'"
+                   icon="esri-icon-printer">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-draw"
-            [title]="'Dessin'"
-            icon="fa fa-paint-brush">
+                   [title]="'Dessin'"
+                   icon="fa fa-paint-brush">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-locate"
-            [title]="'Localisation'"
-            icon="esri-icon-locate">
+                   [title]="'Localisation'"
+                   icon="esri-icon-locate">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-geometry-search"
-            [title]="'Recherche par géométrie'"
-            icon="esri-icon-search">
+                   [title]="'Recherche par géométrie'"
+                   icon="esri-icon-search">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-filter"
-            [title]="'Filtre'"
-            icon="fa fa-filter">
+                   [title]="'Filtre'"
+                   icon="fa fa-filter">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-query"
-            [title]="'Requêtage'"
-            icon="esri-icon-review">
+                   [title]="'Requêtage'"
+                   icon="esri-icon-review">
       <div loremIpsum></div>
     </widget-window>
     <widget-window key="widget-more"
-            [title]="'Autre widgets.'"
-            icon="esri-icon-plus">
+                   [title]="'Autre widgets.'"
+                   icon="esri-icon-plus">
       <div loremIpsum></div>
     </widget-window>
   </widget-container>
   <widget-container #freeZone
                     position="bottom-left">
     <widget-window key="widget-result-panel"
-            [title]="'Tableau de résultats'"
-            icon="esri-icon-table"
-            position="bottom-left">
+                   [title]="'Tableau de résultats'"
+                   icon="esri-icon-table"
+                   position="bottom-left">
       <div loremIpsum></div>
     </widget-window>
   </widget-container>
 </esri-map>
 <router-outlet></router-outlet>
 <router-outlet name="sidebar"></router-outlet>
-
