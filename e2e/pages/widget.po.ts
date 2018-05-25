@@ -3,7 +3,7 @@ import { browser, by, element } from "protractor";
 /**
  * PageObject d'accès à la carte/route principale de l'application.
  */
-export class MapPageObject {
+export class WidgetPageObject {
   navigateTo() {
     return browser.get("/map");
   }
