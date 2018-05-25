@@ -1,6 +1,6 @@
 # language: fr
 
-Fonctionnalité: Authentification
+Fonctionnalité: Ergonomie::Widgets
 
     Scénario: Tentative d’authentification avec un compte valide
 
