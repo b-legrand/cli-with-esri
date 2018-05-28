@@ -1,0 +1,54 @@
+.symbology-tooltip-panel {
+  position: absolute;
+  z-index: 9001;
+  display: flex;
+}
+
+.symbology-tooltip {
+  background-color: white;
+  // méme valeur que la popup esri (cf esri-popup--shadow
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  font-size: 13px;
+  // pas plus haut que l'écran.
+  max-height: calc(100vh);
+  min-width: 120px;
+}
+
+.symbology-tooltip-legend {
+  max-height: 200px;
+}
+// conteneur du scroll
+.layer-legend {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  min-height: auto;
+  max-height: 100vh;
+}
+// contenu du scroll
+.symbol-list {
+  padding: 0;
+  margin: 0;
+  li {
+    list-style-type: none;
+  }
+  .symbol-image {
+    vertical-align: middle;
+    vertical-align: middle;
+    width: 35px;
+    display: inline-block;
+    text-align: center;
+  }
+  .symbol-label {
+    user-select: none;
+  }
+}
+
+.cdk-overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

@@ -1,0 +1,26 @@
+<div class="symbology-tooltip">
+  <div class="layer-scale">
+    <i class="fa fa-eye"></i>
+    &nbsp;de 1/{{ layer.minScale }} à 1/{{ layer.maxScale }}
+  </div>
+  <div class="layer-name">
+    {{ layer.layerName }}
+  </div>
+  <div class="layer-legend">
+    <perfect-scrollbar [scrollIndicators]="true">
+      <ul class="symbol-list">
+        <li *ngFor="let symbol of layer.legend">
+          <span class="symbol-image">
+            <img class="legend-symbol"
+                 [src]="createImageSource(symbol.contentType, symbol.imageData)"
+                 [attr.width]="symbol.width"
+                 [attr.height]="symbol.height">
+          </span>
+          <span class="symbol-label">
+            {{ symbol.label }}
+          </span>
+        </li>
+      </ul>
+    </perfect-scrollbar>
+  </div>
+</div>

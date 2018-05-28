@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, ElementRef, TemplateRef } from "@angular/core";
 import { TreeNode } from "primeng/api";
 import { LayerTreeNodeService } from "../../services/layer-tree-node.service";
+import { SymbologyTooltipOverlayService } from "../../services/symbology-tooltip-overlay.service";
 
 /**
  * Composant permettant à l'utilisateur de filtrer une liste de couche.
@@ -55,7 +56,7 @@ export class FilteredLayerListComponent implements OnInit {
 
   public selectedLayers: TreeNode[] = [];
 
-  constructor(private layerTreeNodes: LayerTreeNodeService) {}
+  constructor(private layerTreeNodes: LayerTreeNodeService, private tooltipService: SymbologyTooltipOverlayService) {}
 
   public ngOnInit(): void {
     // fixme, pour maquette uniquement, a transformer depuis l'input vers le filteredLayer
@@ -65,14 +66,15 @@ export class FilteredLayerListComponent implements OnInit {
     });
   }
 
-  // TODO US184 : composant plus personnalisé
-  public tooltipTemplate(minScale: number, maxScale: number, label: string): string {
-    return [
-      `<i class="fa fa-eye"></i>`,
-      `&nbsp;de 1/${minScale} à 1/${maxScale}`,
-      `<div class="layer-tooltip-detail">`,
-      `<img class="icon" src="favicon.ico">${label}`,
-      `</div>`,
-    ].join("");
+  public openTooltip(nodeData: any, tmplRef: TemplateRef<any>) {
+    if (this.tooltipEnabled) {
+      this.tooltipService.open(nodeData.uid, tmplRef.elementRef);
+    }
+  }
+
+  public closeTooltip() {
+    if (this.tooltipEnabled) {
+      // this.tooltipService.close();
+    }
   }
 }
