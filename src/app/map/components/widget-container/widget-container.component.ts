@@ -103,17 +103,20 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
    * Une fois dans cette fonction les widgets enfants sont disponibles
    */
   ngAfterContentInit() {
-    this.widgets.forEach(widget => {
+    const declareWidget = widget => {
       // ajout des widgets enfants au service global de gestion d'état
       this.widgetStateManager.addWidgetState(widget.key, widget.state);
       // injecte les contraintes de ce conteneur
       widget.boundaries = this.bounds.nativeElement;
-    });
+      widget.position = this.position;
+      widget.contentLoaded = true;
+    };
+    this.widgets.forEach(declareWidget);
+    this.childWidgets.forEach(declareWidget);
     // les widgets ayant un [icon] de définit sont ajouté à la map esri.
     this.widgets.filter(widget => widget.icon !== undefined).forEach((widget, i) => {
       widget.position = this.position;
       widget.index = i;
-      widget.contentLoaded = true;
     });
   }
 

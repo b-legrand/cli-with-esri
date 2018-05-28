@@ -17,6 +17,7 @@ import { WidgetModule } from "../widget/widget.module";
 import { ScrollPanelModule } from "primeng/primeng";
 import { PortalModule } from "@angular/cdk/portal";
 import { ButtonToolbarComponent } from "./components/button-toolbar/button-toolbar.component";
+import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { ButtonToolbarComponent } from "./components/button-toolbar/button-toolb
     ScrollPanelModule,
     WidgetModule,
     PortalModule,
+    PerfectScrollbarModule,
   ],
   declarations: [WidgetContainerComponent, EsriMapComponent, AnchorZoneComponent, ButtonToolbarComponent],
   providers: [EsriMapService, EsriLoaderService],

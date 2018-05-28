@@ -2,17 +2,19 @@
      #widget
      (mousedown)="incrementZIndex()"
      [ngDraggable]="config.resizable && !state.anchored"
-       [handle]="widgetHandle"
-       [preventDefaultEvent]="true"
-       [zIndex]="state.zIndex"
-       (started)="handleDragStart($event)"
-       (stopped)="handleDragEnd($event)"
-      mwlResizable
-       [enableGhostResize]="true"
-       (resizeEnd)="handleResizeEnd($event)"
+     [handle]="widgetHandle"
+     [preventDefaultEvent]="true"
+     [zIndex]="state.zIndex"
+     (started)="handleDragStart($event)"
+     (stopped)="handleDragEnd($event)"
+     [inBounds]="true"
+     [bounds]="boundaries"
+     mwlResizable
+     [enableGhostResize]="true"
+     (resizeEnd)="handleResizeEnd($event)"
      [style.display]="state.closed ? 'none' : 'block'"
      [style.width]="!state.anchored ? state.size.width + 'px' : '320px'"
-     [style.height]="!state.anchored ? (state.folded?20:state.size.height) + 'px': 'auto'"
+     [style.height]="!state.anchored ? (state.folded ? 20 : state.size.height) + 'px': 'auto'"
      [ngClass]="{
         'widget-state-closed': state.closed
       , 'widget-state-open': !state.closed
@@ -20,16 +22,14 @@
       , 'widget-state-unfolded': !state.folded
       , 'widget-state-anchored': state.anchored
       , 'widget-state-floating': !state.anchored
-      }"
-     >
-  <widget-header
-    [(state)]="state"
-    [foldable]="config.foldable"
-    [closable]="config.closable"
-    [anchorable]="config.anchorable"
-    (onStateChange)="handleStateChange($event)"
-  >
-    <div class="widget-handle" #widgetHandle>
+      }">
+  <widget-header [(state)]="state"
+                 [foldable]="config.foldable"
+                 [closable]="config.closable"
+                 [anchorable]="config.anchorable"
+                 (onStateChange)="handleStateChange($event)">
+    <div class="widget-handle"
+         #widgetHandle>
       <i [class]="icon"></i>
       {{ title }}
     </div>
@@ -42,14 +42,13 @@
   </widget-panel>
 </div>
 <!-- conteneur invisible Seul reste dans le dom le composant -->
-<div *ngIf="contentLoaded" [style.display]="'none'">
-  <expand-button
-    esriWidget
-    [title]="title"
-    [iconClass]="icon"
-    [position]="position"
-    [index]="index"
-    [active]="!state.closed"
-    (activeChange)="handleActiveChange($event)"
-  ></expand-button>
+<div *ngIf="contentLoaded"
+     [style.display]="'none'">
+  <expand-button esriWidget
+                 [title]="title"
+                 [iconClass]="icon"
+                 [position]="position"
+                 [index]="index"
+                 [active]="!state.closed"
+                 (activeChange)="handleActiveChange($event)"></expand-button>
 </div>

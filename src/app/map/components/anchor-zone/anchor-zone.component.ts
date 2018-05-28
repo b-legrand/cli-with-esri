@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, ViewContainerRef, ViewChild } from "@angular/core";
 
 /**
- * La zone d'ancrage permets de regrouper les widgets socle dont l'état est à anchored.
- * L'élément du dom ou lui est fourni par l'appelant.
+ * La zone d'ancrage permets de regrouper les fenêtres de widget dont l'état est à anchored.
  */
 @Component({
   selector: "anchor-zone",
