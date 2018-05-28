@@ -10,6 +10,7 @@ export class WidgetLayerListComponent implements OnInit {
   @Input() public properties: __esri.LayerListViewModelProperties;
 
   public viewModel: __esri.LayerListViewModel;
+  public data: string;
 
   constructor(private esriLoader: EsriLoaderService) {}
 

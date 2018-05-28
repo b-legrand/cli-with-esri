@@ -1,3 +1,7 @@
-<p>
-  widget-layer-list works!
-</p>
+<widget-window key="widget-data-test"
+               [title]="'Test model'"
+               icon="esri-icon-edit"
+               [position]="'top-left'">
+  <input type="text"
+         ([ngModel])="data" />
+</widget-window>

@@ -24,7 +24,7 @@ export class SncfThemeComponent implements OnInit {
     this.customCss = this.cssTemplate(appConfig.themeColor);
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     // à l'ancienne :
     const style: HTMLStyleElement = document.createElement("style");
     // mets un attribut data-sncf-theme sur le <style> pour le récupérer lors des TU.

@@ -6,8 +6,9 @@ import { initialWidgetState, WidgetState } from "../../models/widget-state";
 import { WidgetConfig } from "../../models/widget-config";
 import { WidgetStateManager } from "../../services/widget-state-manager.service";
 import { TemplatePortal } from "@angular/cdk/portal";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { WidgetActionTypes, WidgetInit } from "../../actions/widget.actions";
+import { AppState } from "../../../core/models/app.state";
 
 /**
  * Un composant fenètre de widget est composé de :
@@ -100,7 +101,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
    */
   @ViewChild("widget") public widgetPortal: TemplatePortal<WidgetWindowComponent>;
 
-  constructor(private stateManager: WidgetStateManager, private store: Store<any>) {}
+  constructor(private stateManager: WidgetStateManager, private store: Store<AppState>) {}
 
   ngOnInit() {
     // todo injecter la config depuis le parent;
@@ -117,8 +118,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
       };
     }
     this.store
-      .select("widgets")
-      .select(widgets => (widgets ? widgets[this.key] : undefined))
+      .pipe(select("widgets"), select(widgets => (widgets ? widgets[this.key] : undefined)))
       .subscribe(widgetState => {
         if (!widgetState && !!this.key) {
           this.state = initialWidgetState();
