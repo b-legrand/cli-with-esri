@@ -1,29 +1,29 @@
-<p-tree
-  [value]="layers"
-  selectionMode="checkbox"
-  [(selection)]="selectedLayers"
-  (onNodeSelect)="nodeSelect.emit($event)"
-  (onNodeUnselect)="nodeUnselect.emit($event)"
->
+<p-tree [value]="layers"
+        selectionMode="checkbox"
+        [(selection)]="selectedLayers"
+        (onNodeSelect)="nodeSelect.emit($event)"
+        (onNodeUnselect)="nodeUnselect.emit($event)">
   <!-- template pour les noeuds/conteneurs -->
-  <ng-template let-node pTemplate="group">
+  <ng-template let-node
+               pTemplate="group">
     <div [innerHtml]="node.label | highlight: filter"
          [visibleForScale]="scale"
          [minScale]="node.data.minScale"
          [maxScale]="node.data.maxScale"
-         tabindex="0" role="group">
+         tabindex="0"
+         role="group">
     </div>
   </ng-template>
   <!-- template pour les feuilles -->
-  <ng-template let-node pTemplate="leaf">
-    <!-- juste pour la maquette, tooltip à améliorer, en composant ou à transformer en overlay -->
+  <ng-template let-node
+               #leafNode
+               pTemplate="leaf">
     <div [visibleForScale]="scale"
          [minScale]="node.data.minScale"
          [maxScale]="node.data.maxScale"
-         [pTooltip]="tooltipTemplate(node.data.minScale, node.data.maxScale, node.label)"
-         tooltipPosition="right"
-         appendTo="body"
-         [escape]="false"
+         tabindex="0"
+         (mouseenter)="openTooltip(node.data, leafNode)"
+         (mouseout)="closeTooltip()"
          [innerHtml]="node.label | highlight: filter">
     </div>
   </ng-template>
