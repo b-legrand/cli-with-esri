@@ -48,7 +48,7 @@ export class SymbologyTooltipOverlayService {
   private createOverlayConfig(elementRef: ElementRef): OverlayConfig {
     const positionStrategy = this.overlay
       .position()
-      .flexibleConnectedTo(elementRef)
+      .flexibleConnectedTo({ nativeElement: elementRef })
       .withPositions([
         {
           originX: "end",

@@ -5,8 +5,8 @@ import { Component, OnInit, Input, ViewContainerRef, ViewChild } from "@angular/
  */
 @Component({
   selector: "anchor-zone",
-  templateUrl: "./anchor-zone.component.html",
   styleUrls: ["./anchor-zone.component.scss"],
+  templateUrl: "./anchor-zone.component.html",
 })
 export class AnchorZoneComponent implements OnInit {
   @ViewChild("vc", { read: ViewContainerRef })

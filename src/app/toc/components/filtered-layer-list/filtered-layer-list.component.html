@@ -16,9 +16,9 @@
   </ng-template>
   <!-- template pour les feuilles -->
   <ng-template let-node
-               #leafNode
                pTemplate="leaf">
-    <div [visibleForScale]="scale"
+    <div #leafNode
+         [visibleForScale]="scale"
          [minScale]="node.data.minScale"
          [maxScale]="node.data.maxScale"
          tabindex="0"
