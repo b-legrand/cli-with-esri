@@ -7,7 +7,8 @@
     {{ layer.layerName }}
   </div>
   <div class="layer-legend">
-    <perfect-scrollbar [scrollIndicators]="true">
+    <perfect-scrollbar [scrollIndicators]="true"
+                       [config]="scrollConfig">
       <ul class="symbol-list">
         <li *ngFor="let symbol of layer.legend">
           <span class="symbol-image">

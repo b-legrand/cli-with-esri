@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ElementRef, TemplateRef
 import { TreeNode } from "primeng/api";
 import { LayerTreeNodeService } from "../../services/layer-tree-node.service";
 import { SymbologyTooltipOverlayService } from "../../services/symbology-tooltip-overlay.service";
+import { ConnectionPositionPair } from "@angular/cdk/overlay";
 
 /**
  * Composant permettant à l'utilisateur de filtrer une liste de couche.
@@ -54,6 +55,25 @@ export class FilteredLayerListComponent implements OnInit {
     },
   ];
 
+  public positionOverrides: ConnectionPositionPair[] = [
+    {
+      originX: "end",
+      originY: "center",
+      overlayX: "start",
+      overlayY: "center",
+      offsetX: 5,
+      offsetY: 0,
+    },
+    {
+      originX: "start",
+      originY: "center",
+      overlayX: "end",
+      overlayY: "center",
+      offsetX: 5,
+      offsetY: 0,
+    },
+  ];
+
   public selectedLayers: TreeNode[] = [];
 
   constructor(private layerTreeNodes: LayerTreeNodeService, private tooltipService: SymbologyTooltipOverlayService) {}
@@ -66,15 +86,15 @@ export class FilteredLayerListComponent implements OnInit {
     });
   }
 
-  public openTooltip(nodeData: any, tmplRef: TemplateRef<any>) {
+  public openTooltip(nodeData: any, elementRef: ElementRef) {
     if (this.tooltipEnabled) {
-      this.tooltipService.open(nodeData.uid, tmplRef.elementRef);
+      this.tooltipService.open(nodeData.uid, elementRef);
     }
   }
 
   public closeTooltip() {
     if (this.tooltipEnabled) {
-      // this.tooltipService.close();
+      this.tooltipService.close();
     }
   }
 }

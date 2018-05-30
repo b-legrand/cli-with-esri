@@ -3,6 +3,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { LEGEND_MOCK } from "./legend-mock.data";
 import { LegendService } from "../../services/legend.service";
 import { PERFECT_SCROLLBAR_CONFIG } from "ngx-perfect-scrollbar";
+import { SymbologyTooltipOverlayService } from "../../services/symbology-tooltip-overlay.service";
 
 export interface LegendLayer {
   layerId: number;
@@ -27,15 +28,6 @@ export interface LegendSymbol {
  */
 @Component({
   encapsulation: ViewEncapsulation.None, // on veut que les styles cdk-container soient globaux.
-  providers: [
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: {
-        suppressScrollY: true,
-        wheelPropagation: true,
-      },
-    },
-  ],
   selector: "symbology-tooltip",
   styleUrls: ["./symbology-tooltip.component.scss"],
   templateUrl: "./symbology-tooltip.component.html",
@@ -60,7 +52,7 @@ export class SymbologyTooltipComponent implements OnInit, OnChanges {
     // autant qu'on peu, pas de scroll horizontal.
     suppressScrollX: true,
     // propage les évènement molette de souris aux enfants.
-    wheelPropagation: true,
+    wheelPropagation: false,
   };
 
   constructor(private sanitizer: DomSanitizer, private legendService: LegendService) {}
@@ -91,4 +83,6 @@ export class SymbologyTooltipComponent implements OnInit, OnChanges {
       `data:${contentType};base64,${imageData}`,
     );*/
   }
+
+  public closeTooltip() {}
 }

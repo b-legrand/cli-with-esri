@@ -5,24 +5,33 @@
 }
 
 .symbology-tooltip {
+  // pas plus haut que l'écran.
+  max-height: calc(100vh);
+  min-width: 120px;
+  position: relative;
   background-color: white;
   // méme valeur que la popup esri (cf esri-popup--shadow
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   padding: 5px;
   font-size: 13px;
-  // pas plus haut que l'écran.
-  max-height: calc(100vh);
-  min-width: 120px;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-color: transparent white white transparent;
+    position: absolute;
+    margin-top: -10px;
+    top: 50%;
+  }
 }
 
-.symbology-tooltip-legend {
-  max-height: 200px;
-}
 // conteneur du scroll
 .layer-legend {
   position: relative;
-  overflow: hidden;
-  height: 200px;
+  height: 450px;
   min-height: auto;
   max-height: 100vh;
 }
@@ -44,7 +53,7 @@
     user-select: none;
   }
 }
-
+// styles normalement fournis par d'angular/cdk angular/material
 .cdk-overlay-container {
   position: absolute;
   top: 0;
