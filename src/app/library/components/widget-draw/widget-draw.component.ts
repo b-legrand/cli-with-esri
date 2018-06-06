@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-draw.component.css"],
 })
 export class WidgetDrawComponent implements OnInit {
-  @Input() public properties: __esri.SketchViewModelProperties;
+  @Input() public properties: __esri.SketchProperties;
 
-  public viewModel: __esri.SketchViewModel;
+  public esriWidget: __esri.Sketch;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Sketch/SketchViewModel"])
-      .then(([SketchViewModel]: [__esri.SketchViewModelConstructor]) => {
-        this.viewModel = new SketchViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Sketch/Sketch"]).then(([Sketch]: [__esri.SketchConstructor]) => {
+      this.esriWidget = new Sketch(this.properties);
+    });
   }
 }

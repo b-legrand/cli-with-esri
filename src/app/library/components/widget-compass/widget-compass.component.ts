@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-compass.component.css"],
 })
 export class WidgetCompassComponent implements OnInit {
-  @Input() public properties: __esri.CompassViewModelProperties;
+  @Input() public properties: __esri.CompassProperties;
 
-  public viewModel: __esri.CompassViewModel;
+  public esriWidget: __esri.Compass;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Compass/CompassViewModel"])
-      .then(([CompassViewModel]: [__esri.CompassViewModelConstructor]) => {
-        this.viewModel = new CompassViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Compass"]).then(([Compass]: [__esri.CompassConstructor]) => {
+      this.esriWidget = new Compass(this.properties);
+    });
   }
 }

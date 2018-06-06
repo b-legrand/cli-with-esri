@@ -7,18 +7,18 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-layer-list.component.css"],
 })
 export class WidgetLayerListComponent implements OnInit {
-  @Input() public properties: __esri.LayerListViewModelProperties;
+  @Input() public properties: __esri.LayerListProperties;
 
-  public viewModel: __esri.LayerListViewModel;
+  public esriWidget: __esri.LayerList;
   public data: string;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
     this.esriLoader
-      .loadModules(["esri/widgets/LayerList/LayerListViewModel"])
-      .then(([LayerListViewModel]: [__esri.LayerListViewModelConstructor]) => {
-        this.viewModel = new LayerListViewModel(this.properties);
+      .loadModules(["esri/widgets/LayerList/LayerList"])
+      .then(([LayerList]: [__esri.LayerListConstructor]) => {
+        this.esriWidget = new LayerList(this.properties);
       });
   }
 }

@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-track.component.css"],
 })
 export class WidgetTrackComponent implements OnInit {
-  @Input() public properties: __esri.TrackViewModelProperties;
+  @Input() public properties: __esri.TrackProperties;
 
-  public viewModel: __esri.TrackViewModel;
+  public esriWidget: __esri.Track;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Track/TrackViewModel"])
-      .then(([TrackViewModel]: [__esri.TrackViewModelConstructor]) => {
-        this.viewModel = new TrackViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Track/Track"]).then(([Track]: [__esri.TrackConstructor]) => {
+      this.esriWidget = new Track(this.properties);
+    });
   }
 }

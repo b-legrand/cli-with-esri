@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-home.component.css"],
 })
 export class WidgetHomeComponent implements OnInit {
-  @Input() public properties: __esri.HomeViewModelProperties;
+  @Input() public properties: __esri.HomeProperties;
 
-  public viewModel: __esri.HomeViewModel;
+  public esriWidget: __esri.Home;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Home/HomeViewModel"])
-      .then(([HomeViewModel]: [__esri.HomeViewModelConstructor]) => {
-        this.viewModel = new HomeViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Home/Home"]).then(([Home]: [__esri.HomeConstructor]) => {
+      this.esriWidget = new Home(this.properties);
+    });
   }
 }

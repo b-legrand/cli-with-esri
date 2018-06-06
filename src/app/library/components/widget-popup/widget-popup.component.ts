@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-popup.component.css"],
 })
 export class WidgetPopupComponent implements OnInit {
-  @Input() public properties: __esri.PopupViewModelProperties;
+  @Input() public properties: __esri.PopupProperties;
 
-  public viewModel: __esri.PopupViewModel;
+  public esriWidget: __esri.Popup;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Popup/PopupViewModel"])
-      .then(([PopupViewModel]: [__esri.PopupViewModelConstructor]) => {
-        this.viewModel = new PopupViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Popup/Popup"]).then(([Popup]: [__esri.PopupConstructor]) => {
+      this.esriWidget = new Popup(this.properties);
+    });
   }
 }

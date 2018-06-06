@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-search.component.css"],
 })
 export class WidgetSearchComponent implements OnInit {
-  @Input() public properties: __esri.SearchViewModelProperties;
+  @Input() public properties: __esri.SearchProperties;
 
-  public viewModel: __esri.SearchViewModel;
+  public esriWidget: __esri.Search;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Search/SearchViewModel"])
-      .then(([SearchViewModel]: [__esri.SearchViewModelConstructor]) => {
-        this.viewModel = new SearchViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Search/Search"]).then(([Search]: [__esri.SearchConstructor]) => {
+      this.esriWidget = new Search(this.properties);
+    });
   }
 }

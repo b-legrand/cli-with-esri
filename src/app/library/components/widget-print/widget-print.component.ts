@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-print.component.css"],
 })
 export class WidgetPrintComponent implements OnInit {
-  @Input() public properties: __esri.PrintViewModelProperties;
+  @Input() public properties: __esri.PrintProperties;
 
-  public viewModel: __esri.PrintViewModel;
+  public esriWidget: __esri.Print;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Print/PrintViewModel"])
-      .then(([PrintViewModel]: [__esri.PrintViewModelConstructor]) => {
-        this.viewModel = new PrintViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Print/Print"]).then(([Print]: [__esri.PrintConstructor]) => {
+      this.esriWidget = new Print(this.properties);
+    });
   }
 }

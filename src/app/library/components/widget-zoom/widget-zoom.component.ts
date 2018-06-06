@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-zoom.component.css"],
 })
 export class WidgetZoomComponent implements OnInit {
-  @Input() public properties: __esri.ZoomViewModelProperties;
+  @Input() public properties: __esri.ZoomProperties;
 
-  public viewModel: __esri.ZoomViewModel;
+  public esriWidget: __esri.Zoom;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Zoom/ZoomViewModel"])
-      .then(([ZoomViewModel]: [__esri.ZoomViewModelConstructor]) => {
-        this.viewModel = new ZoomViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Zoom/Zoom"]).then(([Zoom]: [__esri.ZoomConstructor]) => {
+      this.esriWidget = new Zoom(this.properties);
+    });
   }
 }

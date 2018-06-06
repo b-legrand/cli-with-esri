@@ -7,17 +7,15 @@ import { EsriLoaderService } from "../../../map/services/esri-loader.service";
   styleUrls: ["./widget-locate.component.css"],
 })
 export class WidgetLocateComponent implements OnInit {
-  @Input() public properties: __esri.LocateViewModelProperties;
+  @Input() public properties: __esri.LocateProperties;
 
-  public viewModel: __esri.LocateViewModel;
+  public esriWidget: __esri.Locate;
 
   constructor(private esriLoader: EsriLoaderService) {}
 
   ngOnInit() {
-    this.esriLoader
-      .loadModules(["esri/widgets/Locate/LocateViewModel"])
-      .then(([LocateViewModel]: [__esri.LocateViewModelConstructor]) => {
-        this.viewModel = new LocateViewModel(this.properties);
-      });
+    this.esriLoader.loadModules(["esri/widgets/Locate/Locate"]).then(([Locate]: [__esri.LocateConstructor]) => {
+      this.esriWidget = new Locate(this.properties);
+    });
   }
 }
