@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { EsriLoaderService } from "../../../map/services/esri-loader.service";
 
 @Component({
-  selector: "app-widget-home",
+  selector: "widget-home",
   templateUrl: "./widget-home.component.html",
   styleUrls: ["./widget-home.component.css"],
 })

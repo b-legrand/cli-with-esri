@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { EsriLoaderService } from "../../../map/services/esri-loader.service";
 
 @Component({
-  selector: "app-widget-compass",
+  selector: "widget-compass",
   templateUrl: "./widget-compass.component.html",
   styleUrls: ["./widget-compass.component.css"],
 })

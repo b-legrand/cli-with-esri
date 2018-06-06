@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-widget-legend",
+  selector: "widget-legend",
   templateUrl: "./widget-legend.component.html",
   styleUrls: ["./widget-legend.component.css"],
 })
