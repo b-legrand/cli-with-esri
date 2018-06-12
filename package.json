@@ -142,12 +142,12 @@
       "git add"
     ],
     "**/*.ts": [
-      "prettier --parser typescript --write --print-width 120 --trailing-comma all",
+      "prettier --parser typescript --write --trailing-comma all",
       "tslint --fix -t verbose --project . --config ./src/tsconfig.app.json --force",
       "git add"
     ],
     "**/*.html": [
-      "html-beautify --wrap-attributes=force-aligned --wrap-line-length=120 --end-with-new-line",
+      "html-beautify -A force-aligned -n -s 2 --replace",
       "git add"
     ]
   }

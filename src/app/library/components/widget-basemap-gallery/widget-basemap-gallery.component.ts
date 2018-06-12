@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { EsriLoaderService } from "../../../map/services/esri-loader.service";
 
 @Component({
   selector: "widget-basemap-gallery",
