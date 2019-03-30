@@ -1,7 +1,7 @@
 import { Injectable, Inject } from "@angular/core";
-import * as esriLoader from "esri-loader";
 import { APP_CONFIG, AppConfig } from "../../core/models/app.config";
 import { environment } from "../../../environments/environment";
+import { loadModules, isLoaded, loadScript, getScript } from "esri-loader";
 
 import "rxjs/Observable";
 import "rxjs/add/observable/fromPromise";
@@ -19,7 +19,7 @@ import "rxjs/add/observable/fromPromise";
 @Injectable()
 export class EsriLoaderService {
   // options du loader
-  private options: esriLoader.ILoadScriptOptions;
+  private options: any;
 
   constructor(@Inject(APP_CONFIG) appConfig: AppConfig) {
     this.options = {
@@ -37,7 +37,7 @@ export class EsriLoaderService {
   }
 
   isLoaded() {
-    return esriLoader.isLoaded();
+    return isLoaded();
   }
 
   /**
@@ -45,7 +45,7 @@ export class EsriLoaderService {
    * Usage: loaderService.loadModules('esri/Map','esri/MapView').then([Map, MapView] =>  (['esri/Map']:[__esri.MapConstructor]) => {  });
    */
   loadModules(modules: string[]): Promise<any[]> {
-    return esriLoader.loadModules(modules, this.options);
+    return loadModules(modules, this.options);
   }
 
   /**
@@ -55,7 +55,7 @@ export class EsriLoaderService {
    * Renvoie la balise <script> principale générée par esri-loader.
    */
   loadScript(): Promise<HTMLScriptElement> {
-    return esriLoader.loadScript(this.options);
+    return loadScript(this.options);
   }
 }
 
