@@ -21,10 +21,10 @@ $couleurs: (
 
 // génère une classe css pour chaque couleur
 @each $name, $color in $couleurs {
-  .couleur-#{$name} {
+  .couleur-#{"" + $name} {
     color: $color;
   }
-  .couleur-#{$name}-inverse {
+  .couleur-#{"" + $name}-inverse {
     background-color: $color;
   }
 }
