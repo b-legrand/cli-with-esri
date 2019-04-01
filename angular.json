@@ -122,10 +122,13 @@
     }
   },
   "defaultProject": "cli-with-esri",
+  "cli": {
+    "packageManager": "npm"
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
