@@ -20,9 +20,8 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 before_script: # commands to run before the build step
-  - npm install -g angular-cli
-  - npm install -g karma
-  - npm install
+  - npm i -g @angular/cli
+  - npm ci
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!)
