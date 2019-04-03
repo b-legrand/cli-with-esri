@@ -1,3 +1,10 @@
+<!--
+
+     ngResizable
+     (rzStart)="handleResizeStart($event)"
+     (rzStop)="handleResizeEnd($event)"
+     (rzResizing)="handleResizing($event)"
+-->
 <div class="widget-window"
      #widget
      (mousedown)="incrementZIndex()"
@@ -10,7 +17,6 @@
      [inBounds]="true"
      [bounds]="boundaries"
      mwlResizable
-     [enableGhostResize]="true"
      (resizeEnd)="handleResizeEnd($event)"
      [style.display]="state.closed ? 'none' : 'block'"
      [style.width]="!state.anchored ? state.size.width + 'px' : '320px'"

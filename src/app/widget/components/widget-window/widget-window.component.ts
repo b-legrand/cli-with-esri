@@ -104,6 +104,7 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
   constructor(private stateManager: WidgetStateManager, private store: Store<AppState>) {}
 
   ngOnInit() {
+    this.state = initialWidgetState();
     // todo injecter la config depuis le parent;
     if (!this.config) {
       this.config = {
@@ -117,8 +118,12 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
         scrollable: true,
       };
     }
+
     this.store
-      .pipe(select("widgets"), select(widgets => (widgets ? widgets[this.key] : undefined)))
+      .pipe(
+        select("widgets"),
+        select(widgets => (widgets ? widgets[this.key] : undefined)),
+      )
       .subscribe(widgetState => {
         if (!widgetState && !!this.key) {
           this.state = initialWidgetState();
@@ -156,7 +161,12 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
     }
   }
 
-  handleResizeEnd(event: ResizeEvent): void {
+  handleResizeStart(event: any): void {
+    console.log("resize start", event);
+  }
+
+  handleResizeEnd(event: ResizeEvent | any): void {
+    console.log("resize stop", event);
     if (this.config.resizable) {
       // x move
       this.state.size.width += event.edges.right as number;
@@ -166,6 +176,10 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
       this.widget.nativeElement.style.width = this.state.size.width;
       this.widget.nativeElement.style.height = this.state.size.height;
     }
+  }
+
+  handleResizing(event: any): void {
+    console.log("resizing", event);
   }
 
   /**

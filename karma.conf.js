@@ -56,7 +56,7 @@ module.exports = function(config) {
         base: "IE",
         "x-ua-compatible": "IE=EmulateIE8"
       },
-      Chromium_CI: {
+      ChromeHeadlessCI: {
         base: "Chromium",
         flags: ["--no-sandbox", "--headless", "--disable-gpu"]
       }
