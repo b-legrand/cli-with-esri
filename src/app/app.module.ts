@@ -18,10 +18,11 @@ import "rxjs/add/operator/take";
 
 import { Action, Store, StoreModule, ActionReducerMap } from "@ngrx/store";
 import { AppState, getInitialState } from "./core/models/app.state";
-import { metaReducers } from "./core/reducers/meta.reducers";
+// import { metaReducers } from "./core/reducers/meta.reducers";
 import { AppActionTypes } from "./core/actions/core.actions";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
+import { reducers, metaReducers } from "./reducers";
 
 /** Juste pour typer ce que nous donne `angular-class/hmr` */
 export interface StoreType {
@@ -30,7 +31,7 @@ export interface StoreType {
   disposeOldHosts: () => void;
 }
 
-export const reducers: ActionReducerMap<any> = {};
+// export const reducers: ActionReducerMap<any> = {};
 /**
  * Module principal d'une application soclejs.
  *
@@ -45,10 +46,7 @@ export const reducers: ActionReducerMap<any> = {};
       metaReducers,
       initialState: getInitialState,
     }),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production, // Restrict extension to log-only mode
-    }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     // modules common-socle
     MapModule,
     WidgetModule,

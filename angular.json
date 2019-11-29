@@ -123,14 +123,15 @@
   },
   "defaultProject": "cli-with-esri",
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "defaultCollection": "@ngrx/schematics"
   },
   "schematics": {
-    "@schematics/angular:component": {
+    "@ngrx/schematics:component": {
       "prefix": "app",
       "styleext": "scss"
     },
-    "@schematics/angular:directive": {
+    "@ngrx/schematics:directive": {
       "prefix": "app"
     }
   }
