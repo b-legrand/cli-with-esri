@@ -1,6 +1,6 @@
-import { Component, Input, Inject, ViewChild } from "@angular/core";
-import { APP_CONFIG, AppConfig } from "../../../core/models/app.config";
-import { PerfectScrollbarDirective } from "ngx-perfect-scrollbar";
+import { Component, Input, Inject, ViewChild } from '@angular/core';
+import { APP_CONFIG, AppConfig } from '../../../core/models/app.config';
+import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
 /**
  * Ce composant gère le contenu et le redimensionnement d'un wiget socle à travers :
@@ -9,9 +9,9 @@ import { PerfectScrollbarDirective } from "ngx-perfect-scrollbar";
  *
  */
 @Component({
-  selector: "widget-panel",
-  templateUrl: "./widget-panel.component.html",
-  styleUrls: ["./widget-panel.component.scss"],
+  selector: 'widget-panel',
+  templateUrl: './widget-panel.component.html',
+  styleUrls: ['./widget-panel.component.scss'],
 })
 export class WidgetPanelComponent {
   /**
@@ -30,7 +30,7 @@ export class WidgetPanelComponent {
   @Input() public size: any;
 
   /** Présent si besoin de se rattacher aux évènements du scroll */
-  @ViewChild(PerfectScrollbarDirective, { static: false }) scroll: PerfectScrollbarDirective;
+  @ViewChild(PerfectScrollbarDirective) scroll: PerfectScrollbarDirective;
 
   /**
    * Configuration de `perfect-scrollbar`

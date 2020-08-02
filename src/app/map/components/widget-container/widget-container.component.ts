@@ -8,11 +8,11 @@ import {
   QueryList,
   ViewChild,
   ViewContainerRef,
-} from "@angular/core";
-import { WidgetWindowComponent } from "../../../widget/components";
-import { EsriMapService } from "../../services/esri-map.service";
-import { WidgetStateManager } from "../../../widget/services/widget-state-manager.service";
-import { WidgetStackService } from "../../services/widget-stack.service";
+} from '@angular/core';
+import { WidgetWindowComponent } from '../../../widget/components';
+import { EsriMapService } from '../../services/esri-map.service';
+import { WidgetStateManager } from '../../../widget/services/widget-state-manager.service';
+import { WidgetStackService } from '../../services/widget-stack.service';
 
 export enum WidgetContainerPosition {
   TOP_RIGHT,
@@ -36,9 +36,9 @@ const zoneWidth = 320;
  *
  */
 @Component({
-  selector: "widget-container",
-  templateUrl: "./widget-container.component.html",
-  styleUrls: ["./widget-container.component.scss"],
+  selector: 'widget-container',
+  templateUrl: './widget-container.component.html',
+  styleUrls: ['./widget-container.component.scss'],
   providers: [WidgetStackService], // permets au service d'être injecté uniquement pour ce conteneur et sa zone d'ancrage
 })
 export class WidgetContainerComponent implements OnInit, AfterContentInit {
@@ -61,19 +61,19 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
   /**
    * Conteneur de widget libre.
    */
-  @ViewChild("freeView", { read: ViewContainerRef, static: false })
+  @ViewChild('freeView', { read: ViewContainerRef })
   freeZoneRef: ViewContainerRef;
 
   /**
    * Conteneur de widget 'ancrés'.
    */
-  @ViewChild("anchorView", { read: ViewContainerRef, static: false })
+  @ViewChild('anchorView', { read: ViewContainerRef })
   anchorZoneRef: ViewContainerRef;
 
   /**
    * Référence vers le cadre pour limiter le drag & drop
    */
-  @ViewChild("containerBounds", { read: ElementRef, static: true })
+  @ViewChild('containerBounds', { read: ElementRef, static: true })
   bounds: ElementRef;
 
   /**
@@ -82,10 +82,10 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
   @Input() public position: string;
 
   public containerStyle: any = {
-    left: "62px", // 15px + 32px + 15px (gouttière esri + taille bouton esri + gouttière)
-    right: "62px",
-    bottom: "15px",
-    top: "calc(2.5em + 15px)",
+    left: '62px', // 15px + 32px + 15px (gouttière esri + taille bouton esri + gouttière)
+    right: '62px',
+    bottom: '15px',
+    top: 'calc(2.5em + 15px)',
   };
 
   constructor(
