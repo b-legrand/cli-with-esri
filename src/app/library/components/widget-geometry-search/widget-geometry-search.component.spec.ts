@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { WidgetGeometrySearchComponent } from "./widget-geometry-search.component";
-import { AccordionModule } from "primeng/primeng";
+import { AccordionModule } from "primeng/accordion";
 import { WidgetModule } from "../../../widget/widget.module";
 import { MapModule } from "../../../map/map.module";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";

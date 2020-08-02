@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { AnchorZoneComponent } from "./anchor-zone.component";
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { ScrollPanelModule } from "primeng/primeng";
+import { ScrollPanelModule } from "primeng/scrollpanel";
 
 describe("AnchorZoneComponent", () => {
   let component: AnchorZoneComponent;

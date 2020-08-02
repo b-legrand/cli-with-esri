@@ -5,7 +5,7 @@ import { TreeModule } from "primeng/tree";
 import { HighlightPipe } from "../../pipes/highlight.pipe";
 import { LAYERS, LayerTreeNodeService } from "../../services/layer-tree-node.service";
 import { VisibleForScaleDirective } from "../../directives/visible-for-scale.directive";
-import { TooltipModule } from "primeng/primeng";
+import { TooltipModule } from "primeng/tooltip";
 import { SymbologyTooltipComponent } from "../symbology-tooltip/symbology-tooltip.component";
 
 describe("FilteredLayerListComponent", () => {

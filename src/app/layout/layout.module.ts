@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 
 import { SidebarModule } from "primeng/sidebar";
 import { ScrollPanelModule } from "primeng/scrollpanel";
-import { ProgressBarModule } from "primeng/primeng";
+import { ProgressBarModule } from "primeng/progressbar";
 
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.component";
