@@ -61,19 +61,19 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
   /**
    * Conteneur de widget libre.
    */
-  @ViewChild("freeView", { read: ViewContainerRef })
+  @ViewChild("freeView", { read: ViewContainerRef, static: false })
   freeZoneRef: ViewContainerRef;
 
   /**
    * Conteneur de widget 'ancrés'.
    */
-  @ViewChild("anchorView", { read: ViewContainerRef })
+  @ViewChild("anchorView", { read: ViewContainerRef, static: false })
   anchorZoneRef: ViewContainerRef;
 
   /**
    * Référence vers le cadre pour limiter le drag & drop
    */
-  @ViewChild("containerBounds", { read: ElementRef })
+  @ViewChild("containerBounds", { read: ElementRef, static: true })
   bounds: ElementRef;
 
   /**
@@ -114,10 +114,12 @@ export class WidgetContainerComponent implements OnInit, AfterContentInit {
     this.widgets.forEach(declareWidget);
     this.childWidgets.forEach(declareWidget);
     // les widgets ayant un [icon] de définit sont ajouté à la map esri.
-    this.widgets.filter(widget => widget.icon !== undefined).forEach((widget, i) => {
-      widget.position = this.position;
-      widget.index = i;
-    });
+    this.widgets
+      .filter(widget => widget.icon !== undefined)
+      .forEach((widget, i) => {
+        widget.position = this.position;
+        widget.index = i;
+      });
   }
 
   public attachWidgetsToAnchorZone() {}

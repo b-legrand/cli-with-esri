@@ -30,7 +30,7 @@ export class WidgetPanelComponent {
   @Input() public size: any;
 
   /** Présent si besoin de se rattacher aux évènements du scroll */
-  @ViewChild(PerfectScrollbarDirective) scroll: PerfectScrollbarDirective;
+  @ViewChild(PerfectScrollbarDirective, { static: false }) scroll: PerfectScrollbarDirective;
 
   /**
    * Configuration de `perfect-scrollbar`

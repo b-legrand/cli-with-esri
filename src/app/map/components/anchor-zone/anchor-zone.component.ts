@@ -9,7 +9,7 @@ import { Component, OnInit, Input, ViewContainerRef, ViewChild } from "@angular/
   templateUrl: "./anchor-zone.component.html",
 })
 export class AnchorZoneComponent implements OnInit {
-  @ViewChild("vc", { read: ViewContainerRef })
+  @ViewChild("vc", { read: ViewContainerRef, static: false })
   viewContainerRef: ViewContainerRef;
 
   /**

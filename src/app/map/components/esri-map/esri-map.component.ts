@@ -32,7 +32,7 @@ export class EsriMapComponent implements OnChanges {
   /**
    * Référence vers l'élement conteneur de la map esri.
    */
-  @ViewChild("map") public mapEl: ElementRef;
+  @ViewChild("map", { static: true }) public mapEl: ElementRef;
 
   /**
    * Propriétés de la Map esri.
