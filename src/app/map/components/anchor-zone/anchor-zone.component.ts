@@ -1,15 +1,15 @@
-import { Component, OnInit, Input, ViewContainerRef, ViewChild } from "@angular/core";
+import { Component, OnInit, Input, ViewContainerRef, ViewChild } from '@angular/core';
 
 /**
  * La zone d'ancrage permets de regrouper les fenêtres de widget dont l'état est à anchored.
  */
 @Component({
-  selector: "anchor-zone",
-  styleUrls: ["./anchor-zone.component.scss"],
-  templateUrl: "./anchor-zone.component.html",
+  selector: 'anchor-zone',
+  styleUrls: ['./anchor-zone.component.scss'],
+  templateUrl: './anchor-zone.component.html',
 })
 export class AnchorZoneComponent implements OnInit {
-  @ViewChild("vc", { read: ViewContainerRef, static: false })
+  @ViewChild('vc', { read: ViewContainerRef })
   viewContainerRef: ViewContainerRef;
 
   /**
@@ -29,12 +29,12 @@ export class AnchorZoneComponent implements OnInit {
    * Styles scss appliquées sur la zone, ici car on enlève left or right dynamiquement selon la position
    */
   public zoneStyle: any = {
-    left: "62px",
-    right: "62px",
-    position: "absolute",
-    top: "calc(2.5em + 15px)",
-    bottom: "15px",
-    height: "calc(100vh  - 2.5em  - 15px * 2)",
+    left: '62px',
+    right: '62px',
+    position: 'absolute',
+    top: 'calc(2.5em + 15px)',
+    bottom: '15px',
+    height: 'calc(100vh  - 2.5em  - 15px * 2)',
   };
 
   constructor() {}
@@ -44,13 +44,13 @@ export class AnchorZoneComponent implements OnInit {
    * valeurs possible : left, right ou rien (free zone)
    */
   ngOnInit() {
-    if (this.position === "left") {
+    if (this.position === 'left') {
       delete this.zoneStyle.right;
-      this.zoneStyle["width.px"] = this.width;
+      this.zoneStyle['width.px'] = this.width;
     }
-    if (this.position === "right") {
+    if (this.position === 'right') {
       delete this.zoneStyle.left;
-      this.zoneStyle["width.px"] = this.width;
+      this.zoneStyle['width.px'] = this.width;
     }
   }
 }
