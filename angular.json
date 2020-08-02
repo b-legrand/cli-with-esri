@@ -96,15 +96,20 @@
       }
     },
     "cli-with-esri-e2e": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "e2e",
+      "prefix": "",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
+            "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "cli-with-esri:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "cli-with-esri:serve:production"
+            }
           }
         },
         "lint": {
