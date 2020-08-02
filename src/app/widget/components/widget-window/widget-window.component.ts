@@ -88,18 +88,18 @@ export class WidgetWindowComponent implements OnInit, OnChanges {
   /**
    * Poignée
    */
-  @ViewChild("widgetHandle") public widgetHandle: ElementRef;
+  @ViewChild("widgetHandle", { static: true }) public widgetHandle: ElementRef;
 
   /**
    * Conteneur
    */
-  @ViewChild("widget") public widget: ElementRef;
+  @ViewChild("widget", { static: true }) public widget: ElementRef;
 
   /**
    * Portail (template virtuel)
    *
    */
-  @ViewChild("widget") public widgetPortal: TemplatePortal<WidgetWindowComponent>;
+  @ViewChild("widget", { static: true }) public widgetPortal: TemplatePortal<WidgetWindowComponent>;
 
   constructor(private stateManager: WidgetStateManager, private store: Store<AppState>) {}
 
