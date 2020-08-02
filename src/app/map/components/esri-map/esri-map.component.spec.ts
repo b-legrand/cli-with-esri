@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { EsriMapComponent } from "./esri-map.component";
 import { EsriMapService } from "../../services/esri-map.service";
 import { EsriLoaderService } from "../../services/esri-loader.service";
-import { ProgressSpinnerModule } from "primeng/primeng";
+import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { APP_CONFIG } from "../../../core/models/app.config";
 import { DebugElement } from "@angular/core";
 

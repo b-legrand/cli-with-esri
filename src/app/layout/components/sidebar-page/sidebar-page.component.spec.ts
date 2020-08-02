@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { SidebarPageComponent } from "./sidebar-page.component";
-import { SidebarModule } from "primeng/primeng";
+import { SidebarModule } from "primeng/sidebar";
 import { NO_ERRORS_SCHEMA } from "@angular/core";
 import { Router } from "@angular/router";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";

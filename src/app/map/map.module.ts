@@ -14,7 +14,7 @@ import { WidgetContainerComponent } from "./components/widget-container/widget-c
 import { AnchorZoneComponent } from "./components/anchor-zone/anchor-zone.component";
 import { EsriLoaderService } from "./services/esri-loader.service";
 import { WidgetModule } from "../widget/widget.module";
-import { ScrollPanelModule } from "primeng/primeng";
+import { ScrollPanelModule } from "primeng/scrollpanel";
 import { PortalModule } from "@angular/cdk/portal";
 import { ButtonToolbarComponent } from "./components/button-toolbar/button-toolbar.component";
 import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";

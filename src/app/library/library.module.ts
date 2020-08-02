@@ -18,7 +18,7 @@ import { WidgetPrintComponent } from "./components/widget-print/widget-print.com
 import { WidgetLocateComponent } from "./components/widget-locate/widget-locate.component";
 import { WidgetCompassComponent } from "./components/widget-compass/widget-compass.component";
 import { WidgetSearchComponent } from "./components/widget-search/widget-search.component";
-import { AccordionModule } from "primeng/primeng";
+import { AccordionModule } from "primeng/accordion";
 import { WidgetGeometrySearchComponent } from "./components/widget-geometry-search/widget-geometry-search.component";
 import { WidgetBasemapGalleryComponent } from "./components/widget-basemap-gallery/widget-basemap-gallery.component";
 import { WidgetBasemapToggleComponent } from "./components/widget-basemap-toggle/widget-basemap-toggle.component";
