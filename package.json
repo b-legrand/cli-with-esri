@@ -50,7 +50,7 @@
     "angular2-draggable": "^2.2.2",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.4.1",
-    "dexie": "^2.0.2",
+    "dexie": "^3.2.2",
     "esri-loader": "^2.2.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
