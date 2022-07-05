@@ -56,7 +56,7 @@
     "lodash": "^4.17.5",
     "lunr": "^2.1.6",
     "marked": "^0.3.17",
-    "mermaid": "^8.2.3",
+    "mermaid": "^9.1.2",
     "moment": "^2.21.0",
     "ngx-cookie-service": "^2.1.0",
     "ngx-localstorage": "^2.0.1",
